@@ -85,6 +85,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/api/meetings", async (req, res) => {
+    try {
+      const meetings = await Meeting.find().sort({ createdAt: -1 });
+      res.json(meetings);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch meetings" });
+    }
+  });
+
   const publicPath = path.join(process.cwd(), 'dist/public');
 
   if (process.env.NODE_ENV === 'production') {
