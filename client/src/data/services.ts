@@ -126,7 +126,11 @@ export const servicesData: ServicesData = {
         {
           icon: AppWindow,
           title: "SaaS & Installables",
-          features: ["Custom SaaS solutions"],
+          features: [
+            "CRM & ERP Solutions",
+            "Industry-Specific Software",
+            "Custom SaaS Development"
+          ],
           path: "/services/it/saas"
         },
         {
