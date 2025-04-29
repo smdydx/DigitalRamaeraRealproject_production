@@ -27,12 +27,16 @@ import {
 
 const StartBusiness = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-const sidebarRef = useRef<HTMLDivElement>(null);
+  const sidebarRef = useRef<HTMLDivElement>(null);
 
-// Handle mouse enter/leave for sidebar
-const handleMouseEnter = () => setIsSidebarOpen(true);
-const handleMouseLeave = () => setIsSidebarOpen(false);
+  // Handle mouse enter/leave for sidebar
+  const handleMouseEnter = () => setIsSidebarOpen(true);
+  const handleMouseLeave = () => setIsSidebarOpen(false);
   const [activeSection, setActiveSection] = useState("indian-startups");
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   const fdiServices = [
     {
@@ -259,10 +263,10 @@ const handleMouseLeave = () => setIsSidebarOpen(false);
                 <p className="text-sm text-gray-400 mt-2">Expert Solutions</p>
               </div>
               <button
-                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                className="lg:hidden p-2 rounded-full bg-green-500/10 hover:bg-green-500/20 text-green-400 transition-all"
+                onClick={toggleSidebar}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-full bg-zinc-900/95 border border-green-500/10 p-2 rounded-r-lg text-green-400 hover:bg-zinc-800/40"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className={`w-5 h-5 transition-transform ${isSidebarOpen ? '' : 'rotate-180'}`} />
               </button>
             </div>
 
@@ -315,7 +319,7 @@ const handleMouseLeave = () => setIsSidebarOpen(false);
           <main
             className={`flex-1 min-h-screen transition-all duration-300 ${isSidebarOpen ? "lg:ml-72" : "ml-0"}`}
           >
-            
+
 
             <div className="p-6 space-y-12 max-w-7xl mx-auto">
               {activeSection === "fdi" && (
