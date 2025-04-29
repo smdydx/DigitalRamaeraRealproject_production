@@ -225,9 +225,48 @@
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
-  max-height: 85vh;
+  max-height: calc(100vh - 4rem);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 640px) {
+  .nav-menu {
+    max-height: calc(100vh - 4rem);
+  }
+  
+  .nav-item {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .mobile-menu-scroll {
+    max-height: calc(100vh - 4rem);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .nav-menu {
+    max-height: calc(100vh - 5rem);
+  }
+}
+
+@media (min-width: 769px) {
+  .nav-menu {
+    max-height: calc(100vh - 6rem);
+  }
+}
+
+.services-dropdown {
+  max-height: min(600px, calc(100vh - 5rem));
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .services-dropdown {
+    width: 90vw;
+    max-width: 500px;
+  }
 }
 
 .services-menu {
