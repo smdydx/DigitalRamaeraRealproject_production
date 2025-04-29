@@ -38,6 +38,7 @@ import Dashboard from './pages/admin/Dashboard';
 import Login from './pages/admin/Login';
 import Schedule from "@/pages/Schedule"; // Added import for Schedule page
 
+import SaaS from "@/pages/services/it/SaaS";
 
 function Router() {
   return (
@@ -77,6 +78,7 @@ function Router() {
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/schedule" element={<Schedule />} /> {/* Added route for Schedule page */}
+          <Route path="/services/it/saas" element={<SaaS />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
