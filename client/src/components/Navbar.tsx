@@ -633,7 +633,7 @@ const Navbar = () => {
                         </svg>
                         <span className="hidden lg:inline">WhatsApp</span>
                       </a>
-                      <Button onClick={() => window.location.href='/schedule'} variant="outline" className="hidden md:flex items-center gap-2">
+                      <Button onClick={() => scrollToSection('/#meeting')} variant="outline" className="hidden md:flex items-center gap-2">
                         <Calendar className="h-4 w-4" />
                         Schedule Meeting
                       </Button>
@@ -692,7 +692,10 @@ const Navbar = () => {
                 </svg>
                 <span>WhatsApp</span>
               </a>
-              <Button onClick={() => window.location.href='/contact#meeting'} variant="outline" className="flex items-center gap-2">
+              <Button onClick={() => {
+                setIsMobileMenuOpen(false);
+                scrollToSection('/#meeting');
+              }} variant="outline" className="flex items-center gap-2">
                 <Calendar className="h-5 w-5" />
                 Schedule Meeting
               </Button>
