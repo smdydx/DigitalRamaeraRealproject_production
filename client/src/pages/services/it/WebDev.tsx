@@ -2,8 +2,11 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Globe, ShoppingCart, Newspaper, Tag, Heart, Briefcase, Calendar } from "lucide-react";
+import { useState } from "react";
 
 const WebDev = () => {
+  const [imageError, setImageError] = useState(false);
+
   const services = [
     {
       icon: <Globe className="w-8 h-8 text-primary" />,
@@ -91,6 +94,29 @@ const WebDev = () => {
     }
   ];
 
+  const faqs = [
+    {
+      question: "What technologies do you use for web development?",
+      answer: "We use modern technologies including React, Next.js, Node.js, MongoDB, and other cutting-edge tools based on project requirements."
+    },
+    {
+      question: "How long does it take to develop a website?",
+      answer: "Development time varies based on complexity - simple websites take 2-4 weeks, while complex portals may take 2-3 months."
+    },
+    {
+      question: "Do you provide website maintenance services?",
+      answer: "Yes, we offer comprehensive maintenance packages including updates, security patches, backups, and technical support."
+    },
+    {
+      question: "Is the website mobile responsive?",
+      answer: "Yes, all our websites are fully responsive and optimized for all devices including mobile phones, tablets, and desktops."
+    },
+    {
+      question: "What about website security?",
+      answer: "We implement robust security measures including SSL certificates, regular security audits, and protection against common vulnerabilities."
+    }
+  ];
+
   return (
     <div className="bg-background py-20">
       <motion.div
@@ -122,6 +148,10 @@ const WebDev = () => {
                   src={service.image}
                   alt={service.title}
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = '/images/services/website-builder.jpg';
+                    setImageError(true);
+                  }}
                 />
               </div>
               <div className="p-6">
@@ -142,6 +172,19 @@ const WebDev = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* FAQ Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="mt-20">
+          <h2 className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+          <div className="max-w-3xl mx-auto space-y-6">
+            {faqs.map((faq, index) => (
+              <div key={index} className="bg-card rounded-lg p-6 border border-border">
+                <h3 className="text-xl font-semibold mb-3">{faq.question}</h3>
+                <p className="text-muted-foreground">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </motion.div>
     </div>
   );
