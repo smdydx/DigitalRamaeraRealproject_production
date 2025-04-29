@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Code, ChevronDown, ChevronRight, PhoneCall, Calendar } from "lucide-react";
+import { Menu, X, Code, ChevronDown, ChevronRight, PhoneCall, Calendar, Phone } from "lucide-react";
 import { servicesData } from "@/data/services";
 
 const navLinks = [
