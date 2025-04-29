@@ -520,6 +520,22 @@ main {
   color: #00ff00;
 }
 
+/* Mobile navigation icons */
+@media (max-width: 768px) {
+  .nav-icon {
+    padding: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-text {
+    display: none;
+  }
+}
+
 .mobile-services-item:hover {
   background: rgba(255, 110, 0, 0.1);
 }
