@@ -26,7 +26,12 @@ import {
 } from "lucide-react";
 
 const StartBusiness = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const sidebarRef = useRef<HTMLDivElement>(null);
+
+// Handle mouse enter/leave for sidebar
+const handleMouseEnter = () => setIsSidebarOpen(true);
+const handleMouseLeave = () => setIsSidebarOpen(false);
   const [activeSection, setActiveSection] = useState("indian-startups");
 
   const fdiServices = [
@@ -239,9 +244,12 @@ const StartBusiness = () => {
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className={`fixed left-0 w-72 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-transform duration-300 ease-in-out z-40 ${
-              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-            } lg:translate-x-0`}
+            ref={sidebarRef}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            className={`fixed left-0 w-72 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-all duration-300 ease-in-out z-40 hover:shadow-xl hover:shadow-green-500/10 ${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-[calc(100%-8px)]"
+            }`}
           >
             <div className="flex justify-between items-center p-6 border-b border-green-500/10">
               <div>
@@ -307,12 +315,7 @@ const StartBusiness = () => {
           <main
             className={`flex-1 min-h-screen transition-all duration-300 ${isSidebarOpen ? "lg:ml-72" : "ml-0"}`}
           >
-            <button
-              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-              className="fixed top-20 left-4 z-40 lg:hidden p-2 rounded-full bg-green-500/20 text-green-400 hover:bg-green-500/30 transition-all"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+            
 
             <div className="p-6 space-y-12 max-w-7xl mx-auto">
               {activeSection === "fdi" && (
