@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -63,10 +64,10 @@ const ScheduleMeetingForm = () => {
   };
 
   return (
-    <div id="meeting" className="w-full max-w-2xl mx-auto p-6 bg-zinc-900/50 backdrop-blur-lg rounded-2xl border border-zinc-800 mt-24 mb-24">
-      <h2 className="text-2xl font-bold mb-6">Schedule a Meeting</h2>
+    <div id="meeting" className="w-full max-w-2xl mx-auto px-4 sm:px-6 py-8 bg-zinc-900/50 backdrop-blur-lg rounded-2xl border border-zinc-800 my-8 sm:my-12">
+      <h2 className="text-xl sm:text-2xl font-bold mb-6 text-center">Schedule a Meeting</h2>
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block text-sm font-medium mb-2">Name</label>
             <Input
@@ -102,7 +103,7 @@ const ScheduleMeetingForm = () => {
           />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
           <div>
             <label className="block text-sm font-medium mb-2">
               <Calendar className="inline-block w-4 h-4 mr-2" />
@@ -159,7 +160,7 @@ const ScheduleMeetingForm = () => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-primary hover:bg-primary/90"
+          className="w-full bg-primary hover:bg-primary/90 py-6"
         >
           {isSubmitting ? "Scheduling..." : "Schedule Meeting"}
         </Button>
