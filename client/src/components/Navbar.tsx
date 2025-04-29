@@ -80,7 +80,7 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 h-16 sm:h-20 lg:h-24 flex items-center ${
+      className={`fixed top-0 w-full z-50 transition-all duration-300 h-14 sm:h-16 lg:h-20 flex items-center ${
         isScrolled
           ? "bg-gradient-to-r from-black/98 via-zinc-900/98 to-black/98 backdrop-blur-xl border-b border-green-500/20 shadow-xl shadow-green-500/10"
           : "bg-gradient-to-r from-black/95 via-zinc-900/95 to-black/95 backdrop-blur-lg"
