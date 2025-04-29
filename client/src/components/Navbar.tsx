@@ -478,7 +478,7 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center justify-center flex-1 space-x-4 lg:space-x-8">
+          <nav className="hidden md:flex items-center justify-center flex-1 space-x-2 lg:space-x-4 xl:space-x-8">
             {navLinks.map((link, index) => {
               // Create Services dropdown button
               if (link.name === "Services") {
@@ -670,7 +670,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 sm:top-20 lg:top-24 left-0 right-0 bg-zinc-900/95 backdrop-blur-xl border-t border-green-500/20 overflow-y-auto max-h-[calc(100vh-4rem)] z-50 shadow-lg shadow-black/50"
+            className="fixed top-16 sm:top-20 lg:top-24 left-0 right-0 bg-zinc-900/95 backdrop-blur-xl border-t border-green-500/20 overflow-y-auto max-h-[calc(100vh-4rem)] z-50 shadow-lg shadow-black/50 mobile-menu-scroll"
           >
             {/* Contact Options for Mobile */}
             <div className="flex items-center justify-center gap-4 p-4 border-b border-green-500/10">
