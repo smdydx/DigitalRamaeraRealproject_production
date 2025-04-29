@@ -37,8 +37,9 @@ import ITServices from "./pages/services/ITServices";
 import Dashboard from './pages/admin/Dashboard';
 import Login from './pages/admin/Login';
 import Schedule from "@/pages/Schedule"; // Added import for Schedule page
-
 import SaaS from "@/pages/services/it/SaaS";
+import WebDev from './pages/services/it/WebDev'; // Import WebDev component
+
 
 function Router() {
   return (
@@ -79,6 +80,7 @@ function Router() {
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/schedule" element={<Schedule />} /> {/* Added route for Schedule page */}
           <Route path="/services/it/saas" element={<SaaS />} />
+          <Route path="/services/it/web-dev" element={<WebDev />} /> {/* Added route for WebDev */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
