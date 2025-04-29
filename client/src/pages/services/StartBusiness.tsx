@@ -3,7 +3,7 @@ import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Link } from "wouter";
 import { testimonialsData } from "@/data/testimonials";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Users,
   Globe,
