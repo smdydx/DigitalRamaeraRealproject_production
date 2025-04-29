@@ -38,7 +38,8 @@ import Dashboard from './pages/admin/Dashboard';
 import Login from './pages/admin/Login';
 import Schedule from "@/pages/Schedule"; // Added import for Schedule page
 import SaaS from "@/pages/services/it/SaaS";
-import WebDev from './pages/services/it/WebDev'; // Import WebDev component
+import WebDev from './pages/services/it/WebDev';
+import Mobile from './pages/services/it/Mobile'; // Import Mobile component
 
 
 function Router() {
@@ -80,7 +81,8 @@ function Router() {
           <Route path="/admin/dashboard" element={<Dashboard />} />
           <Route path="/schedule" element={<Schedule />} /> {/* Added route for Schedule page */}
           <Route path="/services/it/saas" element={<SaaS />} />
-          <Route path="/services/it/web-dev" element={<WebDev />} /> {/* Added route for WebDev */}
+          <Route path="/services/it/web-dev" element={<WebDev />} />
+          <Route path="/services/it/mobile" element={<Mobile />} /> {/* Added route for Mobile */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
