@@ -76,17 +76,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  app.get("/api/contacts", async (req, res) => {
+    try {
+      const contacts = await Contact.find().sort({ createdAt: -1 });
+      res.json(contacts);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch contacts" });
+    }
+  });
+
   const publicPath = path.join(process.cwd(), 'dist/public');
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(publicPath));
 
-    // API routes
+    // API routes should be before the catch-all route
     app.get('/api/*', (req, res, next) => {
       next();
     });
 
-    // Client-side routing
+    // Client-side routing - catch-all route
     app.get('*', (req, res) => {
       res.sendFile(path.join(publicPath, 'index.html'));
     });

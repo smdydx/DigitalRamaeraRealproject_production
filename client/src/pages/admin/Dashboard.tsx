@@ -59,6 +59,10 @@ const Dashboard = () => {
         fetch('/api/meetings')
       ]);
 
+      if (!contactsRes.ok || !blogsRes.ok || !meetingsRes.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
       const [contactsData, blogsData, meetingsData] = await Promise.all([
         contactsRes.json(),
         blogsRes.json(),
@@ -70,6 +74,11 @@ const Dashboard = () => {
       setMeetings(meetingsData || []);
     } catch (error) {
       console.error('Error fetching data:', error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch dashboard data. Please try again.",
+        variant: "destructive",
+      });
     }
   };
 
