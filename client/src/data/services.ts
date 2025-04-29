@@ -1,5 +1,5 @@
 
-import { Code, Smartphone, FileText, ShieldCheck, CreditCard, Building, FileCheck, Rocket, Users, XCircle, Scale, FileCode, Coins, Image, BarChart2, AppWindow, Server, Search, Globe } from "lucide-react";
+import { Code, Smartphone, FileText, ShieldCheck, CreditCard, Building, FileCheck, Rocket, Users, XCircle, Scale, FileCode, Coins, Image, BarChart2, AppWindow, Server, Search, Globe, Cloud, Gamepad2 } from "lucide-react";
 
 interface Service {
   icon: any;
@@ -112,7 +112,7 @@ export const servicesData: ServicesData = {
       features: ["Complete IT solutions"],
       submenu: [
         {
-          icon: Smartphone,
+          icon: Gamepad2,
           title: "Game Development",
           features: ["Custom game development"],
           path: "/services/it/game-dev"
@@ -122,6 +122,30 @@ export const servicesData: ServicesData = {
           title: "On-Demand App Development",
           features: ["Custom app solutions"],
           path: "/services/it/app-dev"
+        },
+        {
+          icon: AppWindow,
+          title: "SaaS & Installables",
+          features: ["Custom SaaS solutions"],
+          path: "/services/it/saas"
+        },
+        {
+          icon: Globe,
+          title: "Web Development & CMS Products",
+          features: ["Custom web solutions"],
+          path: "/services/it/web-dev"
+        },
+        {
+          icon: Smartphone,
+          title: "Mobile Applications",
+          features: ["Cross-platform mobile apps"],
+          path: "/services/it/mobile"
+        },
+        {
+          icon: Cloud,
+          title: "Cloud & SaaS Services",
+          features: ["Cloud-based solutions"],
+          path: "/services/it/cloud"
         }
       ],
       path: "/services/it-services"
