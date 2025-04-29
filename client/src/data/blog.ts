@@ -1,0 +1,32 @@
+export const blogData = [
+  {
+    id: 1,
+    title: "The Future of Blockchain in Business Operations",
+    description: "Exploring how blockchain technology is transforming business operations and providing new opportunities for growth and innovation.",
+    date: "April 15, 2023",
+    author: "Rajesh Kumar",
+    category: "Blockchain",
+    categoryColor: "primary",
+    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+  {
+    id: 2,
+    title: "Top Fintech Trends to Watch in 2023",
+    description: "An overview of the emerging trends in fintech that are reshaping the financial services landscape and driving innovation.",
+    date: "April 10, 2023",
+    author: "Priya Sharma",
+    category: "Fintech",
+    categoryColor: "secondary",
+    image: "https://images.unsplash.com/photo-1607944024060-0450380ddd33?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+  {
+    id: 3,
+    title: "Legal Considerations for Tech Startups",
+    description: "Key legal considerations and compliance requirements that tech startups should address to protect their business interests.",
+    date: "April 5, 2023",
+    author: "Amit Patel",
+    category: "Legal",
+    categoryColor: "primary",
+    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+  },
+];
