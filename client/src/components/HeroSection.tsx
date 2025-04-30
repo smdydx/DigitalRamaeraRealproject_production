@@ -50,39 +50,48 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-start pt-28 overflow-hidden"
+      className="relative min-h-screen flex items-start pt-28 overflow-hidden bg-black"
     >
-      {/* background and floating icons */}
+      {/* Galaxy animation background */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background z-10"></div>
-        <div className="circuit-board-bg w-full h-full"></div>
-      </div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-400 via-green-900 to-black opacity-30" />
 
-      {[...Array(8)].map((_, i) => (
+        {[...Array(100)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute h-[2px] w-[2px] bg-white rounded-full"
+            initial={{
+              opacity: Math.random(),
+              x: Math.random() * window.innerWidth,
+              y: Math.random() * window.innerHeight,
+            }}
+            animate={{
+              opacity: [Math.random() * 0.2, Math.random(), Math.random() * 0.2],
+              scale: [1, Math.random() * 2, 1],
+            }}
+            transition={{
+              duration: Math.random() * 10 + 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            style={{
+              background: i % 3 === 0 ? '#4ade80' : i % 3 === 1 ? '#22c55e' : 'white',
+            }}
+          />
+        ))}
+
         <motion.div
-          key={i}
-          initial={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            opacity: 0.3,
+          className="absolute inset-0"
+          initial={{ backgroundPosition: '0% 0%' }}
+          animate={{ backgroundPosition: ['0% 0%', '100% 100%'] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          style={{
+            backgroundImage: 'radial-gradient(circle at center, rgba(0,255,128,0.1) 0%, transparent 50%)',
+            backgroundSize: '100% 100%',
           }}
-          animate={{
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            opacity: [0.3, 0.8, 0.3],
-          }}
-          transition={{
-            duration: 15 + Math.random() * 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-          className="absolute z-0"
-        >
-          <div className="text-primary/30 text-lg">
-            {floatingIcons[Math.floor(Math.random() * floatingIcons.length)]}
-          </div>
-        </motion.div>
-      ))}
+        />
+        <div className="absolute inset-0 backdrop-blur-[80px]" />
+      </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 mt-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
