@@ -46,6 +46,22 @@ connectDB();
 // Register routes and start server
 registerRoutes(app).then((server) => {
   const port = process.env.PORT || 5000;
+
+  // Graceful shutdown handling
+  process.on('SIGTERM', () => {
+    server.close(() => {
+      log('Server shutting down');
+      process.exit(0);
+    });
+  });
+
+  process.on('SIGINT', () => {
+    server.close(() => {
+      log('Server shutting down');
+      process.exit(0);
+    });
+  });
+
   server.on('error', (e: any) => {
     if (e.code === 'EADDRINUSE') {
       log(`Port ${port} is busy, retrying...`);
@@ -55,7 +71,7 @@ registerRoutes(app).then((server) => {
       }, 1000);
     }
   });
-  
+
   server.listen(port, '0.0.0.0', () => {
     log(`[express] serving on port ${port}`);
   });

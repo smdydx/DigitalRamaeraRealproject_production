@@ -97,16 +97,28 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const publicPath = path.join(process.cwd(), 'dist/public');
 
   if (process.env.NODE_ENV === 'production') {
+    // Serve static files
     app.use(express.static(publicPath));
-
-    // API routes should be before the catch-all route
-    app.get('/api/*', (req, res, next) => {
-      next();
+    
+    // Handle client-side routing - serve index.html for all routes
+    app.get('*', (req, res) => {
+      if (!req.path.startsWith('/api')) {
+        res.sendFile(path.join(publicPath, 'index.html'));
+      }
+    });
+    
+    // Handle API routes first
+    app.use('/api', (req, res, next) => {
+      if (req.path.startsWith('/api')) {
+        next();
+      }
     });
 
-    // Client-side routing - catch-all route
+    // Serve index.html for all non-API routes (client-side routing)
     app.get('*', (req, res) => {
-      res.sendFile(path.join(publicPath, 'index.html'));
+      if (!req.path.startsWith('/api')) {
+        res.sendFile(path.join(publicPath, 'index.html'));
+      }
     });
   } else {
     const { setupVite } = await import('./vite');
