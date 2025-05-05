@@ -29,7 +29,7 @@ const AIChatBot = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
-          className="fixed bottom-4 left-4 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
+          className="fixed top-20 right-4 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
         >
           <div className="p-4 bg-green-500/10 flex justify-between items-center border-b border-green-500/20">
             <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ const AIChatBot = () => {
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="fixed bottom-4 left-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
+          className="fixed top-20 right-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
           onClick={() => setIsOpen(true)}
         >
           <Bot className="h-6 w-6" />

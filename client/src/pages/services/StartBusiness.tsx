@@ -274,7 +274,7 @@ const StartBusiness = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             className={`fixed left-0 w-72 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-all duration-300 ease-in-out z-40 shadow-lg shadow-green-500/5 ${
-              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+              isSidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"
             } ${isMobile ? "w-64" : "w-72"}`}
           >
             <div className="flex justify-between items-center p-6 border-b border-green-500/10">
