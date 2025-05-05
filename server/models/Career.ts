@@ -8,7 +8,7 @@ const jobPostingSchema = new mongoose.Schema({
   location: { type: String, required: true },
   type: { type: String, required: true },
   description: { type: String, required: true },
-  requirements: [String],
+  requirements: [{ type: String }],
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -24,7 +24,7 @@ const careerSchema = new mongoose.Schema({
   expectedSalary: { type: String, required: true },
   comments: String,
   resumeUrl: { type: String, required: true },
-  photo: { type: String, required: true }, // URL for candidate photo
+  photo: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
 });
 

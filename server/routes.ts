@@ -88,11 +88,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Job posting routes for admin
   app.post("/api/careers/jobs", async (req, res) => {
     try {
-      const jobPosting = new JobPosting(req.body);
+      const { title, department, location, type, description, requirements } = req.body;
+      
+      const jobPosting = new JobPosting({
+        title,
+        department,
+        location,
+        type,
+        description,
+        requirements: requirements.filter((req: string) => req.trim() !== '')
+      });
+      
       await jobPosting.save();
       res.status(201).json(jobPosting);
     } catch (error) {
-      res.status(500).json({ message: "Failed to create job posting" });
+      console.error('Job posting error:', error);
+      res.status(500).json({ message: "Failed to create job posting", error: error.message });
     }
   });
 
@@ -101,7 +112,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const jobs = await JobPosting.find().sort({ createdAt: -1 });
       res.json(jobs);
     } catch (error) {
-      res.status(500).json({ message: "Failed to fetch job postings" });
+      console.error('Fetch jobs error:', error);
+      res.status(500).json({ message: "Failed to fetch job postings", error: error.message });
+    }
+  });
+
+  // Delete job posting (optional)
+  app.delete("/api/careers/jobs/:id", async (req, res) => {
+    try {
+      await JobPosting.findByIdAndDelete(req.params.id);
+      res.json({ message: "Job posting deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to delete job posting" });
     }
   });
 
