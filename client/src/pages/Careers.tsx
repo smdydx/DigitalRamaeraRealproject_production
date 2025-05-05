@@ -240,28 +240,28 @@ const Careers = () => {
                   required
                   className="bg-zinc-800/50"
                 />
-              {formData.resume && (
-                <CheckCircle2 className="w-6 h-6 text-green-500" />
-              )}
-            </div>
+                {formData.resume && (
+                  <CheckCircle2 className="w-6 h-6 text-green-500" />
+                )}
+              </div>
 
-            <div className="flex items-center gap-2">
-              <input
-                type="checkbox"
-                checked={formData.isRobot}
-                onChange={(e) => setFormData({...formData, isRobot: e.target.checked})}
-                className="w-4 h-4"
-              />
-              <span className="text-gray-400">I'm not a robot</span>
-            </div>
+              <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={formData.isRobot}
+                  onChange={(e) => setFormData({...formData, isRobot: e.target.checked})}
+                  className="w-4 h-4"
+                />
+                <span className="text-gray-400">I'm not a robot</span>
+              </div>
 
-            <Button
-              type="submit"
-              disabled={isSubmitting || !formData.isRobot}
-              className="w-full bg-green-500/10 hover:bg-green-500/20 text-green-400 border border-green-500/30"
-            >
-              {isSubmitting ? "Submitting..." : "Submit Application"}
-            </Button>
+              <Button
+                type="submit"
+                disabled={isSubmitting || !formData.isRobot}
+                className="w-full bg-green-500/10 hover:bg-green-500/20 text-green-400 border border-green-500/30"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Application"}
+              </Button>
           </form>
         </div>
       </div>
