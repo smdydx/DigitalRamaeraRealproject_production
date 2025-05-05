@@ -73,7 +73,7 @@ const ServicesSection = () => {
                 <motion.div
                   key={service.title}
                   variants={fadeIn("up", "tween", index * 0.1, 0.5)}
-                  className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-xl rounded-2xl p-8 border border-zinc-700/50 hover:border-primary/50 transition-all duration-300 group"
+                  className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-xl rounded-2xl p-8 border border-zinc-700/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group cursor-pointer"
                 >
                   <div className="flex items-center gap-6 mb-8">
                     <div className="p-4 rounded-xl bg-primary/10 text-primary">
@@ -97,7 +97,7 @@ const ServicesSection = () => {
                     {service.submenu && (
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 pt-8 border-t border-zinc-700/50">
                         {service.submenu.map((subService, subIdx) => (
-                          <div key={subIdx} className="bg-zinc-800/30 rounded-xl p-6 hover:bg-zinc-800/50 transition-colors">
+                          <div key={subIdx} className="bg-zinc-800/30 rounded-xl p-6 hover:bg-zinc-800/50 hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
                             <div className="flex items-center gap-3 mb-4">
                               {renderIcon(subService.icon, { size: 24, className: "text-primary" })}
                               <h4 className="font-semibold text-white">{subService.title}</h4>
