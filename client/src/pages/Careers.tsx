@@ -23,26 +23,38 @@ const Careers = () => {
     isRobot: false
   });
 
-  const openPositions = [
-    {
-      title: "Senior Full Stack Developer",
-      department: "Engineering",
-      location: "Delhi NCR",
-      type: "Full Time"
-    },
-    {
-      title: "UI/UX Designer",
-      department: "Design",
-      location: "Remote",
-      type: "Full Time"
-    },
-    {
-      title: "Business Development Executive",
-      department: "Sales",
-      location: "Delhi NCR",
-      type: "Full Time"
+  const [openPositions, setOpenPositions] = useState([]);
+  const [photo, setPhoto] = useState(null);
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        const response = await fetch('/api/careers/jobs');
+        if (response.ok) {
+          const jobs = await response.json();
+          setOpenPositions(jobs);
+        }
+      } catch (error) {
+        console.error('Failed to fetch jobs:', error);
+      }
+    };
+    fetchJobs();
+  }, []);
+
+  const handlePhotoChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const file = e.target.files[0];
+      if (file.type.startsWith('image/')) {
+        setPhoto(file);
+      } else {
+        toast({
+          title: "Invalid file type",
+          description: "Please upload an image file",
+          variant: "destructive"
+        });
+      }
     }
-  ];
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -207,14 +219,27 @@ const Careers = () => {
               className="bg-zinc-800/50 h-32"
             />
 
-            <div className="flex items-center gap-4">
-              <Input
-                type="file"
-                accept=".pdf,.doc,.docx"
-                onChange={handleFileChange}
-                required
-                className="bg-zinc-800/50"
-              />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="flex items-center gap-4">
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handlePhotoChange}
+                  required
+                  className="bg-zinc-800/50"
+                />
+                {photo && (
+                  <CheckCircle2 className="w-6 h-6 text-green-500" />
+                )}
+              </div>
+              <div className="flex items-center gap-4">
+                <Input
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleFileChange}
+                  required
+                  className="bg-zinc-800/50"
+                />
               {formData.resume && (
                 <CheckCircle2 className="w-6 h-6 text-green-500" />
               )}

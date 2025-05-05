@@ -85,12 +85,40 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Job posting routes for admin
+  app.post("/api/careers/jobs", async (req, res) => {
+    try {
+      const jobPosting = new JobPosting(req.body);
+      await jobPosting.save();
+      res.status(201).json(jobPosting);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to create job posting" });
+    }
+  });
+
+  app.get("/api/careers/jobs", async (req, res) => {
+    try {
+      const jobs = await JobPosting.find().sort({ createdAt: -1 });
+      res.json(jobs);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch job postings" });
+    }
+  });
+
   // Career application routes
   app.post("/api/careers/apply", async (req, res) => {
     try {
+      if (!req.files?.photo || !req.files?.resume) {
+        return res.status(400).json({ message: "Photo and resume are required" });
+      }
+
+      const photoUrl = await uploadFile(req.files.photo);
+      const resumeUrl = await uploadFile(req.files.resume);
+
       const application = new Career({
         ...req.body,
-        resumeUrl: req.file?.path // Assuming file handling middleware is set up
+        photoUrl,
+        resumeUrl
       });
       await application.save();
       res.status(201).json(application);
