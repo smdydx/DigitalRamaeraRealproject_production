@@ -85,6 +85,29 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Career application routes
+  app.post("/api/careers/apply", async (req, res) => {
+    try {
+      const application = new Career({
+        ...req.body,
+        resumeUrl: req.file?.path // Assuming file handling middleware is set up
+      });
+      await application.save();
+      res.status(201).json(application);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to submit application" });
+    }
+  });
+
+  app.get("/api/careers/applications", async (req, res) => {
+    try {
+      const applications = await Career.find().sort({ createdAt: -1 });
+      res.json(applications);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch applications" });
+    }
+  });
+
   app.get("/api/meetings", async (req, res) => {
     try {
       const meetings = await Meeting.find().sort({ createdAt: -1 });
