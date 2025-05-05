@@ -82,26 +82,37 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
             <ul className="space-y-3">
-              <li><a href="#home" className="text-muted-foreground hover:text-primary transition-colors duration-300">Home</a></li>
-              <li><a href="#about" className="text-muted-foreground hover:text-primary transition-colors duration-300">About Us</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Services</a></li>
-              <li><a href="#projects" className="text-muted-foreground hover:text-primary transition-colors duration-300">Projects</a></li>
-              <li><a href="#team" className="text-muted-foreground hover:text-primary transition-colors duration-300">Team</a></li>
-              <li><a href="#blog" className="text-muted-foreground hover:text-primary transition-colors duration-300">Blog</a></li>
-              <li><a href="#contact" className="text-muted-foreground hover:text-primary transition-colors duration-300">Contact</a></li>
+              <li><a href="/" className="text-muted-foreground hover:text-primary transition-colors duration-300">Home</a></li>
+              <li><a href="/about" className="text-muted-foreground hover:text-primary transition-colors duration-300">About Us</a></li>
+              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Services</a></li>
+              <li><a href="/blog" className="text-muted-foreground hover:text-primary transition-colors duration-300">Blog</a></li>
+              <li><a href="/careers" className="text-muted-foreground hover:text-primary transition-colors duration-300">Careers</a></li>
+              <li><a href="/#contact" className="text-muted-foreground hover:text-primary transition-colors duration-300">Contact Us</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-6">Our Services</h4>
+            <h4 className="text-lg font-semibold mb-6">Tech Services</h4>
             <ul className="space-y-3">
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Blockchain Development</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Fintech Solutions</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Mobile App Development</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Real Estate Software</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">MLM Software</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Legal Services</a></li>
-              <li><a href="#services" className="text-muted-foreground hover:text-primary transition-colors duration-300">API Integration</a></li>
+              <li><a href="/services/blockchain/smart-contracts" className="text-muted-foreground hover:text-primary transition-colors duration-300">Smart Contract Development</a></li>
+              <li><a href="/services/blockchain/token" className="text-muted-foreground hover:text-primary transition-colors duration-300">Token Development</a></li>
+              <li><a href="/services/blockchain/nft" className="text-muted-foreground hover:text-primary transition-colors duration-300">NFT Marketplace</a></li>
+              <li><a href="/services/blockchain/exchange" className="text-muted-foreground hover:text-primary transition-colors duration-300">Crypto Exchange</a></li>
+              <li><a href="/services/it/web-dev" className="text-muted-foreground hover:text-primary transition-colors duration-300">Web Development</a></li>
+              <li><a href="/services/it/mobile" className="text-muted-foreground hover:text-primary transition-colors duration-300">Mobile Applications</a></li>
+              <li><a href="/services/it/cloud" className="text-muted-foreground hover:text-primary transition-colors duration-300">Cloud Services</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold mb-6">Legal Services</h4>
+            <ul className="space-y-3">
+              <li><a href="/services/legal/company-incorporation" className="text-muted-foreground hover:text-primary transition-colors duration-300">Company Incorporation</a></li>
+              <li><a href="/services/legal/roc-compliance" className="text-muted-foreground hover:text-primary transition-colors duration-300">ROC Compliance</a></li>
+              <li><a href="/services/legal/secretarial-audit" className="text-muted-foreground hover:text-primary transition-colors duration-300">Secretarial Audit</a></li>
+              <li><a href="/services/legal/ip-registration" className="text-muted-foreground hover:text-primary transition-colors duration-300">IP Registration</a></li>
+              <li><a href="/services/legal/startup-registration" className="text-muted-foreground hover:text-primary transition-colors duration-300">Startup Registration</a></li>
+              <li><a href="/services/legal/labour-compliance" className="text-muted-foreground hover:text-primary transition-colors duration-300">Labour Compliance</a></li>
             </ul>
           </div>
 
