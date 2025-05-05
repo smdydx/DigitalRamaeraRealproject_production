@@ -63,80 +63,50 @@ const ServicesSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid grid-cols-1 gap-6"
             >
-              {servicesData[activeTab as keyof typeof servicesData].map((service) => (
-                <>
-                  <motion.div
-                    key={service.title}
-                    variants={fadeIn("up", "tween", 0.1, 0.5)}
-                    className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/50 hover:border-primary/50 transition-all duration-300 group"
-                  >
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                        {renderIcon(service.icon, { size: 24 })}
-                      </div>
-                      <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                        {service.title}
-                      </h3>
+              {servicesData[activeTab as keyof typeof servicesData].map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  variants={fadeIn("up", "tween", index * 0.1, 0.5)}
+                  className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/50 hover:border-primary/50 transition-all duration-300 group"
+                >
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="p-3 rounded-lg bg-primary/10 text-primary">
+                      {renderIcon(service.icon, { size: 24 })}
                     </div>
-                    
-                    <ul className="space-y-3 mb-6 min-h-[120px]">
-                      {service.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2">
+                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-2">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                        <span className="text-muted-foreground text-sm">{feature}</span>
+                      </div>
+                    ))}
+                    {service.submenu && service.submenu.map((subService) => (
+                      subService.features.map((feature, idx) => (
+                        <div key={`${subService.title}-${idx}`} className="flex items-start gap-2">
                           <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
                           <span className="text-muted-foreground text-sm">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Button
-                      variant="link"
-                      asChild
-                      className="p-0 text-primary hover:text-primary/80"
-                    >
-                      <Link href={service.path || "#"}>
-                        Learn More <ArrowRight className="h-4 w-4 ml-1" />
-                      </Link>
-                    </Button>
-                  </motion.div>
-
-                  {service.submenu && service.submenu.map((subService) => (
-                    <motion.div
-                      key={subService.title}
-                      variants={fadeIn("up", "tween", 0.1, 0.5)}
-                      className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/50 hover:border-primary/50 transition-all duration-300 group"
-                    >
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                          {renderIcon(subService.icon, { size: 24 })}
                         </div>
-                        <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
-                          {subService.title}
-                        </h3>
-                      </div>
-                      
-                      <ul className="space-y-3 mb-6 min-h-[120px]">
-                        {subService.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                            <span className="text-muted-foreground text-sm">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                      ))
+                    ))}
+                  </div>
 
-                      <Button
-                        variant="link"
-                        asChild
-                        className="p-0 text-primary hover:text-primary/80"
-                      >
-                        <Link href={subService.path || "#"}>
-                          Learn More <ArrowRight className="h-4 w-4 ml-1" />
-                        </Link>
-                      </Button>
-                    </motion.div>
-                  ))}
-                </>
+                  <Button
+                    variant="link"
+                    asChild
+                    className="p-0 text-primary hover:text-primary/80"
+                  >
+                    <Link href={service.path || "#"}>
+                      Learn More <ArrowRight className="h-4 w-4 ml-1" />
+                    </Link>
+                  </Button>
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
