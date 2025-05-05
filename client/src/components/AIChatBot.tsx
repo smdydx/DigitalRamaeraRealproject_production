@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Bot, X, Send, Minimize2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -16,7 +15,7 @@ const AIChatBot = () => {
 
   const handleSend = () => {
     if (!input.trim()) return;
-    
+
     setMessages(prev => [...prev, { type: 'user', text: input }]);
     // Here you would typically make an API call to your AI backend
     setMessages(prev => [...prev, { type: 'bot', text: 'Thank you for your message. Our team will assist you shortly.' }]);
@@ -27,10 +26,10 @@ const AIChatBot = () => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 50 }}
-          className="fixed bottom-4 right-4 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 50 }}
+          className="fixed bottom-4 left-4 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
         >
           <div className="p-4 bg-green-500/10 flex justify-between items-center border-b border-green-500/20">
             <div className="flex items-center gap-2">
@@ -46,7 +45,7 @@ const AIChatBot = () => {
               </button>
             </div>
           </div>
-          
+
           <div className="h-80 overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
               <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -80,7 +79,7 @@ const AIChatBot = () => {
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="fixed bottom-4 right-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
+          className="fixed bottom-4 left-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
           onClick={() => setIsOpen(true)}
         >
           <Bot className="h-6 w-6" />
