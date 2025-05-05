@@ -12,13 +12,7 @@ const AIChatBot = () => {
   ]);
   const [input, setInput] = useState('');
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  // Removed auto-opening timer
 
   const handleSend = () => {
     if (!input.trim()) return;
