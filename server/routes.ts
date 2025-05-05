@@ -4,6 +4,8 @@ import path from "path";
 import { Blog } from "./models/Blog";
 import { Contact } from "./models/Contact";
 import { Meeting } from "./models/Meeting";
+import { JobPosting, Career } from "./models/Career";
+import { Chat } from "./models/Chat";
 // Twilio import aur client initialization hata diya gaya hai
 
 export async function registerRoutes(app: Express): Promise<Server> {

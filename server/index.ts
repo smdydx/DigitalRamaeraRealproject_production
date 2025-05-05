@@ -3,12 +3,14 @@ import cors from 'cors';
 import { connectDB } from './db';
 import { registerRoutes } from "./routes";
 import { log } from "./vite";
+import fileUpload from 'express-fileupload';
 
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(fileUpload()); // Add file upload middleware
 
 app.use((req, res, next) => {
   const start = Date.now();
@@ -42,6 +44,23 @@ app.use((req, res, next) => {
 
 // Connect to MongoDB
 connectDB();
+
+// Example file upload route (replace with your actual implementation)
+app.post('/api/upload', (req, res) => {
+  if (!req.files || Object.keys(req.files).length === 0) {
+    return res.status(400).send('No files were uploaded.');
+  }
+
+  let sampleFile = req.files.sampleFile;
+  let uploadPath = __dirname + '/uploads/' + sampleFile.name;
+
+
+  sampleFile.mv(uploadPath, function (err) {
+    if (err) return res.status(500).send(err);
+    res.send('File uploaded!');
+  });
+});
+
 
 // Register routes and start server
 registerRoutes(app).then((server) => {

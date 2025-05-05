@@ -84,3 +84,19 @@ export class MemStorage implements IStorage {
 }
 
 export const storage = new MemStorage();
+import path from 'path';
+import { v4 as uuidv4 } from 'uuid';
+import fs from 'fs';
+
+export const uploadFile = async (file: any) => {
+  const fileName = `${uuidv4()}-${file.name}`;
+  const uploadPath = path.join(process.cwd(), 'uploads', fileName);
+  
+  // Ensure uploads directory exists
+  if (!fs.existsSync(path.join(process.cwd(), 'uploads'))) {
+    fs.mkdirSync(path.join(process.cwd(), 'uploads'), { recursive: true });
+  }
+
+  await file.mv(uploadPath);
+  return `/uploads/${fileName}`;
+};
