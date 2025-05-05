@@ -31,6 +31,18 @@ const StartBusiness = () => {
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState("indian-startups");
 
+  const handleMouseEnter = () => {
+    if (!isMobile) {
+      setIsSidebarOpen(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (!isMobile) {
+      setIsSidebarOpen(false);
+    }
+  };
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
