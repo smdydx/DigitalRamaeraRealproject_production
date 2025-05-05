@@ -51,8 +51,7 @@ const Navbar = () => {
     }
   };
 
-  const toggleServicesDropdown = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent event bubbling
+  const toggleServicesDropdown = () => {
     setServicesDropdownOpen(!servicesDropdownOpen);
     if (!servicesDropdownOpen) {
       setActiveServiceCategory("tech");
@@ -116,7 +115,11 @@ const Navbar = () => {
                 return (
                   <div key={index} className="relative" ref={servicesDropdownRef}>
                     <button
-                      onClick={toggleServicesDropdown}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        toggleServicesDropdown();
+                      }}
                       className="relative text-white hover:text-primary font-medium transition-colors duration-300 group flex items-center gap-1"
                     >
                       {link.name}
