@@ -15,41 +15,6 @@ interface ServicesData {
 }
 
 export const servicesData: ServicesData = {
-  legalCompliance: [
-    {
-      icon: FileCheck,
-      title: "Annual ROC Compliance",
-      features: [
-        "ROC Annual Return Filing",
-        "Annual Financial Statement Filing",
-        "Director Report Filing",
-        "Certificate Compliance"
-      ],
-      path: "/services/legal/roc-compliance"
-    },
-    {
-      icon: Scale,
-      title: "Corporate Governance",
-      features: [
-        "Board Management",
-        "Policy Development",
-        "Risk Management",
-        "Compliance Framework"
-      ],
-      path: "/services/legal/corporate-governance"
-    },
-    {
-      icon: Users,
-      title: "Labour Law Compliance",
-      features: [
-        "Labor Law Registration",
-        "Statutory Compliance",
-        "HR Policy Development",
-        "Employment Contracts"
-      ],
-      path: "/services/legal/labour-compliance"
-    }
-  ],
   tech: [
     {
       icon: Code,
