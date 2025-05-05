@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 const Careers = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [openPositions, setOpenPositions] = useState([]);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -20,11 +21,9 @@ const Careers = () => {
     expectedSalary: "",
     comments: "",
     resume: null as File | null,
+    photo: null as File | null,
     isRobot: false
   });
-
-  const [openPositions, setOpenPositions] = useState([]);
-  const [photo, setPhoto] = useState(null);
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -41,11 +40,11 @@ const Careers = () => {
     fetchJobs();
   }, []);
 
-  const handlePhotoChange = (e) => {
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       if (file.type.startsWith('image/')) {
-        setPhoto(file);
+        setFormData({ ...formData, photo: file });
       } else {
         toast({
           title: "Invalid file type",
@@ -75,41 +74,48 @@ const Careers = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.isRobot) {
-      setIsSubmitting(true);
-      
-      const formDataToSend = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key === 'resume' && value) {
-          formDataToSend.append('resume', value);
-        } else if (key !== 'isRobot') {
-          formDataToSend.append(key, value.toString());
-        }
+      toast({
+        title: "Verification required",
+        description: "Please verify that you're not a robot",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    const formDataToSend = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      if (value !== null && key !== 'isRobot') {
+        formDataToSend.append(key, value);
+      }
+    });
+
+    try {
+      const response = await fetch('/api/careers/apply', {
+        method: 'POST',
+        body: formDataToSend
       });
 
-      try {
-        const response = await fetch('/api/careers/apply', {
-          method: 'POST',
-          body: formDataToSend
-        });
-
-        if (response.ok) {
-          toast({
-            title: "Application Submitted",
-            description: "Thank you for applying! We'll get back to you soon.",
-          });
-          setFormData({
-            fullName: "", email: "", phone: "", address: "", position: "",
-            experience: "", currentSalary: "", expectedSalary: "", comments: "",
-            resume: null, isRobot: false
-          });
-        }
-      } catch (error) {
+      if (response.ok) {
         toast({
-          title: "Error",
-          description: "Failed to submit application. Please try again.",
-          variant: "destructive"
+          title: "Application Submitted",
+          description: "Thank you for applying! We'll get back to you soon.",
         });
+        setFormData({
+          fullName: "", email: "", phone: "", address: "", position: "",
+          experience: "", currentSalary: "", expectedSalary: "", comments: "",
+          resume: null, photo: null, isRobot: false
+        });
+      } else {
+        throw new Error('Failed to submit');
       }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit application. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -125,13 +131,13 @@ const Careers = () => {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {openPositions.map((position, index) => (
+          {openPositions.map((position: any, index: number) => (
             <div
               key={index}
               className="bg-zinc-900/50 border border-green-500/20 rounded-lg p-6 hover:border-green-500/40 transition-all"
             >
               <h3 className="text-xl font-semibold text-white mb-2">{position.title}</h3>
-              <div className="space-y-2 text-gray-400 mb-4">
+              <div className="space-y-2 text-gray-400">
                 <p>{position.department}</p>
                 <p>{position.location}</p>
                 <p>{position.type}</p>
@@ -219,7 +225,7 @@ const Careers = () => {
               className="bg-zinc-800/50 h-32"
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <Input
                   type="file"
@@ -228,10 +234,11 @@ const Careers = () => {
                   required
                   className="bg-zinc-800/50"
                 />
-                {photo && (
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
+                {formData.photo && (
+                  <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0" />
                 )}
               </div>
+
               <div className="flex items-center gap-4">
                 <Input
                   type="file"
@@ -241,7 +248,7 @@ const Careers = () => {
                   className="bg-zinc-800/50"
                 />
                 {formData.resume && (
-                  <CheckCircle2 className="w-6 h-6 text-green-500" />
+                  <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0" />
                 )}
               </div>
 
