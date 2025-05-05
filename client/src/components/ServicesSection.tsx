@@ -10,7 +10,6 @@ import { renderIcon } from "@/lib/icon-utils";
 const serviceTypes = [
   { id: "tech", name: "Technology Services" },
   { id: "legalCompliance", name: "Legal & Compliance Services" },
-  { id: "digital", name: "Other Digital Services" },
 ];
 
 const ServicesSection = () => {
