@@ -36,11 +36,12 @@ import Marketing from './pages/services/digital/Marketing';
 import ITServices from "./pages/services/ITServices";
 import Dashboard from './pages/admin/Dashboard';
 import Login from './pages/admin/Login';
-import Schedule from "@/pages/Schedule"; // Added import for Schedule page
+import Schedule from "@/pages/Schedule"; 
 import SaaS from "@/pages/services/it/SaaS";
 import WebDev from './pages/services/it/WebDev';
 import Mobile from './pages/services/it/Mobile';
-import Cloud from './pages/services/it/Cloud'; // Import Cloud component
+import Cloud from './pages/services/it/Cloud'; 
+import Careers from "./pages/Careers"; // Added import for Careers page
 
 
 function Router() {
@@ -80,11 +81,12 @@ function Router() {
           <Route path="/services/it-services" element={<ITServices />} />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/schedule" element={<Schedule />} /> {/* Added route for Schedule page */}
+          <Route path="/schedule" element={<Schedule />} /> 
           <Route path="/services/it/saas" element={<SaaS />} />
           <Route path="/services/it/web-dev" element={<WebDev />} />
           <Route path="/services/it/mobile" element={<Mobile />} />
-          <Route path="/services/it/cloud" element={<Cloud />} /> {/* Added route for Cloud Services */}
+          <Route path="/services/it/cloud" element={<Cloud />} /> 
+          <Route path="/careers" element={<Careers />} /> {/* Added route for Careers page */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
