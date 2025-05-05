@@ -43,15 +43,7 @@ import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Careers from "./pages/Careers"; // Added import for Careers page
 
-// Placeholder for the actual AIChatBot component.  Replace this with your implementation.
-function AIChatBot() {
-  return (
-    <div>
-      {/* Implement your AI chatbot here */}
-      <p>This is a placeholder for the AI Chatbot.</p>
-    </div>
-  );
-}
+import AIChatBot from './components/AIChatBot';
 
 
 function Router() {
