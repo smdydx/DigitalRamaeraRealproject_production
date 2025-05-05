@@ -27,10 +27,71 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const [contacts, setContacts] = useState([]);
   const [blogs, setBlogs] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const [activeTab, setActiveTab] = useState('overview');
   const [editBlog, setEditBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [meetings, setMeetings] = useState([]);
+
+  const handleJobSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const jobData = {
+      title: formData.get('title'),
+      department: formData.get('department'),
+      location: formData.get('location'),
+      type: formData.get('type'),
+      description: formData.get('description'),
+      requirements: formData.get('requirements').split('\n').filter(r => r.trim())
+    };
+
+    try {
+      const response = await fetch('/api/careers/jobs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jobData)
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Job Posted",
+          description: "The job has been posted successfully.",
+        });
+        e.target.reset();
+        fetchData();
+      }
+    } catch (error) {
+      console.error('Error posting job:', error);
+      toast({
+        title: "Error",
+        description: "Failed to post job. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleDeleteJob = async (jobId) => {
+    try {
+      const response = await fetch(`/api/careers/jobs/${jobId}`, {
+        method: 'DELETE'
+      });
+
+      if (response.ok) {
+        setJobs(jobs.filter(job => job._id !== jobId));
+        toast({
+          title: "Job Deleted",
+          description: "The job posting has been removed.",
+        });
+      }
+    } catch (error) {
+      console.error('Error deleting job:', error);
+      toast({
+        title: "Error",
+        description: "Failed to delete job. Please try again.",
+        variant: "destructive",
+      });
+    }
+  };
   const { toast } = useToast();
 
   useEffect(() => {
@@ -203,10 +264,83 @@ const Dashboard = () => {
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="bg-blue-950/30 border border-blue-500/20 p-1 rounded-lg w-full flex justify-start">
             <TabsTrigger value="overview" className="flex-1 data-[state=active]:bg-blue-600">Overview</TabsTrigger>
+            <TabsTrigger value="jobs" className="flex-1 data-[state=active]:bg-blue-600">Jobs</TabsTrigger>
             <TabsTrigger value="schedule" className="flex-1 data-[state=active]:bg-blue-600">Schedule</TabsTrigger>
             <TabsTrigger value="blogs" className="flex-1 data-[state=active]:bg-blue-600">Blogs</TabsTrigger>
             <TabsTrigger value="messages" className="flex-1 data-[state=active]:bg-blue-600">Messages</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="jobs">
+            <Card className="p-6 bg-blue-950/30 border-blue-500/20 mb-6">
+              <h2 className="text-2xl font-bold mb-6">Post New Job</h2>
+              <form onSubmit={handleJobSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input
+                    name="title"
+                    placeholder="Job Title"
+                    className="bg-blue-900/20 border-blue-500/20"
+                    required
+                  />
+                  <Input
+                    name="department"
+                    placeholder="Department"
+                    className="bg-blue-900/20 border-blue-500/20"
+                    required
+                  />
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <Input
+                    name="location"
+                    placeholder="Location"
+                    className="bg-blue-900/20 border-blue-500/20"
+                    required
+                  />
+                  <Input
+                    name="type"
+                    placeholder="Job Type (Full-time/Part-time)"
+                    className="bg-blue-900/20 border-blue-500/20"
+                    required
+                  />
+                </div>
+                <Textarea
+                  name="description"
+                  placeholder="Job Description"
+                  className="min-h-[100px] bg-blue-900/20 border-blue-500/20"
+                  required
+                />
+                <Textarea
+                  name="requirements"
+                  placeholder="Requirements (One per line)"
+                  className="min-h-[100px] bg-blue-900/20 border-blue-500/20"
+                  required
+                />
+                <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
+                  Post Job
+                </Button>
+              </form>
+            </Card>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {jobs.map((job) => (
+                <Card key={job._id} className="p-4 bg-blue-950/30 border-blue-500/20">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <h3 className="font-semibold text-lg">{job.title}</h3>
+                      <p className="text-sm text-blue-400">{job.department}</p>
+                      <p className="text-sm text-gray-400">{job.location} • {job.type}</p>
+                    </div>
+                    <Button
+                      variant="destructive"
+                      size="icon"
+                      onClick={() => handleDeleteJob(job._id)}
+                    >
+                      <TrashIcon className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
 
           <TabsContent value="overview">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

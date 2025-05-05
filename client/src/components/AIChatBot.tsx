@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Bot, X, Send, Minimize2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -45,7 +44,7 @@ const AIChatBot = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
-          className="fixed right-4 top-1/2 -translate-y-1/2 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
+          className="fixed right-4 top-20 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
         >
           <div className="p-4 bg-green-500/10 flex justify-between items-center border-b border-green-500/20">
             <div className="flex items-center gap-2">
@@ -102,7 +101,7 @@ const AIChatBot = () => {
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="fixed top-1/2 -translate-y-1/2 right-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
+          className="fixed top-20 right-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
           onClick={() => setIsOpen(true)}
         >
           <Bot className="h-6 w-6" />
