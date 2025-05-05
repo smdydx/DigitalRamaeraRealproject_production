@@ -69,38 +69,51 @@ const ServicesSection = () => {
                 <motion.div
                   key={service.title}
                   variants={fadeIn("up", "tween", index * 0.1, 0.5)}
-                  className="bg-zinc-800/50 rounded-xl p-6 border border-zinc-700/50 hover:border-primary/50 transition-all duration-300 group"
+                  className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700/50 hover:border-primary/50 transition-all duration-300 group"
                 >
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 rounded-lg bg-primary/10 text-primary">
-                      {renderIcon(service.icon, { size: 24 })}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="p-4 rounded-lg bg-primary/10 text-primary">
+                      {renderIcon(service.icon, { size: 28 })}
                     </div>
-                    <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">
+                    <h3 className="text-2xl font-semibold group-hover:text-primary transition-colors">
                       {service.title}
                     </h3>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                        <span className="text-muted-foreground text-sm">{feature}</span>
-                      </div>
-                    ))}
-                    {service.submenu && service.submenu.map((subService) => (
-                      subService.features.map((feature, idx) => (
-                        <div key={`${subService.title}-${idx}`} className="flex items-start gap-2">
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {service.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3">
                           <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                          <span className="text-muted-foreground text-sm">{feature}</span>
+                          <span className="text-muted-foreground">{feature}</span>
                         </div>
-                      ))
-                    ))}
+                      ))}
+                    </div>
+
+                    {service.submenu && (
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 pt-8 border-t border-zinc-700/50">
+                        {service.submenu.map((subService, subIdx) => (
+                          <div key={subIdx} className="space-y-3">
+                            <div className="flex items-center gap-3 mb-4">
+                              {renderIcon(subService.icon, { size: 20, className: "text-primary" })}
+                              <h4 className="font-medium text-white">{subService.title}</h4>
+                            </div>
+                            {subService.features.map((feature, featureIdx) => (
+                              <div key={featureIdx} className="flex items-start gap-2">
+                                <Check className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
+                                <span className="text-sm text-muted-foreground">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <Button
                     variant="link"
                     asChild
-                    className="p-0 text-primary hover:text-primary/80"
+                    className="mt-6 p-0 text-primary hover:text-primary/80"
                   >
                     <Link href={service.path || "#"}>
                       Learn More <ArrowRight className="h-4 w-4 ml-1" />
