@@ -116,7 +116,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="ml-12">
             <h4 className="text-lg font-semibold mb-6">Newsletter</h4>
             <p className="text-muted-foreground mb-4">
               Subscribe to our newsletter to receive updates and news.
