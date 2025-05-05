@@ -30,25 +30,11 @@ const StartBusiness = () => {
   const [isMobile, setIsMobile] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState("indian-startups");
-
-  const handleMouseEnter = () => {
-    if (!isMobile) {
-      setIsSidebarOpen(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!isMobile) {
-      setIsSidebarOpen(false);
-    }
-  };
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth <= 768) {
-        setIsSidebarOpen(false);
-      }
     };
     
     checkMobile();
@@ -57,7 +43,20 @@ const StartBusiness = () => {
   }, []);
 
   const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      setIsSidebarOpen(!isSidebarOpen);
+      setTimeout(() => setIsTransitioning(false), 300);
+    }
+  };
+
+  const handleSectionChange = (section: string) => {
+    if (activeSection !== section) {
+      setActiveSection(section);
+      if (isMobile) {
+        setIsSidebarOpen(false);
+      }
+    }
   };
 
   const fdiServices = [
@@ -273,8 +272,8 @@ const StartBusiness = () => {
             ref={sidebarRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={`fixed left-0 w-72 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-all duration-300 ease-in-out z-40 shadow-lg shadow-green-500/5 ${
-              isSidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"
+            className={`fixed left-0 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-transform duration-300 ease-in-out z-40 shadow-lg shadow-green-500/5 ${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             } ${isMobile ? "w-64" : "w-72"}`}
           >
             <div className="flex justify-between items-center p-6 border-b border-green-500/10">
@@ -296,7 +295,7 @@ const StartBusiness = () => {
               {sidebarItems.map((item, index) => (
                 <motion.button
                   key={index}
-                  onClick={() => setActiveSection(item.href.replace("#", ""))}
+                  onClick={() => handleSectionChange(item.href.replace("#", ""))}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
