@@ -156,60 +156,70 @@ export const servicesData: ServicesData = {
     {
       icon: ShieldCheck,
       title: "Legal Services",
-      features: ["Comprehensive legal compliance solutions"],
+      features: [
+        "Company Registration & Incorporation",
+        "Annual ROC & Secretarial Compliance",
+        "FEMA & RBI Compliance",
+        "Labour Law Management",
+        "Corporate Governance Advisory",
+        "Intellectual Property Rights",
+        "Startup India Registration",
+        "Legal Documentation & Drafting",
+        "Company Strike-Off Services"
+      ],
       submenu: [
         {
           icon: Building,
           title: "Company Incorporation",
-          features: ["Complete incorporation service"],
+          features: ["Business Registration", "Company Formation", "Legal Documentation"],
           path: "/services/legal/company-incorporation"
         },
         {
           icon: FileText,
           title: "Annual ROC Compliance",
-          features: ["ROC compliance management"],
+          features: ["Annual Filings", "Statutory Compliance", "Due Diligence"],
           path: "/services/legal/roc-compliance"
         },
         {
           icon: FileCheck,
           title: "Secretarial Audit",
-          features: ["Professional audit services"],
+          features: ["Compliance Audit", "Documentation Review", "Advisory Services"],
           path: "/services/legal/secretarial-audit"
         },
         {
           icon: CreditCard,
           title: "FEMA and RBI Compliance",
-          features: ["Regulatory compliance"],
+          features: ["Foreign Investment", "Exchange Control", "RBI Reporting"],
           path: "/services/legal/fema-rbi"
         },
         {
           icon: ShieldCheck,
           title: "Intellectual Property Registration",
-          features: ["IP rights protection"],
+          features: ["Trademark Registration", "Patent Filing", "Copyright Protection"],
           path: "/services/legal/ip-registration"
         },
         {
           icon: Rocket,
           title: "Startup India Registration",
-          features: ["Startup recognition"],
+          features: ["DPIIT Recognition", "Startup Benefits", "Compliance Support"],
           path: "/services/legal/startup-registration"
         },
         {
           icon: Users,
           title: "Labour Law Compliance",
-          features: ["Labor law management"],
+          features: ["HR Compliance", "Statutory Benefits", "Workplace Policies"],
           path: "/services/legal/labour-compliance"
         },
         {
           icon: XCircle,
           title: "Company Strike-Off",
-          features: ["Company closure service"],
+          features: ["Legal Closure", "Asset Management", "Documentation"],
           path: "/services/legal/company-strike-off"
         },
         {
           icon: Scale,
           title: "Corporate Governance Advisory",
-          features: ["Governance consulting"],
+          features: ["Board Management", "Policy Framework", "Risk Management"],
           path: "/services/legal/corporate-governance"
         }
       ],
