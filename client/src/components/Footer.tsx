@@ -157,7 +157,7 @@ const Footer = () => {
         animate={{ opacity: showBackToTop ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg ${
+        className={`fixed bottom-8 left-8 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg ${
           showBackToTop ? "visible" : "invisible"
         }`}
         aria-label="Back to top"
