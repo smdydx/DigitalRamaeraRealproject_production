@@ -24,6 +24,7 @@ import {
   CheckCircle2 as CheckCircle,
   Phone,
 } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 
 const StartBusiness = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
