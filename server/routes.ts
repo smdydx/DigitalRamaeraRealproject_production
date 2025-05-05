@@ -145,19 +145,38 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Chat API endpoint
+  app.post('/api/chat', async (req, res) => {
+    try {
+      const { message } = req.body;
+      let response = "I understand your message. How can I help you further?";
+
+      const chat = new Chat({
+        message,
+        response
+      });
+
+      await chat.save();
+      res.json({ response });
+    } catch (error) {
+      res.status(500).json({ message: "Failed to process chat message" });
+    }
+  });
+
+
   const publicPath = path.join(process.cwd(), 'dist/public');
 
   if (process.env.NODE_ENV === 'production') {
     // Serve static files
     app.use(express.static(publicPath));
-    
+
     // Handle client-side routing - serve index.html for all routes
     app.get('*', (req, res) => {
       if (!req.path.startsWith('/api')) {
         res.sendFile(path.join(publicPath, 'index.html'));
       }
     });
-    
+
     // Handle API routes first
     app.use('/api', (req, res, next) => {
       if (req.path.startsWith('/api')) {

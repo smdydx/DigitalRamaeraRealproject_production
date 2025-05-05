@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Bot, X, Send, Minimize2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -10,15 +11,30 @@ const AIChatBot = () => {
     { type: 'bot', text: 'Hello! How can I assist you today?' }
   ]);
   const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
-  // Removed auto-opening timer
-
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
 
     setMessages(prev => [...prev, { type: 'user', text: input }]);
-    // Here you would typically make an API call to your AI backend
-    setMessages(prev => [...prev, { type: 'bot', text: 'Thank you for your message. Our team will assist you shortly.' }]);
+    setIsTyping(true);
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: input }),
+      });
+
+      const data = await response.json();
+      setMessages(prev => [...prev, { type: 'bot', text: data.response }]);
+    } catch (error) {
+      setMessages(prev => [...prev, { type: 'bot', text: 'Sorry, I encountered an error. Please try again.' }]);
+    }
+
+    setIsTyping(false);
     setInput('');
   };
 
@@ -29,7 +45,7 @@ const AIChatBot = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 50 }}
-          className="fixed top-20 right-4 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
+          className="fixed right-4 top-1/2 -translate-y-1/2 w-80 bg-black border border-green-500/20 rounded-lg shadow-lg overflow-hidden z-50"
         >
           <div className="p-4 bg-green-500/10 flex justify-between items-center border-b border-green-500/20">
             <div className="flex items-center gap-2">
@@ -58,6 +74,13 @@ const AIChatBot = () => {
                 </div>
               </div>
             ))}
+            {isTyping && (
+              <div className="flex justify-start">
+                <div className="bg-zinc-800 text-gray-200 p-3 rounded-lg">
+                  Typing...
+                </div>
+              </div>
+            )}
           </div>
 
           <div className="p-4 border-t border-green-500/20 flex gap-2">
@@ -79,7 +102,7 @@ const AIChatBot = () => {
         <motion.button
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="fixed top-20 right-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
+          className="fixed top-1/2 -translate-y-1/2 right-4 p-4 bg-green-500/20 hover:bg-green-500/30 rounded-full text-green-400 shadow-lg z-50"
           onClick={() => setIsOpen(true)}
         >
           <Bot className="h-6 w-6" />
