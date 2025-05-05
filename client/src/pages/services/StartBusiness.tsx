@@ -36,7 +36,7 @@ const StartBusiness = () => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
@@ -270,8 +270,6 @@ const StartBusiness = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
             ref={sidebarRef}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
             className={`fixed left-0 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-transform duration-300 ease-in-out z-40 shadow-lg shadow-green-500/5 ${
               isSidebarOpen ? "translate-x-0" : "-translate-x-full"
             } ${isMobile ? "w-64" : "w-72"}`}
