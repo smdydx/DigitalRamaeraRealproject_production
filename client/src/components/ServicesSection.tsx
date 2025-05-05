@@ -12,7 +12,7 @@ const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState("tech");
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-zinc-900 to-zinc-950">
+    <section id="services" className="py-20 bg-zinc-900">
       <div className="container mx-auto px-4">
         <motion.div
           variants={staggerContainer}
@@ -28,7 +28,7 @@ const ServicesSection = () => {
           </motion.div>
           <motion.h2
             variants={fadeIn("up", "tween", 0.2, 1)}
-            className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent"
+            className="text-3xl md:text-4xl font-bold mb-6"
           >
             Comprehensive Solutions for Your Business
           </motion.h2>
@@ -44,20 +44,16 @@ const ServicesSection = () => {
           viewport={{ once: true }}
         >
           <div className="flex justify-center gap-4 mb-12">
-            <Button
-              variant={activeTab === "tech" ? "default" : "outline"}
-              onClick={() => setActiveTab("tech")}
-              className="min-w-[200px] text-lg"
-            >
-              Technology Services
-            </Button>
-            <Button
-              variant={activeTab === "legalCompliance" ? "default" : "outline"}
-              onClick={() => setActiveTab("legalCompliance")}
-              className="min-w-[200px] text-lg"
-            >
-              Legal & Compliance
-            </Button>
+            {["tech", "legalCompliance"].map((type) => (
+              <Button
+                key={type}
+                variant={activeTab === type ? "default" : "outline"}
+                onClick={() => setActiveTab(type)}
+                className="min-w-[200px]"
+              >
+                {type === "tech" ? "Technology Services" : "Legal & Compliance"}
+              </Button>
+            ))}
           </div>
 
           <AnimatePresence mode="wait">
@@ -67,45 +63,45 @@ const ServicesSection = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 gap-8"
+              className="grid grid-cols-1 gap-6"
             >
               {servicesData[activeTab as keyof typeof servicesData].map((service, index) => (
                 <motion.div
                   key={service.title}
                   variants={fadeIn("up", "tween", index * 0.1, 0.5)}
-                  className="bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 backdrop-blur-xl rounded-2xl p-8 border border-zinc-700/50 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group cursor-pointer"
+                  className="bg-zinc-800/50 rounded-xl p-8 border border-zinc-700/50 hover:border-primary/50 transition-all duration-300 group"
                 >
-                  <div className="flex items-center gap-6 mb-8">
-                    <div className="p-4 rounded-xl bg-primary/10 text-primary">
-                      {renderIcon(service.icon, { size: 32 })}
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="p-4 rounded-lg bg-primary/10 text-primary">
+                      {renderIcon(service.icon, { size: 28 })}
                     </div>
-                    <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
+                    <h3 className="text-2xl font-semibold group-hover:text-primary transition-colors">
                       {service.title}
                     </h3>
                   </div>
                   
-                  <div className="space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="space-y-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {service.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-3">
                           <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
-                          <span className="text-zinc-300">{feature}</span>
+                          <span className="text-muted-foreground">{feature}</span>
                         </div>
                       ))}
                     </div>
 
                     {service.submenu && (
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8 pt-8 border-t border-zinc-700/50">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8 pt-8 border-t border-zinc-700/50">
                         {service.submenu.map((subService, subIdx) => (
-                          <div key={subIdx} className="bg-zinc-800/30 rounded-xl p-6 hover:bg-zinc-800/50 hover:shadow-md hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+                          <div key={subIdx} className="space-y-3">
                             <div className="flex items-center gap-3 mb-4">
-                              {renderIcon(subService.icon, { size: 24, className: "text-primary" })}
-                              <h4 className="font-semibold text-white">{subService.title}</h4>
+                              {renderIcon(subService.icon, { size: 20, className: "text-primary" })}
+                              <h4 className="font-medium text-white">{subService.title}</h4>
                             </div>
                             {subService.features.map((feature, featureIdx) => (
-                              <div key={featureIdx} className="flex items-start gap-2 mt-2">
+                              <div key={featureIdx} className="flex items-start gap-2">
                                 <Check className="h-4 w-4 text-primary flex-shrink-0 mt-1" />
-                                <span className="text-sm text-zinc-400">{feature}</span>
+                                <span className="text-sm text-muted-foreground">{feature}</span>
                               </div>
                             ))}
                           </div>
@@ -115,12 +111,12 @@ const ServicesSection = () => {
                   </div>
 
                   <Button
-                    variant="outline"
+                    variant="link"
                     asChild
-                    className="mt-8 group-hover:bg-primary group-hover:text-white transition-all duration-300"
+                    className="mt-6 p-0 text-primary hover:text-primary/80"
                   >
                     <Link href={service.path || "#"}>
-                      Learn More <ArrowRight className="h-4 w-4 ml-2" />
+                      Learn More <ArrowRight className="h-4 w-4 ml-1" />
                     </Link>
                   </Button>
                 </motion.div>
@@ -134,11 +130,11 @@ const ServicesSection = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="text-center mt-12"
         >
-          <Button size="lg" asChild className="text-lg px-8">
+          <Button size="lg" asChild>
             <Link href="/services">
-              View All Services <ArrowRight className="ml-2 h-5 w-5" />
+              View All Services <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
         </motion.div>
