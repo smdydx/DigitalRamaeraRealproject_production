@@ -262,6 +262,7 @@ const Careers = () => {
               >
                 {isSubmitting ? "Submitting..." : "Submit Application"}
               </Button>
+            </div>
           </form>
         </div>
       </div>
