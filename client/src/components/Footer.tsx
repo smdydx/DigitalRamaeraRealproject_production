@@ -1,6 +1,7 @@
+
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { Code, Send, Linkedin, Twitter, Facebook, Instagram, ArrowUp } from "lucide-react";
+import { Send, Linkedin, Facebook, Instagram, ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { staggerContainer } from "@/lib/animations";
@@ -48,112 +49,103 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-zinc-900 pt-12 sm:pt-16 pb-6 sm:pb-8 w-full mt-auto relative z-10">
+    <footer className="bg-gradient-to-b from-zinc-900 to-black pt-16 pb-8 w-full mt-auto relative z-10">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div 
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="flex flex-wrap lg:flex-nowrap gap-8 mb-12"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-16"
         >
-          <div>
+          {/* Company Info */}
+          <div className="lg:col-span-2">
             <div onClick={() => window.location.href = '/'} className="cursor-pointer">
               <div className="flex items-center gap-4 mb-6">
-                <img src="/images/ramaera-logo.jpg" alt="Ramaera Logo" className="h-12 w-12 rounded-full border-2 border-orange-500/30" />
+                <img src="/images/ramaera-logo.jpg" alt="Ramaera Logo" className="h-14 w-14 rounded-full border-2 border-orange-500/30" />
               </div>
             </div>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-gray-400 mb-8 text-lg leading-relaxed">
               Softbeem managed by Ramaera Legal InfoTech Private Limited, a premier technology and legal services company providing innovative solutions for businesses across sectors.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://www.linkedin.com/company/ramaera-legal-infotech-pvt-ltd/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-                <Linkedin className="w-5 h-5" />
+            <div className="flex space-x-6">
+              <a href="https://www.linkedin.com/company/ramaera-legal-infotech-pvt-ltd/" target="_blank" rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-primary transition-colors duration-300">
+                <Linkedin className="w-6 h-6" />
               </a>
-              <a href="https://www.facebook.com/profile.php?id=61571353791629" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-                <Facebook className="w-5 h-5" />
+              <a href="https://www.facebook.com/profile.php?id=61571353791629" target="_blank" rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-primary transition-colors duration-300">
+                <Facebook className="w-6 h-6" />
               </a>
-              <a href="https://www.instagram.com/ramaera_legal_infotech_pvt_ltd?igsh=MWt1bWgycHBzMW9iZw==" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300">
-                <Instagram className="w-5 h-5" />
+              <a href="https://www.instagram.com/ramaera_legal_infotech_pvt_ltd?igsh=MWt1bWgycHBzMW9iZw==" target="_blank" rel="noopener noreferrer" 
+                className="text-gray-400 hover:text-primary transition-colors duration-300">
+                <Instagram className="w-6 h-6" />
               </a>
             </div>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
-            <ul className="space-y-3">
-              <li><a href="/" className="text-muted-foreground hover:text-primary transition-colors duration-300">Home</a></li>
-              <li><a href="/about" className="text-muted-foreground hover:text-primary transition-colors duration-300">About Us</a></li>
-              <li><a href="/services" className="text-muted-foreground hover:text-primary transition-colors duration-300">Services</a></li>
-              <li><a href="/blog" className="text-muted-foreground hover:text-primary transition-colors duration-300">Blog</a></li>
-              <li><a href="/careers" className="text-muted-foreground hover:text-primary transition-colors duration-300">Careers</a></li>
-              <li><a href="/#contact" className="text-muted-foreground hover:text-primary transition-colors duration-300">Contact Us</a></li>
+            <h4 className="text-xl font-semibold mb-6 text-white">Quick Links</h4>
+            <ul className="space-y-4">
+              <li><a href="/" className="text-gray-400 hover:text-primary transition-colors duration-300">Home</a></li>
+              <li><a href="/about" className="text-gray-400 hover:text-primary transition-colors duration-300">About Us</a></li>
+              <li><a href="/services" className="text-gray-400 hover:text-primary transition-colors duration-300">Services</a></li>
+              <li><a href="/blog" className="text-gray-400 hover:text-primary transition-colors duration-300">Blog</a></li>
+              <li><a href="/careers" className="text-gray-400 hover:text-primary transition-colors duration-300">Careers</a></li>
+              <li><a href="/#contact" className="text-gray-400 hover:text-primary transition-colors duration-300">Contact Us</a></li>
             </ul>
           </div>
 
+          {/* Tech Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">Tech Services</h4>
-            <ul className="space-y-3">
-              <li><a href="/services/blockchain/smart-contracts" className="text-muted-foreground hover:text-primary transition-colors duration-300">Smart Contract Development</a></li>
-              <li><a href="/services/blockchain/token" className="text-muted-foreground hover:text-primary transition-colors duration-300">Token Development</a></li>
-              <li><a href="/services/blockchain/nft" className="text-muted-foreground hover:text-primary transition-colors duration-300">NFT Marketplace</a></li>
-              <li><a href="/services/blockchain/exchange" className="text-muted-foreground hover:text-primary transition-colors duration-300">Crypto Exchange</a></li>
-              <li><a href="/services/it/web-dev" className="text-muted-foreground hover:text-primary transition-colors duration-300">Web Development</a></li>
-              <li><a href="/services/it/mobile" className="text-muted-foreground hover:text-primary transition-colors duration-300">Mobile Applications</a></li>
-              <li><a href="/services/it/cloud" className="text-muted-foreground hover:text-primary transition-colors duration-300">Cloud Services</a></li>
+            <h4 className="text-xl font-semibold mb-6 text-white">Tech Services</h4>
+            <ul className="space-y-4">
+              <li><a href="/services/blockchain/smart-contracts" className="text-gray-400 hover:text-primary transition-colors duration-300">Smart Contract Development</a></li>
+              <li><a href="/services/blockchain/token" className="text-gray-400 hover:text-primary transition-colors duration-300">Token Development</a></li>
+              <li><a href="/services/blockchain/nft" className="text-gray-400 hover:text-primary transition-colors duration-300">NFT Marketplace</a></li>
+              <li><a href="/services/blockchain/exchange" className="text-gray-400 hover:text-primary transition-colors duration-300">Crypto Exchange</a></li>
+              <li><a href="/services/it/web-dev" className="text-gray-400 hover:text-primary transition-colors duration-300">Web Development</a></li>
             </ul>
           </div>
 
+          {/* Newsletter */}
           <div>
-            <h4 className="text-lg font-semibold mb-6">Legal Services</h4>
-            <ul className="space-y-3">
-              <li><a href="/services/legal/company-incorporation" className="text-muted-foreground hover:text-primary transition-colors duration-300">Company Incorporation</a></li>
-              <li><a href="/services/legal/roc-compliance" className="text-muted-foreground hover:text-primary transition-colors duration-300">ROC Compliance</a></li>
-              <li><a href="/services/legal/secretarial-audit" className="text-muted-foreground hover:text-primary transition-colors duration-300">Secretarial Audit</a></li>
-              <li><a href="/services/legal/ip-registration" className="text-muted-foreground hover:text-primary transition-colors duration-300">IP Registration</a></li>
-              <li><a href="/services/legal/startup-registration" className="text-muted-foreground hover:text-primary transition-colors duration-300">Startup Registration</a></li>
-              <li><a href="/services/legal/labour-compliance" className="text-muted-foreground hover:text-primary transition-colors duration-300">Labour Compliance</a></li>
-            </ul>
-          </div>
-
-          <div className="ml-12">
-            <h4 className="text-lg font-semibold mb-6">Newsletter</h4>
-            <p className="text-muted-foreground mb-4">
-              Subscribe to our newsletter to receive updates and news.
-            </p>
-            <form className="mb-4" onSubmit={handleSubscribe}>
-              <div className="flex max-w-md">
+            <h4 className="text-xl font-semibold mb-6 text-white">Newsletter</h4>
+            <form onSubmit={handleSubscribe} className="space-y-4">
+              <div className="flex flex-col space-y-4">
                 <Input 
                   type="email" 
                   placeholder="Your Email" 
-                  className="rounded-l-full focus-visible:ring-primary border-r-0 bg-zinc-800" 
+                  className="rounded-lg focus-visible:ring-primary border-zinc-700 bg-zinc-800/50 backdrop-blur" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
                 <Button 
                   type="submit" 
-                  className="rounded-r-full bg-gradient-to-r from-[#FF4500] to-[#FF8C00] hover:from-[#FF6E00] hover:to-[#FFA500] border-none"
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
                 >
-                  <Send className="h-4 w-4" />
+                  Subscribe <Send className="h-4 w-4 ml-2" />
                 </Button>
               </div>
+              <p className="text-sm text-gray-400">
+                By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
+              </p>
             </form>
-            <p className="text-xs text-muted-foreground">
-              By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
-            </p>
           </div>
         </motion.div>
 
+        {/* Bottom Bar */}
         <div className="border-t border-zinc-800 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-muted-foreground text-sm mb-4 md:mb-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-400 text-sm text-center md:text-left">
               &copy; {new Date().getFullYear()} Ramaera Legal InfoTech Private Limited. All rights reserved.
             </p>
-            <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>
-              <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300">Terms of Service</a>
-              <a href="#" className="text-muted-foreground hover:text-primary text-sm transition-colors duration-300">Cookie Policy</a>
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Terms of Service</a>
+              <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Cookie Policy</a>
             </div>
           </div>
         </div>
@@ -165,7 +157,7 @@ const Footer = () => {
         animate={{ opacity: showBackToTop ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg ${
+        className={`fixed bottom-8 right-8 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg ${
           showBackToTop ? "visible" : "invisible"
         }`}
         aria-label="Back to top"
