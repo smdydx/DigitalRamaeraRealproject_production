@@ -20,6 +20,7 @@ const Navbar = () => {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [activeServiceCategory, setActiveServiceCategory] = useState<string | null>(null);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
+  const isMobile = window.innerWidth < 768; // Detect mobile
 
   useEffect(() => {
     const handleScroll = () => {
@@ -364,6 +365,12 @@ const Navbar = () => {
                                         onClick={() => {
                                           if (!service.submenu) {
                                             service.path ? window.location.href = service.path : scrollToSection("/#services");
+                                          } else {
+                                            //Toggle submenu open/close
+                                            const submenu = document.querySelector(`#submenu-${service.title.replace(/ /g, '-')}`);
+                                            if (submenu) {
+                                              submenu.classList.toggle('hidden');
+                                            }
                                           }
                                         }}
                                         className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
@@ -380,7 +387,7 @@ const Navbar = () => {
                                       </button>
 
                                       {service.submenu && (
-                                        <div className="mobile-submenu">
+                                        <div id={`submenu-${service.title.replace(/ /g, '-')}`} className="mobile-submenu hidden">
                                           {service.submenu.map((subItem, subIdx) => (
                                             <button
                                               key={subIdx}

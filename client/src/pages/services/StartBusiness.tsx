@@ -265,6 +265,14 @@ const StartBusiness = () => {
 
         <div className="flex min-h-screen relative pt-16 pb-[500px] md:pb-[400px]">
           {/* Sidebar */}
+          {isMobile && (
+            <button
+              onClick={toggleSidebar}
+              className="fixed left-4 top-20 z-50 bg-zinc-900/95 border border-green-500/10 p-2 rounded-lg text-green-400 hover:bg-zinc-800/40"
+            >
+              <ChevronLeft className={`w-5 h-5 transition-transform ${isSidebarOpen ? '' : 'rotate-180'}`} />
+            </button>
+          )}
           <motion.aside
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
