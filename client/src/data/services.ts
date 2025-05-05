@@ -12,11 +12,10 @@ interface Service {
 interface ServicesData {
   tech: Service[];
   legalCompliance: Service[];
-  digital: Service[];
 }
 
 export const servicesData: ServicesData = {
-  digital: [
+  tech: [
     {
       icon: Globe,
       title: "Digital Marketing",
@@ -28,19 +27,6 @@ export const servicesData: ServicesData = {
       ],
       path: "/services/digital/marketing"
     },
-    {
-      icon: Server,
-      title: "Web Development",
-      features: [
-        "Custom Website Development",
-        "E-commerce Solutions",
-        "CMS Development",
-        "Web Applications"
-      ],
-      path: "/services/digital/web"
-    }
-  ],
-  tech: [
     {
       icon: Code,
       title: "Blockchain Services",
