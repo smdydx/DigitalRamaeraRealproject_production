@@ -44,9 +44,15 @@ const Navbar = () => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Close services dropdown when closing mobile menu
+    if (isMobileMenuOpen) {
+      setServicesDropdownOpen(false);
+      setActiveServiceCategory(null);
+    }
   };
 
-  const toggleServicesDropdown = () => {
+  const toggleServicesDropdown = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent event bubbling
     setServicesDropdownOpen(!servicesDropdownOpen);
     if (!servicesDropdownOpen) {
       setActiveServiceCategory("tech");
@@ -276,7 +282,10 @@ const Navbar = () => {
             <Button
               variant="ghost"
               size="icon"
-              onClick={toggleMobileMenu}
+              onClick={(e) => {
+                e.stopPropagation();
+                toggleMobileMenu();
+              }}
               aria-label="Toggle Menu"
             >
               {isMobileMenuOpen ? (
