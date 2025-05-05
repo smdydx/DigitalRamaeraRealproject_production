@@ -1,5 +1,26 @@
-
-import { Code, Smartphone, FileText, ShieldCheck, CreditCard, Building, FileCheck, Rocket, Users, XCircle, Scale, FileCode, Coins, Image, BarChart2, AppWindow, Server, Search, Globe, Cloud, Gamepad2 } from "lucide-react";
+import {
+  Code,
+  Smartphone,
+  FileText,
+  ShieldCheck,
+  CreditCard,
+  Building,
+  FileCheck,
+  Rocket,
+  Users,
+  XCircle,
+  Scale,
+  FileCode,
+  Coins,
+  Image,
+  BarChart2,
+  AppWindow,
+  Server,
+  Search,
+  Globe,
+  Cloud,
+  Gamepad2
+} from "lucide-react";
 
 interface Service {
   icon: any;
@@ -11,7 +32,8 @@ interface Service {
 
 interface ServicesData {
   tech: Service[];
-  legalCompliance: Service[];
+  "Legal & Compliance": Service[];
+  // digital: Service[];
 }
 
 export const servicesData: ServicesData = {
@@ -22,12 +44,13 @@ export const servicesData: ServicesData = {
       features: [
         "Smart Contract Development",
         "Token Development",
-        "NFT Marketplace Development", 
+        "NFT Marketplace Development",
         "Crypto Exchange Development",
         "Decentralized dApp Development",
         "Blockchain Node Setup",
         "Block Explorer Development",
-        "Metaverse Development"
+        "Metaverse Development",
+        "Digital Marketing"
       ],
       submenu: [
         {
@@ -84,8 +107,22 @@ export const servicesData: ServicesData = {
     {
       icon: Smartphone,
       title: "IT Services",
-      features: ["Complete IT solutions"],
+      features: [
+        "Complete IT solutions",
+        "Digital Marketing",
+        "On-Demand App Development",
+        "SaaS & Installables",
+        "Web Developmet & CMS Products",
+        "Mobile Application",
+        "Cloud & SaaS Servcies"
+      ],
       submenu: [
+        {
+          icon: Globe,
+          title: "Digital Marketing ",
+          features: ["SEO Optimization"],
+          path: "/services/digital/marketing"
+        },
         {
           icon: Gamepad2,
           title: "Game Development",
@@ -125,23 +162,12 @@ export const servicesData: ServicesData = {
           title: "Cloud & SaaS Services",
           features: ["Cloud-based solutions"],
           path: "/services/it/cloud"
-        },
-        {
-          icon: Globe,
-          title: "Digital Marketing",
-          features: [
-            "SEO Optimization",
-            "Social Media Marketing",
-            "Content Strategy",
-            "Email Marketing"
-          ],
-          path: "/services/digital/marketing"
         }
       ],
       path: "/services/it-services"
     }
   ],
-  legalCompliance: [
+  "Legal & Compliance": [
     {
       icon: FileText,
       title: "Start Business",
@@ -149,14 +175,20 @@ export const servicesData: ServicesData = {
         "Company Registration",
         "LLP Formation",
         "Partnership Registration",
-        "One Person Company",
+        "One Person Company"
       ],
-      path: "/services/start-business",
+      path: "/services/start-business"
     },
     {
       icon: ShieldCheck,
-      title: "Legal Services",
-      features: ["Comprehensive legal compliance solutions"],
+      title: "Legal & Compliance Services",
+      features: [
+        "Company Incorporation",
+        "ROC Compliance",
+        "Audit & Secretarial Services",
+        "Intellectual Property",
+        "Startup India Registration"
+      ],
       submenu: [
         {
           icon: Building,
@@ -177,43 +209,26 @@ export const servicesData: ServicesData = {
           path: "/services/legal/secretarial-audit"
         },
         {
-          icon: CreditCard,
-          title: "FEMA and RBI Compliance",
-          features: ["Regulatory compliance"],
-          path: "/services/legal/fema-rbi"
-        },
-        {
           icon: ShieldCheck,
-          title: "Intellectual Property Registration",
-          features: ["IP rights protection"],
+          title: "IP Registration",
+          features: ["Trademarks, patents, copyrights"],
           path: "/services/legal/ip-registration"
         },
         {
           icon: Rocket,
           title: "Startup India Registration",
-          features: ["Startup recognition"],
+          features: ["Startup recognition certificate"],
           path: "/services/legal/startup-registration"
-        },
-        {
-          icon: Users,
-          title: "Labour Law Compliance",
-          features: ["Labor law management"],
-          path: "/services/legal/labour-compliance"
-        },
-        {
-          icon: XCircle,
-          title: "Company Strike-Off",
-          features: ["Company closure service"],
-          path: "/services/legal/company-strike-off"
-        },
-        {
-          icon: Scale,
-          title: "Corporate Governance Advisory",
-          features: ["Governance consulting"],
-          path: "/services/legal/corporate-governance"
         }
       ],
       path: "/services/legal"
     }
-  ]
+  ],
+  
+}
+
+export const serviceTypeLabels: Record<keyof ServicesData, string> = {
+  tech: "Tech Services",
+  "Legal & Compliance": "Legal & Compliance",
+  // digital: "Digital Services" 
 };
