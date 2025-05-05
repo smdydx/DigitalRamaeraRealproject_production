@@ -17,17 +17,6 @@ interface ServicesData {
 export const servicesData: ServicesData = {
   tech: [
     {
-      icon: Globe,
-      title: "Digital Marketing",
-      features: [
-        "SEO Optimization",
-        "Social Media Marketing",
-        "Content Strategy",
-        "Email Marketing"
-      ],
-      path: "/services/digital/marketing"
-    },
-    {
       icon: Code,
       title: "Blockchain Services",
       features: [
@@ -136,6 +125,17 @@ export const servicesData: ServicesData = {
           title: "Cloud & SaaS Services",
           features: ["Cloud-based solutions"],
           path: "/services/it/cloud"
+        },
+        {
+          icon: Globe,
+          title: "Digital Marketing",
+          features: [
+            "SEO Optimization",
+            "Social Media Marketing",
+            "Content Strategy",
+            "Email Marketing"
+          ],
+          path: "/services/digital/marketing"
         }
       ],
       path: "/services/it-services"
