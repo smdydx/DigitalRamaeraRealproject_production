@@ -43,12 +43,23 @@ import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Careers from "./pages/Careers"; // Added import for Careers page
 
+// Placeholder for the actual AIChatBot component.  Replace this with your implementation.
+function AIChatBot() {
+  return (
+    <div>
+      {/* Implement your AI chatbot here */}
+      <p>This is a placeholder for the AI Chatbot.</p>
+    </div>
+  );
+}
+
 
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow pt-20 md:pt-24 pb-16">
+        <AIChatBot /> {/* Added AIChatBot component */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
