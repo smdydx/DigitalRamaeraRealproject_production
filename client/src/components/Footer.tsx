@@ -55,7 +55,7 @@ const Footer = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12"
+          className="flex flex-wrap lg:flex-nowrap gap-8 mb-12"
         >
           <div>
             <div onClick={() => window.location.href = '/'} className="cursor-pointer">
