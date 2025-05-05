@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "wouter"; // Changed import
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { servicesData } from "@/data/services";
 import { renderIcon } from "@/lib/icon-utils";
@@ -14,15 +14,6 @@ const serviceTypes = [
 
 const ServicesSection = () => {
   const [activeTab, setActiveTab] = useState("tech");
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.querySelector(sectionId);
-    if (element) {
-      const yOffset = -80;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }
-  };
 
   return (
     <section id="services" className="py-20 bg-zinc-900">
@@ -71,7 +62,7 @@ const ServicesSection = () => {
             ))}
           </div>
 
-          {/* Services Content */}
+          {/* Services Grid */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -82,19 +73,55 @@ const ServicesSection = () => {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-0"
             >
               {servicesData[activeTab as keyof typeof servicesData].map((service, index) => (
-                <ServiceCard
+                <motion.div
                   key={index}
-                  icon={service.icon}
-                  title={service.title}
-                  features={service.features}
-                  delay={0.1 * index}
-                  path={service.path}
-                />
+                  variants={fadeIn("up", "tween", index * 0.1, 0.5)}
+                  className="bg-background p-6 rounded-lg border border-border hover:border-primary/30 transition-all duration-300 group"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="h-8 w-8 text-primary mr-3">
+                      {renderIcon(service.icon, { size: 32 })}
+                    </div>
+                    <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.slice(0, 3).map((feature, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1 mr-2" />
+                        <span className="text-muted-foreground text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {service.submenu ? (
+                    <div className="space-y-2">
+                      {service.submenu.map((subService, subIdx) => (
+                        <Link 
+                          key={subIdx}
+                          href={subService.path || "#"}
+                          className="block text-sm text-muted-foreground hover:text-primary transition-colors py-1"
+                        >
+                          {subService.title}
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <Button 
+                      variant="link" 
+                      asChild 
+                      className="p-0 text-primary hover:text-primary/80"
+                    >
+                      <Link href={service.path || "#"}>
+                        Learn More <ArrowRight className="h-4 w-4 ml-1" />
+                      </Link>
+                    </Button>
+                  )}
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
         </motion.div>
-
         <motion.div
           variants={fadeIn("up", "tween", 0.5, 1)}
           initial="hidden"
@@ -121,49 +148,6 @@ const ServicesSection = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
-
-interface ServiceCardProps {
-  icon: React.ComponentType;
-  title: string;
-  features: string[];
-  delay: number;
-  path?: string;
-}
-
-const ServiceCard = ({ icon: Icon, title, features, delay, path }: ServiceCardProps) => {
-  return (
-    <motion.div
-      variants={fadeIn("up", "tween", delay, 0.5)}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      whileHover={{ y: -10 }}
-      className="bg-background p-4 sm:p-6 rounded-lg border border-border hover:border-primary/30 transition-all duration-300"
-    >
-      <div className="flex items-center mb-6"> {/* Modified to flex items-center */}
-        <div className="h-6 w-6 mr-2"> {/* Adjusted icon size */}
-          {renderIcon(Icon, { size: 24, className: "text-primary" })}
-        </div>
-        <h3 className="text-base font-semibold"> {/* Adjusted title size */}
-          {title}
-        </h3>
-      </div>
-      <ul className="space-y-2 mb-6">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start">
-            <Check className="h-5 w-5 text-primary flex-shrink-0 mt-1 mr-2" />
-            <span className="text-muted-foreground">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <Button variant="link" asChild className="p-0 flex items-center gap-1">
-        <Link to={path || "#"}>
-          Learn More <ArrowRight className="h-4 w-4" />
-        </Link>
-      </Button>
-    </motion.div>
   );
 };
 
