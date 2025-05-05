@@ -26,13 +26,23 @@ import {
 } from "lucide-react";
 
 const StartBusiness = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
-
-  // Handle mouse enter/leave for sidebar
-  const handleMouseEnter = () => setIsSidebarOpen(true);
-  const handleMouseLeave = () => setIsSidebarOpen(false);
   const [activeSection, setActiveSection] = useState("indian-startups");
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+      if (window.innerWidth <= 768) {
+        setIsSidebarOpen(false);
+      }
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -251,9 +261,9 @@ const StartBusiness = () => {
             ref={sidebarRef}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className={`fixed left-0 w-72 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-all duration-300 ease-in-out z-40 hover:shadow-xl hover:shadow-green-500/10 ${
-              isSidebarOpen ? "translate-x-0" : "-translate-x-[calc(100%-8px)]"
-            }`}
+            className={`fixed left-0 w-72 h-[calc(100vh-4rem)] top-16 bg-zinc-900/95 border-r border-green-500/10 backdrop-blur-lg overflow-y-auto transition-all duration-300 ease-in-out z-40 shadow-lg shadow-green-500/5 ${
+              isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+            } ${isMobile ? "w-64" : "w-72"}`}
           >
             <div className="flex justify-between items-center p-6 border-b border-green-500/10">
               <div>
@@ -317,7 +327,9 @@ const StartBusiness = () => {
 
           {/* Main Content */}
           <main
-            className={`flex-1 min-h-screen transition-all duration-300 ${isSidebarOpen ? "lg:ml-72" : "ml-0"}`}
+            className={`flex-1 min-h-screen transition-all duration-300 ${
+              isSidebarOpen && !isMobile ? "lg:ml-72" : "ml-0"
+            } px-4 md:px-6 lg:px-8`}
           >
 
 
