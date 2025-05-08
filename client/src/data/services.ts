@@ -177,6 +177,44 @@ export const servicesData: ServicesData = {
         "Partnership Registration",
         "One Person Company"
       ],
+      submenu: [
+        {
+          icon: Building,
+          title: "Company Registration",
+          features: ["Complete registration service"],
+          path: "/services/start-business/company"
+        },
+        {
+          icon: Landmark,
+          title: "IPR",
+          features: ["Intellectual Property Rights"],
+          path: "/services/start-business/ipr"
+        },
+        {
+          icon: Calculator,
+          title: "Tax & CFO",
+          features: ["Financial & Tax Services"],
+          path: "/services/start-business/tax-cfo"
+        },
+        {
+          icon: Users,
+          title: "Payroll",
+          features: ["Payroll Management"],
+          path: "/services/start-business/payroll"
+        },
+        {
+          icon: FileCheck,
+          title: "Compliance",
+          features: ["Business Compliance"],
+          path: "/services/start-business/compliance"
+        },
+        {
+          icon: ShieldCheck,
+          title: "Regulatory",
+          features: ["Regulatory Services"],
+          path: "/services/start-business/regulatory"
+        }
+      ],
       path: "/services/start-business"
     },
     {
