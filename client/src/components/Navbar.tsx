@@ -378,7 +378,7 @@ const Navbar = () => {
                                             service.path ? window.location.href = service.path : scrollToSection("/#services");
                                           } else {
                                             //Toggle submenu open/close
-                                            const submenu = document.querySelector(`#submenu-${service.title.replace(/ /g, '-')}`);
+                                            const submenu = document.querySelector(`#submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`);
                                             if (submenu) {
                                               submenu.classList.toggle('hidden');
                                             }
@@ -394,7 +394,7 @@ const Navbar = () => {
                                             {service.title}
                                             {service.submenu && (
                                               <span className="ml-2">
-                                                {document.querySelector(`#submenu-${service.title.replace(/ /g, '-')}`)?.classList.contains('hidden') 
+                                                {document.querySelector(`#submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`)?.classList.contains('hidden') 
                                                   ? '+' 
                                                   : '-'
                                                 }
@@ -405,7 +405,7 @@ const Navbar = () => {
                                       </button>
 
                                       {service.submenu && (
-                                        <div id={`submenu-${service.title.replace(/ /g, '-')}`} className="mobile-submenu hidden">
+                                        <div id={`submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`} className="mobile-submenu hidden">
                                           {service.submenu.map((subItem, subIdx) => (
                                             <button
                                               key={subIdx}
