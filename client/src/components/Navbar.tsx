@@ -51,8 +51,10 @@ const Navbar = () => {
     }
   };
 
-  const toggleServicesDropdown = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent event bubbling
+  const toggleServicesDropdown = (e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation(); // Prevent event bubbling
+    }
     setServicesDropdownOpen(!servicesDropdownOpen);
     if (!servicesDropdownOpen) {
       setActiveServiceCategory("tech");
