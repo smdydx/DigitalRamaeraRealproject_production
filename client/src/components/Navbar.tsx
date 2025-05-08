@@ -390,7 +390,14 @@ const Navbar = () => {
                                         <div className="text-left flex-1">
                                           <h4 className="text-white group-hover:text-primary transition-colors flex items-center justify-between">
                                             {service.title}
-                                            {service.submenu && <ChevronDown className="h-4 w-4 ml-2" />}
+                                            {service.submenu && (
+                                              <span className="ml-2">
+                                                {document.querySelector(`#submenu-${service.title.replace(/ /g, '-')}`)?.classList.contains('hidden') 
+                                                  ? '+' 
+                                                  : '-'
+                                                }
+                                              </span>
+                                            )}
                                           </h4>
                                         </div>
                                       </button>
