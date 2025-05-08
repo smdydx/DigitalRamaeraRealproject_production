@@ -19,7 +19,9 @@ import {
   Search,
   Globe,
   Cloud,
-  Gamepad2
+  Gamepad2,
+  Landmark,
+  Calculator
 } from "lucide-react";
 
 interface Service {
