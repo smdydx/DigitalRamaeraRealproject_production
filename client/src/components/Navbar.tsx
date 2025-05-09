@@ -379,8 +379,18 @@ const Navbar = () => {
                                           } else {
                                             //Toggle submenu open/close
                                             const submenu = document.querySelector(`#submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`);
+                                            const allSubmenus = document.querySelectorAll('.mobile-submenu');
+                                            
+                                            // Close all other submenus
+                                            allSubmenus.forEach(menu => {
+                                              if (menu !== submenu) {
+                                                menu.classList.remove('show');
+                                              }
+                                            });
+                                            
+                                            // Toggle current submenu
                                             if (submenu) {
-                                              submenu.classList.toggle('hidden');
+                                              submenu.classList.toggle('show');
                                             }
                                           }
                                         }}
@@ -405,7 +415,7 @@ const Navbar = () => {
                                       </button>
 
                                       {service.submenu && (
-                                        <div id={`submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`} className="mobile-submenu hidden">
+                                        <div id={`submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`} className="mobile-submenu">
                                           {service.submenu.map((subItem, subIdx) => (
                                             <button
                                               key={subIdx}
