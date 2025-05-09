@@ -26,7 +26,10 @@ import {
   Phone,
 } from "lucide-react";
 
+import { useNavigate } from 'react-router-dom';
+
 const StartBusiness = () => {
+  const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -617,10 +620,7 @@ const StartBusiness = () => {
                           <Button
                             size="lg"
                             className="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-all"
-                            onClick={() => {
-                              const element = document.getElementById('start-business-india');
-                              element?.scrollIntoView({ behavior: 'smooth' });
-                            }}
+                            onClick={() => navigate('/services/legal/start-business-india')}
                           >
                             Get Started <ArrowRight className="h-5 w-5" />
                           </Button>
