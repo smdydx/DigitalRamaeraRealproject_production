@@ -180,44 +180,6 @@ export const servicesData: ServicesData = {
         "Non Profit Organisations/NGO",
         "Special Entity or NBFC"
       ],
-      submenu: [
-        {
-          icon: Rocket,
-          title: "Indian Startups",
-          features: ["Start business in India"],
-          path: "/services/start-business#indian-startups"
-        },
-        {
-          icon: Globe,
-          title: "Foreign Investors (FDI)",
-          features: ["Foreign direct investment"],
-          path: "/services/start-business#fdi"
-        },
-        {
-          icon: Landmark,
-          title: "India Entry Services",
-          features: ["Enter Indian market"],
-          path: "/services/start-business#india-entry"
-        },
-        {
-          icon: Building,
-          title: "Overseas Incorporation (ODI)",
-          features: ["Global business setup"],
-          path: "/services/start-business#odi"
-        },
-        {
-          icon: Users,
-          title: "Non Profit Organisations/NGO",
-          features: ["NGO registration"],
-          path: "/services/start-business#ngo"
-        },
-        {
-          icon: Calculator,
-          title: "Special Entity or NBFC",
-          features: ["NBFC registration"],
-          path: "/services/start-business#nbfc"
-        }
-      ],
       path: "/services/legal/compliance"
     }
   ],
