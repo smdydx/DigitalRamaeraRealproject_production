@@ -26,21 +26,38 @@ import {
 } from "lucide-react";
 
 const StartBusiness = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState("indian-startups");
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      setIsSidebarOpen(!mobile);
     };
 
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Close sidebar when clicking outside on mobile
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMobile && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        const toggleButton = document.querySelector('[data-sidebar-toggle]');
+        if (!toggleButton?.contains(event.target as Node)) {
+          setIsSidebarOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobile]);
 
   const toggleSidebar = () => {
     if (!isTransitioning) {
@@ -272,6 +289,11 @@ const StartBusiness = () => {
   return (
     <>
       <div className="min-h-screen bg-background relative">
+        {/* Sidebar Overlay */}
+        <div 
+          className={`sidebar-overlay ${isMobile && isSidebarOpen ? 'active' : ''}`} 
+          onClick={() => isMobile && setIsSidebarOpen(false)} 
+        />
         {/* Background effects */}
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_#00ff0022_0%,_transparent_50%)] pointer-events-none" />
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_#00800022_0%,_transparent_50%)] pointer-events-none" />
