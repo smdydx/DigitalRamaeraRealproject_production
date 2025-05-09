@@ -9,8 +9,8 @@ import { renderIcon } from "@/lib/icon-utils";
 
 const serviceTypes = [
   { id: "tech", name: "Technology Services" },
-  { id: "legalCompliance", name: "Legal & Compliance Services" },
-  { id: "digital", name: "Other Digital Services" },
+  { id: "Legal & Compliance", name: "Legal & Compliance Services" },
+  // { id: "digital", name: "Other Digital Services" },
 ];
 
 const ServicesSection = () => {
@@ -82,7 +82,7 @@ const ServicesSection = () => {
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-0"
             >
-              {servicesData[activeTab as keyof typeof servicesData].map((service, index) => (
+              {servicesData[activeTab as keyof typeof servicesData]?.map((service, index) => (
                 <ServiceCard
                   key={index}
                   icon={service.icon}
@@ -106,7 +106,7 @@ const ServicesSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              onClick={() => window.location.href = '/services/blockchain'}
+              onClick={() => (window.location.href = "/services/blockchain")}
               className="flex items-center gap-2"
             >
               Explore Our Services <ArrowRight className="h-4 w-4" />
@@ -143,13 +143,11 @@ const ServiceCard = ({ icon: Icon, title, features, delay, path }: ServiceCardPr
       whileHover={{ y: -10 }}
       className="bg-background p-4 sm:p-6 rounded-lg border border-border hover:border-primary/30 transition-all duration-300"
     >
-      <div className="flex items-center mb-6"> {/* Modified to flex items-center */}
-        <div className="h-6 w-6 mr-2"> {/* Adjusted icon size */}
+      <div className="flex items-center mb-6">
+        <div className="h-6 w-6 mr-2">
           {renderIcon(Icon, { size: 24, className: "text-primary" })}
         </div>
-        <h3 className="text-base font-semibold"> {/* Adjusted title size */}
-          {title}
-        </h3>
+        <h3 className="text-base font-semibold">{title}</h3>
       </div>
       <ul className="space-y-2 mb-6">
         {features.map((feature, index) => (

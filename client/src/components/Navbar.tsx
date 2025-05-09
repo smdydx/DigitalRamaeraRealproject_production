@@ -9,7 +9,7 @@ const navLinks = [
   { name: "Home", href: "/#home" },
   { name: "About Us", href: "/about" },
   { name: "Services", href: "/#services" },
-  { name: "Blog", href: "/blog" }, // Added Blog link
+  { name: "Blog", href: "/blog" },
   { name: "Contact Us", href: "/#contact" },
 ];
 
@@ -17,7 +17,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [activeServiceCategory, setActiveServiceCategory] = useState<string | null>(null);
+  const [activeServiceCategory, setActiveServiceCategory] = useState<string | null>("tech");
+  const [openSubmenuService, setOpenSubmenuService] = useState<string | null>(null);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,7 +29,8 @@ const Navbar = () => {
     const handleClickOutside = (event: MouseEvent) => {
       if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
         setServicesDropdownOpen(false);
-        setActiveServiceCategory(null);
+        setActiveServiceCategory("tech");
+        setOpenSubmenuService(null);
       }
     };
 
@@ -50,17 +52,19 @@ const Navbar = () => {
       setActiveServiceCategory("tech");
     } else {
       setActiveServiceCategory(null);
+      setOpenSubmenuService(null);
     }
   };
 
-  const handleServiceCategoryHover = (category: string) => {
+  const handleServiceCategoryClick = (category: string) => {
     setActiveServiceCategory(category);
+    setOpenSubmenuService(null);
   };
 
   const scrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
     setServicesDropdownOpen(false);
-    setActiveServiceCategory(null);
+    setActiveServiceCategory("tech");
 
     if (sectionId.startsWith('/#')) {
       if (window.location.pathname !== '/') {
@@ -94,8 +98,6 @@ const Navbar = () => {
             <div onClick={() => window.location.href = '/'} className="cursor-pointer">
               <div className="font-bold text-white flex items-center">
                   <h1 className="font-['Orbitron'] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-[#00FF00] via-[#008000] to-[#004400] mb-0 digital-glow relative z-10 hover:scale-105 transition-transform duration-300"><span className="text-2xl sm:text-4xl">&lt;/&gt;</span></h1>
-               <h1 className=""></h1>
-                {/* <img src="/images/ramaera-logo.jpg" alt="Ramaera Logo" className="h-12 w-12 sm:h-16 sm:w-16 rounded-full border-2 border-orange-500/30 shadow-lg shadow-orange-500/20" /> */}
               </div>
             </div>
           </div>
@@ -103,7 +105,6 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center justify-center flex-1 space-x-2 lg:space-x-4 xl:space-x-8">
             {navLinks.map((link, index) => {
-              // Create Services dropdown button
               if (link.name === "Services") {
                 return (
                   <div key={index} className="relative" ref={servicesDropdownRef}>
@@ -116,7 +117,6 @@ const Navbar = () => {
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                     </button>
 
-                    {/* Services Dropdown */}
                     <AnimatePresence>
                       {servicesDropdownOpen && (
                         <motion.div
@@ -124,16 +124,14 @@ const Navbar = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-14 -left-60 mt-2 w-[600px]  rounded-lg  border-zinc-800 overflow-hidden z-50 h-screen"
+                          className="absolute top-14 -left-60 mt-2 w-[600px] rounded-lg border-zinc-800 overflow-hidden z-50 h-screen"
                         >
                           <div className="flex">
-                            {/* Category Menu */}
                             <div className="w-1/3 bg-zinc-800/50 p-2">
                               {Object.keys(servicesData).map((category) => (
                                 <button
                                   key={category}
-                                  onMouseEnter={() => handleServiceCategoryHover(category)}
-                                  onClick={() => handleServiceCategoryHover(category)}
+                                  onClick={() => handleServiceCategoryClick(category)}
                                   className={`w-full text-left p-3 rounded-md transition-colors duration-200 flex justify-between items-center ${
                                     activeServiceCategory === category
                                       ? "bg-primary/10 text-primary"
@@ -146,7 +144,6 @@ const Navbar = () => {
                               ))}
                             </div>
 
-                            {/* Services List */}
                             <div className="w-2/3 p-4">
                               <AnimatePresence mode="wait">
                                 {activeServiceCategory && (
@@ -167,7 +164,17 @@ const Navbar = () => {
                                             initial={{ opacity: 0, y: 10 }}
                                             animate={{ opacity: 1, y: 0 }}
                                             transition={{ duration: 0.2, delay: idx * 0.05 }}
-                                            onClick={() => service.path ? window.location.href = service.path : scrollToSection("/#services")}
+                                            onClick={() => {
+                                              if (service.submenu) {
+                                                if (openSubmenuService === service.title) {
+                                                  setOpenSubmenuService(null);
+                                                } else {
+                                                  setOpenSubmenuService(service.title);
+                                                }
+                                              } else {
+                                                service.path ? window.location.href = service.path : scrollToSection("/#services");
+                                              }
+                                            }}
                                             className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
                                           >
                                             <div className="text-primary mt-1">
@@ -184,33 +191,40 @@ const Navbar = () => {
                                             </div>
                                           </motion.button>
 
-                                          {service.submenu && (
-                                            <div className="absolute left-0 top-full mt-2 hidden group-hover/service:block min-w-[300px] z-50">
-                                              <div className="bg-zinc-950/95 backdrop-blur-sm rounded-lg shadow-xl border border-green-500/20 p-4 max-h-[400px] overflow-y-auto">
-                                                {service.submenu.map((subItem, subIdx) => (
-                                                  <motion.button
-                                                    key={subIdx}
-                                                    initial={{ opacity: 0, x: -10 }}
-                                                    animate={{ opacity: 1, x: 0 }}
-                                                    transition={{ duration: 0.2, delay: subIdx * 0.05 }}
-                                                    onClick={() => subItem.path ? window.location.href = subItem.path : null}
-                                                    className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
-                                                  >
-                                                    <div className="text-primary/80 mt-1">
-                                                      <div className="h-3.5 w-3.5">{React.createElement(subItem.icon, { 
-                                                        className: "opacity-75 hover:opacity-100 transition-opacity"
-                                                      })}</div>
-                                                    </div>
-                                                    <div className="text-left">
-                                                      <h4 className="text-white group-hover:text-primary transition-colors text-sm">
-                                                        {subItem.title}
-                                                      </h4>
-                                                    </div>
-                                                  </motion.button>
-                                                ))}
-                                              </div>
-                                            </div>
-                                          )}
+                                      {service.submenu && openSubmenuService === service.title && (
+                                        <div className="absolute left-0 top-full mt-2 min-w-[300px] z-50">
+                                          <div className="bg-zinc-950/95 backdrop-blur-sm rounded-lg shadow-xl border border-green-500/20 p-4 max-h-[400px] overflow-y-auto">
+                                            {service.submenu.map((subItem, subIdx) => (
+                                              <motion.button
+                                                key={subIdx}
+                                                initial={{ opacity: 0, x: -10 }}
+                                                animate={{ opacity: 1, x: 0 }}
+                                                transition={{ duration: 0.2, delay: subIdx * 0.05 }}
+                                                onClick={() => {
+                                                  if (subItem.path) {
+                                                    window.location.href = subItem.path;
+                                                    setServicesDropdownOpen(false);
+                                                    setActiveServiceCategory("tech");
+                                                    setOpenSubmenuService(null);
+                                                  }
+                                                }}
+                                                className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
+                                              >
+                                                <div className="text-primary/80 mt-1">
+                                                  <div className="h-3.5 w-3.5">{React.createElement(subItem.icon, {
+                                                    className: "opacity-75 hover:opacity-100 transition-opacity"
+                                                  })}</div>
+                                                </div>
+                                                <div className="text-left">
+                                                  <h4 className="text-white transition-colors text-sm">
+                                                    {subItem.title}
+                                                  </h4>
+                                                </div>
+                                              </motion.button>
+                                            ))}
+                                          </div>
+                                        </div>
+                                      )}
                                         </div>
                                       ))}
                                     </div>
@@ -226,7 +240,6 @@ const Navbar = () => {
                 );
               }
 
-              // Normal nav links
               return (
                 <div key={index} className="flex items-center gap-16">
                   <button
@@ -294,10 +307,11 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
+
+            
             transition={{ duration: 0.2 }}
             className="fixed top-16 sm:top-20 lg:top-24 left-0 right-0 bg-zinc-900/95 backdrop-blur-xl border-t border-green-500/20 overflow-y-auto max-h-[calc(100vh-4rem)] z-50 shadow-lg shadow-black/50 mobile-menu-scroll"
           >
-            {/* Contact Options for Mobile */}
             <div className="flex items-center justify-center gap-4 p-4 border-b border-green-500/10">
               <a 
                 href="tel:+911169310715" 
