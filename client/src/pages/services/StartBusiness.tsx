@@ -135,42 +135,84 @@ const StartBusiness = () => {
       href: "#indian-startups",
       icon: <Rocket className="w-5 h-5" />,
       expandable: true,
-      id: "startups"
+      id: "startups",
+      items: [
+        "Private Limited Company",
+        "Limited Liability Partnership",
+        "One Person Company",
+        "Partnership Firm",
+        "Sole Proprietorship"
+      ]
     },
     {
       title: "Foreign Investors (FDI)",
       href: "#fdi",
       icon: <Globe className="w-5 h-5" />,
       expandable: true,
-      id: "fdi"
+      id: "fdi",
+      items: [
+        "Indian Subsidiary",
+        "Branch Office",
+        "Liaison Office",
+        "Project Office",
+        "LLP with Foreign Investment"
+      ]
     },
     {
       title: "India Entry Services",
       href: "#india-entry",
       icon: <Users className="w-5 h-5" />,
       expandable: true,
-      id: "entry"
+      id: "entry",
+      items: [
+        "Business Strategy",
+        "Market Research",
+        "Legal Compliance",
+        "Partner Search",
+        "Office Setup"
+      ]
     },
     {
       title: "Overseas Incorporation (ODI)",
       href: "#odi",
       icon: <Briefcase className="w-5 h-5" />,
       expandable: true,
-      id: "odi"
+      id: "odi",
+      items: [
+        "Company Formation",
+        "Subsidiary Setup",
+        "Joint Venture",
+        "Branch Office",
+        "Investment Strategy"
+      ]
     },
     {
       title: "Non Profit Organisations/NGO",
       href: "#ngo",
       icon: <Heart className="w-5 h-5" />,
       expandable: true,
-      id: "ngo"
+      id: "ngo",
+      items: [
+        "Trust Registration",
+        "Society Registration",
+        "Section 8 Company",
+        "FCRA Registration",
+        "12A & 80G Registration"
+      ]
     },
     {
       title: "Special Entity or NBFC",
       href: "#nbfc",
       icon: <Building2 className="w-5 h-5" />,
       expandable: true,
-      id: "nbfc"
+      id: "nbfc",
+      items: [
+        "NBFC Registration",
+        "Nidhi Company",
+        "Microfinance Company",
+        "Core Investment Company",
+        "Asset Finance Company"
+      ]
     },
     {
       title: "IPR",
@@ -431,12 +473,14 @@ const StartBusiness = () => {
                       transition={{ duration: 0.2 }}
                       className="ml-12 mt-2 space-y-2"
                     >
-                      <div className="text-gray-400 hover:text-green-400 cursor-pointer transition-colors py-2">
-                        + Add New Item
-                      </div>
-                      <div className="text-gray-400 hover:text-green-400 cursor-pointer transition-colors py-2">
-                        - Remove Item
-                      </div>
+                      {item.items?.map((subItem, subIndex) => (
+                        <div
+                          key={subIndex}
+                          className="text-gray-400 hover:text-green-400 cursor-pointer transition-colors py-2"
+                        >
+                          {subItem}
+                        </div>
+                      ))}
                     </motion.div>
                   )}
                 </div>
