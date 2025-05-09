@@ -255,6 +255,20 @@ const StartBusiness = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMobile && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        const toggleButton = document.querySelector('[data-sidebar-toggle]');
+        if (!toggleButton?.contains(event.target as Node)) {
+          setIsSidebarOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobile]);
+
   return (
     <>
       <div className="min-h-screen bg-background relative">
@@ -269,6 +283,7 @@ const StartBusiness = () => {
             <button
               onClick={toggleSidebar}
               className="fixed left-4 top-20 z-50 bg-zinc-900/95 border border-green-500/10 p-2 rounded-lg text-green-400 hover:bg-zinc-800/40"
+              data-sidebar-toggle
             >
               <ChevronLeft className={`w-5 h-5 transition-transform ${isSidebarOpen ? '' : 'rotate-180'}`} />
             </button>
