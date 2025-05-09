@@ -34,8 +34,7 @@ interface Service {
 
 interface ServicesData {
   tech: Service[];
-  "Legal & Compliance": Service[];
-  // digital: Service[];
+  legal: Service[];
 }
 
 export const servicesData: ServicesData = {
@@ -169,7 +168,7 @@ export const servicesData: ServicesData = {
       path: "/services/it-services"
     }
   ],
-  "Legal & Compliance": [
+  legal: [
     {
       icon: FileText,
       title: "Start Business",
@@ -187,6 +186,5 @@ export const servicesData: ServicesData = {
 
 export const serviceTypeLabels: Record<keyof ServicesData, string> = {
   tech: "Tech Services",
-  "Legal & Compliance": "Legal & Compliance",
-  // digital: "Digital Services" 
+  legal: "Legal Services"
 };
