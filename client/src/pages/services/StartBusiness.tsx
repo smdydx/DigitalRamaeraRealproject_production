@@ -18,6 +18,7 @@ import {
   Shield,
   Rocket,
   ChevronLeft,
+  ChevronDown,
   PhoneCall,
   Mail,
   ArrowRight,
