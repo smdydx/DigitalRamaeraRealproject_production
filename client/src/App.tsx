@@ -68,6 +68,7 @@ function Router() {
           <Route path="/services/it/app-dev" element={<AppDev />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/legal/compliance" element={<StartBusiness />} />
+          <Route path="/services/legal/start-business-india" element={<StartBusinessIndia />} />
           <Route path="/services/register-business" element={<RegisterBusiness />} />
           <Route path="/services/legal/company-incorporation" element={<CompanyIncorporation />} />
           <Route path="/services/legal/roc-compliance" element={<AnnualROCCompliance />} />
