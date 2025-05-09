@@ -171,7 +171,7 @@ export const servicesData: ServicesData = {
   legal: [
     {
       icon: FileText,
-      title: "Start Business",
+      title: "Legal & Compliance Service",
       features: [
         "Indian Startups",
         "Foreign Investors (FDI)",
