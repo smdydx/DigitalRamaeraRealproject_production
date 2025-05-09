@@ -442,10 +442,13 @@ const StartBusiness = () => {
                 <div key={index} className="mb-2">
                   <motion.button
                     onClick={() => {
+                      handleSectionChange(item.href.replace("#", ""));
                       if (item.expandable) {
                         toggleExpand(item.id);
-                      } else {
-                        handleSectionChange(item.href.replace("#", ""));
+                      }
+                      const element = document.getElementById(item.href.replace("#", ""));
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
                     initial={{ opacity: 0, x: -20 }}
