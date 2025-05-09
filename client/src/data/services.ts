@@ -218,7 +218,7 @@ export const servicesData: ServicesData = {
           path: "/services/start-business#nbfc"
         }
       ],
-      path: "/services/start-business"
+      path: "/services/legal/compliance"
     }
   ],
   
