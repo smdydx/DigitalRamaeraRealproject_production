@@ -122,36 +122,96 @@ const StartBusiness = () => {
     },
   ];
 
+  const [expandedItems, setExpandedItems] = useState<{[key: string]: boolean}>({});
+
+  const toggleExpand = (id: string) => {
+    setExpandedItems(prev => ({...prev, [id]: !prev[id]}));
+  };
+
   const sidebarItems = [
     {
       title: "Indian Startups",
       href: "#indian-startups",
       icon: <Rocket className="w-5 h-5" />,
+      expandable: true,
+      id: "startups"
     },
     {
       title: "Foreign Investors (FDI)",
       href: "#fdi",
       icon: <Globe className="w-5 h-5" />,
+      expandable: true,
+      id: "fdi"
     },
     {
       title: "India Entry Services",
       href: "#india-entry",
       icon: <Users className="w-5 h-5" />,
+      expandable: true,
+      id: "entry"
     },
     {
-      title: "Overseas Incorporation",
+      title: "Overseas Incorporation (ODI)",
       href: "#odi",
       icon: <Briefcase className="w-5 h-5" />,
+      expandable: true,
+      id: "odi"
     },
     {
-      title: "Non Profit/NGO",
+      title: "Non Profit Organisations/NGO",
       href: "#ngo",
       icon: <Heart className="w-5 h-5" />,
+      expandable: true,
+      id: "ngo"
     },
     {
-      title: "NBFC Registration",
+      title: "Special Entity or NBFC",
       href: "#nbfc",
       icon: <Building2 className="w-5 h-5" />,
+      expandable: true,
+      id: "nbfc"
+    },
+    {
+      title: "IPR",
+      href: "#ipr",
+      icon: <Shield className="w-5 h-5" />,
+      expandable: true,
+      id: "ipr"
+    },
+    {
+      title: "Tax & CFO",
+      href: "#tax",
+      icon: <FileSignature className="w-5 h-5" />,
+      expandable: true,
+      id: "tax"
+    },
+    {
+      title: "Payroll",
+      href: "#payroll",
+      icon: <Users className="w-5 h-5" />,
+      expandable: true,
+      id: "payroll"
+    },
+    {
+      title: "Compliance",
+      href: "#compliance",
+      icon: <CheckCircle2 className="w-5 h-5" />,
+      expandable: true,
+      id: "compliance"
+    },
+    {
+      title: "Regulatory",
+      href: "#regulatory",
+      icon: <Building className="w-5 h-5" />,
+      expandable: true,
+      id: "regulatory"
+    },
+    {
+      title: "Others",
+      href: "#others",
+      icon: <Globe className="w-5 h-5" />,
+      expandable: true,
+      id: "others"
     },
   ];
 
@@ -336,19 +396,49 @@ const StartBusiness = () => {
 
             <nav className="p-4">
               {sidebarItems.map((item, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => handleSectionChange(item.href.replace("#", ""))}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-green-500/10 hover:text-green-400 transition-all group mb-2 w-full ${activeSection === item.href.replace("#", "") ? "bg-green-500/10 text-green-400" : ""}`}
-                >
-                  <div className="p-2 rounded-lg bg-green-500/10 text-green-400 group-hover:bg-green-500/20">
-                    {item.icon}
-                  </div>
-                  <span className="font-medium">{item.title}</span>
-                </motion.button>
+                <div key={index} className="mb-2">
+                  <motion.button
+                    onClick={() => {
+                      if (item.expandable) {
+                        toggleExpand(item.id);
+                      } else {
+                        handleSectionChange(item.href.replace("#", ""));
+                      }
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`flex items-center justify-between px-4 py-3 rounded-lg text-gray-300 hover:bg-green-500/10 hover:text-green-400 transition-all group w-full ${activeSection === item.href.replace("#", "") ? "bg-green-500/10 text-green-400" : ""}`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-green-500/10 text-green-400 group-hover:bg-green-500/20">
+                        {item.icon}
+                      </div>
+                      <span className="font-medium">{item.title}</span>
+                    </div>
+                    {item.expandable && (
+                      <div className={`transform transition-transform ${expandedItems[item.id] ? 'rotate-180' : ''}`}>
+                        <ChevronDown className="w-5 h-5" />
+                      </div>
+                    )}
+                  </motion.button>
+                  {item.expandable && expandedItems[item.id] && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-12 mt-2 space-y-2"
+                    >
+                      <div className="text-gray-400 hover:text-green-400 cursor-pointer transition-colors py-2">
+                        + Add New Item
+                      </div>
+                      <div className="text-gray-400 hover:text-green-400 cursor-pointer transition-colors py-2">
+                        - Remove Item
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
               ))}
             </nav>
 
