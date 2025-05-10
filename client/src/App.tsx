@@ -45,9 +45,11 @@ import Careers from "./pages/Careers"; // Added import for Careers page
 // ...existing code...
 import StartBusinessIndia from './pages/services/legal/StartBusinessIndia';
 // ...existing code...
+import Samad from './pages/services/legal/Samad'; // Added import for Samad page
 
 
 import AIChatBot from './components/AIChatBot';
+import { Import } from "lucide-react";
 
 
 function Router() {
@@ -96,6 +98,8 @@ function Router() {
           <Route path="/services/it/cloud" element={<Cloud />} /> 
           <Route path="/careers" element={<Careers />} /> {/* Added route for Careers page */}
           <Route path="*" element={<NotFound />} />
+          <Route path="/samad" element={<Samad />} />
+
         </Routes>
       </main>
       <Footer />

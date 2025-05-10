@@ -53,8 +53,22 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-start pt-28 overflow-hidden bg-black"
     >
       {/* Galaxy animation background */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-green-400 via-green-900 to-black opacity-30" />
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* 🔥 Background video added here */}
+       <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="w-full h-full object-cover"
+>
+  <source src="/video/herosection.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+
+        {/* Optional overlay */}
+        <div className="absolute inset-0 bg-black/60" />
 
         {[...Array(100)].map((_, i) => (
           <motion.div
@@ -90,7 +104,7 @@ const HeroSection = () => {
             backgroundSize: '100% 100%',
           }}
         />
-        <div className="absolute inset-0 backdrop-blur-[80px]" />
+        {/* <div className="absolute inset-0 backdrop-blur-[80px]" /> */}
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10 mt-4">
@@ -105,7 +119,6 @@ const HeroSection = () => {
               stiffness: 100
             }}
           >
-            {/* heading */}
             <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 tracking-tight">
               <div className="flex flex-col items-start pt-6 sm:pt-2">
                 <div className="relative">
@@ -126,7 +139,6 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* paragraph */}
             <p className="text-base md:text-lg text-muted-foreground mb-8 max-w-lg text-left">
               <span className="bg-gradient-to-r from-[#00FF00] to-[#32CD32] text-transparent bg-clip-text font-bold">
                 Empowering businesses
@@ -135,7 +147,6 @@ const HeroSection = () => {
               navigate the digital transformation landscape.
             </p>
 
-            {/* buttons */}
             <div className="flex flex-wrap gap-4">
               <Popover>
                 <PopoverTrigger asChild>
@@ -174,7 +185,7 @@ const HeroSection = () => {
                       </div>
                     </Link>
                     <Link 
-                      to="/services/legal/compliance"
+                      to="/services/legal"
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-green-500/10 transition-all duration-300 group"
                     >
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
@@ -200,7 +211,6 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Mobile globe */}
           {isMobile && (
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -214,7 +224,6 @@ const HeroSection = () => {
             </motion.div>
           )}
 
-          {/* Desktop globe */}
           {!isMobile && (
             <motion.div
               initial={{ opacity: 0, x: 50 }}
@@ -228,7 +237,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Scroll to about */}
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 1.5, repeat: Infinity }}
@@ -247,3 +255,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

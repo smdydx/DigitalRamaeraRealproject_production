@@ -284,25 +284,27 @@ const StartBusiness = () => {
       title: "Start Business in India",
       description: "Complete business setup solutions",
       icon: <Rocket />,
-      image: "/images/services/start-business-in-india.jpg",
+      image: "/images/services/bussiness.jpg",
       features: [
         "Company Registration",
         "Business License",
         "Tax Registration",
         "Bank Account Setup",
       ],
+       link: "/services/legal/start-business-india"
     },
     {
       title: "Digital Signature Certificate",
       description: "Essential for business compliance",
       icon: <FileSignature />,
-      image: "/images/services/digital-signature-certificate.jpg",
+      image: "/images/smartcontract.jpg",
       features: [
         "Class 2 & 3 DSC",
         "Quick Processing",
         "Valid for 2 Years",
         "Online Verification",
       ],
+       link: "/services/legal/labour-compliance"
     },
     {
       title: "Sole Proprietorship",
@@ -315,6 +317,7 @@ const StartBusiness = () => {
         "Low Cost",
         "Minimal Compliance",
       ],
+       link: "/samad"
     },
     {
       title: "One Person Company (OPC)",
@@ -617,13 +620,13 @@ const StartBusiness = () => {
                           India — quickly, seamlessly, and affordably.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                          <Button
+                          {/* <Button
                             size="lg"
                             className="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-all"
                             onClick={() => navigate('/services/legal/start-business-india')}
                           >
-                            Get Started <ArrowRight className="h-5 w-5" />
-                          </Button>
+                            Xyz <ArrowRight className="h-5 w-5" />
+                          </Button> */}
                           <Button
                             variant="outline"
                             size="lg"
@@ -638,7 +641,7 @@ const StartBusiness = () => {
                         className="relative aspect-square rounded-2xl overflow-hidden hidden lg:block"
                       >
                         <img
-                          src="/images/services/business-growth.jpg"
+                          src="/images/services/bussiness.jpg"
                           alt="Business growth"
                           className="w-full h-full object-cover rounded-2xl"
                         />
@@ -699,11 +702,11 @@ const StartBusiness = () => {
                               className="p-6 bg-zinc-800/30 rounded-xl border border-green-500/10 backdrop-blur-sm group hover:bg-zinc-800/40 transition-all h-full"
                             >
                               <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                                <img
-                                  src={`/images/services/${option.title.toLowerCase().replace(/\s+/g, '-')}.jpg`}
-                                  alt={option.title}
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                />
+                               <img
+  src={option.image}
+  alt={option.title}
+  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+/>
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                 <div className="absolute bottom-4 left-4 text-green-400 p-2 rounded-full bg-black/50">
                                   {option.icon}
@@ -726,13 +729,17 @@ const StartBusiness = () => {
                                   </li>
                                 ))}
                               </ul>
-                              <Button
-                                variant="outline"
-                                className="w-full border-green-500/30 group-hover:bg-green-500 group-hover:text-white"
-                              >
-                                Get Started{" "}
-                                <ArrowRight className="ml-2 w-4 h-4" />
-                              </Button>
+                             <Button
+                                  variant="outline"
+                                  className="w-full border-green-500/30 group-hover:bg-green-500 group-hover:text-white"
+                                  onClick={() => {
+                                    navigate(option.link || "/services/legal/start-business-india");
+                                   
+                                  }}
+                                                  >
+                                                Get Started{" "}
+                                    <ArrowRight className="ml-2 w-4 h-4" />
+                                                    </Button>
                             </motion.div>
                           ))}
                         </div>

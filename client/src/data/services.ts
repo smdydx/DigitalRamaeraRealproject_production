@@ -181,14 +181,7 @@ export const servicesData: ServicesData = {
         "Special Entity or NBFC"
       ],
       path: "/services/legal/compliance",
-      submenu: [
-        {
-          icon: Rocket,
-          title: "Start Business in India",
-          features: ["Complete business setup solutions"],
-          path: "/services/legal/start-business-india"
-        }
-      ]
+      
     }
   ],
   
