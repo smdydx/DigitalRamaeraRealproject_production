@@ -89,19 +89,41 @@ const TokenDev = () => {
         className="container mx-auto px-4"
       >
         {/* Hero Section */}
-        <motion.div variants={fadeIn("up", "tween", 0.2, 1)} className="text-center mb-20">
-          <div className="space-y-2">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent">
-              Custom Token Development Services
-            </h1>
-          </div>
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg mb-8">
-            Launch your blockchain token with our comprehensive development solutions. Get secure, scalable, and customizable tokens built by experts.
-          </p>
-          <Button size="lg" className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700">
-            Start Your Token Project <ArrowRight className="ml-2" />
-          </Button>
-        </motion.div>
+  <motion.div variants={fadeIn("up", "tween", 0.2, 1)} className="relative min-h-screen flex flex-col lg:flex-row items-center pt-24">
+  {/* Full Screen Heading */}
+  <div className="absolute top-0 left-0 right-0 flex justify-center text-center z-10">
+    <div className="space-y-2">
+      <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent max-w-4xl mx-auto mb-8">
+        Custom Token Development Services
+      </h1>
+    </div>
+  </div>
+
+  {/* Left side - Image */}
+  <div className="w-full lg:w-1/2 p-4">
+    <img
+      src="/images/tokenpic.jpg"
+      alt="Token Development Banner"
+      className="w-full h-auto object-cover rounded-xl shadow-lg"
+    />
+  </div>
+
+  {/* Right side - Text */}
+  <div className="w-full lg:w-1/2 p-8 text-left flex flex-col justify-center">
+    <p className="text-gray-400 text-lg mb-6 leading-relaxed">
+      Launch your blockchain token with our comprehensive development solutions. Get secure, scalable, and customizable tokens built by experts.
+    </p>
+     <p className="text-gray-400 text-lg leading-relaxed mt-6">
+    Our team ensures that the token is fully functional, meets your project needs, and is ready for deployment. Whether you're looking for a simple token or a complex multi-featured token, we have the expertise to deliver it all.
+  </p>
+
+    <Button size="lg" className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 mt-8">
+      Start Your Token Project <ArrowRight className="ml-2" />
+    </Button>
+  </div>
+</motion.div>
+
+
 
         {/* Token Types */}
         <motion.div variants={fadeIn("up", "tween", 0.3, 1)} className="mb-20">

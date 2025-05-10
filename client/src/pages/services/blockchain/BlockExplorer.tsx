@@ -1,8 +1,9 @@
-
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
-import { Search, ArrowRight, Database, Shield, Zap, BarChart } from "lucide-react";
+import { Search, ArrowRight, Database, Shield, BarChart, Monitor, PlugZap } from "lucide-react";
+import { Calendar } from "lucide-react";
+
 
 const BlockExplorer = () => {
   const technologies = [
@@ -33,7 +34,7 @@ const BlockExplorer = () => {
       title: "Analytics Dashboard",
       description: "Comprehensive blockchain network statistics and visual data representation",
       image: "https://images.pexels.com/photos/8369815/pexels-photo-8369815.jpeg",
-    }
+    },
   ];
 
   const faqs = [
@@ -61,26 +62,68 @@ const BlockExplorer = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="container mx-auto px-4 mt-20"
+        className="container mx-auto px-4 mt-12"
       >
+        {/* Heading Section */}
         <motion.div variants={fadeIn("up", "tween", 0.2, 1)} className="text-center mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-            <Search className="w-8 h-8 text-primary" />
-          </div>
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent mb-6">
             Block Explorer Development
           </h1>
           <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-            Build powerful and intuitive blockchain explorers with advanced search capabilities and real-time analytics
+            Build powerful and intuitive blockchain explorers with advanced search capabilities and real-time analytics. Get seamless smart contract verification and data transparency tailored to your needs.
           </p>
         </motion.div>
 
-        <motion.div variants={fadeIn("up", "tween", 0.3, 1)} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Left and Right Split Section */}
+        <motion.div
+          variants={fadeIn("up", "tween", 0.3, 1)}
+          className="flex flex-col md:flex-row gap-8 mb-16"
+        >
+          {/* Left Section - Video */}
+          <div className="flex-1">
+            <video
+              src="/video/blockexpvideo.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover rounded-xl shadow-lg"
+            />
+          </div>
+
+          {/* Right Section */}
+          <div className="flex-1 flex flex-col justify-center text-left">
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Advanced Blockchain Explorer Features
+            </h2>
+            <p className="text-gray-400 text-lg mb-6">
+              Leverage powerful features such as real-time transaction tracking, smart contract analysis, and a detailed analytics dashboard for enhanced blockchain visibility.
+            </p>
+            <div className="flex gap-4">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700"
+              >
+                Get Started
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-green-500 text-green-500 hover:bg-green-500/10"
+              >
+                Learn More
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Features Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <div key={index} className="group relative overflow-hidden rounded-2xl border border-green-500/10 hover:border-green-500/30 transition-all duration-300">
               <div className="absolute inset-0">
-                <img 
-                  src={feature.image} 
+                <img
+                  src={feature.image}
                   alt={feature.title}
                   className="w-full h-full object-cover opacity-20 group-hover:opacity-30 transition-opacity duration-300"
                 />
@@ -99,7 +142,65 @@ const BlockExplorer = () => {
           ))}
         </motion.div>
 
-        <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="mb-16">
+        {/* 🔥 NEW Important Sections */}
+        <motion.div variants={fadeIn("up", "tween", 0.5, 1)} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          <div className="p-6 rounded-xl border border-green-500/10 bg-zinc-900/50 hover:border-green-500/30 transition-all">
+            <div className="flex items-center gap-3 mb-4">
+              <Monitor className="w-6 h-6 text-green-500" />
+              <h3 className="text-xl font-semibold text-white">Real-Time Monitoring</h3>
+            </div>
+            <p className="text-gray-400">
+              Instantly visualize blockchain activity with live data updates and intuitive charting. Stay ahead with second-by-second accuracy.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl border border-green-500/10 bg-zinc-900/50 hover:border-green-500/30 transition-all">
+            <div className="flex items-center gap-3 mb-4">
+              <PlugZap className="w-6 h-6 text-green-500" />
+              <h3 className="text-xl font-semibold text-white">Custom Integration Support</h3>
+            </div>
+            <p className="text-gray-400">
+              Seamlessly integrate the explorer with your blockchain, dApp, or business logic. Flexible APIs and modular architecture ensure perfect fit.
+            </p>
+          </div>
+        </motion.div>
+        <motion.div
+  variants={fadeIn("up", "tween", 0.3, 1)}
+  className="mb-16"
+>
+  <h2 className="text-3xl font-bold text-center mb-8">Roadmap</h2>
+  
+  <div className="flex flex-col items-center justify-center space-y-8">
+    {/* Example Roadmap Point 1 */}
+    <div className="text-center p-6 bg-zinc-900/50 border border-green-500/10 rounded-lg">
+      <h3 className="text-xl font-bold text-white">Phase 1</h3>
+      <p className="text-gray-400">
+        Start the development of core features, including transaction tracking and blockchain analytics.
+      </p>
+    </div>
+
+    {/* Example Roadmap Point 2 */}
+    <div className="text-center p-6 bg-zinc-900/50 border border-green-500/10 rounded-lg">
+      <h3 className="text-xl font-bold text-white">Phase 2</h3>
+      <p className="text-gray-400">
+        Integrate advanced tools such as smart contract analysis and decentralized application support.
+      </p>
+    </div>
+
+    {/* Example Roadmap Point 3 */}
+    <div className="text-center p-6 bg-zinc-900/50 border border-green-500/10 rounded-lg">
+      <h3 className="text-xl font-bold text-white">Phase 3</h3>
+      <p className="text-gray-400">
+        Final testing, security audits, and preparation for production release.
+      </p>
+    </div>
+  </div>
+</motion.div>
+
+
+
+        {/* Technologies Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.5, 1)} className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8">Technologies We Use</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
             {technologies.map((tech, index) => (
@@ -110,20 +211,28 @@ const BlockExplorer = () => {
             ))}
           </div>
         </motion.div>
+        
 
-        <motion.div variants={fadeIn("up", "tween", 0.5, 1)} className="mb-16">
+        {/* FAQs Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.6, 1)} className="mb-16">
           <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
-          <div className="space-y-6 max-w-3xl mx-auto">
+          <div className="space-y-4 max-w-3xl mx-auto">
             {faqs.map((faq, index) => (
-              <div key={index} className="p-6 rounded-lg bg-zinc-900/50 border border-green-500/10">
-                <h3 className="text-xl font-bold mb-3">{faq.question}</h3>
-                <p className="text-gray-400">{faq.answer}</p>
-              </div>
+              <details
+                key={index}
+                className="bg-zinc-900/50 border border-green-500/10 rounded-lg p-4 transition-all group"
+              >
+                <summary className="font-semibold text-white cursor-pointer list-none text-lg group-open:text-primary">
+                  {faq.question}
+                </summary>
+                <p className="mt-2 text-gray-400">{faq.answer}</p>
+              </details>
             ))}
           </div>
         </motion.div>
 
-        <motion.div variants={fadeIn("up", "tween", 0.6, 1)} className="text-center">
+        {/* Call to Action */}
+        <motion.div variants={fadeIn("up", "tween", 0.7, 1)} className="text-center">
           <Button size="lg" className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700">
             Get Demo <ArrowRight className="ml-2" />
           </Button>
