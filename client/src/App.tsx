@@ -42,6 +42,10 @@ import WebDev from './pages/services/it/WebDev';
 import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Careers from "./pages/Careers"; // Added import for Careers page
+// ...existing code...
+import StartBusinessIndia from './pages/services/legal/StartBusinessIndia';
+// ...existing code...
+
 
 import AIChatBot from './components/AIChatBot';
 
