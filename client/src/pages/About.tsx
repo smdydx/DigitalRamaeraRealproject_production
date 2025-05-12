@@ -15,7 +15,7 @@ const About = () => {
   return (
     <main className="min-h-screen bg-background about-page">
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-8 md:pt-10">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden pt-8 md:pt-10 [margin-top:-6rem]">
         {/* Background Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
 

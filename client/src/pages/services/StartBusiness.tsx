@@ -601,10 +601,10 @@ const StartBusiness = () => {
                     variants={staggerContainer}
                     initial="hidden"
                     animate="visible"
-                    className="relative rounded-2xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-green-500/10 backdrop-blur-sm p-8 lg:p-12 mt-8"
+                    className="relative rounded-2xl bg-gradient-to-br from-zinc-900/80 to-zinc-900/40 border border-green-500/10 backdrop-blur-sm p-8 lg:p-12 [margin-top:calc(-4rem)]"
                   >
                     {/* Hero content */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
                       <motion.div
                         variants={fadeIn("right", "tween", 0.2, 1)}
                         className="space-y-6"

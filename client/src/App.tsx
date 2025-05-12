@@ -45,7 +45,7 @@ import Careers from "./pages/Careers"; // Added import for Careers page
 // ...existing code...
 import StartBusinessIndia from './pages/services/legal/StartBusinessIndia';
 // ...existing code...
-import Samad from './pages/services/legal/Samad'; // Added import for Samad page
+import Fema_rbi from './pages/services/legal/Fema_rbi'; // Added import for Samad page
 
 
 import AIChatBot from './components/AIChatBot';
@@ -98,7 +98,7 @@ function Router() {
           <Route path="/services/it/cloud" element={<Cloud />} /> 
           <Route path="/careers" element={<Careers />} /> {/* Added route for Careers page */}
           <Route path="*" element={<NotFound />} />
-          <Route path="/samad" element={<Samad />} />
+          <Route path="/samad" element={<Fema_rbi />} />
 
         </Routes>
       </main>

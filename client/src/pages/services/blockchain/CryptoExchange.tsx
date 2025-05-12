@@ -78,6 +78,26 @@ const CryptoExchange = () => {
               White Label Crypto Exchange Development
             </h1>
           </div>
+   <div className="flex justify-between items-center">
+  {/* Left side - Image */}
+  <div className="w-full lg:w-1/2 p-4">
+    <img
+      src="/images/cryptopic.jpg"
+      alt="Token Development Banner"
+      className="w-full max-h-80 object-cover rounded-xl shadow-lg"
+    />
+  </div>
+
+  {/* Right side - Image */}
+  <div className="w-full lg:w-1/2 p-4">
+    <img
+      src="/images/cryptopic2.jpg"
+      alt="Token Development Banner"
+      className="w-full max-h-80 object-cover rounded-xl shadow-lg"
+    />
+  </div>
+</div>
+
           <p className="text-gray-400 max-w-3xl mx-auto text-lg mb-8">
             Launch your crypto exchange platform with our comprehensive white-label solutions. Get market-ready, secure, and scalable exchange software.
           </p>
