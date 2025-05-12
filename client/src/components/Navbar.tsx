@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Code, ChevronDown, ChevronRight, PhoneCall, Calendar, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronRight, PhoneCall, Calendar } from "lucide-react";
 import { servicesData } from "@/data/services";
 
 const navLinks = [
@@ -18,22 +17,18 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [activeServiceCategory, setActiveServiceCategory] = useState<string | null>(null);
+  const [activeServiceCategory, setActiveServiceCategory] = useState<string | null>("tech");
+  const [openMobileSubmenus, setOpenMobileSubmenus] = useState<string[]>([]);
   const servicesDropdownRef = useRef<HTMLDivElement>(null);
-  const isMobile = window.innerWidth < 768; // Detect mobile
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     const handleClickOutside = (event: MouseEvent) => {
       if (servicesDropdownRef.current && !servicesDropdownRef.current.contains(event.target as Node)) {
         setServicesDropdownOpen(false);
-        setActiveServiceCategory(null);
+        setActiveServiceCategory("tech");
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
@@ -43,89 +38,73 @@ const Navbar = () => {
   }, []);
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    // Close services dropdown when closing mobile menu
-    if (isMobileMenuOpen) {
-      setServicesDropdownOpen(false);
-      setActiveServiceCategory(null);
-    }
+    setIsMobileMenuOpen((prev) => !prev);
+    setServicesDropdownOpen(false);
+    setOpenMobileSubmenus([]);
   };
 
-  const toggleServicesDropdown = (e?: React.MouseEvent) => {
-    if (e) {
-      e.stopPropagation(); // Prevent event bubbling
-    }
-    setServicesDropdownOpen(!servicesDropdownOpen);
-    if (!servicesDropdownOpen) {
-      setActiveServiceCategory("tech");
-    } else {
-      setActiveServiceCategory(null);
-    }
-  };
-
-  const handleServiceCategoryHover = (category: string) => {
-    setActiveServiceCategory(category);
+  const toggleServicesDropdown = () => {
+    setServicesDropdownOpen((prev) => !prev);
+    setActiveServiceCategory("tech");
   };
 
   const scrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
     setServicesDropdownOpen(false);
-    setActiveServiceCategory(null);
-
+    setOpenMobileSubmenus([]);
     if (sectionId.startsWith('/#')) {
-      if (window.location.pathname !== '/') {
-        window.location.href = sectionId;
-      } else {
-        const element = document.getElementById(sectionId.substring(2));
-        if (element) {
-          const yOffset = -80;
-          const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-          window.scrollTo({ top: y, behavior: "smooth" });
-        }
+      const element = document.getElementById(sectionId.substring(2));
+      if (element) {
+        const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     } else {
       window.location.href = sectionId;
     }
   };
 
+  // Mobile Submenu Handler
+  const handleMobileSubmenuToggle = (title: string) => {
+    setOpenMobileSubmenus(prev =>
+      prev.includes(title)
+        ? prev.filter(t => t !== title)
+        : [...prev, title]
+    );
+  };
+
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 h-14 sm:h-16 lg:h-20 flex items-center ${
-        isScrolled
-          ? "bg-gradient-to-r from-black/98 via-zinc-900/98 to-black/98 backdrop-blur-xl border-b border-green-500/20 shadow-xl shadow-green-500/10"
-          : "bg-gradient-to-r from-black/95 via-zinc-900/95 to-black/95 backdrop-blur-lg"
-      }`}
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(0,255,0,0.1)_0%,_transparent_50%)] pointer-events-none"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,_rgba(0,128,0,0.1)_0%,_transparent_50%)] pointer-events-none"></div>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 h-14 sm:h-16 lg:h-20 flex items-center ${
+      isScrolled
+        ? "bg-gradient-to-r from-black/98 via-zinc-900/98 to-black/98 backdrop-blur-xl border-b border-green-500/20 shadow-xl shadow-green-500/10"
+        : "bg-gradient-to-r from-black/95 via-zinc-900/95 to-black/95 backdrop-blur-lg"
+    }`}>
+      {/* ... (Other header content remains same) */}
       <div className="container mx-auto px-3 sm:px-4 lg:px-6 relative z-10">
         <div className="flex items-center justify-between bg-gradient-to-r from-zinc-900/50 via-transparent to-zinc-900/50 rounded-full px-3 sm:px-4 lg:px-6 py-2 backdrop-blur-sm border border-green-500/10">
+          {/* Logo and Desktop Nav */}
           <div className="flex items-center">
             <div onClick={() => window.location.href = '/'} className="cursor-pointer">
               <div className="font-bold text-white flex items-center">
-                  <h1 className="font-['Orbitron'] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-[#00FF00] via-[#008000] to-[#004400] mb-0 digital-glow relative z-10 hover:scale-105 transition-transform duration-300"><span className="text-2xl sm:text-4xl">&lt;/&gt;</span></h1>
-               <h1 className=""></h1>
-                {/* <img src="/images/ramaera-logo.jpg" alt="Ramaera Logo" className="h-12 w-12 sm:h-16 sm:w-16 rounded-full border-2 border-orange-500/30 shadow-lg shadow-orange-500/20" /> */}
+                <h1 className="font-['Orbitron'] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-[#00FF00] via-[#008000] to-[#004400] mb-0 digital-glow relative z-10 hover:scale-105 transition-transform duration-300">
+                  <span className="text-2xl sm:text-4xl">&lt;/&gt;</span>
+                </h1>
               </div>
             </div>
           </div>
-
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center justify-center flex-1 space-x-2 lg:space-x-4 xl:space-x-8">
             {navLinks.map((link, index) => {
-              // Create Services dropdown button
               if (link.name === "Services") {
                 return (
                   <div key={index} className="relative" ref={servicesDropdownRef}>
                     <button
                       onClick={toggleServicesDropdown}
-                      className="relative text-white hover:text-primary font-medium transition-colors duration-300 group flex items-center gap-1"
+                      className="relative text-white hover:text-primary font-medium transition-colors duration-400 group flex items-center gap-1"
                     >
                       {link.name}
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`h-2 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                     </button>
-
                     {/* Services Dropdown */}
                     <AnimatePresence>
                       {servicesDropdownOpen && (
@@ -134,20 +113,20 @@ const Navbar = () => {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-14 -left-60 mt-2 w-[600px]  rounded-lg  border-zinc-800 overflow-hidden z-50 h-screen"
+                          className="absolute top-14 -left-60 mt-2 w-[600px] rounded-lg border-zinc-800 z-50 bg-zinc-900/95 backdrop-blur-sm border border-green-500/20 shadow-xl shadow-black/50"
                         >
                           <div className="flex">
                             {/* Category Menu */}
-                            <div className="w-1/3 bg-zinc-800/50 p-2">
+                            <div className="w-1/3 bg-black p-2">
                               {Object.keys(servicesData).map((category) => (
                                 <button
                                   key={category}
-                                  onMouseEnter={() => handleServiceCategoryHover(category)}
-                                  onClick={() => handleServiceCategoryHover(category)}
+                                  onMouseEnter={() => setActiveServiceCategory(category)}
+                                  onClick={() => setActiveServiceCategory(category)}
                                   className={`w-full text-left p-3 rounded-md transition-colors duration-200 flex justify-between items-center ${
                                     activeServiceCategory === category
                                       ? "bg-primary/10 text-primary"
-                                      : "text-white hover:bg-zinc-700/50"
+                                      : "text-white hover:bg-zinc"
                                   }`}
                                 >
                                   <span className="capitalize">{category} Services</span>
@@ -155,9 +134,8 @@ const Navbar = () => {
                                 </button>
                               ))}
                             </div>
-
                             {/* Services List */}
-                            <div className="w-2/3 p-4">
+                            <div className="w-2/3 p-4 bg-black">
                               <AnimatePresence mode="wait">
                                 {activeServiceCategory && (
                                   <motion.div
@@ -193,9 +171,9 @@ const Navbar = () => {
                                               </p>
                                             </div>
                                           </motion.button>
-
+                                          {/* Desktop submenu (opens on hover) */}
                                           {service.submenu && (
-                                            <div className="absolute left-0 top-full mt-2 hidden group-hover/service:block min-w-[300px] z-50">
+                                            <div className="absolute left-full top-0 ml-2 min-w-[300px] z-50 hidden group-hover/service:block">
                                               <div className="bg-zinc-950/95 backdrop-blur-sm rounded-lg shadow-xl border border-green-500/20 p-4 max-h-[400px] overflow-y-auto">
                                                 {service.submenu.map((subItem, subIdx) => (
                                                   <motion.button
@@ -235,7 +213,6 @@ const Navbar = () => {
                   </div>
                 );
               }
-
               // Normal nav links
               return (
                 <div key={index} className="flex items-center gap-16">
@@ -278,16 +255,12 @@ const Navbar = () => {
               );
             })}
           </nav>
-
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <Button
               variant="ghost"
               size="icon"
-              onClick={(e) => {
-                e.stopPropagation();
-                toggleMobileMenu();
-              }}
+              onClick={toggleMobileMenu}
               aria-label="Toggle Menu"
             >
               {isMobileMenuOpen ? (
@@ -299,7 +272,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isMobileMenuOpen && (
@@ -308,7 +280,7 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-16 sm:top-20 lg:top-24 left-0 right-0 bg-zinc-900/95 backdrop-blur-xl border-t border-green-500/20 overflow-y-auto max-h-[calc(100vh-4rem)] z-50 shadow-lg shadow-black/50 mobile-menu-scroll"
+            className="fixed top-16 sm:top-20 lg:top-24 left-0 right-0 bg-zinc-900/95 backdrop-blur-xl border-t border-green-500/20 overflow-y-auto max-h-[calc(100vh-4rem)] z-50 shadow-lg shadow-black/50"
           >
             {/* Contact Options for Mobile */}
             <div className="flex items-center justify-center gap-4 p-4 border-b border-green-500/10">
@@ -338,112 +310,111 @@ const Navbar = () => {
                 <span className="hidden md:inline">Schedule Meeting</span>
               </Button>
             </div>
+            {/* Mobile Nav Links */}
+           <div className="flex flex-col space-y-0 px-4 py-2 pb-20 w-full">
+  {navLinks.map((link, index) => {
+    if (link.name === "Services") {
+      return (
+        <div key={index} className="py-2">
+          <button
+            onClick={() => {
+              setServicesDropdownOpen(!servicesDropdownOpen);
+              setOpenMobileSubmenus([]);
+            }}
+            className="text-white hover:text-primary font-medium transition-colors duration-300 flex items-center justify-between w-full px-4"
+          >
+            <span>{link.name}</span>
+            <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
 
-            <div className="flex flex-col space-y-0 px-4 py-2 pb-20 w-full">
-              {navLinks.map((link, index) => {
-                // Services dropdown for mobile
-                if (link.name === "Services") {
-                  return (
-                    <div key={index} className="py-2">
-                      <button
-                        onClick={() => {
-                          toggleServicesDropdown();
-                        }}
-                        className="text-white hover:text-primary font-medium transition-colors duration-300 flex items-center justify-between w-full px-4"
-                      >
-                        <span>{link.name}</span>
-                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} />
-                      </button>
-
-                      <AnimatePresence>
-                        {servicesDropdownOpen && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="pl-4 mt-2 border-l border-zinc-700 space-y-2 max-h-[40vh] overflow-y-auto"
-                          >
-                            {Object.keys(servicesData).map((category) => (
-                              <div key={category} className="mb-3">
-                                <h3 className="text-sm font-medium text-primary mb-2 capitalize">
-                                  {category} Solutions
-                                </h3>
-                                <div className="space-y-2">
-                                  {servicesData[category as keyof typeof servicesData].map((service, idx) => (
-                                    <div key={idx} className="relative">
-                                      <button
-                                        onClick={() => {
-                                          if (!service.submenu) {
-                                            service.path ? window.location.href = service.path : scrollToSection("/#services");
-                                          } else {
-                                            //Toggle submenu open/close
-                                            const submenu = document.querySelector(`#submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`);
-                                            const allSubmenus = document.querySelectorAll('.mobile-submenu');
-                                            
-                                            // Close all other submenus
-                                            allSubmenus.forEach(menu => {
-                                              if (menu !== submenu) {
-                                                menu.classList.remove('show');
-                                              }
-                                            });
-                                            
-                                            // Toggle current submenu
-                                            if (submenu) {
-                                              submenu.classList.toggle('show');
-                                            }
-                                          }
-                                        }}
-                                        className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
-                                      >
-                                        <div className="text-primary mt-1">
-                                          <div className="h-5 w-5">{React.createElement(service.icon)}</div>
-                                        </div>
-                                        <div className="text-left flex-1">
-                                          <h4 className="text-white group-hover:text-primary transition-colors flex items-center justify-between">
-                                            {service.title}
-                                            {service.submenu && (
-                                              <span className="ml-2">
-                                                {document.querySelector(`#submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`)?.classList.contains('hidden') 
-                                                  ? '+' 
-                                                  : '-'
-                                                }
-                                              </span>
-                                            )}
-                                          </h4>
-                                        </div>
-                                      </button>
-
-                                      {service.submenu && (
-                                        <div id={`submenu-${service.title.replace(/[^a-zA-Z0-9]/g, '-')}`} className="mobile-submenu">
-                                          {service.submenu.map((subItem, subIdx) => (
-                                            <button
-                                              key={subIdx}
-                                              onClick={() => subItem.path ? window.location.href = subItem.path : null}
-                                              className="mobile-submenu-item w-full text-left"
-                                            >
-                                              <div className="mobile-submenu-icon">
-                                                {React.createElement(subItem.icon, { 
-                                                  className: "h-3.5 w-3.5 opacity-75 hover:opacity-100 transition-opacity" 
-                                                })}
-                                              </div>
-                                              <span>{subItem.title}</span>
-                                            </button>
-                                          ))}
-                                        </div>
-                                      )}
-                                    </div>
-                                  ))}
-                                </div>
+          <AnimatePresence>
+            {servicesDropdownOpen && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="pl-4 mt-2 border-l border-zinc-700 space-y-2 max-h-[70vh] overflow-y-auto"
+              >
+                {Object.keys(servicesData).map((category) => (
+                  <div key={category} className="mb-3">
+                    <h3 className="text-sm font-medium text-primary mb-2 capitalize">
+                      {category} Solutions
+                    </h3>
+                    <div className="space-y-2">
+                      {servicesData[category as keyof typeof servicesData].map((service, idx) => {
+                        const isSubmenuOpen = openMobileSubmenus.includes(service.title);
+                        return (
+                          <div key={idx} className="relative">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                if (service.submenu) {
+                                  handleMobileSubmenuToggle(service.title);
+                                } else {
+                                  if (service.path) {
+                                    window.location.href = service.path;
+                                  }
+                                  setIsMobileMenuOpen(false);
+                                }
+                              }}
+                              className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
+                            >
+                              <div className="text-primary mt-1">
+                                <div className="h-5 w-5">{React.createElement(service.icon)}</div>
                               </div>
-                            ))}
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  );
-                }
+                              <div className="text-left flex-1">
+                                <h4 className="text-white group-hover:text-primary transition-colors flex items-center justify-between">
+                                  {service.title}
+                                  {service.submenu && (
+                                    <span className="ml-2 bg-green-500/10 px-2 rounded">
+                                      {isSubmenuOpen ? '−' : '+'}
+                                    </span>
+                                  )}
+                                </h4>
+                              </div>
+                            </button>
 
+                            {service.submenu && isSubmenuOpen && (
+                              <motion.div
+                                initial={{ opacity: 0, scaleY: 0 }}
+                                animate={{ opacity: 1, scaleY: 1 }}
+                                exit={{ opacity: 0, scaleY: 0 }}
+                                className="pl-6 mt-2 space-y-2 origin-top"
+                              >
+                                {service.submenu.map((subItem, subIdx) => (
+                                  <button
+                                    key={subIdx}
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      if (subItem.path) window.location.href = subItem.path;
+                                      setIsMobileMenuOpen(false);
+                                      setOpenMobileSubmenus([]);
+                                    }}
+                                    className="flex items-center gap-2 w-full text-left p-2 rounded-md hover:bg-zinc-700/50 transition-colors"
+                                  >
+                                    <div className="text-primary">
+                                      {React.createElement(subItem.icon, {
+                                        className: "h-4 w-4 opacity-75"
+                                      })}
+                                    </div>
+                                    <span className="text-sm text-white/90">{subItem.title}</span>
+                                  </button>
+                                ))}
+                              </motion.div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      );
+    }
                 // Normal nav links
                 return (
                   <a
