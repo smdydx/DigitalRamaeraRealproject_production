@@ -42,8 +42,14 @@ import WebDev from './pages/services/it/WebDev';
 import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Careers from "./pages/Careers"; // Added import for Careers page
+// ...existing code...
+import StartBusinessIndia from './pages/services/legal/StartBusinessIndia';
+// ...existing code...
+import Samad from './pages/services/legal/Samad'; // Added import for Samad page
+
 
 import AIChatBot from './components/AIChatBot';
+import { Import } from "lucide-react";
 
 
 function Router() {
@@ -67,7 +73,8 @@ function Router() {
           <Route path="/services/it/game-dev" element={<GameDev />} />
           <Route path="/services/it/app-dev" element={<AppDev />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/start-business" element={<StartBusiness />} />
+          <Route path="/services/legal/compliance" element={<StartBusiness />} />
+          <Route path="/services/legal/start-business-india" element={<StartBusinessIndia />} />
           <Route path="/services/register-business" element={<RegisterBusiness />} />
           <Route path="/services/legal/company-incorporation" element={<CompanyIncorporation />} />
           <Route path="/services/legal/roc-compliance" element={<AnnualROCCompliance />} />
@@ -91,6 +98,8 @@ function Router() {
           <Route path="/services/it/cloud" element={<Cloud />} /> 
           <Route path="/careers" element={<Careers />} /> {/* Added route for Careers page */}
           <Route path="*" element={<NotFound />} />
+          <Route path="/samad" element={<Samad />} />
+
         </Routes>
       </main>
       <Footer />

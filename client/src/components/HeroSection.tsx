@@ -63,6 +63,7 @@ const HeroSection = () => {
   className="w-full h-full object-cover"
 >
   <source src="/video/hero-backvideo.mp4" type="video/mp4" />
+  <source src="/video/herosection.mp4" type="video/mp4" 
   Your browser does not support the video tag.
 </video>
 
@@ -255,3 +256,4 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+

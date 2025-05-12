@@ -18,6 +18,7 @@ import {
   Shield,
   Rocket,
   ChevronLeft,
+  ChevronDown,
   PhoneCall,
   Mail,
   ArrowRight,
@@ -25,22 +26,42 @@ import {
   Phone,
 } from "lucide-react";
 
+import { useNavigate } from 'react-router-dom';
+
 const StartBusiness = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+  const navigate = useNavigate();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const sidebarRef = useRef<HTMLDivElement>(null);
   const [activeSection, setActiveSection] = useState("indian-startups");
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
+      const mobile = window.innerWidth <= 768;
+      setIsMobile(mobile);
+      setIsSidebarOpen(!mobile);
     };
 
     checkMobile();
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Close sidebar when clicking outside on mobile
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMobile && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        const toggleButton = document.querySelector('[data-sidebar-toggle]');
+        if (!toggleButton?.contains(event.target as Node)) {
+          setIsSidebarOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobile]);
 
   const toggleSidebar = () => {
     if (!isTransitioning) {
@@ -105,36 +126,138 @@ const StartBusiness = () => {
     },
   ];
 
+  const [expandedItems, setExpandedItems] = useState<{[key: string]: boolean}>({});
+
+  const toggleExpand = (id: string) => {
+    setExpandedItems(prev => ({...prev, [id]: !prev[id]}));
+  };
+
   const sidebarItems = [
     {
       title: "Indian Startups",
       href: "#indian-startups",
       icon: <Rocket className="w-5 h-5" />,
+      expandable: true,
+      id: "startups",
+      items: [
+        "Private Limited Company",
+        "Limited Liability Partnership",
+        "One Person Company",
+        "Partnership Firm",
+        "Sole Proprietorship"
+      ]
     },
     {
       title: "Foreign Investors (FDI)",
       href: "#fdi",
       icon: <Globe className="w-5 h-5" />,
+      expandable: true,
+      id: "fdi",
+      items: [
+        "Indian Subsidiary",
+        "Branch Office",
+        "Liaison Office",
+        "Project Office",
+        "LLP with Foreign Investment"
+      ]
     },
     {
       title: "India Entry Services",
       href: "#india-entry",
       icon: <Users className="w-5 h-5" />,
+      expandable: true,
+      id: "entry",
+      items: [
+        "Business Strategy",
+        "Market Research",
+        "Legal Compliance",
+        "Partner Search",
+        "Office Setup"
+      ]
     },
     {
-      title: "Overseas Incorporation",
+      title: "Overseas Incorporation (ODI)",
       href: "#odi",
       icon: <Briefcase className="w-5 h-5" />,
+      expandable: true,
+      id: "odi",
+      items: [
+        "Company Formation",
+        "Subsidiary Setup",
+        "Joint Venture",
+        "Branch Office",
+        "Investment Strategy"
+      ]
     },
     {
-      title: "Non Profit/NGO",
+      title: "Non Profit Organisations/NGO",
       href: "#ngo",
       icon: <Heart className="w-5 h-5" />,
+      expandable: true,
+      id: "ngo",
+      items: [
+        "Trust Registration",
+        "Society Registration",
+        "Section 8 Company",
+        "FCRA Registration",
+        "12A & 80G Registration"
+      ]
     },
     {
-      title: "NBFC Registration",
+      title: "Special Entity or NBFC",
       href: "#nbfc",
       icon: <Building2 className="w-5 h-5" />,
+      expandable: true,
+      id: "nbfc",
+      items: [
+        "NBFC Registration",
+        "Nidhi Company",
+        "Microfinance Company",
+        "Core Investment Company",
+        "Asset Finance Company"
+      ]
+    },
+    {
+      title: "IPR",
+      href: "#ipr",
+      icon: <Shield className="w-5 h-5" />,
+      expandable: true,
+      id: "ipr"
+    },
+    {
+      title: "Tax & CFO",
+      href: "#tax",
+      icon: <FileSignature className="w-5 h-5" />,
+      expandable: true,
+      id: "tax"
+    },
+    {
+      title: "Payroll",
+      href: "#payroll",
+      icon: <Users className="w-5 h-5" />,
+      expandable: true,
+      id: "payroll"
+    },
+    {
+      title: "Compliance",
+      href: "#compliance",
+      icon: <CheckCircle2 className="w-5 h-5" />,
+      expandable: true,
+      id: "compliance"
+    },
+    {
+      title: "Regulatory",
+      href: "#regulatory",
+      icon: <Building className="w-5 h-5" />,
+      expandable: true,
+      id: "regulatory"
+    },
+    {
+      title: "Others",
+      href: "#others",
+      icon: <Globe className="w-5 h-5" />,
+      expandable: true,
+      id: "others"
     },
   ];
 
@@ -161,25 +284,27 @@ const StartBusiness = () => {
       title: "Start Business in India",
       description: "Complete business setup solutions",
       icon: <Rocket />,
-      image: "/images/services/start-business-in-india.jpg",
+      image: "/images/services/bussiness.jpg",
       features: [
         "Company Registration",
         "Business License",
         "Tax Registration",
         "Bank Account Setup",
       ],
+       link: "/services/legal/start-business-india"
     },
     {
       title: "Digital Signature Certificate",
       description: "Essential for business compliance",
       icon: <FileSignature />,
-      image: "/images/services/digital-signature-certificate.jpg",
+      image: "/images/smartcontract.jpg",
       features: [
         "Class 2 & 3 DSC",
         "Quick Processing",
         "Valid for 2 Years",
         "Online Verification",
       ],
+       link: "/services/legal/labour-compliance"
     },
     {
       title: "Sole Proprietorship",
@@ -192,6 +317,7 @@ const StartBusiness = () => {
         "Low Cost",
         "Minimal Compliance",
       ],
+       link: "/samad"
     },
     {
       title: "One Person Company (OPC)",
@@ -255,9 +381,28 @@ const StartBusiness = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isMobile && sidebarRef.current && !sidebarRef.current.contains(event.target as Node)) {
+        const toggleButton = document.querySelector('[data-sidebar-toggle]');
+        if (!toggleButton?.contains(event.target as Node)) {
+          setIsSidebarOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobile]);
+
   return (
     <>
       <div className="min-h-screen bg-background relative">
+        {/* Sidebar Overlay */}
+        <div 
+          className={`sidebar-overlay ${isMobile && isSidebarOpen ? 'active' : ''}`} 
+          onClick={() => isMobile && setIsSidebarOpen(false)} 
+        />
         {/* Background effects */}
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_#00ff0022_0%,_transparent_50%)] pointer-events-none" />
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_#00800022_0%,_transparent_50%)] pointer-events-none" />
@@ -269,6 +414,7 @@ const StartBusiness = () => {
             <button
               onClick={toggleSidebar}
               className="fixed left-4 top-20 z-50 bg-zinc-900/95 border border-green-500/10 p-2 rounded-lg text-green-400 hover:bg-zinc-800/40"
+              data-sidebar-toggle
             >
               <ChevronLeft className={`w-5 h-5 transition-transform ${isSidebarOpen ? '' : 'rotate-180'}`} />
             </button>
@@ -299,19 +445,54 @@ const StartBusiness = () => {
 
             <nav className="p-4">
               {sidebarItems.map((item, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => handleSectionChange(item.href.replace("#", ""))}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-green-500/10 hover:text-green-400 transition-all group mb-2 w-full ${activeSection === item.href.replace("#", "") ? "bg-green-500/10 text-green-400" : ""}`}
-                >
-                  <div className="p-2 rounded-lg bg-green-500/10 text-green-400 group-hover:bg-green-500/20">
-                    {item.icon}
-                  </div>
-                  <span className="font-medium">{item.title}</span>
-                </motion.button>
+                <div key={index} className="mb-2">
+                  <motion.button
+                    onClick={() => {
+                      handleSectionChange(item.href.replace("#", ""));
+                      if (item.expandable) {
+                        toggleExpand(item.id);
+                      }
+                      const element = document.getElementById(item.href.replace("#", ""));
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className={`flex items-center justify-between px-4 py-3 rounded-lg text-gray-300 hover:bg-green-500/10 hover:text-green-400 transition-all group w-full ${activeSection === item.href.replace("#", "") ? "bg-green-500/10 text-green-400" : ""}`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-lg bg-green-500/10 text-green-400 group-hover:bg-green-500/20">
+                        {item.icon}
+                      </div>
+                      <span className="font-medium">{item.title}</span>
+                    </div>
+                    {item.expandable && (
+                      <div className={`transform transition-transform ${expandedItems[item.id] ? 'rotate-180' : ''}`}>
+                        <ChevronDown className="w-5 h-5" />
+                      </div>
+                    )}
+                  </motion.button>
+                  {item.expandable && expandedItems[item.id] && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="ml-12 mt-2 space-y-2"
+                    >
+                      {item.items?.map((subItem, subIndex) => (
+                        <div
+                          key={subIndex}
+                          className="text-gray-400 hover:text-green-400 cursor-pointer transition-colors py-2"
+                        >
+                          {subItem}
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </div>
               ))}
             </nav>
 
@@ -439,16 +620,13 @@ const StartBusiness = () => {
                           India — quickly, seamlessly, and affordably.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                          <Button
+                          {/* <Button
                             size="lg"
                             className="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-8 rounded-lg flex items-center justify-center gap-2 transition-all"
-                            onClick={() => {
-                              const element = document.getElementById('start-business-india');
-                              element?.scrollIntoView({ behavior: 'smooth' });
-                            }}
+                            onClick={() => navigate('/services/legal/start-business-india')}
                           >
-                            Get Started <ArrowRight className="h-5 w-5" />
-                          </Button>
+                            Xyz <ArrowRight className="h-5 w-5" />
+                          </Button> */}
                           <Button
                             variant="outline"
                             size="lg"
@@ -463,7 +641,7 @@ const StartBusiness = () => {
                         className="relative aspect-square rounded-2xl overflow-hidden hidden lg:block"
                       >
                         <img
-                          src="/images/services/business-growth.jpg"
+                          src="/images/services/bussiness.jpg"
                           alt="Business growth"
                           className="w-full h-full object-cover rounded-2xl"
                         />
@@ -524,11 +702,11 @@ const StartBusiness = () => {
                               className="p-6 bg-zinc-800/30 rounded-xl border border-green-500/10 backdrop-blur-sm group hover:bg-zinc-800/40 transition-all h-full"
                             >
                               <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                                <img
-                                  src={`/images/services/${option.title.toLowerCase().replace(/\s+/g, '-')}.jpg`}
-                                  alt={option.title}
-                                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                                />
+                               <img
+  src={option.image}
+  alt={option.title}
+  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+/>
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                                 <div className="absolute bottom-4 left-4 text-green-400 p-2 rounded-full bg-black/50">
                                   {option.icon}
@@ -551,13 +729,17 @@ const StartBusiness = () => {
                                   </li>
                                 ))}
                               </ul>
-                              <Button
-                                variant="outline"
-                                className="w-full border-green-500/30 group-hover:bg-green-500 group-hover:text-white"
-                              >
-                                Get Started{" "}
-                                <ArrowRight className="ml-2 w-4 h-4" />
-                              </Button>
+                             <Button
+                                  variant="outline"
+                                  className="w-full border-green-500/30 group-hover:bg-green-500 group-hover:text-white"
+                                  onClick={() => {
+                                    navigate(option.link || "/services/legal/start-business-india");
+                                   
+                                  }}
+                                                  >
+                                                Get Started{" "}
+                                    <ArrowRight className="ml-2 w-4 h-4" />
+                                                    </Button>
                             </motion.div>
                           ))}
                         </div>

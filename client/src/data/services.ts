@@ -34,8 +34,7 @@ interface Service {
 
 interface ServicesData {
   tech: Service[];
-  "Legal & Compliance": Service[];
-  // digital: Service[];
+  legal: Service[];
 }
 
 export const servicesData: ServicesData = {
@@ -169,91 +168,20 @@ export const servicesData: ServicesData = {
       path: "/services/it-services"
     }
   ],
-  "Legal & Compliance": [
+  legal: [
     {
       icon: FileText,
-      title: "Start Business",
+      title: "Legal & Compliance Service",
       features: [
-        "Company Registration",
-        "LLP Formation",
-        "Partnership Registration",
-        "One Person Company"
+        "Indian Startups",
+        "Foreign Investors (FDI)",
+        "India Entry Services",
+        "Overseas Incorporation (ODI)",
+        "Non Profit Organisations/NGO",
+        "Special Entity or NBFC"
       ],
-      path: "/services/start-business"
-    },
-    {
-      icon: Landmark,
-      title: "IPR",
-      features: ["Intellectual Property Rights"],
-      path: "/services/legal/ipr"
-    },
-    {
-      icon: Calculator,
-      title: "Tax & CFO",
-      features: ["Financial & Tax Services"],
-      path: "/services/legal/tax-cfo"
-    },
-    {
-      icon: Users,
-      title: "Payroll",
-      features: ["Payroll Management"],
-      path: "/services/legal/payroll"
-    },
-    {
-      icon: FileCheck,
-      title: "Compliance",
-      features: ["Business Compliance"],
-      path: "/services/legal/compliance"
-    },
-    {
-      icon: ShieldCheck,
-      title: "Regulatory",
-      features: ["Regulatory Services"],
-      path: "/services/legal/regulatory"
-    },
-    {
-      icon: ShieldCheck,
-      title: "Legal & Compliance Services",
-      features: [
-        "Company Incorporation",
-        "ROC Compliance",
-        "Audit & Secretarial Services",
-        "Intellectual Property",
-        "Startup India Registration"
-      ],
-      submenu: [
-        {
-          icon: Building,
-          title: "Company Incorporation",
-          features: ["Complete incorporation service"],
-          path: "/services/legal/company-incorporation"
-        },
-        {
-          icon: FileText,
-          title: "Annual ROC Compliance",
-          features: ["ROC compliance management"],
-          path: "/services/legal/roc-compliance"
-        },
-        {
-          icon: FileCheck,
-          title: "Secretarial Audit",
-          features: ["Professional audit services"],
-          path: "/services/legal/secretarial-audit"
-        },
-        {
-          icon: ShieldCheck,
-          title: "IP Registration",
-          features: ["Trademarks, patents, copyrights"],
-          path: "/services/legal/ip-registration"
-        },
-        {
-          icon: Rocket,
-          title: "Startup India Registration",
-          features: ["Startup recognition certificate"],
-          path: "/services/legal/startup-registration"
-        }
-      ],
-      path: "/services/legal"
+      path: "/services/legal/compliance",
+      
     }
   ],
   
@@ -261,6 +189,5 @@ export const servicesData: ServicesData = {
 
 export const serviceTypeLabels: Record<keyof ServicesData, string> = {
   tech: "Tech Services",
-  "Legal & Compliance": "Legal & Compliance",
-  // digital: "Digital Services" 
+  legal: "Legal Services"
 };
