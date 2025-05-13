@@ -213,6 +213,81 @@ export default function PrivateLimitedRegistration() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-16 bg-zinc-900/50">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-center text-white mb-12"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto space-y-6"
+          >
+            {[
+              {
+                question: "What is company registration in India?",
+                answer: "Company registration is the legal process of incorporating a business entity under the Companies Act 2013. It involves obtaining necessary approvals, documents like DSC and DIN, and filing incorporation forms with the Registrar of Companies (ROC)."
+              },
+              {
+                question: "What is the minimum capital required for company registration?",
+                answer: "There is no prescribed minimum capital requirement for company registration in India. However, promoters should plan their capital based on business needs and growth plans. Government fees and stamp duty vary based on capital and state."
+              },
+              {
+                question: "What are the eligibility requirements for directors?",
+                answer: "At least two directors are required, with one being a resident Indian who has stayed in India for 120+ days in the previous financial year. The maximum number of directors allowed is fifteen."
+              },
+              {
+                question: "What documents are needed for company registration?",
+                answer: "Required documents include passport-sized photos, PAN cards, Aadhar cards, address proofs, and Digital Signature Certificates (DSC) for all directors and shareholders. Additionally, registered office proof and NOC from property owner are needed."
+              },
+              {
+                question: "How long does company registration take?",
+                answer: "The complete process typically takes 7-10 days: 1-2 days for documentation and DSC, 1-3 days for name approval and MOA drafting, 3-4 days for filing SPICe+, and final certificate issuance in 4-7 days."
+              },
+              {
+                question: "What are the key advantages of a Private Limited Company?",
+                answer: "Benefits include limited liability protection, enhanced business credibility, easier access to funding, tax advantages (rates as low as 15-22%), separate legal entity status, perpetual succession, and transferable ownership."
+              },
+              {
+                question: "What are the post-incorporation requirements?",
+                answer: "Within 30 days: First board meeting, director interest disclosure, auditor appointment, and INC-22 filing. Within 180 days: Bank account opening, share certificate issuance, and INC-20A filing for business commencement."
+              },
+              {
+                question: "Can I register a company with a temporary address?",
+                answer: "Yes, you can start registration using a communication address, but must establish a permanent registered office in the same state within 30 days and update details with ROC through Form INC-22."
+              },
+              {
+                question: "What is the difference between MOA and AOA?",
+                answer: "The Memorandum of Association (MOA) defines the company's business activities and scope, while Articles of Association (AOA) contain internal rules and regulations for company management."
+              },
+              {
+                question: "What are the annual compliance requirements?",
+                answer: "Key annual compliances include maintaining accounts, financial statement preparation, statutory audit, directors' report, annual general meeting (AGM), income tax returns, and ROC filings (AOC-4 and MGT-7 forms)."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn("up", "tween", index * 0.1, 0.75)}
+                className="bg-zinc-800/30 backdrop-blur-sm rounded-xl border border-green-500/10 p-6 hover:border-green-500/30 transition-all duration-300"
+              >
+                <h3 className="text-xl font-semibold text-green-400 mb-4">{faq.question}</h3>
+                <p className="text-gray-300">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="py-16 bg-zinc-900/50">
         <div className="container mx-auto px-4">
