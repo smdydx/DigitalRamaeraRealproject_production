@@ -39,6 +39,7 @@ import LLPRegistration from './pages/services/legal/LLPRegistration';
 import Section8Registration from "@/pages/services/legal/Section8Registration";
 import ProducerCompanyRegistration from "@/pages/services/legal/ProducerCompanyRegistration";
 import NidhiCompanyRegistration from "@/pages/services/legal/NidhiCompanyRegistration";
+import ForeignCompanySetup from "@/pages/services/legal/ForeignCompanySetup";
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
 
@@ -82,6 +83,7 @@ function Router() {
           <Route path="/services/legal/section-8--non-profit-company--registration" element={<Section8Registration />} />
           <Route path="/services/legal/producer-company-registration" element={<ProducerCompanyRegistration />} />
           <Route path="/services/legal/nidhi-company-registration" element={<NidhiCompanyRegistration />} />
+          <Route path="/services/legal/foreign-company-setup" element={<ForeignCompanySetup />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
