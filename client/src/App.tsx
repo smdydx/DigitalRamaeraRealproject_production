@@ -68,8 +68,6 @@ function Router() {
           <Route path="/services/it/cloud" element={<Cloud />} /> 
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/samad" element={<Fema_rbi />} />
-
         </Routes>
       </main>
       <Footer />
