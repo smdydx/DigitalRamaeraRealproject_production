@@ -366,34 +366,69 @@ export default function PublicLimitedRegistration() {
           >
             {[
               {
-                question:
-                  "What type of businesses are most suitable for Public Limited Company registration?",
-                answer:
-                  "Public Limited Companies are ideal for large-scale businesses planning to raise capital from the public through IPO, having significant growth potential, and requiring substantial investments.",
+                question: "What type of businesses are most suitable for Public Limited Company registration?",
+                answer: "Public Limited Companies are ideal for large-scale businesses planning to raise capital from the public through IPO, having significant growth potential, and requiring substantial investments.",
               },
               {
-                question:
-                  "What are the requirements for Public company listing on Stock Exchange platforms?",
-                answer:
-                  "Requirements include minimum paid-up capital, track record of profitability, net worth criteria, minimum public shareholding, and compliance with SEBI guidelines.",
+                question: "What are the requirements for Public company listing on Stock Exchange platforms?",
+                answer: "Requirements include minimum paid-up capital, track record of profitability, net worth criteria, minimum public shareholding, and compliance with SEBI guidelines.",
               },
               {
                 question: "Who can buy shares of a Public Limited Company?",
-                answer:
-                  "Any individual (except minors), HUF, company, firm, or other legal entity can buy shares of a Public Limited Company through IPO or secondary market.",
+                answer: "Any individual (except minors), HUF, company, firm, or other legal entity can buy shares of a Public Limited Company through IPO or secondary market.",
               },
               {
-                question:
-                  "What is the time taken for Public Limited Company Registration?",
-                answer:
-                  "The complete process typically takes 15-20 days, including documentation, name approval, MOA/AOA preparation, and final certificate issuance.",
+                question: "What is the liability of owners in a Public Limited Company?",
+                answer: "Shareholders' liability is limited to the extent of their shareholding in the company. They are not personally liable for company debts beyond their investment.",
               },
               {
-                question:
-                  "What are the annual Public Company Compliance requirements?",
-                answer:
-                  "Annual compliances include filing annual returns, financial statements, board meeting requirements, AGM, statutory audit, and various other SEBI and Companies Act compliances.",
+                question: "What are the annual Public Company Compliance requirements?",
+                answer: "Annual compliances include filing annual returns, financial statements, board meeting requirements, AGM, statutory audit, and various other SEBI and Companies Act compliances.",
               },
+              {
+                question: "What are the benefits of online Public Limited Company Registration?",
+                answer: "Online registration offers faster processing, paperless documentation, transparent tracking, reduced costs, and convenient submission of documents from anywhere.",
+              },
+              {
+                question: "Can an NRI or Foreigner own a Public Limited Company?",
+                answer: "Yes, NRIs and foreigners can own shares in a Public Limited Company, subject to FDI guidelines and FEMA regulations.",
+              },
+              {
+                question: "Can an NRI or Foreigner be the director of a Public Limited Company?",
+                answer: "Yes, NRIs and foreigners can be directors, but the company must have at least one resident Indian director.",
+              },
+              {
+                question: "What is the time taken for Public Limited Company Registration?",
+                answer: "The complete process typically takes 15-20 days, including documentation, name approval, MOA/AOA preparation, and final certificate issuance.",
+              },
+              {
+                question: "What should the name of a Public Limited Company end with?",
+                answer: "The name must end with 'Limited' or 'Ltd.' to indicate its public limited status.",
+              },
+              {
+                question: "Can a minor own a Public Limited Company?",
+                answer: "No, minors (under 18 years) cannot own shares directly in a Public Limited Company. Their guardians can hold shares on their behalf.",
+              },
+              {
+                question: "What are the overall Public Company Registration fees?",
+                answer: "Fees vary based on authorized capital, state of registration, and professional charges. Basic government fees start from ₹10,999 plus applicable taxes.",
+              },
+              {
+                question: "Who is responsible for key managerial decisions?",
+                answer: "The Board of Directors, appointed by shareholders, is responsible for key managerial decisions. Major decisions require shareholder approval through general meetings.",
+              },
+              {
+                question: "How to raise funds in a Public Limited Company?",
+                answer: "Funds can be raised through IPO, FPO, rights issues, preferential allotment, private placement, or institutional placement programs.",
+              },
+              {
+                question: "What are the essential registration requirements?",
+                answer: "Requirements include minimum seven shareholders, three directors, registered office address, MOA, AOA, and compliance with capital requirements.",
+              },
+              {
+                question: "How to register a public company?",
+                answer: "The process involves obtaining DSC & DIN for promoters, name reservation, drafting MOA & AOA, filing registration application, and receiving the incorporation certificate.",
+              }
             ].map((faq, index) => (
               <motion.div
                 key={index}
