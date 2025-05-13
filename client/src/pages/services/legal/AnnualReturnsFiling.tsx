@@ -1,160 +1,140 @@
-
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
-import { ArrowRight, Check, Calendar, FileText, AlertCircle, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-const features = [
-  "Director KYC Filing",
-  "AOC-4 Filing",
-  "MGT-7/7A Filing",
-  "ADT-1 Filing",
-  "Timely Compliance",
-  "Expert Support",
-  "Document Preparation",
-  "Complete Documentation"
-];
+const AnnualReturnsFiling = () => {
+  const keyFeatures = [
+    { title: "Quick Service", description: "Fast and efficient processing" },
+    { title: "Reliable Support", description: "Expert assistance throughout" },
+    { title: "Transparent Pricing", description: "Clear and competitive rates" }
+  ];
 
-const pricingPlans = [
-  {
-    title: "Director KYC",
-    dueDate: "30 September",
-    price: "₹500",
-    description: "All directors are required to update their contact details and file a KYC annually."
-  },
-  {
-    title: "AOC-4 Filing",
-    dueDate: "30 Days After AGM",
-    price: "₹3,500",
-    description: "Filing of the audited financial statement of the company to ROC after the AGM."
-  },
-  {
-    title: "MGT-7A Filing",
-    dueDate: "60 Days After AGM",
-    price: "₹3,000",
-    description: "A mandatory filing of the company annual return with details of shareholding."
-  }
-];
+  const pricingPlans = [
+    {
+      title: "Director KYC",
+      description: "All directors are required to update their contact details and file a KYC annually.",
+      dueDate: "30 September",
+      price: "₹500/-",
+      type: "Online Order"
+    },
+    {
+      title: "Filing of AOC-4",
+      description: "Filing of the audited financial statement of the company to ROC after the AGM.",
+      dueDate: "30 Days After AGM",
+      price: "₹3500/-",
+      type: "File"
+    },
+    {
+      title: "Filing of MGT 7A",
+      description: "A mandatory filing of the company annual return with details of shareholding.",
+      dueDate: "60 Days After AGM",
+      price: "₹3000/-",
+      type: "File"
+    }
+  ];
 
-export default function AnnualReturnsFiling() {
+  const filingTypes = [
+    "Director KYC",
+    "Filing of AOC-4",
+    "Company ITR",
+    "Filing of ADT-1",
+    "Filing of MGT-7/7A"
+  ];
+
+  const faqs = [
+    {
+      question: "What is the punishment for not maintaining the books of account?",
+      answer: "Failing to maintain proper books of accounts can result in significant penalties under the Companies Act."
+    },
+    {
+      question: "Can I file a belated Income Tax Return for the Company?",
+      answer: "Yes, companies can file belated returns with additional fees and penalties."
+    },
+    {
+      question: "My company has no transaction, do I still have to file ROC Returns and ITR?",
+      answer: "Yes, filing annual returns is mandatory regardless of transaction status."
+    }
+  ];
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black pt-24">
+    <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      animate="show"
+      className="container mx-auto px-4 py-16"
+    >
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.h1
-              variants={fadeIn("up", "tween", 0.2, 1)}
-              className="text-5xl md:text-7xl font-bold bg-gradient-to-r from-green-400 to-emerald-600 bg-clip-text text-transparent mb-6"
-            >
-              Annual Returns Filing
-            </motion.h1>
-            <motion.p
-              variants={fadeIn("up", "tween", 0.3, 1)}
-              className="text-xl text-gray-300 mb-8"
-            >
-              Complete ROC compliance solution for filing AOC-4 & MGT-7 returns within due dates
-            </motion.p>
-          </motion.div>
+      <motion.section variants={fadeIn("up", "tween", 0.1, 1)} className="text-center mb-16">
+        <h1 className="text-4xl font-bold mb-4">Company Annual Return Filing</h1>
+        <p className="text-xl text-gray-400 mb-8">Filing of AOC-4 & MGT-7</p>
+        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+          Companies Incorporated in India must file annual returns to the Registrar of Companies (ROC). We help you file the annual compliance within due dates.
+        </p>
+      </motion.section>
+
+      {/* Key Features */}
+      <motion.section variants={fadeIn("up", "tween", 0.2, 1)} className="grid md:grid-cols-3 gap-8 mb-16">
+        {keyFeatures.map((feature, index) => (
+          <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
+            <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+            <p className="text-gray-400">{feature.description}</p>
+          </Card>
+        ))}
+      </motion.section>
+
+      {/* Pricing Plans */}
+      <motion.section variants={fadeIn("up", "tween", 0.3, 1)} className="mb-16">
+        <h2 className="text-3xl font-bold text-center mb-8">Pricing For Annual Filing</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {pricingPlans.map((plan, index) => (
+            <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
+              <Badge className="mb-4">{plan.type}</Badge>
+              <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
+              <p className="text-gray-400 mb-4">{plan.description}</p>
+              <p className="text-sm text-gray-500 mb-4">Due Date: {plan.dueDate}</p>
+              <p className="text-2xl font-bold text-primary">{plan.price}</p>
+            </Card>
+          ))}
         </div>
-      </section>
+      </motion.section>
 
-      {/* Pricing Section */}
-      <section className="py-20 bg-zinc-900/30">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeIn("up", "tween", 0.2, 1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-center text-white mb-16"
-          >
-            Annual Filing Packages
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
-          >
-            {pricingPlans.map((plan, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn("up", "tween", index * 0.1, 0.75)}
-                className="bg-zinc-800/30 backdrop-blur-sm rounded-xl border border-green-500/10 p-8"
-              >
-                <Clock className="w-10 h-10 text-green-400 mb-4" />
-                <h3 className="text-2xl font-semibold text-green-400 mb-2">
-                  {plan.title}
-                </h3>
-                <p className="text-gray-400 mb-4">Due Date: {plan.dueDate}</p>
-                <p className="text-3xl font-bold text-white mb-4">{plan.price}</p>
-                <p className="text-gray-300">{plan.description}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* Filing Types */}
+      <motion.section variants={fadeIn("up", "tween", 0.4, 1)} className="mb-16">
+        <h2 className="text-2xl font-bold mb-6">Annual Return Filings</h2>
+        <div className="grid md:grid-cols-2 gap-4">
+          {filingTypes.map((type, index) => (
+            <div key={index} className="flex items-center gap-2">
+              <CheckCircle2 className="text-primary w-5 h-5" />
+              <span>{type}</span>
+            </div>
+          ))}
         </div>
-      </section>
+      </motion.section>
 
-      {/* FAQ Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            variants={fadeIn("up", "tween", 0.2, 1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-center text-white mb-12"
-          >
-            Frequently Asked Questions
-          </motion.h2>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto"
-          >
-            {[
-              {
-                question: "What are the consequences of not maintaining books of account?",
-                answer: "Companies that fail to maintain proper books of accounts face penalties under the Companies Act. Directors and management can be held personally liable with fines."
-              },
-              {
-                question: "Can I file a belated Income Tax Return for the Company?",
-                answer: "Yes, companies can file belated returns with additional fees and interest charges. However, it's recommended to file within due dates to avoid penalties."
-              },
-              {
-                question: "Do I need to file ROC Returns if my company has no transactions?",
-                answer: "Yes, even companies with no business transactions must file annual returns (MGT-7) and financial statements (AOC-4) with the ROC."
-              },
-              {
-                question: "What documents are needed for ROC Return filing?",
-                answer: "Required documents include financial statements, board report, auditor's report, annual return forms, and supporting documents as per the filing requirements."
-              }
-            ].map((faq, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn("up", "tween", index * 0.1, 0.75)}
-                className="bg-zinc-800/30 backdrop-blur-sm rounded-xl border border-green-500/10 p-8"
-              >
-                <h3 className="text-xl font-semibold text-green-400 mb-4">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-300">{faq.answer}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+      {/* FAQs */}
+      <motion.section variants={fadeIn("up", "tween", 0.5, 1)} className="mb-16">
+        <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
+              <h3 className="text-lg font-bold mb-2">{faq.question}</h3>
+              <p className="text-gray-400">{faq.answer}</p>
+            </Card>
+          ))}
         </div>
-      </section>
-    </main>
+      </motion.section>
+
+      {/* CTA */}
+      <motion.section variants={fadeIn("up", "tween", 0.6, 1)} className="text-center">
+        <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600">
+          Get Started <ArrowRight className="ml-2" />
+        </Button>
+      </motion.section>
+    </motion.div>
   );
-}
+};
+
+export default AnnualReturnsFiling;
