@@ -31,6 +31,7 @@ import SaaS from "@/pages/services/it/SaaS";
 import WebDev from './pages/services/it/WebDev';
 import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
+import Compliance from './pages/services/legal/Compliance';
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
 
