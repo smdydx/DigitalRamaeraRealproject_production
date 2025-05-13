@@ -198,12 +198,7 @@ export default function Compliance() {
                   {service.items.map((item, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                      <Link 
-                        to={`/services/legal/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="text-gray-300 hover:text-green-400 transition-colors"
-                      >
-                        {item}
-                      </Link>
+                      <span className="text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
