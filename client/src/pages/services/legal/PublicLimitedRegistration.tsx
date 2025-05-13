@@ -23,6 +23,8 @@ const features = [
   "Certificate of Incorporation",
   "Company PAN & TAN",
   "100% Online Process",
+  "Payroll Software (1 Year)",
+  "Billing Software (1 Year)",
 ];
 
 const requirements = [
