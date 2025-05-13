@@ -186,13 +186,13 @@ export default function Compliance() {
             </motion.h1>
             <motion.p 
               variants={fadeIn("up", "tween", 0.3, 1)}
-              className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
+              className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed text-center px-4 sm:px-6 md:px-8"
             >
               Transforming legal compliance into a seamless journey with SOFTBEEM's expert solutions
             </motion.p>
             <motion.div 
               variants={fadeIn("up", "tween", 0.4, 1)}
-              className="flex gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Button size="lg" className="bg-green-500 hover:bg-green-600 text-lg px-8">
                 Get Started <ArrowRight className="ml-2" />
