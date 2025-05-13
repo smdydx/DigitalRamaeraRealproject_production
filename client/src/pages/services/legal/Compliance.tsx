@@ -2,6 +2,82 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/lib/animations";
+import { Building2, ScrollText, Building, CalendarCheck, Bank } from "lucide-react";
+
+const sidebarItems = [
+  {
+    title: "Company Incorporation",
+    href: "#company-incorporation",
+    icon: <Building2 className="w-5 h-5" />,
+    expandable: true,
+    id: "incorporation",
+    items: [
+      "Private Limited Company",
+      "Public Limited Company",
+      "One Person Company (OPC)",
+      "Limited Liability Partnership (LLP)",
+      "Section 8 Company",
+      "Producer Company",
+      "Nidhi Company",
+      "Foreign Company Setup"
+    ]
+  },
+  {
+    title: "Company Law Compliance",
+    href: "#law-compliance",
+    icon: <ScrollText className="w-5 h-5" />,
+    expandable: true,
+    id: "compliance",
+    items: [
+      "Annual Returns Filing",
+      "Statutory Records Maintenance",
+      "Board & General Meetings",
+      "ROC Compliance",
+      "Company Conversion",
+      "MOA & AOA Alteration"
+    ]
+  },
+  {
+    title: "Corporate Governance",
+    href: "#corporate-governance",
+    icon: <Building className="w-5 h-5" />,
+    expandable: true,
+    id: "governance",
+    items: [
+      "Governance Practices",
+      "Secretarial Audit",
+      "Code of Conduct",
+      "Committee Setup"
+    ]
+  },
+  {
+    title: "Event-Based Compliance",
+    href: "#event-compliance",
+    icon: <CalendarCheck className="w-5 h-5" />,
+    expandable: true,
+    id: "event",
+    items: [
+      "Share Allotment",
+      "Share Transfer",
+      "Buy-back",
+      "Mergers & Amalgamations",
+      "Company Strike Off"
+    ]
+  },
+  {
+    title: "FEMA & RBI Compliance",
+    href: "#fema-rbi",
+    icon: <Bank className="w-5 h-5" />,
+    expandable: true,
+    id: "fema",
+    items: [
+      "FDI Reporting",
+      "ECB Filings",
+      "Office Setup Compliance",
+      "ODI Compliance"
+    ]
+  }
+];
 
 const Compliance = () => {
   useEffect(() => {
