@@ -41,6 +41,7 @@ import ProducerCompanyRegistration from "@/pages/services/legal/ProducerCompanyR
 import NidhiCompanyRegistration from "@/pages/services/legal/NidhiCompanyRegistration";
 import ForeignCompanySetup from "@/pages/services/legal/ForeignCompanySetup";
 import Careers from "./pages/Careers";
+import AnnualReturnsFiling from "./pages/services/legal/AnnualReturnsFiling";
 import AIChatBot from './components/AIChatBot';
 
 
