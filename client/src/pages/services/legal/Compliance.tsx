@@ -5,7 +5,6 @@ import { ArrowRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Carousel } from "@/components/ui/carousel";
-import { title } from "process";
 
 const images = [
   "/images/services/business-growth.jpg",
@@ -46,20 +45,92 @@ const services = [
       "Code of Conduct & Policies",
       "Committee Setup"
     ]
-  }
-  title:"Event-Based Compliance Services",
-     items: [
-    "Allotment of Shares (Rights Issue, Private Placement, Bonus Issue)",
-    "Transfer/Transmission of Shares",
-    "Share Buy-back",
-    "Mergers, Amalgamations, and Demergers",
-    "Strike off (Closure) of Companies"
+  },
   {
-  
-
-}
-  
-  
+    title: "Event-Based Compliance Services",
+    items: [
+      "Allotment of Shares (Rights Issue, Private Placement, Bonus Issue)",
+      "Transfer/Transmission of Shares",
+      "Share Buy-back",
+      "Mergers, Amalgamations, and Demergers",
+      "Strike off (Closure) of Companies"
+    ]
+  },
+  {
+    title: "FEMA and RBI Compliance Services",
+    items: [
+      "FDI (Foreign Direct Investment) Reporting (FC-GPR, FC-TRS)",
+      "External Commercial Borrowing (ECB) filings",
+      "Liaison/Branch/Project Office Setup Compliance",
+      "ODI (Overseas Direct Investment) compliance"
+    ]
+  },
+  {
+    title: "Intellectual Property Rights Support",
+    items: [
+      "Trademark Registration",
+      "Copyright Registration",
+      "Patent Application Assistance",
+      "Drafting IP Assignment/License Agreements"
+    ]
+  },
+  {
+    title: "Legal Drafting Services",
+    items: [
+      "Shareholders Agreements",
+      "Founders Agreements",
+      "Joint Venture Agreements",
+      "Service Agreements",
+      "Employment Contracts",
+      "Non-Disclosure Agreements (NDAs)"
+    ]
+  },
+  {
+    title: "Advisory Services",
+    items: [
+      "Startup Advisory (Funding, Structuring, ESOPs)",
+      "Due Diligence Reports (for M&A, Investors)",
+      "Corporate Restructuring Advisory",
+      "Insolvency and Bankruptcy Advisory (under IBC)"
+    ]
+  },
+  {
+    title: "Labour Law Registrations and Compliance",
+    items: [
+      "Shops and Establishment Registration",
+      "Provident Fund (PF) and Employee State Insurance (ESI) Registration",
+      "Professional Tax Registration",
+      "Labour Welfare Fund compliance"
+    ]
+  },
+  {
+    title: "Certification Services",
+    items: [
+      "Secretarial Audit Reports",
+      "Compliance Certificates (e.g., for Listed Companies)",
+      "Certification under SEBI Regulations",
+      "Certification for Mergers/Amalgamations",
+      "Certification under FEMA/RBI Compliance"
+    ]
+  },
+  {
+    title: "Listing Compliance",
+    items: [
+      "BSE/NSE Listing Assistance",
+      "SEBI (LODR) Compliance",
+      "Periodic Disclosures and Filings"
+    ]
+  },
+  {
+    title: "Specialized Services",
+    items: [
+      "Virtual Company Secretary Services (for Startups and SMEs)",
+      "ESOP Structuring and Administration",
+      "Corporate Social Responsibility (CSR) Compliance",
+      "Risk Management Advisory",
+      "Internal Controls and Process Advisory"
+    ]
+  }
 ];
 
 export default function Compliance() {
