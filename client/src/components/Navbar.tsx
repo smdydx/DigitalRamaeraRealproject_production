@@ -1,3 +1,5 @@
+tags.
+<replit_final_file>
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -52,7 +54,7 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
     setServicesDropdownOpen(false);
     setOpenMobileSubmenus([]);
-    
+
     if (sectionId.startsWith('/#')) {
       if (window.location.pathname !== '/') {
         window.location.href = sectionId;
@@ -126,7 +128,7 @@ const Navbar = () => {
                               {Object.keys(servicesData).map((category) => (
                                 <button
                                   key={category}
-                                  onMouseEnter={() => setActiveServiceCategory(category)}
+                                  onMouseEnter={()={() => setActiveServiceCategory(category)}}
                                   onClick={() => setActiveServiceCategory(category)}
                                   className={`w-full text-left p-3 rounded-md transition-colors duration-200 flex justify-between items-center ${
                                     activeServiceCategory === category
