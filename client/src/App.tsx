@@ -31,12 +31,13 @@ import SaaS from "@/pages/services/it/SaaS";
 import WebDev from './pages/services/it/WebDev';
 import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
-import Compliance from './pages/services/legal/Compliance';
+import Compliance from "@/pages/services/legal/Compliance";
 import PrivateLimitedRegistration from './pages/services/legal/PrivateLimitedRegistration';
 import PublicLimitedRegistration from './pages/services/legal/PublicLimitedRegistration';
 import OPCRegistration from './pages/services/legal/OPCRegistration';
 import LLPRegistration from './pages/services/legal/LLPRegistration';
-import Section8Registration from './pages/services/legal/Section8Registration';
+import Section8Registration from "@/pages/services/legal/Section8Registration";
+import ProducerCompanyRegistration from "@/pages/services/legal/ProducerCompanyRegistration";
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
 
@@ -78,6 +79,7 @@ function Router() {
           <Route path="/services/legal/one-person-company--opc--registration" element={<OPCRegistration />} />
           <Route path="/services/legal/limited-liability-partnership--llp--registration" element={<LLPRegistration />} />
           <Route path="/services/legal/section-8--non-profit-company--registration" element={<Section8Registration />} />
+          <Route path="/services/legal/producer-company-registration" element={<ProducerCompanyRegistration />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
