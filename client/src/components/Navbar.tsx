@@ -1,5 +1,3 @@
-tags.
-<replit_final_file>
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
