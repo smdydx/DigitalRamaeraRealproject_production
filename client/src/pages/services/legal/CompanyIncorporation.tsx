@@ -28,13 +28,13 @@ const CompanyIncorporation = () => {
           <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               "Private Limited Company Registration",
+              "Public Limited Company Registration",
               "One Person Company (OPC) Registration",
-              "Limited Liability Partnership (LLP) Formation",
-              "Public Limited Company Setup",
-              "Section 8 Company Registration",
-              "Producer Company Incorporation",
+              "Limited Liability Partnership (LLP) Registration",
+              "Section 8 (Non-Profit Company) Registration",
+              "Producer Company Registration",
               "Nidhi Company Registration",
-              "Foreign Company Subsidiary Setup"
+              "Foreign Company Setup (Branch Office, Liaison Office, Project Office)"
             ].map((service, index) => (
               <div key={index} className="p-6 bg-zinc-900/50 rounded-xl border border-green-500/10 hover:border-green-500/30 transition-all">
                 <CheckCircle2 className="w-8 h-8 text-green-400 mb-4" />
