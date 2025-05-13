@@ -33,6 +33,7 @@ import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Compliance from './pages/services/legal/Compliance';
 import PrivateLimitedRegistration from './pages/services/legal/PrivateLimitedRegistration';
+import PublicLimitedRegistration from './pages/services/legal/PublicLimitedRegistration';
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
 
