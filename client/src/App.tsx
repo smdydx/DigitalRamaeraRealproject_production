@@ -22,8 +22,6 @@ import BlockExplorer from "@/pages/services/blockchain/BlockExplorer";
 import MetaverseDev from "@/pages/services/blockchain/MetaverseDev";
 import GameDev from "@/pages/services/it/GameDev";
 import AppDev from "@/pages/services/it/AppDev";
-import CompanyIncorporation from './pages/services/legal/CompanyIncorporation';
-import AnnualROCCompliance from './pages/services/legal/AnnualROCCompliance';
 import Marketing from './pages/services/digital/Marketing';
 import ITServices from "./pages/services/ITServices";
 import Dashboard from './pages/admin/Dashboard';
@@ -35,15 +33,7 @@ import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
-import SecretarialAudit from "./pages/services/legal/SecretarialAudit";
-import FemaRBICompliance from "./pages/services/legal/FemaRBICompliance";
-import IPRegistration from "./pages/services/legal/IPRegistration";
-import StartupRegistration from "./pages/services/legal/StartupRegistration";
-import LabourCompliance from "./pages/services/legal/LabourCompliance";
-import CompanyStrikeOff from "./pages/services/legal/CompanyStrikeOff";
-import CorporateGovernance from "./pages/services/legal/CorporateGovernance";
 import Legal from "./pages/Legal";
-import Fema_rbi from "./pages/samad";
 
 
 function Router() {
@@ -69,15 +59,6 @@ function Router() {
           <Route path="/services" element={<Services />} />
           <Route path="/services/legal/compliance" element={<StartBusiness />} />
           <Route path="/services/register-business" element={<RegisterBusiness />} />
-          <Route path="/services/legal/company-incorporation" element={<CompanyIncorporation />} />
-          <Route path="/services/legal/roc-compliance" element={<AnnualROCCompliance />} />
-          <Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
-          <Route path="/services/legal/fema-rbi" element={<FemaRBICompliance />} />
-          <Route path="/services/legal/ip-registration" element={<IPRegistration />} />
-          <Route path="/services/legal/startup-registration" element={<StartupRegistration />} />
-          <Route path="/services/legal/labour-compliance" element={<LabourCompliance />} />
-          <Route path="/services/legal/company-strike-off" element={<CompanyStrikeOff />} />
-          <Route path="/services/legal/corporate-governance" element={<CorporateGovernance />} />
           <Route path="/services/legal" element={<Legal />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/services/digital/marketing" element={<Marketing />} />
