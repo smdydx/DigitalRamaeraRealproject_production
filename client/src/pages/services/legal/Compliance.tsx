@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { staggerContainer, fadeIn } from "@/lib/animations";
+import { staggerContainer, fadeIn, slideIn } from "@/lib/animations";
 import { ArrowRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -15,6 +14,7 @@ const images = [
 const services = [
   {
     title: "Company Incorporation Services",
+    icon: "🏢",
     items: [
       "Private Limited Company Registration",
       "Public Limited Company Registration", 
@@ -28,6 +28,7 @@ const services = [
   },
   {
     title: "Company Law Compliance Services",
+    icon: "⚖️",
     items: [
       "Annual Returns Filing (MGT-7, AOC-4)",
       "Statutory Registers Maintenance",
@@ -39,6 +40,7 @@ const services = [
   },
   {
     title: "Corporate Governance Services",
+    icon: "🏛️",
     items: [
       "Corporate Governance Advisory",
       "Secretarial Audit",
@@ -48,6 +50,7 @@ const services = [
   },
   {
     title: "Event-Based Compliance Services",
+    icon: "📅",
     items: [
       "Allotment of Shares (Rights Issue, Private Placement, Bonus Issue)",
       "Transfer/Transmission of Shares",
@@ -58,6 +61,7 @@ const services = [
   },
   {
     title: "FEMA and RBI Compliance Services",
+    icon: "🏦",
     items: [
       "FDI (Foreign Direct Investment) Reporting (FC-GPR, FC-TRS)",
       "External Commercial Borrowing (ECB) filings",
@@ -67,6 +71,7 @@ const services = [
   },
   {
     title: "Intellectual Property Rights Support",
+    icon: "💡",
     items: [
       "Trademark Registration",
       "Copyright Registration",
@@ -76,6 +81,7 @@ const services = [
   },
   {
     title: "Legal Drafting Services",
+    icon: "✍️",
     items: [
       "Shareholders Agreements",
       "Founders Agreements",
@@ -87,6 +93,7 @@ const services = [
   },
   {
     title: "Advisory Services",
+    icon: "🧑‍💼",
     items: [
       "Startup Advisory (Funding, Structuring, ESOPs)",
       "Due Diligence Reports (for M&A, Investors)",
@@ -96,6 +103,7 @@ const services = [
   },
   {
     title: "Labour Law Registrations and Compliance",
+    icon: "👷",
     items: [
       "Shops and Establishment Registration",
       "Provident Fund (PF) and Employee State Insurance (ESI) Registration",
@@ -105,6 +113,7 @@ const services = [
   },
   {
     title: "Certification Services",
+    icon: "📜",
     items: [
       "Secretarial Audit Reports",
       "Compliance Certificates (e.g., for Listed Companies)",
@@ -115,6 +124,7 @@ const services = [
   },
   {
     title: "Listing Compliance",
+    icon: "📈",
     items: [
       "BSE/NSE Listing Assistance",
       "SEBI (LODR) Compliance",
@@ -123,6 +133,7 @@ const services = [
   },
   {
     title: "Specialized Services",
+    icon: "💼",
     items: [
       "Virtual Company Secretary Services (for Startups and SMEs)",
       "ESOP Structuring and Administration",
@@ -135,50 +146,68 @@ const services = [
 
 export default function Compliance() {
   return (
-    <main className="min-h-screen bg-zinc-900 pt-24">
-      {/* Hero Section */}
-      <section className="relative h-[80vh] overflow-hidden">
-        <div className="absolute inset-0">
-          <Carousel className="h-full">
+    <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black pt-24 overflow-hidden">
+      {/* Hero Section with Parallax Effect */}
+      <section className="relative h-[90vh] overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
+        >
+          <Carousel className="h-full" autoplay interval={5000}>
             {images.map((image, index) => (
-              <div key={index} className="relative h-full">
+              <motion.div 
+                key={index} 
+                className="relative h-full"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 6 }}
+              >
                 <img src={image} alt="Legal Services" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black/50" />
-              </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-zinc-900" />
+              </motion.div>
             ))}
           </Carousel>
-        </div>
-        
+        </motion.div>
+
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="max-w-3xl"
+            className="max-w-4xl"
           >
             <motion.h1 
               variants={fadeIn("up", "tween", 0.2, 1)}
-              className="text-5xl md:text-6xl font-bold text-white mb-6"
+              className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-8 leading-tight"
             >
-              Start Right. Build Smart. Grow Legally.
+              Legal Excellence Meets Digital Innovation
             </motion.h1>
             <motion.p 
               variants={fadeIn("up", "tween", 0.3, 1)}
-              className="text-xl text-gray-200 mb-8"
+              className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed"
             >
-              At SOFTBEEM, powered by RAMAERA Legal Infotech Pvt Ltd, we offer end-to-end company incorporation services to help entrepreneurs, startups, and corporates establish legally compliant entities in India — quickly, seamlessly, and affordably.
+              Transforming legal compliance into a seamless journey with SOFTBEEM's expert solutions
             </motion.p>
-            <motion.div variants={fadeIn("up", "tween", 0.4, 1)}>
-              <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
-                <Link to="#contact">Get Started <ArrowRight className="ml-2" /></Link>
+            <motion.div 
+              variants={fadeIn("up", "tween", 0.4, 1)}
+              className="flex gap-4"
+            >
+              <Button size="lg" className="bg-green-500 hover:bg-green-600 text-lg px-8">
+                Get Started <ArrowRight className="ml-2" />
+              </Button>
+              <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 text-lg px-8">
+                Learn More
               </Button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="py-20">
+      {/* Services Grid with Hover Effects */}
+      <section className="py-20 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(74,222,128,0.1),_transparent_50%)]" />
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
@@ -190,13 +219,25 @@ export default function Compliance() {
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                variants={fadeIn("up", "tween", 0.2 * index, 1)}
-                className="bg-zinc-800/50 p-8 rounded-xl border border-green-500/20"
+                variants={fadeIn("up", "spring", index * 0.1, 0.75)}
+                whileHover={{ scale: 1.02 }}
+                className="group bg-zinc-800/30 backdrop-blur-sm p-8 rounded-2xl border border-green-500/10 hover:border-green-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(74,222,128,0.1)]"
               >
-                <h3 className="text-2xl font-bold text-green-400 mb-6">{service.title}</h3>
+                <div className="flex items-center gap-3 mb-6">
+                  <span className="text-3xl">{service.icon}</span>
+                  <h3 className="text-2xl font-bold text-green-400 group-hover:text-green-300 transition-colors">
+                    {service.title}
+                  </h3>
+                </div>
                 <ul className="space-y-4">
                   {service.items.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
+                    <motion.li 
+                      key={idx} 
+                      className="flex items-start gap-3"
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                    >
                       <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
                       <Link 
                         to={`/services/legal/${item.toLowerCase().replace(/[\s()]/g, '-')}`}
@@ -204,7 +245,7 @@ export default function Compliance() {
                       >
                         {item}
                       </Link>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
               </motion.div>
