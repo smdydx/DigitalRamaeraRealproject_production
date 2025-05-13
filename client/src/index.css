@@ -604,9 +604,23 @@ main {
 
 /* Legal pages responsive styles */
 .legal-hero {
-  min-height: 400px;
-  position: relative;
-  padding: 2rem 1rem;
+  min-height: 250px;
+  padding: 1rem;
+  margin-top: 4rem;
+}
+
+.min-h-screen {
+  padding-top: 0 !important;
+}
+
+.pt-24 {
+  padding-top: 4rem !important;
+}
+
+@media (min-width: 768px) {
+  .pt-24 {
+    padding-top: 5rem !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -614,12 +628,12 @@ main {
     min-height: 250px;
     padding: 1rem;
   }
-  
+
   .legal-hero h1 {
     font-size: 1.75rem !important;
     line-height: 2.25rem !important;
   }
-  
+
   .legal-hero p {
     font-size: 0.875rem !important;
     line-height: 1.25rem !important;

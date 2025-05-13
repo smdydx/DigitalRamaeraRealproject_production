@@ -148,7 +148,7 @@ export default function Compliance() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black pt-24 overflow-hidden">
       {/* Hero Section with Parallax Effect */}
-      <section className="relative h-[90vh] overflow-hidden">
+      <section className="relative h-[80vh] md:h-[85vh] overflow-hidden mt-16 md:mt-20">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -164,7 +164,7 @@ export default function Compliance() {
                 animate={{ scale: 1 }}
                 transition={{ duration: 6 }}
               >
-                <img src={image} alt="Legal Services" className="w-full h-full object-cover" />
+                <img src={`/images/services/${image}`} alt="Legal Services" className="w-full h-full object-cover" loading="eager" />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-zinc-900" />
               </motion.div>
             ))}
