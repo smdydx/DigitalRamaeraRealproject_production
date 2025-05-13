@@ -24,14 +24,6 @@ import GameDev from "@/pages/services/it/GameDev";
 import AppDev from "@/pages/services/it/AppDev";
 import CompanyIncorporation from './pages/services/legal/CompanyIncorporation';
 import AnnualROCCompliance from './pages/services/legal/AnnualROCCompliance';
-import SecretarialAudit from './pages/services/legal/SecretarialAudit';
-import FemaRBICompliance from './pages/services/legal/FemaRBICompliance';
-import IPRegistration from './pages/services/legal/IPRegistration';
-import StartupRegistration from './pages/services/legal/StartupRegistration';
-import LabourCompliance from './pages/services/legal/LabourCompliance';
-import CompanyStrikeOff from './pages/services/legal/CompanyStrikeOff';
-import CorporateGovernance from './pages/services/legal/CorporateGovernance';
-import Legal from './pages/services/legal/Legal';
 import Marketing from './pages/services/digital/Marketing';
 import ITServices from "./pages/services/ITServices";
 import Dashboard from './pages/admin/Dashboard';
@@ -43,9 +35,7 @@ import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Careers from "./pages/Careers"; // Added import for Careers page
 // ...existing code...
-import StartBusinessIndia from './pages/services/legal/StartBusinessIndia';
 // ...existing code...
-import Fema_rbi from './pages/services/legal/Fema_rbi'; // Added import for Samad page
 
 
 import AIChatBot from './components/AIChatBot';
