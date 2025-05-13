@@ -322,6 +322,59 @@ export default function LLPRegistration() {
           </motion.div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-center text-white mb-12"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            {[
+              {
+                question: "What is LLP Registration?",
+                answer: "LLP (Limited Liability Partnership) Registration is a process of incorporating a business entity that combines the benefits of a partnership firm and a company. It provides limited liability protection to partners while maintaining operational flexibility."
+              },
+              {
+                question: "What are the key benefits of LLP?",
+                answer: "Key benefits include limited liability protection for partners, flexible internal management, lower compliance requirements compared to companies, and no minimum capital requirement."
+              },
+              {
+                question: "What documents are required for LLP Registration?",
+                answer: "Required documents include PAN cards, address proofs, photographs of partners, proof of registered office address, and digital signature certificates (DSC) for designated partners."
+              },
+              {
+                question: "How long does LLP registration take?",
+                answer: "The complete LLP registration process typically takes 10-15 days, including documentation, name approval, DSC creation, and final registration certificate issuance."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn("up", "tween", index * 0.1, 0.75)}
+                className="bg-zinc-800/30 backdrop-blur-sm rounded-xl border border-green-500/10 p-8 hover:border-green-500/30 transition-all duration-300"
+              >
+                <h3 className="text-xl font-semibold text-green-400 mb-4">
+                  {faq.question}
+                </h3>
+                <p className="text-gray-300">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }

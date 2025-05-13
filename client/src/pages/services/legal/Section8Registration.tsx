@@ -367,6 +367,59 @@ export default function Section8Registration() {
           </motion.div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-center text-white mb-12"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          >
+            {[
+              {
+                question: "What is a Section 8 Company?",
+                answer: "A Section 8 Company is a non-profit organization registered under Section 8 of the Companies Act, 2013. It promotes charitable causes, including education, art, science, sports, social welfare, research, and environmental protection."
+              },
+              {
+                question: "What are the tax benefits for Section 8 Companies?",
+                answer: "Section 8 Companies enjoy various tax benefits including income tax exemption under Section 12AA, 80G benefits for donors, and exemption from CSR contributions when made to Section 8 companies."
+              },
+              {
+                question: "What is the process of Section 8 registration?",
+                answer: "The process involves obtaining DSC and DIN, applying for name approval, getting Section 8 license from Central Government, and then filing incorporation documents with ROC to get the final registration certificate."
+              },
+              {
+                question: "What are the eligibility requirements?",
+                answer: "The organization must be formed for charitable or not-for-profit purposes, should apply its profits towards its objectives, and prohibit payment of dividends to members. It requires minimum 2 directors and members."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn("up", "tween", index * 0.1, 0.75)}
+                className="bg-zinc-800/30 backdrop-blur-sm rounded-xl border border-green-500/10 p-8 hover:border-green-500/30 transition-all duration-300"
+              >
+                <h3 className="text-xl font-semibold text-green-400 mb-4">
+                  {faq.question}
+                </h3>
+                <p className="text-gray-300">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 }
