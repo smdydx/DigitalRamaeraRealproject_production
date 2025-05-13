@@ -299,7 +299,7 @@
   }
 
   .hero-text-mobile {
-    font-size: 1rem !important;
+    font-size: clamp(1rem, 4vw, 1.5rem) !important;
     margin-top: 0.5rem;
     display: flex;
     flex-direction: row;
@@ -307,6 +307,13 @@
     gap: 0.25rem;
     flex-wrap: nowrap;
     width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    .hero-text-mobile {
+      justify-content: center;
+      text-align: center;
+    }
   }
 
   .desktop-nav {
