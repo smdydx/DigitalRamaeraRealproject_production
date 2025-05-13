@@ -34,6 +34,7 @@ import Cloud from './pages/services/it/Cloud';
 import Compliance from './pages/services/legal/Compliance';
 import PrivateLimitedRegistration from './pages/services/legal/PrivateLimitedRegistration';
 import PublicLimitedRegistration from './pages/services/legal/PublicLimitedRegistration';
+import OPCRegistration from './pages/services/legal/OPCRegistration';
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
 
@@ -72,6 +73,7 @@ function Router() {
           <Route path="/services/legal/compliance" element={<Compliance />} />
           <Route path="/services/legal/private-limited-company-registration" element={<PrivateLimitedRegistration />} />
           <Route path="/services/legal/public-limited-company-registration" element={<PublicLimitedRegistration />} />
+          <Route path="/services/legal/one-person-company-opc-registration" element={<OPCRegistration />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
