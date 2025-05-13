@@ -33,7 +33,6 @@ import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
-import Legal from "./pages/Legal";
 
 
 function Router() {
@@ -57,9 +56,6 @@ function Router() {
           <Route path="/services/it/game-dev" element={<GameDev />} />
           <Route path="/services/it/app-dev" element={<AppDev />} />
           <Route path="/services" element={<Services />} />
-          <Route path="/services/legal/compliance" element={<StartBusiness />} />
-          <Route path="/services/register-business" element={<RegisterBusiness />} />
-          <Route path="/services/legal" element={<Legal />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/services/digital/marketing" element={<Marketing />} />
           <Route path="/services/it-services" element={<ITServices />} />
