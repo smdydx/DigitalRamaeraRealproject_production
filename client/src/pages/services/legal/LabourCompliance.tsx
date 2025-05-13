@@ -1,8 +1,7 @@
+
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "@/lib/animations";
-import { Button } from "@/components/ui/button";
-import { PhoneCall, Mail, CheckCircle2 } from "lucide-react";
 
 const LabourCompliance = () => {
   // Scroll to top on mount
