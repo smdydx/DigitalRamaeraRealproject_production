@@ -32,6 +32,7 @@ import WebDev from './pages/services/it/WebDev';
 import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
 import Compliance from './pages/services/legal/Compliance';
+import PrivateLimitedRegistration from './pages/services/legal/PrivateLimitedRegistration';
 import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
 
@@ -68,6 +69,7 @@ function Router() {
           <Route path="/services/it/mobile" element={<Mobile />} />
           <Route path="/services/it/cloud" element={<Cloud />} /> 
           <Route path="/services/legal/compliance" element={<Compliance />} />
+          <Route path="/services/legal/private-limited-company-registration" element={<PrivateLimitedRegistration />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
