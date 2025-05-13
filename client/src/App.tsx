@@ -66,6 +66,7 @@ function Router() {
           <Route path="/services/it/web-dev" element={<WebDev />} />
           <Route path="/services/it/mobile" element={<Mobile />} />
           <Route path="/services/it/cloud" element={<Cloud />} /> 
+          <Route path="/services/legal/compliance" element={<Compliance />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
