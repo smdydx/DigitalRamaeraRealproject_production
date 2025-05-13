@@ -52,7 +52,12 @@ const Navbar = () => {
     setIsMobileMenuOpen(false);
     setServicesDropdownOpen(false);
     setOpenMobileSubmenus([]);
+    
     if (sectionId.startsWith('/#')) {
+      if (window.location.pathname !== '/') {
+        window.location.href = sectionId;
+        return;
+      }
       const element = document.getElementById(sectionId.substring(2));
       if (element) {
         const y = element.getBoundingClientRect().top + window.pageYOffset - 80;
