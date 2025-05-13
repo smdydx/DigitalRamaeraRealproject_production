@@ -33,13 +33,17 @@ import SaaS from "@/pages/services/it/SaaS";
 import WebDev from './pages/services/it/WebDev';
 import Mobile from './pages/services/it/Mobile';
 import Cloud from './pages/services/it/Cloud'; 
-import Careers from "./pages/Careers"; // Added import for Careers page
-// ...existing code...
-// ...existing code...
-
-
+import Careers from "./pages/Careers";
 import AIChatBot from './components/AIChatBot';
-import { Import } from "lucide-react";
+import SecretarialAudit from "./pages/services/legal/SecretarialAudit";
+import FemaRBICompliance from "./pages/services/legal/FemaRBICompliance";
+import IPRegistration from "./pages/services/legal/IPRegistration";
+import StartupRegistration from "./pages/services/legal/StartupRegistration";
+import LabourCompliance from "./pages/services/legal/LabourCompliance";
+import CompanyStrikeOff from "./pages/services/legal/CompanyStrikeOff";
+import CorporateGovernance from "./pages/services/legal/CorporateGovernance";
+import Legal from "./pages/Legal";
+import Fema_rbi from "./pages/samad";
 
 
 function Router() {
@@ -47,7 +51,7 @@ function Router() {
     <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-grow pt-20 md:pt-24 pb-16">
-        <AIChatBot /> {/* Added AIChatBot component */}
+        <AIChatBot />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -64,7 +68,6 @@ function Router() {
           <Route path="/services/it/app-dev" element={<AppDev />} />
           <Route path="/services" element={<Services />} />
           <Route path="/services/legal/compliance" element={<StartBusiness />} />
-          <Route path="/services/legal/start-business-india" element={<StartBusinessIndia />} />
           <Route path="/services/register-business" element={<RegisterBusiness />} />
           <Route path="/services/legal/company-incorporation" element={<CompanyIncorporation />} />
           <Route path="/services/legal/roc-compliance" element={<AnnualROCCompliance />} />
@@ -86,7 +89,7 @@ function Router() {
           <Route path="/services/it/web-dev" element={<WebDev />} />
           <Route path="/services/it/mobile" element={<Mobile />} />
           <Route path="/services/it/cloud" element={<Cloud />} /> 
-          <Route path="/careers" element={<Careers />} /> {/* Added route for Careers page */}
+          <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/samad" element={<Fema_rbi />} />
 
