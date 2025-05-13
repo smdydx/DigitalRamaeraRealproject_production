@@ -346,6 +346,72 @@ export default function OPCRegistration() {
       </section>
 
       {/* Contact Section */}
+      {/* FAQ Section */}
+      <section className="py-20 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-center text-white mb-12"
+          >
+            Frequently Asked Questions
+          </motion.h2>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto space-y-6"
+          >
+            {[
+              {
+                question: "What is the difference between One Person Company and Other Forms of Business?",
+                answer: "One Person Company (OPC) is a unique business structure that combines the benefits of sole proprietorship with the advantages of a company. Unlike other business forms, OPC requires only one shareholder and director, offers limited liability protection, and maintains a separate legal entity status. It differs from sole proprietorship in terms of liability protection and from private limited companies in terms of minimum member requirements."
+              },
+              {
+                question: "What is One Person Company Registration cost in India?",
+                answer: "The basic registration cost for an OPC starts from ₹3,499 (professional fees). Additional costs include government fees which vary based on authorized capital, state registration charges, and optional services like GST registration. The total cost typically includes DSC charges, DIN fees, ROC filing fees, and stamp duty."
+              },
+              {
+                question: "Can an individual become a shareholder in more than one OPC?",
+                answer: "No, an individual cannot become a shareholder in more than one OPC. As per the Companies Act, 2013, a person can incorporate only one OPC or become the nominee of only one OPC. This restriction is placed to prevent misuse of the OPC structure."
+              },
+              {
+                question: "What is a nomination in OPC Registration?",
+                answer: "Nomination in OPC registration is a mandatory requirement where the sole shareholder must nominate another person who can take over the company in case of the shareholder's death or incapacity. The nominee's written consent is required, and they should be an Indian resident."
+              },
+              {
+                question: "How to register OPC in India?",
+                answer: "The OPC registration process involves: 1) Obtaining DSC and DIN for the director, 2) Name approval through RUN form, 3) Filing incorporation documents (MOA/AOA), 4) Submitting SPICE+ form with all required documents, 5) Receiving the Certificate of Incorporation from ROC."
+              },
+              {
+                question: "What are the forms on which the director or shareholder of the OPC must sign?",
+                answer: "The director/shareholder must sign various forms including: SPICe+ (INC-32) for incorporation, INC-33 (MOA), INC-34 (AOA), DIR-2 (Director consent), INC-3 (Nominee consent), and other compliance-related forms like MGT-7 (Annual Return) and AOC-4 (Financial Statements)."
+              },
+              {
+                question: "What is the prescribed format for NOC filed to register OPC company in India?",
+                answer: "The NOC (No Objection Certificate) for registered office must be obtained from the property owner. It should clearly state the owner's consent to use the premises as registered office, complete address details, and period of validity. The NOC must be on stamp paper and notarized as per local requirements."
+              }
+            ].map((faq, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn("up", "tween", index * 0.1, 0.75)}
+                className="bg-zinc-800/30 backdrop-blur-sm rounded-xl border border-green-500/10 p-8 hover:border-green-500/30 transition-all duration-300"
+              >
+                <h3 className="text-xl font-semibold text-green-400 mb-4">
+                  {faq.question}
+                </h3>
+                <p className="text-gray-300">{faq.answer}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <motion.div
