@@ -84,6 +84,7 @@ function Router() {
           <Route path="/services/legal/producer-company-registration" element={<ProducerCompanyRegistration />} />
           <Route path="/services/legal/nidhi-company-registration" element={<NidhiCompanyRegistration />} />
           <Route path="/services/legal/foreign-company-setup" element={<ForeignCompanySetup />} />
+          <Route path="/services/legal/annual-returns-filing--mgt-7,-aoc-4-" element={<AnnualReturnsFiling />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
