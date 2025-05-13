@@ -180,7 +180,7 @@ export default function Compliance() {
           >
             <motion.h1 
               variants={fadeIn("up", "tween", 0.2, 1)}
-              className="text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-8 leading-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-4 sm:mb-6 md:mb-8 leading-tight"
             >
               Legal Excellence Meets Digital Innovation
             </motion.h1>
@@ -214,7 +214,7 @@ export default function Compliance() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8"
           >
             {services.map((service, index) => (
               <motion.div

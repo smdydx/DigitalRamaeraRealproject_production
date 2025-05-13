@@ -602,7 +602,24 @@ main {
   padding: 2rem 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 640px) {
+  .legal-hero {
+    min-height: 250px;
+    padding: 1rem;
+  }
+  
+  .legal-hero h1 {
+    font-size: 1.75rem !important;
+    line-height: 2.25rem !important;
+  }
+  
+  .legal-hero p {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
   .legal-hero {
     min-height: 300px;
     padding: 1.5rem 1rem;
@@ -616,6 +633,13 @@ main {
   .legal-hero p {
     font-size: 1rem !important;
     line-height: 1.5rem !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .legal-hero {
+    min-height: 350px;
+    padding: 1.75rem;
   }
 }
 
