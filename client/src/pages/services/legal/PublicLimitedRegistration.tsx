@@ -477,14 +477,14 @@ export default function PublicLimitedRegistration() {
                 size="lg"
                 className="bg-green-500 hover:bg-green-600 text-lg gap-2"
               >
-                <Mail /> contact@company.com
+                <Mail /> support@ramaera.com
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-green-500 text-green-500 hover:bg-green-500/10 text-lg gap-2"
               >
-                <Phone /> +91 98996 00605
+                <Phone /> +911169310715
               </Button>
             </motion.div>
           </motion.div>
