@@ -1,10 +1,9 @@
-
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, FileText, Scale, Shield, Award, Globe, Book, Gavel, Landmark, FileSignature, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Carousel } from "@/components/ui/carousel";
+import { Card } from "@/components/ui/card";
 
 const images = [
   "/images/services/business-growth.jpg",
@@ -14,30 +13,28 @@ const images = [
 
 const services = [
   {
+    icon: <FileText className="w-8 h-8 text-green-400" />,
     title: "Company Incorporation Services",
     items: [
       "Private Limited Company Registration",
       "Public Limited Company Registration", 
       "One Person Company (OPC) Registration",
       "Limited Liability Partnership (LLP) Registration",
-      "Section 8 (Non-Profit Company) Registration",
-      "Producer Company Registration",
-      "Nidhi Company Registration",
-      "Foreign Company Setup"
+      "Section 8 (Non-Profit Company) Registration"
     ]
   },
   {
+    icon: <Scale className="w-8 h-8 text-blue-400" />,
     title: "Company Law Compliance Services",
     items: [
       "Annual Returns Filing (MGT-7, AOC-4)",
       "Statutory Registers Maintenance",
       "Board & General Meetings",
-      "ROC Compliance Filings",
-      "Company Conversions",
-      "MOA and AOA Alterations"
+      "ROC Compliance Filings"
     ]
   },
   {
+    icon: <Shield className="w-8 h-8 text-purple-400" />,
     title: "Corporate Governance Services",
     items: [
       "Corporate Governance Advisory",
@@ -47,45 +44,37 @@ const services = [
     ]
   },
   {
-    title: "Event-Based Compliance Services",
-    items: [
-      "Allotment of Shares (Rights Issue, Private Placement, Bonus Issue)",
-      "Transfer/Transmission of Shares",
-      "Share Buy-back",
-      "Mergers, Amalgamations, and Demergers",
-      "Strike off (Closure) of Companies"
-    ]
-  },
-  {
+    icon: <Globe className="w-8 h-8 text-cyan-400" />,
     title: "FEMA and RBI Compliance Services",
     items: [
-      "FDI (Foreign Direct Investment) Reporting (FC-GPR, FC-TRS)",
-      "External Commercial Borrowing (ECB) filings",
-      "Liaison/Branch/Project Office Setup Compliance",
-      "ODI (Overseas Direct Investment) compliance"
+      "FDI Reporting (FC-GPR, FC-TRS)",
+      "External Commercial Borrowing Filings",
+      "Liaison Office Setup Compliance",
+      "ODI Compliance"
     ]
   },
   {
-    title: "Intellectual Property Rights Support",
+    icon: <Award className="w-8 h-8 text-amber-400" />,
+    title: "Intellectual Property Rights",
     items: [
       "Trademark Registration",
       "Copyright Registration",
       "Patent Application Assistance",
-      "Drafting IP Assignment/License Agreements"
+      "IP Assignment Agreements"
     ]
   },
   {
+    icon: <FileSignature className="w-8 h-8 text-rose-400" />,
     title: "Legal Drafting Services",
     items: [
       "Shareholders Agreements",
-      "Founders Agreements",
       "Joint Venture Agreements",
       "Service Agreements",
-      "Employment Contracts",
-      "Non-Disclosure Agreements (NDAs)"
+      "Employment Contracts"
     ]
   },
   {
+    icon: <Users className="w-8 h-8 text-gray-400" />,
     title: "Advisory Services",
     items: [
       "Startup Advisory (Funding, Structuring, ESOPs)",
@@ -95,6 +84,7 @@ const services = [
     ]
   },
   {
+    icon: <Landmark className="w-8 h-8 text-orange-400" />,
     title: "Labour Law Registrations and Compliance",
     items: [
       "Shops and Establishment Registration",
@@ -104,6 +94,7 @@ const services = [
     ]
   },
   {
+    icon: <Book className="w-8 h-8 text-teal-400" />,
     title: "Certification Services",
     items: [
       "Secretarial Audit Reports",
@@ -114,6 +105,7 @@ const services = [
     ]
   },
   {
+    icon: <Gavel className="w-8 h-8 text-lime-400" />,
     title: "Listing Compliance",
     items: [
       "BSE/NSE Listing Assistance",
@@ -122,6 +114,7 @@ const services = [
     ]
   },
   {
+    icon: <Shield className="w-8 h-8 text-indigo-400" />,
     title: "Specialized Services",
     items: [
       "Virtual Company Secretary Services (for Startups and SMEs)",
@@ -135,20 +128,20 @@ const services = [
 
 export default function Compliance() {
   return (
-    <main className="min-h-screen bg-zinc-900 pt-24">
+    <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black pt-24">
       {/* Hero Section */}
       <section className="relative h-[80vh] overflow-hidden">
         <div className="absolute inset-0">
-          <Carousel className="h-full">
-            {images.map((image, index) => (
-              <div key={index} className="relative h-full">
-                <img src={image} alt="Legal Services" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black/50" />
-              </div>
-            ))}
-          </Carousel>
+          <div className="relative h-full">
+            <img 
+              src={images[0]} 
+              alt="Legal Services" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60" />
+          </div>
         </div>
-        
+
         <div className="relative container mx-auto px-4 h-full flex items-center">
           <motion.div
             variants={staggerContainer}
@@ -160,17 +153,17 @@ export default function Compliance() {
               variants={fadeIn("up", "tween", 0.2, 1)}
               className="text-5xl md:text-6xl font-bold text-white mb-6"
             >
-              Start Right. Build Smart. Grow Legally.
+              Legal & Compliance Solutions
             </motion.h1>
             <motion.p 
               variants={fadeIn("up", "tween", 0.3, 1)}
               className="text-xl text-gray-200 mb-8"
             >
-              At SOFTBEEM, powered by RAMAERA Legal Infotech Pvt Ltd, we offer end-to-end company incorporation services to help entrepreneurs, startups, and corporates establish legally compliant entities in India — quickly, seamlessly, and affordably.
+              Comprehensive legal and compliance services to protect and grow your business with confidence.
             </motion.p>
             <motion.div variants={fadeIn("up", "tween", 0.4, 1)}>
               <Button asChild size="lg" className="bg-green-500 hover:bg-green-600">
-                <Link to="#contact">Get Started <ArrowRight className="ml-2" /></Link>
+                <Link to="/schedule">Schedule Consultation <ArrowRight className="ml-2" /></Link>
               </Button>
             </motion.div>
           </motion.div>
@@ -191,17 +184,19 @@ export default function Compliance() {
               <motion.div
                 key={index}
                 variants={fadeIn("up", "tween", 0.2 * index, 1)}
-                className="bg-zinc-800/50 p-8 rounded-xl border border-green-500/20"
               >
-                <h3 className="text-2xl font-bold text-green-400 mb-6">{service.title}</h3>
-                <ul className="space-y-4">
-                  {service.items.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                      <span className="text-gray-300">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+                <Card className="p-6 bg-zinc-800/50 border-green-500/20 hover:border-green-500/40 transition-all duration-300">
+                  <div className="mb-6">{service.icon}</div>
+                  <h3 className="text-2xl font-bold text-green-400 mb-6">{service.title}</h3>
+                  <ul className="space-y-4">
+                    {service.items.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-3">
+                        <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                        <span className="text-gray-300">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
               </motion.div>
             ))}
           </motion.div>
