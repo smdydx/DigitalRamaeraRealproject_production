@@ -9,22 +9,27 @@ const benefits = [
   {
     icon: <Shield className="w-12 h-12 text-green-400" />,
     title: "Retain and Grow Brands",
-    description: "Continue LLP's legacy and transfer IPR rights without capital gain"
+    description: "Continue LLP's legacy and transfer IPR rights without capital gain. Brand reputation is preserved through conversion."
   },
   {
     icon: <Building className="w-12 h-12 text-green-400" />,
     title: "Carry Forward Benefits",
-    description: "Transfer unabsorbed losses and depreciation to new company"
+    description: "Transfer unabsorbed losses and depreciation under Income Tax Act to the new private limited company"
   },
   {
     icon: <Clock className="w-12 h-12 text-green-400" />,
     title: "Ease in Fund Raising",
-    description: "Better access to investors with simplified share allotment"
+    description: "Simplified share allotment and verifiable company details at MCA attract investors"
   },
   {
     icon: <Users className="w-12 h-12 text-green-400" />,
     title: "ESOP Benefits",
-    description: "Ability to offer employee stock options"
+    description: "Implement registered ESOP plans to retain talent, especially beneficial for IT sector"
+  },
+  {
+    icon: <FileText className="w-12 h-12 text-green-400" />,
+    title: "No Capital Gain Tax",
+    description: "Asset transfer during conversion is exempt from capital gain tax as LLP is replaced by company"
   }
 ];
 
