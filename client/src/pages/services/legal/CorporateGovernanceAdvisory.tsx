@@ -1,55 +1,8 @@
 
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, FileCheck, Clock, Building2, Users, Shield, HelpCircle } from "lucide-react";
+import { ArrowRight, FileCheck, Clock, Building2, Users, Shield, FileText, HelpCircle } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
-const benefitsData = [
-  {
-    icon: <Shield className="w-12 h-12 text-green-400" />,
-    title: "Limited Liability",
-    description: "Protects personal assets of shareholders"
-  },
-  {
-    icon: <Building2 className="w-12 h-12 text-green-400" />,
-    title: "Separate Legal Entity",
-    description: "Own property and enter contracts independently"
-  },
-  {
-    icon: <Users className="w-12 h-12 text-green-400" />,
-    title: "Perpetual Succession",
-    description: "Business continues even after ownership changes"
-  },
-  {
-    icon: <FileCheck className="w-12 h-12 text-green-400" />,
-    title: "Tax Advantages",
-    description: "Eligible for various tax exemptions and benefits"
-  }
-];
-
-const faqData = [
-  {
-    question: "What is the minimum capital required?",
-    answer: "There is no mandatory minimum capital requirement for incorporation."
-  },
-  {
-    question: "Can one person start a Private Limited Company?",
-    answer: "No, at least 2 shareholders and 2 directors are needed for incorporation."
-  },
-  {
-    question: "Is a physical office address necessary?",
-    answer: "Yes, a physical office address is required. A residential address is acceptable with valid proof."
-  },
-  {
-    question: "How much time does the process take?",
-    answer: "The typical timeline is 5-7 working days for complete incorporation."
-  },
-  {
-    question: "Can foreigners be shareholders or directors?",
-    answer: "Yes, foreigners can be shareholders or directors, but at least one director must be a resident of India."
-  }
-];
 
 export default function CorporateGovernanceAdvisory() {
   return (
@@ -73,7 +26,7 @@ export default function CorporateGovernanceAdvisory() {
               variants={fadeIn("up", "tween", 0.3, 1)}
               className="text-gray-400 max-w-2xl mx-auto mb-8"
             >
-              Expert guidance for startups and businesses through seamless incorporation and compliance with the Companies Act, 2013
+              Expert guidance through corporate governance and incorporation with full compliance and support
             </motion.p>
           </motion.div>
         </div>
@@ -93,7 +46,7 @@ export default function CorporateGovernanceAdvisory() {
               variants={fadeIn("up", "tween", 0.2, 1)}
               className="text-3xl font-bold text-green-400 mb-8 text-center"
             >
-              Pricing & Timeline
+              Pricing & Government Fees
             </motion.h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-zinc-800/50 p-6 rounded-lg">
@@ -101,12 +54,11 @@ export default function CorporateGovernanceAdvisory() {
                 <p className="text-gray-300">Starts at ₹3,499 (exclusive of government fees and taxes)</p>
               </div>
               <div className="bg-zinc-800/50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-green-400 mb-4">Timeline</h3>
-                <p className="text-gray-300">5-7 Working Days</p>
-                <ul className="mt-4 space-y-2 text-gray-400">
-                  <li>• Day 1-2: Document collection, DSC</li>
-                  <li>• Day 3-4: Name reservation, MOA/AOA drafting</li>
-                  <li>• Day 5-7: Form filing & incorporation certificate</li>
+                <h3 className="text-xl font-semibold text-green-400 mb-4">Government Fee</h3>
+                <p className="text-gray-300">Varies based on:</p>
+                <ul className="mt-2 space-y-2 text-gray-400">
+                  <li>• The authorized capital of the company</li>
+                  <li>• The state of incorporation</li>
                 </ul>
               </div>
             </div>
@@ -114,7 +66,7 @@ export default function CorporateGovernanceAdvisory() {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Process Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.h2
@@ -124,29 +76,68 @@ export default function CorporateGovernanceAdvisory() {
             viewport={{ once: true }}
             className="text-3xl font-bold text-green-400 mb-12 text-center"
           >
-            Benefits of Private Limited Company
+            Incorporation Process
           </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefitsData.map((benefit, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeIn("up", "tween", 0.2 * idx, 1)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="text-center p-6 bg-zinc-800/30 rounded-lg"
-              >
-                <div className="flex justify-center mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold text-green-400 mb-2">{benefit.title}</h3>
-                <p className="text-gray-400">{benefit.description}</p>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-zinc-800/30 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-green-400 mb-4">Process Steps</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li>• DSC (Digital Signature Certificate) for all promoters</li>
+                <li>• DIN (Director Identification Number)</li>
+                <li>• Company name reservation via RUN</li>
+                <li>• Drafting of MOA & AOA</li>
+                <li>• Filing the SPICe+ form with ROC</li>
+                <li>• Issuance of Certificate of Incorporation, PAN & TAN</li>
+              </ul>
+            </div>
+            <div className="bg-zinc-800/30 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-green-400 mb-4">Timeline</h3>
+              <p className="text-gray-300 mb-4">Estimated Time: 5–7 Working Days</p>
+              <ul className="space-y-3 text-gray-300">
+                <li>• Day 1-2: Document collection, DSC</li>
+                <li>• Day 3-4: Name reservation, MOA/AOA drafting</li>
+                <li>• Day 5-7: Form filing & incorporation certificate</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Documents Section */}
+      <section className="py-16 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            variants={fadeIn("up", "tween", 0.2, 1)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-3xl font-bold text-green-400 mb-12 text-center"
+          >
+            Required Documents
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-zinc-800/30 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-green-400 mb-4">For Directors/Shareholders</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li>• PAN Card</li>
+                <li>• Aadhaar Card</li>
+                <li>• Address Proof (Utility bill or bank statement)</li>
+                <li>• Passport-size photograph</li>
+              </ul>
+            </div>
+            <div className="bg-zinc-800/30 p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-green-400 mb-4">For Registered Office</h3>
+              <ul className="space-y-3 text-gray-300">
+                <li>• Utility bill (Electricity, Water, etc.)</li>
+                <li>• NOC from the property owner</li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-zinc-900/30">
+      <section className="py-16">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
@@ -162,16 +153,46 @@ export default function CorporateGovernanceAdvisory() {
               Frequently Asked Questions
             </motion.h2>
             <Accordion type="single" collapsible className="space-y-4">
-              {faqData.map((faq, idx) => (
-                <AccordionItem key={idx} value={`item-${idx}`} className="bg-zinc-800/30 rounded-lg">
-                  <AccordionTrigger className="px-4 text-left">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 text-gray-400">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
+              <AccordionItem value="item-1" className="bg-zinc-800/30 rounded-lg">
+                <AccordionTrigger className="px-4">
+                  What is the minimum capital required?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 text-gray-400">
+                  No minimum capital is mandatory.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-2" className="bg-zinc-800/30 rounded-lg">
+                <AccordionTrigger className="px-4">
+                  Can one person start a Private Limited Company?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 text-gray-400">
+                  No, at least 2 shareholders and 2 directors are needed.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-3" className="bg-zinc-800/30 rounded-lg">
+                <AccordionTrigger className="px-4">
+                  Is a physical office address necessary?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 text-gray-400">
+                  Yes. Residential address is acceptable with valid proof.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-4" className="bg-zinc-800/30 rounded-lg">
+                <AccordionTrigger className="px-4">
+                  How much time does it take?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 text-gray-400">
+                  Typically 5–7 working days.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="item-5" className="bg-zinc-800/30 rounded-lg">
+                <AccordionTrigger className="px-4">
+                  Can foreigners be shareholders or directors?
+                </AccordionTrigger>
+                <AccordionContent className="px-4 text-gray-400">
+                  Yes, but at least one director must be a resident Indian.
+                </AccordionContent>
+              </AccordionItem>
             </Accordion>
           </motion.div>
         </div>
