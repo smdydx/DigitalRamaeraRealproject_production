@@ -1,8 +1,7 @@
-
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, FileText, AlertCircle, FileCheck, Clock, Phone, MessageSquare, WhatsappIcon } from "lucide-react";
+import { ArrowRight, Calendar, FileText, AlertCircle, FileCheck, Clock, Phone, MessageSquare } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function AnnualReturnsFiling() {
@@ -29,7 +28,7 @@ export default function AnnualReturnsFiling() {
             >
               Professional assistance in filing your company's annual returns and maintaining compliance with regulatory requirements
             </motion.p>
-            
+
             {/* Contact Buttons */}
             <motion.div 
               variants={fadeIn("up", "tween", 0.4, 1)}
@@ -40,7 +39,7 @@ export default function AnnualReturnsFiling() {
                 <a href="tel:+919876543210">Call Now</a>
               </Button>
               <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 flex items-center gap-2">
-                <WhatsappIcon className="h-5 w-5" />
+                <MessageSquare className="h-5 w-5" />
                 <a href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
               </Button>
               <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 flex items-center gap-2">
@@ -287,7 +286,7 @@ export default function AnnualReturnsFiling() {
                 <a href="tel:+919876543210">Call Now</a>
               </Button>
               <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 flex items-center gap-2">
-                <WhatsappIcon className="h-5 w-5" />
+                <MessageSquare className="h-5 w-5" />
                 <a href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
               </Button>
             </motion.div>
