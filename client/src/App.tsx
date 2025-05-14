@@ -45,6 +45,7 @@ import StatutoryRegisters from "./pages/services/legal/StatutoryRegisters";
 import BoardGeneralMeetings from "./pages/services/legal/BoardGeneralMeetings";
 import ROCComplianceFilings from "./pages/services/legal/ROCComplianceFilings";
 import Careers from "./pages/Careers";
+import MOAandAOAAlterations from "./pages/services/legal/MOAandAOAAlterations";
 
 import AIChatBot from './components/AIChatBot';
 
@@ -93,6 +94,7 @@ function Router() {
           <Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
           <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
           <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
+          <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
