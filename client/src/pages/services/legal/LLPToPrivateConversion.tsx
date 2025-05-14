@@ -1,9 +1,9 @@
-
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Building, Clock, Users, Phone, FileText } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useEffect } from "react";
 
 const benefits = [
   {
@@ -49,6 +49,9 @@ const faqs = [
 ];
 
 export default function LLPToPrivateConversion() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black pt-24">
       {/* Hero Section */}

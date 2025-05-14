@@ -4,6 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Carousel } from "@/components/ui/carousel";
+import { useEffect } from "react";
 
 const images = [
   "/images/services/business-growth.jpg",
@@ -167,6 +168,9 @@ function ContactButtons() {
 }
 
 export default function Compliance() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black pt-24 overflow-hidden">
       {/* Hero Section with Parallax Effect */}
