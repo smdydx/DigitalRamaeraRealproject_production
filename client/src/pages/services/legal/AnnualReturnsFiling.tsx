@@ -233,7 +233,7 @@ export default function AnnualReturnsFiling() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20">
+      <section className="py-20 bg-zinc-900/30">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
@@ -244,12 +244,46 @@ export default function AnnualReturnsFiling() {
           >
             <motion.h2
               variants={fadeIn("up", "tween", 0.2, 1)}
-              className="text-3xl font-bold text-center text-white mb-12"
+              className="text-3xl font-bold text-center text-green-400 mb-12"
             >
               Frequently Asked Questions
             </motion.h2>
             <Accordion type="single" collapsible className="space-y-4">
-              {/* Add FAQ items */}
+              {[
+                {
+                  question: "What is the due date for filing Annual Returns?",
+                  answer: "Annual Returns (MGT-7) must be filed within 60 days from the date of AGM. Financial Statements (AOC-4) must be filed within 30 days from the AGM date."
+                },
+                {
+                  question: "What are the penalties for late filing?",
+                  answer: "Late filing attracts penalties of ₹100 per day of delay. For serious delays, penalties can go up to ₹50,000 and may lead to legal actions."
+                },
+                {
+                  question: "Do all companies need to file annual returns?",
+                  answer: "Yes, all companies registered under Companies Act 2013 must file annual returns, including One Person Companies and Section 8 companies."
+                },
+                {
+                  question: "Can I file annual returns without an AGM?",
+                  answer: "No, conducting AGM is mandatory before filing annual returns. The AGM details are required in form MGT-7."
+                },
+                {
+                  question: "What documents are required for filing?",
+                  answer: "Required documents include financial statements, director's report, auditor's report, AGM minutes, and details of shareholders and directors."
+                }
+              ].map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-zinc-800/30 rounded-lg border border-green-500/10"
+                >
+                  <AccordionTrigger className="px-6 text-white hover:text-green-400">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4 text-gray-400">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
             </Accordion>
           </motion.div>
         </div>
