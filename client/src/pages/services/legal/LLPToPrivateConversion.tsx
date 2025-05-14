@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield, Building, Clock, Users, Phone } from "lucide-react";
+import { ArrowRight, Shield, Building, Clock, Users, Phone, FileText } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const benefits = [
