@@ -3,7 +3,7 @@ import { Phone } from "lucide-react";
 
 export const ContactButtons = () => {
   return (
-    <div className="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+    <div className="fixed left-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
       <a 
         href="tel:+911169310715"
         className="flex items-center justify-center w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full transition-all duration-300 shadow-lg"
