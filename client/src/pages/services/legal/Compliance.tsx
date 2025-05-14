@@ -8,7 +8,7 @@ import { Carousel } from "@/components/ui/carousel";
 const images = [
   "/images/services/business-growth.jpg",
   "/images/services/bussiness.jpg",
-  "/images/services/classified.jpg"
+  "/images/services/classified.jpg",
 ];
 
 const services = [
@@ -17,14 +17,14 @@ const services = [
     icon: "🏢",
     items: [
       "Private Limited Company Registration",
-      "Public Limited Company Registration", 
+      "Public Limited Company Registration",
       "One Person Company (OPC) Registration",
       "Limited Liability Partnership (LLP) Registration",
       "Section 8 (Non-Profit Company) Registration",
       "Producer Company Registration",
       "Nidhi Company Registration",
-      "Foreign Company Setup"
-    ]
+      "Foreign Company Setup",
+    ],
   },
   {
     title: "Company Law Compliance Services",
@@ -35,8 +35,8 @@ const services = [
       "Board & General Meetings",
       "ROC Compliance Filings",
       "Company Conversions",
-      "MOA and AOA Alterations"
-    ]
+      "MOA and AOA Alterations",
+    ],
   },
   {
     title: "Corporate Governance Services",
@@ -45,8 +45,8 @@ const services = [
       "Corporate Governance Advisory",
       "Secretarial Audit",
       "Code of Conduct & Policies",
-      "Committee Setup"
-    ]
+      "Committee Setup",
+    ],
   },
   {
     title: "Event-Based Compliance Services",
@@ -56,8 +56,8 @@ const services = [
       "Transfer/Transmission of Shares",
       "Share Buy-back",
       "Mergers, Amalgamations, and Demergers",
-      "Strike off (Closure) of Companies"
-    ]
+      "Strike off (Closure) of Companies",
+    ],
   },
   {
     title: "FEMA and RBI Compliance Services",
@@ -66,8 +66,8 @@ const services = [
       "FDI (Foreign Direct Investment) Reporting (FC-GPR, FC-TRS)",
       "External Commercial Borrowing (ECB) filings",
       "Liaison/Branch/Project Office Setup Compliance",
-      "ODI (Overseas Direct Investment) compliance"
-    ]
+      "ODI (Overseas Direct Investment) compliance",
+    ],
   },
   {
     title: "Intellectual Property Rights Support",
@@ -76,8 +76,8 @@ const services = [
       "Trademark Registration",
       "Copyright Registration",
       "Patent Application Assistance",
-      "Drafting IP Assignment/License Agreements"
-    ]
+      "Drafting IP Assignment/License Agreements",
+    ],
   },
   {
     title: "Legal Drafting Services",
@@ -88,8 +88,8 @@ const services = [
       "Joint Venture Agreements",
       "Service Agreements",
       "Employment Contracts",
-      "Non-Disclosure Agreements (NDAs)"
-    ]
+      "Non-Disclosure Agreements (NDAs)",
+    ],
   },
   {
     title: "Advisory Services",
@@ -98,8 +98,8 @@ const services = [
       "Startup Advisory (Funding, Structuring, ESOPs)",
       "Due Diligence Reports (for M&A, Investors)",
       "Corporate Restructuring Advisory",
-      "Insolvency and Bankruptcy Advisory (under IBC)"
-    ]
+      "Insolvency and Bankruptcy Advisory (under IBC)",
+    ],
   },
   {
     title: "Labour Law Registrations and Compliance",
@@ -108,8 +108,8 @@ const services = [
       "Shops and Establishment Registration",
       "Provident Fund (PF) and Employee State Insurance (ESI) Registration",
       "Professional Tax Registration",
-      "Labour Welfare Fund compliance"
-    ]
+      "Labour Welfare Fund compliance",
+    ],
   },
   {
     title: "Certification Services",
@@ -119,8 +119,8 @@ const services = [
       "Compliance Certificates (e.g., for Listed Companies)",
       "Certification under SEBI Regulations",
       "Certification for Mergers/Amalgamations",
-      "Certification under FEMA/RBI Compliance"
-    ]
+      "Certification under FEMA/RBI Compliance",
+    ],
   },
   {
     title: "Listing Compliance",
@@ -128,8 +128,8 @@ const services = [
     items: [
       "BSE/NSE Listing Assistance",
       "SEBI (LODR) Compliance",
-      "Periodic Disclosures and Filings"
-    ]
+      "Periodic Disclosures and Filings",
+    ],
   },
   {
     title: "Specialized Services",
@@ -139,9 +139,9 @@ const services = [
       "ESOP Structuring and Administration",
       "Corporate Social Responsibility (CSR) Compliance",
       "Risk Management Advisory",
-      "Internal Controls and Process Advisory"
-    ]
-  }
+      "Internal Controls and Process Advisory",
+    ],
+  },
 ];
 
 export default function Compliance() {
@@ -149,7 +149,7 @@ export default function Compliance() {
     <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black pt-24 overflow-hidden">
       {/* Hero Section with Parallax Effect */}
       <section className="relative h-[80vh] md:h-[85vh] overflow-hidden mt-16 md:mt-20">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -157,14 +157,19 @@ export default function Compliance() {
         >
           <Carousel className="h-full" autoplay interval={5000}>
             {images.map((image, index) => (
-              <motion.div 
-                key={index} 
+              <motion.div
+                key={index}
                 className="relative h-full"
                 initial={{ scale: 1.1 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 6 }}
               >
-                <img src={`/images/services/${image}`} alt="Legal Services" className="w-full h-full object-cover" loading="eager" />
+                <img
+                  src={`/images/services/${image}`}
+                  alt="Legal Services"
+                  className="w-full h-full object-cover"
+                  loading="eager"
+                />
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/70 to-zinc-900" />
               </motion.div>
             ))}
@@ -178,26 +183,36 @@ export default function Compliance() {
             animate="visible"
             className="max-w-4xl"
           >
-            <motion.h1 
+            <motion.h1
               variants={fadeIn("up", "tween", 0.2, 1)}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-4 sm:mb-6 md:mb-8 leading-tight"
             >
-              Legal Excellence Meets Digital Innovation
+              Start Right. Build Smart. Grow Legally.
             </motion.h1>
-            <motion.p 
+            <motion.p
               variants={fadeIn("up", "tween", 0.3, 1)}
               className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed text-center px-4 sm:px-6 md:px-8"
             >
-              Transforming legal compliance into a seamless journey with SOFTBEEM's expert solutions
+              At SOFTBEEM, powered by RAMAERA Legal Infotech Pvt Ltd, we offer
+              end-to-end company incorporation services to help entrepreneurs,
+              startups, and corporates establish legally compliant entities in
+              India — quickly, seamlessly, and affordably.
             </motion.p>
-            <motion.div 
+            <motion.div
               variants={fadeIn("up", "tween", 0.4, 1)}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <Button size="lg" className="bg-green-500 hover:bg-green-600 text-lg px-8">
+              <Button
+                size="lg"
+                className="bg-green-500 hover:bg-green-600 text-lg px-8"
+              >
                 Get Started <ArrowRight className="ml-2" />
               </Button>
-              <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 text-lg px-8">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-green-500 text-green-500 hover:bg-green-500/10 text-lg px-8"
+              >
                 Learn More
               </Button>
             </motion.div>
@@ -231,16 +246,16 @@ export default function Compliance() {
                 </div>
                 <ul className="space-y-4">
                   {service.items.map((item, idx) => (
-                    <motion.li 
-                      key={idx} 
+                    <motion.li
+                      key={idx}
                       className="flex items-start gap-3"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ delay: idx * 0.1 }}
                     >
                       <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                      <Link 
-                        to={`/services/legal/${item.toLowerCase().replace(/[\s()]/g, '-')}`}
+                      <Link
+                        to={`/services/legal/${item.toLowerCase().replace(/[\s()]/g, "-")}`}
                         className="text-gray-300 hover:text-green-400 transition-colors duration-200"
                       >
                         {item}
