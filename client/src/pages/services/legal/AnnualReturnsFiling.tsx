@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, FileText, AlertCircle, FileCheck, Clock } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function AnnualReturnsFiling() {
   return (
@@ -226,6 +227,63 @@ export default function AnnualReturnsFiling() {
                 </tbody>
               </table>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-center text-white mb-12"
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            <Accordion type="single" collapsible className="space-y-4">
+              {[
+                {
+                  question: "What is MGT-7 and AOC-4?",
+                  answer: "MGT-7 is the annual return form that contains details about the company's management, shareholding pattern, and other administrative information. AOC-4 is the financial statement form that includes balance sheet, profit & loss account, and other financial details."
+                },
+                {
+                  question: "What happens if I don't file annual returns on time?",
+                  answer: "Late filing results in additional fees and penalties. The company and its directors may face legal consequences, including disqualification of directors and potential strike-off of the company."
+                },
+                {
+                  question: "Can I file MGT-7 and AOC-4 myself?",
+                  answer: "While it's possible to file these returns yourself, it's recommended to seek professional help to ensure accuracy and compliance with all requirements, as errors can lead to rejection and penalties."
+                },
+                {
+                  question: "What documents are needed for filing annual returns?",
+                  answer: "Required documents include financial statements, board meeting minutes, shareholding details, director information, auditor's report, and various statutory registers and records."
+                },
+                {
+                  question: "Is there any exemption from filing annual returns?",
+                  answer: "No, all registered companies must file annual returns. However, certain categories like One Person Companies and Small Companies have simplified forms and requirements."
+                }
+              ].map((faq, index) => (
+                <AccordionItem
+                  key={index}
+                  value={`item-${index}`}
+                  className="bg-zinc-800/30 rounded-lg border border-green-500/10"
+                >
+                  <AccordionTrigger className="px-6 text-white hover:text-green-400">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4 text-gray-400">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </motion.div>
         </div>
       </section>
