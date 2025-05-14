@@ -97,6 +97,7 @@ function Router() {
           <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
           <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
           <Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
+          <Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
