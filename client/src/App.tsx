@@ -44,6 +44,7 @@ import AnnualReturnsFiling from "@/pages/services/legal/AnnualReturnsFiling";
 import StatutoryRegisters from "./pages/services/legal/StatutoryRegisters";
 import BoardGeneralMeetings from "./pages/services/legal/BoardGeneralMeetings";
 import ROCComplianceFilings from "./pages/services/legal/ROCComplianceFilings";
+import Careers from "./pages/Careers";
 
 import AIChatBot from './components/AIChatBot';
 
