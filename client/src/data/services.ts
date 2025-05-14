@@ -176,7 +176,7 @@ export const servicesData: ServicesData = {
         "Company Incorporation Services",
         "Company Law Services",
         "Corporate Governance",
-        "Event -Based Compliance",
+        "Event -Based Compliance", 
         "FEMA and RBI Compliance",
         "Intellectual Property Rights",
         "legal Drafting",
@@ -186,12 +186,7 @@ export const servicesData: ServicesData = {
         "List Compliance(for listed companies)",
         "Specialized Services",
       ],
-      path: "/services/legal/compliance",
-      submenu: [
-        {
-          icon: Building,
-          title: "Company Conversions",
-          features: ["LLP to Private Limited Company"],
+      path: "/services/legal/compliance"
           path: "/services/legal/company-conversions"
         }
       ]
