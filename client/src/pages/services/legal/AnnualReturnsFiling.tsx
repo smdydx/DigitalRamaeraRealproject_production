@@ -61,74 +61,79 @@ const AnnualReturnsFiling = () => {
   ];
 
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      animate="show"
-      className="container mx-auto px-4 py-16"
-    >
-      <motion.section variants={fadeIn("up", "tween", 0.1, 1)} className="text-center mb-16">
-        <h1 className="text-4xl font-bold mb-4">Company Annual Return Filing</h1>
-        <p className="text-xl text-gray-400 mb-8">Filing of AOC-4 & MGT-7</p>
-        <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-          Companies Incorporated in India must file annual returns to the Registrar of Companies (ROC).
-        </p>
-      </motion.section>
+    <main className="relative min-h-screen bg-gradient-to-b from-zinc-900 to-black overflow-hidden pt-24">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(0,255,0,0.1)_0%,_transparent_50%)] pointer-events-none"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,_rgba(0,128,0,0.1)_0%,_transparent_50%)] pointer-events-none"></div>
+      
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        animate="show"
+        className="container mx-auto px-4 py-16"
+      >
+        <motion.section variants={fadeIn("up", "tween", 0.1, 1)} className="text-center mb-16">
+          <h1 className="text-4xl font-bold mb-4">Company Annual Return Filing</h1>
+          <p className="text-xl text-gray-400 mb-8">Filing of AOC-4 & MGT-7</p>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Companies Incorporated in India must file annual returns to the Registrar of Companies (ROC).
+          </p>
+        </motion.section>
 
-      <motion.section variants={fadeIn("up", "tween", 0.2, 1)} className="grid md:grid-cols-3 gap-8 mb-16">
-        {keyFeatures.map((feature, index) => (
-          <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
-            <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-            <p className="text-gray-400">{feature.description}</p>
-          </Card>
-        ))}
-      </motion.section>
-
-      <motion.section variants={fadeIn("up", "tween", 0.3, 1)} className="mb-16">
-        <h2 className="text-3xl font-bold text-center mb-8">Pricing For Annual Filing</h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {pricingPlans.map((plan, index) => (
+        <motion.section variants={fadeIn("up", "tween", 0.2, 1)} className="grid md:grid-cols-3 gap-8 mb-16">
+          {keyFeatures.map((feature, index) => (
             <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
-              <Badge className="mb-4">{plan.type}</Badge>
-              <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
-              <p className="text-gray-400 mb-4">{plan.description}</p>
-              <p className="text-sm text-gray-500 mb-4">Due Date: {plan.dueDate}</p>
-              <p className="text-2xl font-bold text-primary">{plan.price}</p>
+              <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+              <p className="text-gray-400">{feature.description}</p>
             </Card>
           ))}
-        </div>
-      </motion.section>
+        </motion.section>
 
-      <motion.section variants={fadeIn("up", "tween", 0.4, 1)} className="mb-16">
-        <h2 className="text-2xl font-bold mb-6">Annual Return Filings</h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          {filingTypes.map((type, index) => (
-            <div key={index} className="flex items-center gap-2">
-              <CheckCircle2 className="text-primary w-5 h-5" />
-              <span>{type}</span>
-            </div>
-          ))}
-        </div>
-      </motion.section>
+        <motion.section variants={fadeIn("up", "tween", 0.3, 1)} className="mb-16">
+          <h2 className="text-3xl font-bold text-center mb-8">Pricing For Annual Filing</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {pricingPlans.map((plan, index) => (
+              <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
+                <Badge className="mb-4">{plan.type}</Badge>
+                <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
+                <p className="text-gray-400 mb-4">{plan.description}</p>
+                <p className="text-sm text-gray-500 mb-4">Due Date: {plan.dueDate}</p>
+                <p className="text-2xl font-bold text-primary">{plan.price}</p>
+              </Card>
+            ))}
+          </div>
+        </motion.section>
 
-      <motion.section variants={fadeIn("up", "tween", 0.5, 1)} className="mb-16">
-        <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
-              <h3 className="text-lg font-bold mb-2">{faq.question}</h3>
-              <p className="text-gray-400">{faq.answer}</p>
-            </Card>
-          ))}
-        </div>
-      </motion.section>
+        <motion.section variants={fadeIn("up", "tween", 0.4, 1)} className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">Annual Return Filings</h2>
+          <div className="grid md:grid-cols-2 gap-4">
+            {filingTypes.map((type, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <CheckCircle2 className="text-primary w-5 h-5" />
+                <span>{type}</span>
+              </div>
+            ))}
+          </div>
+        </motion.section>
 
-      <motion.section variants={fadeIn("up", "tween", 0.6, 1)} className="text-center">
-        <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600">
-          Get Started <ArrowRight className="ml-2" />
-        </Button>
-      </motion.section>
-    </motion.div>
+        <motion.section variants={fadeIn("up", "tween", 0.5, 1)} className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
+                <h3 className="text-lg font-bold mb-2">{faq.question}</h3>
+                <p className="text-gray-400">{faq.answer}</p>
+              </Card>
+            ))}
+          </div>
+        </motion.section>
+
+        <motion.section variants={fadeIn("up", "tween", 0.6, 1)} className="text-center">
+          <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600">
+            Get Started <ArrowRight className="ml-2" />
+          </Button>
+        </motion.section>
+      </motion.div>
+    </main>
   );
 };
 
