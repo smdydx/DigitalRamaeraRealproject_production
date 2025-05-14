@@ -187,7 +187,14 @@ export const servicesData: ServicesData = {
         "Specialized Services",
       ],
       path: "/services/legal/compliance",
-      
+      submenu: [
+        {
+          icon: Building,
+          title: "Company Conversions",
+          features: ["LLP to Private Limited Company"],
+          path: "/services/legal/company-conversions"
+        }
+      ]
     }
   ],
   
