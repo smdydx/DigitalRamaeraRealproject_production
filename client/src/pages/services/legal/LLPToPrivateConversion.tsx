@@ -120,6 +120,52 @@ export default function LLPToPrivateConversion() {
         </div>
       </section>
 
+      {/* Step-wise Process Section */}
+      <section className="py-20 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-center text-white mb-12"
+            >
+              Step-Wise Process To Convert an LLP into a Company
+            </motion.h2>
+            <div className="space-y-8">
+              <div className="bg-zinc-800/50 p-8 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-3">Step 1: Consent of all Partners of the LLP</h3>
+                <p className="text-gray-300">The process starts with a meeting of Partners to secure approval of all partners to the proposed conversion of LLP into a Private Limited Company according to section 366 of the Companies Act, 2013. In the partners meeting, two partners need to be authorised to sign and execute all papers to convert LLP into a company.</p>
+              </div>
+
+              <div className="bg-zinc-800/50 p-8 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-3">Step 2: Newspaper Publication</h3>
+                <p className="text-gray-300">The intent to convert from an LLP to a company needs to be published in two newspapers, having circulation in the district, one in vernacular language and the other in an English daily. The public announcement in the newspaper must be made 21 clear days from the filing of URC-1.</p>
+              </div>
+
+              <div className="bg-zinc-800/50 p-8 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-3">Step 3: NOC From the ROC and Creditors</h3>
+                <p className="text-gray-300">The NOC from the ROC, where the LLP Registered is required, and the Creditors must give their unconditional No Objection to the conversion of the LLP. If there is no Liability in the LLP, then a statement signed from the partners that there is no liability would be required.</p>
+              </div>
+
+              <div className="bg-zinc-800/50 p-8 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-3">Step 4: Apply for Name Reservation of Company in RUN</h3>
+                <p className="text-gray-300">RUN is an online form in which an application for the name reservation is filed to the ROC. No change in the name of the LLP is allowed at this stage; the words LLP shall be substituted with "Private Limited."</p>
+              </div>
+
+              <div className="bg-zinc-800/50 p-8 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-3">Step 5: Efile URC-1, MOA, AOA, DIR-2 Forms and Spice Plus</h3>
+                <p className="text-gray-300">Finally, within 30 Days of the name reservation of the LLP, the application for conversion of the LLP into a company shall be filed in URC-1 along with the Spice Plus form, e-MOA, E-AOA and other documents. After the approval of the forms, the ROC issues a new certificate of incorporation in the company's name.</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-20 bg-zinc-900/30">
         <div className="container mx-auto px-4">
