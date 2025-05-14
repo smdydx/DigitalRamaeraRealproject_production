@@ -78,6 +78,48 @@ export default function LLPToPrivateConversion() {
         </div>
       </section>
 
+      {/* Eligibility Requirements Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-center text-white mb-12"
+            >
+              Eligibility Requirements
+            </motion.h2>
+            <div className="space-y-6">
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-2">Minimum Partners</h3>
+                <p className="text-gray-300">The LLP must have at least two partners for its conversion as a Private Limited Company.</p>
+              </div>
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-2">Partner Agreement</h3>
+                <p className="text-gray-300">All Partners must agree to the conversion from LLP to Company.</p>
+              </div>
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-2">Statutory Compliance</h3>
+                <p className="text-gray-300">The LLP must have filed all its statutory returns and LLP agreement.</p>
+              </div>
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-2">Name Continuation</h3>
+                <p className="text-gray-300">The exact name of the LLP shall continue, and the word "LLP" shall be substituted by "Private Limited." No change of name is permitted.</p>
+              </div>
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-semibold text-green-400 mb-2">Capital Conversion</h3>
+                <p className="text-gray-300">The Contribution in the LLP shall become the Capital for the company, and all partners of the LLP will become shareholders in the company.</p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-20 bg-zinc-900/30">
         <div className="container mx-auto px-4">
