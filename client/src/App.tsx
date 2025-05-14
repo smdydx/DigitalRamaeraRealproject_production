@@ -47,6 +47,7 @@ import ROCComplianceFilings from "./pages/services/legal/ROCComplianceFilings";
 import Careers from "./pages/Careers";
 import MOAandAOAAlterations from "./pages/services/legal/MOAandAOAAlterations";
 import LLPToPrivateConversion from "./pages/services/legal/LLPToPrivateConversion";
+import CorporateGovernanceAdvisory from "./pages/services/legal/CorporateGovernanceAdvisory";
 
 import AIChatBot from './components/AIChatBot';
 
