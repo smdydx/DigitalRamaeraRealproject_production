@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CalendarCheck, FileCheck, AlertTriangle, ClipboardList, FileText } from "lucide-react";
+import { ArrowRight, Calendar, FileText, AlertCircle, FileCheck, Clock, Phone, MessageSquare } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function ROCComplianceFilings() {
@@ -28,13 +28,63 @@ export default function ROCComplianceFilings() {
               variants={fadeIn("up", "tween", 0.2, 1)}
               className="text-gray-400 text-lg mb-8"
             >
-              Comprehensive assistance for all your ROC compliance and annual return filing needs
+              Professional assistance with all your ROC compliance requirements including statutory filings, annual returns, and regulatory documentation
             </motion.p>
+
+            {/* Contact Buttons */}
+            <motion.div 
+              variants={fadeIn("up", "tween", 0.3, 1)}
+              className="flex flex-wrap justify-center gap-4"
+            >
+              <Button size="lg" className="bg-green-500 hover:bg-green-600 flex items-center gap-2">
+                <Phone className="h-5 w-5" />
+                <a href="tel:+919876543210">Call Now</a>
+              </Button>
+              <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 flex items-center gap-2">
+                <MessageSquare className="h-5 w-5" />
+                <a href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Process Steps */}
+      {/* Overview Section */}
+      <section className="py-12 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-green-400 mb-6"
+            >
+              Overview
+            </motion.h2>
+            <motion.div
+              variants={fadeIn("up", "tween", 0.3, 1)}
+              className="prose prose-invert max-w-none"
+            >
+              <p className="text-gray-300 mb-4">
+                Every company registered under the Companies Act, 2013 must comply with various ROC filing requirements. These include:
+              </p>
+              <ul className="list-disc list-inside text-gray-300 space-y-2 mb-4">
+                <li>Annual Returns (Form MGT-7)</li>
+                <li>Financial Statements (Form AOC-4)</li>
+                <li>Event-based Filings</li>
+                <li>Director-related Filings</li>
+                <li>Change in Company Details</li>
+              </ul>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
           <motion.div
@@ -42,53 +92,75 @@ export default function ROCComplianceFilings() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            className="max-w-4xl mx-auto"
           >
-            <motion.div variants={fadeIn("right", "tween", 0.2, 1)} className="space-y-6">
-              <div className="flex items-center gap-4 bg-zinc-800/30 p-6 rounded-lg border border-green-500/10">
-                <CalendarCheck className="h-8 w-8 text-green-400" />
-                <div>
-                  <h3 className="text-xl font-semibold text-white">Check Due Dates</h3>
-                  <p className="text-gray-400">Verify filing deadlines based on incorporation date</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 bg-zinc-800/30 p-6 rounded-lg border border-green-500/10">
-                <FileCheck className="h-8 w-8 text-green-400" />
-                <div>
-                  <h3 className="text-xl font-semibold text-white">Digital Signature Validation</h3>
-                  <p className="text-gray-400">Ensure DSC validity for electronic filing</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 bg-zinc-800/30 p-6 rounded-lg border border-green-500/10">
-                <ClipboardList className="h-8 w-8 text-green-400" />
-                <div>
-                  <h3 className="text-xl font-semibold text-white">Document Preparation</h3>
-                  <p className="text-gray-400">Compile required statements and reports</p>
-                </div>
-              </div>
-            </motion.div>
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-green-400 mb-6"
+            >
+              Filing Timeline
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <motion.div variants={fadeIn("right", "tween", 0.3, 1)} className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <Calendar className="h-8 w-8 text-green-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">Annual Returns</h3>
+                <p className="text-gray-300">Within 60 days from AGM date</p>
+              </motion.div>
+              <motion.div variants={fadeIn("left", "tween", 0.3, 1)} className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <Clock className="h-8 w-8 text-green-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">Event-based Filings</h3>
+                <p className="text-gray-300">Within 30 days of the event</p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-            <motion.div variants={fadeIn("left", "tween", 0.3, 1)} className="space-y-6">
-              <h2 className="text-3xl font-bold text-green-400 mb-8">Our Services Include</h2>
-              <ul className="space-y-4">
-                <li className="flex gap-3 items-start">
-                  <FileText className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
-                  <span className="text-gray-300">Annual return filing (MGT-7)</span>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <FileText className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
-                  <span className="text-gray-300">Financial statement filing (AOC-4)</span>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <FileText className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
-                  <span className="text-gray-300">Director's KYC (DIR-3 KYC)</span>
-                </li>
-                <li className="flex gap-3 items-start">
-                  <FileText className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
-                  <span className="text-gray-300">Other event-based filings</span>
-                </li>
-              </ul>
-            </motion.div>
+      {/* Process Section */}
+      <section className="py-12 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-green-400 mb-8"
+            >
+              Our Process
+            </motion.h2>
+            <div className="space-y-6">
+              {[
+                {
+                  title: "Document Collection",
+                  description: "Gathering all necessary documents and information"
+                },
+                {
+                  title: "Review & Preparation",
+                  description: "Thorough review and preparation of required forms"
+                },
+                {
+                  title: "Digital Signature",
+                  description: "Securing necessary digital signatures"
+                },
+                {
+                  title: "Filing & Submission",
+                  description: "Timely filing and submission to ROC"
+                }
+              ].map((step, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeIn("up", "tween", 0.2 * index, 1)}
+                  className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10"
+                >
+                  <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
+                  <p className="text-gray-300">{step.description}</p>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -112,24 +184,24 @@ export default function ROCComplianceFilings() {
             <Accordion type="single" collapsible className="space-y-4">
               {[
                 {
-                  question: "What returns are applicable for newly incorporated companies?",
-                  answer: "For companies incorporated after January 1st of the current financial year, ITR filing is mandatory. Additionally, DIR-3 KYC is required for all directors who have been allotted a DIN during the financial year."
+                  question: "What happens if I miss the ROC filing deadline?",
+                  answer: "Missing ROC filing deadlines results in penalties and additional fees. The amount varies based on the form and delay period. Late filing may also affect your company's compliance status."
                 },
                 {
-                  question: "How do I check the validity of Digital Signatures?",
-                  answer: "You can verify the validity of your DSC through the MCA portal. If expired, it needs to be renewed before filing any returns."
+                  question: "Which forms are mandatory for all companies?",
+                  answer: "All companies must file annual returns (MGT-7) and financial statements (AOC-4). Additional forms may be required based on specific events or changes in the company."
                 },
                 {
-                  question: "What documents are needed for ROC compliance filing?",
-                  answer: "Required documents include complete bank statements, invoices, bills of expenses, GST returns, TDS returns, and ledger balances from significant parties as of March 31st."
+                  question: "Do I need a Digital Signature Certificate (DSC) for ROC filing?",
+                  answer: "Yes, a valid Digital Signature Certificate is mandatory for all ROC filings. The DSC should belong to a Director or Company Secretary of the company."
                 },
                 {
-                  question: "What happens if I miss the filing deadline?",
-                  answer: "Late filing results in additional fees and penalties. Companies may also face legal consequences including disqualification of directors."
+                  question: "What documents are required for ROC filing?",
+                  answer: "Required documents include board resolutions, financial statements, audit reports, and event-specific documentation. The exact requirements vary based on the type of filing."
                 },
                 {
-                  question: "Is statutory audit mandatory before ROC filing?",
-                  answer: "Yes, companies need to get their financial statements audited by a statutory auditor before filing with ROC. This is a mandatory requirement under the Companies Act, 2013."
+                  question: "Can I make corrections after submission?",
+                  answer: "Yes, corrections can be made through filing of revised forms. However, additional fees may apply, and certain changes might require specific approval processes."
                 }
               ].map((faq, index) => (
                 <AccordionItem
@@ -164,7 +236,7 @@ export default function ROCComplianceFilings() {
               variants={fadeIn("up", "tween", 0.2, 1)}
               className="text-3xl font-bold text-white mb-6"
             >
-              Need Help with ROC Compliance?
+              Need Assistance with ROC Compliance?
             </motion.h2>
             <motion.p
               variants={fadeIn("up", "tween", 0.3, 1)}
@@ -172,7 +244,7 @@ export default function ROCComplianceFilings() {
             >
               Let our experts handle your compliance requirements while you focus on growing your business
             </motion.p>
-            <motion.div variants={fadeIn("up", "tween", 0.4, 1)}>
+            <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="flex justify-center gap-4">
               <Button size="lg" className="bg-green-500 hover:bg-green-600">
                 Get Started <ArrowRight className="ml-2" />
               </Button>
