@@ -1,9 +1,6 @@
-import { motion } from "framer-motion";
-import { staggerContainer, fadeIn } from "@/lib/animations";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { motion } from 'framer-motion'; // Make sure you have this import
+import { Card} from '@/components/ui/card'; // Replace with your actual component imports if necessary
+import { CheckCircle2 } from 'lucide-react'; // Example icon import for the check circle
 
 const AnnualReturnsFiling = () => {
   const keyFeatures = [
@@ -71,7 +68,7 @@ const AnnualReturnsFiling = () => {
         <h1 className="text-4xl font-bold mb-4">Company Annual Return Filing</h1>
         <p className="text-xl text-gray-400 mb-8">Filing of AOC-4 & MGT-7</p>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-          Companies Incorporated in India must file annual returns to the Registrar of Companies (ROC). We help you file the annual compliance within due dates.
+          Companies Incorporated in India must file annual returns to the Registrar of Companies (ROC).
         </p>
       </motion.section>
 
