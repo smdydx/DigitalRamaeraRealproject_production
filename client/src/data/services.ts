@@ -187,9 +187,6 @@ export const servicesData: ServicesData = {
         "Specialized Services",
       ],
       path: "/services/legal/compliance"
-          path: "/services/legal/company-conversions"
-        }
-      ]
     }
   ],
   
