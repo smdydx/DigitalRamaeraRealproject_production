@@ -173,6 +173,7 @@ export const servicesData: ServicesData = {
       icon: FileText,
       title: "Legal & Compliance Service",
       features: [
+        "Corporate Governance Advisory",
         "Company Incorporation Services",
         "Company Law Services",
         "Corporate Governance",
