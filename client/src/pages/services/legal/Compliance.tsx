@@ -144,6 +144,28 @@ const services = [
   },
 ];
 
+// ContactButtons component
+function ContactButtons() {
+  return (
+    <div className="fixed bottom-4 left-4 flex flex-col gap-2 z-50">
+      <a
+        href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3 shadow-md"
+      >
+        WhatsApp
+      </a>
+      <a
+        href="tel:YOUR_PHONE_NUMBER"
+        className="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 shadow-md"
+        >
+        Call
+      </a>
+    </div>
+  );
+}
+
 export default function Compliance() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black pt-24 overflow-hidden">
@@ -220,7 +242,8 @@ export default function Compliance() {
         </div>
       </section>
 
-      {/* Who We Are Section */}
+      <ContactButtons />
+
       <section className="py-20 relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(74,222,128,0.1),_transparent_50%)]" />
         <div className="container mx-auto px-4">
@@ -381,8 +404,7 @@ export default function Compliance() {
               <motion.div
                 key={index}
                 variants={fadeIn("up", "tween", 0.3 + index * 0.1, 1)}
-                className="bg-zinc-800/30 p-8 rounded-xl border border-green-500/10 hover:border-green-500/30 transition-all duration-300"
-              >
+                className="bg-zinc-800/30 p-8 rounded-xl border border-green-500/10 hover:border-green-500/30 transition-all duration-300">
                 <p className="text-gray-300 italic mb-6">
                   "{testimonial.content}"
                 </p>
