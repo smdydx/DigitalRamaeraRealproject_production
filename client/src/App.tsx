@@ -41,7 +41,7 @@ import ProducerCompanyRegistration from "@/pages/services/legal/ProducerCompanyR
 import NidhiCompanyRegistration from "@/pages/services/legal/NidhiCompanyRegistration";
 import ForeignCompanySetup from "@/pages/services/legal/ForeignCompanySetup";
 import Careers from "./pages/Careers";
-import AnnualReturnsFiling from "./pages/services/legal/AnnualReturnsFiling";
+
 import AIChatBot from './components/AIChatBot';
 
 
@@ -85,7 +85,7 @@ function Router() {
           <Route path="/services/legal/producer-company-registration" element={<ProducerCompanyRegistration />} />
           <Route path="/services/legal/nidhi-company-registration" element={<NidhiCompanyRegistration />} />
           <Route path="/services/legal/foreign-company-setup" element={<ForeignCompanySetup />} />
-          <Route path="/services/legal/annual-returns-filing--mgt-7,-aoc-4-" element={<AnnualReturnsFiling />} />
+          
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
