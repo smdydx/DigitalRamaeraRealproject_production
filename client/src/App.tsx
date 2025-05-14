@@ -46,6 +46,7 @@ import BoardGeneralMeetings from "./pages/services/legal/BoardGeneralMeetings";
 import ROCComplianceFilings from "./pages/services/legal/ROCComplianceFilings";
 import Careers from "./pages/Careers";
 import MOAandAOAAlterations from "./pages/services/legal/MOAandAOAAlterations";
+import LLPToPrivateConversion from "./pages/services/legal/LLPToPrivateConversion";
 
 import AIChatBot from './components/AIChatBot';
 
@@ -95,6 +96,7 @@ function Router() {
           <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
           <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
           <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
+          <Route path="/services/legal/llp-to-private-conversion" element={<LLPToPrivateConversion />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
