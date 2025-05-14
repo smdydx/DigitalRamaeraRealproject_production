@@ -99,6 +99,7 @@ function Router() {
           <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
           <Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
           <Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
+          <Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

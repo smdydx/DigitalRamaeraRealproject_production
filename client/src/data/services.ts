@@ -177,6 +177,10 @@ export const servicesData: ServicesData = {
           name: "Corporate Governance Advisory",
           path: "/services/legal/corporate-governance-advisory"
         },
+        {
+          name: "Secretarial Audit",
+          path: "/services/legal/secretarial-audit"
+        },
         "Company Incorporation Services",
         "Company Law Services",
         "Corporate Governance",
