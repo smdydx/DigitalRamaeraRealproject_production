@@ -220,6 +220,102 @@ export default function Compliance() {
         </div>
       </section>
 
+      {/* Who We Are Section */}
+      <section className="py-20 relative">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(74,222,128,0.1),_transparent_50%)]" />
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.h2 variants={fadeIn("up", "tween", 0.2, 1)} className="text-3xl font-bold mb-6 text-green-400">
+              Who We Are
+            </motion.h2>
+            <motion.p variants={fadeIn("up", "tween", 0.3, 1)} className="text-gray-300 mb-8">
+              At SOFTBEEM, we are a team of dedicated legal and compliance experts with years of experience in corporate law and regulatory requirements. Our mission is to simplify complex compliance processes and ensure your business operates within the legal framework smoothly and efficiently.
+            </motion.p>
+            <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-zinc-800/30 p-6 rounded-xl border border-green-500/10">
+                <h3 className="text-xl font-bold mb-3 text-white">Expertise</h3>
+                <p className="text-gray-400">Specialized knowledge in corporate law and compliance across industries</p>
+              </div>
+              <div className="bg-zinc-800/30 p-6 rounded-xl border border-green-500/10">
+                <h3 className="text-xl font-bold mb-3 text-white">Experience</h3>
+                <p className="text-gray-400">10+ years of helping businesses navigate regulatory requirements</p>
+              </div>
+              <div className="bg-zinc-800/30 p-6 rounded-xl border border-green-500/10">
+                <h3 className="text-xl font-bold mb-3 text-white">Commitment</h3>
+                <p className="text-gray-400">Dedicated to providing timely and accurate compliance solutions</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-20 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <motion.h2 variants={fadeIn("up", "tween", 0.2, 1)} className="text-3xl font-bold text-green-400">
+              What Our Clients Say
+            </motion.h2>
+          </motion.div>
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto"
+          >
+            {[
+              {
+                name: "Rajesh Kumar",
+                position: "CEO",
+                company: "TechStart Solutions",
+                content: "SOFTBEEM's compliance services have been instrumental in keeping our company compliant with all regulatory requirements. Their expertise and professionalism are unmatched."
+              },
+              {
+                name: "Priya Sharma",
+                position: "Director",
+                company: "Innovation Corp",
+                content: "The team's thorough understanding of corporate compliance helped us navigate complex regulatory challenges. Their support has been invaluable to our business growth."
+              },
+              {
+                name: "Amit Patel",
+                position: "Founder",
+                company: "Digital Ventures",
+                content: "Exceptional service and attention to detail. They made the entire compliance process seamless and stress-free. Highly recommended for any business seeking compliance solutions."
+              }
+            ].map((testimonial, index) => (
+              <motion.div
+                key={index}
+                variants={fadeIn("up", "tween", 0.3 + index * 0.1, 1)}
+                className="bg-zinc-800/30 p-8 rounded-xl border border-green-500/10 hover:border-green-500/30 transition-all duration-300"
+              >
+                <p className="text-gray-300 italic mb-6">"{testimonial.content}"</p>
+                <div className="flex items-center justify-center">
+                  <div className="text-center">
+                    <h4 className="font-bold text-white">{testimonial.name}</h4>
+                    <p className="text-green-400">
+                      {testimonial.position}, {testimonial.company}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Services Grid with Hover Effects */}
       <section className="py-20 relative">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(74,222,128,0.1),_transparent_50%)]" />
