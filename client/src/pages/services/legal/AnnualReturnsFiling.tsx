@@ -1,6 +1,10 @@
-import { motion } from 'framer-motion'; // Make sure you have this import
-import { Card} from '@/components/ui/card'; // Replace with your actual component imports if necessary
-import { CheckCircle2 } from 'lucide-react'; // Example icon import for the check circle
+
+import { motion } from 'framer-motion';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { staggerContainer, fadeIn } from '@/lib/animations';
 
 const AnnualReturnsFiling = () => {
   const keyFeatures = [
@@ -63,7 +67,6 @@ const AnnualReturnsFiling = () => {
       animate="show"
       className="container mx-auto px-4 py-16"
     >
-      {/* Hero Section */}
       <motion.section variants={fadeIn("up", "tween", 0.1, 1)} className="text-center mb-16">
         <h1 className="text-4xl font-bold mb-4">Company Annual Return Filing</h1>
         <p className="text-xl text-gray-400 mb-8">Filing of AOC-4 & MGT-7</p>
@@ -72,7 +75,6 @@ const AnnualReturnsFiling = () => {
         </p>
       </motion.section>
 
-      {/* Key Features */}
       <motion.section variants={fadeIn("up", "tween", 0.2, 1)} className="grid md:grid-cols-3 gap-8 mb-16">
         {keyFeatures.map((feature, index) => (
           <Card key={index} className="p-6 bg-zinc-900/50 border-blue-500/10">
@@ -82,7 +84,6 @@ const AnnualReturnsFiling = () => {
         ))}
       </motion.section>
 
-      {/* Pricing Plans */}
       <motion.section variants={fadeIn("up", "tween", 0.3, 1)} className="mb-16">
         <h2 className="text-3xl font-bold text-center mb-8">Pricing For Annual Filing</h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -98,7 +99,6 @@ const AnnualReturnsFiling = () => {
         </div>
       </motion.section>
 
-      {/* Filing Types */}
       <motion.section variants={fadeIn("up", "tween", 0.4, 1)} className="mb-16">
         <h2 className="text-2xl font-bold mb-6">Annual Return Filings</h2>
         <div className="grid md:grid-cols-2 gap-4">
@@ -111,7 +111,6 @@ const AnnualReturnsFiling = () => {
         </div>
       </motion.section>
 
-      {/* FAQs */}
       <motion.section variants={fadeIn("up", "tween", 0.5, 1)} className="mb-16">
         <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
         <div className="space-y-4">
@@ -124,7 +123,6 @@ const AnnualReturnsFiling = () => {
         </div>
       </motion.section>
 
-      {/* CTA */}
       <motion.section variants={fadeIn("up", "tween", 0.6, 1)} className="text-center">
         <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600">
           Get Started <ArrowRight className="ml-2" />
