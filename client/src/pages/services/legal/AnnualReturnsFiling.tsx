@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, FileText, AlertCircle, FileCheck, Clock } from "lucide-react";
+import { ArrowRight, Calendar, FileText, AlertCircle, FileCheck, Clock, Phone, MessageSquare, WhatsappIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function AnnualReturnsFiling() {
@@ -27,63 +27,33 @@ export default function AnnualReturnsFiling() {
               variants={fadeIn("up", "tween", 0.3, 1)}
               className="text-gray-400 max-w-2xl mx-auto mb-8"
             >
-              Companies Incorporated in India must file annual returns to the Registrar of Companies (ROC). We help you file the annual compliance of your company within its due date.
+              Professional assistance in filing your company's annual returns and maintaining compliance with regulatory requirements
             </motion.p>
+            
+            {/* Contact Buttons */}
+            <motion.div 
+              variants={fadeIn("up", "tween", 0.4, 1)}
+              className="flex flex-wrap justify-center gap-4 mb-12"
+            >
+              <Button size="lg" className="bg-green-500 hover:bg-green-600 flex items-center gap-2">
+                <Phone className="h-5 w-5" />
+                <a href="tel:+919876543210">Call Now</a>
+              </Button>
+              <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 flex items-center gap-2">
+                <WhatsappIcon className="h-5 w-5" />
+                <a href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
+              </Button>
+              <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 flex items-center gap-2">
+                <MessageSquare className="h-5 w-5" />
+                <a href="#contact">Message Us</a>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Pricing Cards */}
-      <section className="py-20 bg-zinc-900/30">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Director KYC",
-                description: "All directors are required to update their contact details and file a KYC annually.",
-                dueDate: "30 September",
-                price: "₹500",
-                icon: <FileText className="h-8 w-8" />
-              },
-              {
-                title: "Filing of AOC-4",
-                description: "Filing of the audited financial statement of the company to ROC after the AGM.",
-                dueDate: "30 Days After AGM",
-                price: "₹3,500",
-                icon: <FileCheck className="h-8 w-8" />
-              },
-              {
-                title: "Filing of MGT 7A",
-                description: "A mandatory filing of the company annual return with details of shareholding.",
-                dueDate: "60 Days After AGM",
-                price: "₹3,000",
-                icon: <Calendar className="h-8 w-8" />
-              }
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                variants={fadeIn("up", "spring", index * 0.1, 0.75)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-zinc-800/50 rounded-lg p-8 border border-green-500/10 hover:border-green-500/30 transition-all"
-              >
-                <div className="text-green-500 mb-4">{service.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-2">{service.title}</h3>
-                <p className="text-gray-400 mb-4">{service.description}</p>
-                <div className="flex items-center gap-2 text-yellow-500 mb-4">
-                  <Clock className="h-5 w-5" />
-                  <span>Due Date: {service.dueDate}</span>
-                </div>
-                <div className="text-2xl font-bold text-green-400">{service.price}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AGM Information */}
-      <section className="py-20">
+      {/* Overview Section */}
+      <section className="py-12 bg-zinc-900/30">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
@@ -94,34 +64,127 @@ export default function AnnualReturnsFiling() {
           >
             <motion.h2
               variants={fadeIn("up", "tween", 0.2, 1)}
-              className="text-3xl font-bold text-white mb-6"
+              className="text-3xl font-bold text-green-400 mb-6"
             >
-              Annual General Meeting (AGM)
+              Overview
             </motion.h2>
             <motion.div
               variants={fadeIn("up", "tween", 0.3, 1)}
               className="prose prose-invert max-w-none"
             >
-              <p className="text-gray-400 mb-6">
-                The annual general meeting of a company is the meeting of the shareholders to adopt the audited financial statements, re-elect the board members, declare dividends, and appoint the statutory auditor of the company. The AGM is a statutory meeting under section 96 of the Companies Act 2013.
+              <p className="text-gray-300 mb-4">
+                Annual return filing is a mandatory compliance requirement for all companies registered under the Companies Act, 2013. It involves filing of two main documents:
               </p>
-              <div className="bg-zinc-800/50 rounded-lg p-6 border border-green-500/10 mb-6">
-                <h3 className="text-xl font-bold text-green-400 mb-4">Key AGM Requirements</h3>
-                <ul className="list-disc list-inside text-gray-400 space-y-2">
-                  <li>First AGM must be held within nine months of incorporation</li>
-                  <li>Subsequent AGMs within six months of the financial year end</li>
-                  <li>21-clear-day Notice required for shareholders</li>
-                  <li>Must be held on a working day within city limits of registered office</li>
-                  <li>Video Conferencing options available</li>
+              <ul className="list-disc list-inside text-gray-300 space-y-2 mb-4">
+                <li>MGT-7 (Annual Return) - Contains company management and administrative details</li>
+                <li>AOC-4 (Financial Statements) - Contains financial information and reports</li>
+              </ul>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-green-400 mb-6"
+            >
+              Professional Fee Structure
+            </motion.h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <motion.div
+                variants={fadeIn("up", "spring", 0.1, 0.75)}
+                className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10"
+              >
+                <h3 className="text-xl font-bold text-white mb-4">Basic Package</h3>
+                <p className="text-3xl font-bold text-green-400 mb-4">₹4,999/-</p>
+                <ul className="text-gray-300 space-y-2">
+                  <li>MGT-7 Filing</li>
+                  <li>Basic Document Review</li>
+                  <li>Email Support</li>
                 </ul>
+              </motion.div>
+              {/* Add more pricing tiers */}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Government Fee Section */}
+      <section className="py-12 bg-zinc-900/30">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-green-400 mb-6"
+            >
+              Government Fee Structure
+            </motion.h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-zinc-800">
+                    <th className="p-4 text-left text-green-400 border border-zinc-700">Authorized Capital</th>
+                    <th className="p-4 text-left text-green-400 border border-zinc-700">Normal Filing Fee</th>
+                    <th className="p-4 text-left text-green-400 border border-zinc-700">Additional Fee (If Late)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {/* Add fee structure rows */}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto"
+          >
+            <motion.h2
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-3xl font-bold text-green-400 mb-6"
+            >
+              Filing Timeline
+            </motion.h2>
+            <div className="space-y-4">
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-bold text-white mb-2">MGT-7 Filing</h3>
+                <p className="text-gray-300">Within 60 days from the date of Annual General Meeting</p>
               </div>
-            </motion.div>
+              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10">
+                <h3 className="text-xl font-bold text-white mb-2">AOC-4 Filing</h3>
+                <p className="text-gray-300">Within 30 days from the date of Annual General Meeting</p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Due Dates Table */}
-      <section className="py-20 bg-zinc-900/30">
+      {/* Required Documents Section */}
+      <section className="py-12 bg-zinc-900/30">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
@@ -132,52 +195,23 @@ export default function AnnualReturnsFiling() {
           >
             <motion.h2
               variants={fadeIn("up", "tween", 0.2, 1)}
-              className="text-3xl font-bold text-white mb-6"
+              className="text-3xl font-bold text-green-400 mb-6"
             >
-              Due Dates for FY 2023-24
+              Required Documents
             </motion.h2>
-            <motion.div
-              variants={fadeIn("up", "tween", 0.3, 1)}
-              className="overflow-x-auto"
-            >
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-zinc-800">
-                    <th className="p-4 text-left text-green-400 border border-zinc-700">Particulars</th>
-                    <th className="p-4 text-left text-green-400 border border-zinc-700">First AGM</th>
-                    <th className="p-4 text-left text-green-400 border border-zinc-700">Subsequent AGM</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">AGM Due Date</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">31 December 2024</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">30 September 2024</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">ADT-1 Due Date</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">15 January 2025</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">15 October 2024</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">AOC-4 Due Date</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">29 January 2025</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">29 October 2024</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">MGT-7A Due Date</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">28 February 2025</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">28 November 2024</td>
-                  </tr>
-                </tbody>
-              </table>
-            </motion.div>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <FileCheck className="h-6 w-6 text-green-400 flex-shrink-0 mt-1" />
+                <span className="text-gray-300">Annual Financial Statements</span>
+              </li>
+              {/* Add more required documents */}
+            </ul>
           </motion.div>
         </div>
       </section>
 
-      {/* ROC Fees */}
-      <section className="py-20">
+      {/* Benefits Section */}
+      <section className="py-12">
         <div className="container mx-auto px-4">
           <motion.div
             variants={staggerContainer}
@@ -188,45 +222,13 @@ export default function AnnualReturnsFiling() {
           >
             <motion.h2
               variants={fadeIn("up", "tween", 0.2, 1)}
-              className="text-3xl font-bold text-white mb-6"
+              className="text-3xl font-bold text-green-400 mb-6"
             >
-              ROC Filing Fees
+              Benefits of Timely Filing
             </motion.h2>
-            <motion.div
-              variants={fadeIn("up", "tween", 0.3, 1)}
-              className="overflow-x-auto"
-            >
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="bg-zinc-800">
-                    <th className="p-4 text-left text-green-400 border border-zinc-700">Authorised Capital</th>
-                    <th className="p-4 text-left text-green-400 border border-zinc-700">Normal ROC Fee (Rs)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">Less than 1,00,000</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">200/-</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">1,00,000 to 4,99,999</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">300/-</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">5,00,000 to 24,99,999</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">400/-</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">25,00,000 to 99,99,999</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">500/-</td>
-                  </tr>
-                  <tr>
-                    <td className="p-4 border border-zinc-700 text-white">1,00,00,000 or more</td>
-                    <td className="p-4 border border-zinc-700 text-gray-400">600/-</td>
-                  </tr>
-                </tbody>
-              </table>
-            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Add benefits */}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -248,41 +250,7 @@ export default function AnnualReturnsFiling() {
               Frequently Asked Questions
             </motion.h2>
             <Accordion type="single" collapsible className="space-y-4">
-              {[
-                {
-                  question: "What is MGT-7 and AOC-4?",
-                  answer: "MGT-7 is the annual return form that contains details about the company's management, shareholding pattern, and other administrative information. AOC-4 is the financial statement form that includes balance sheet, profit & loss account, and other financial details."
-                },
-                {
-                  question: "What happens if I don't file annual returns on time?",
-                  answer: "Late filing results in additional fees and penalties. The company and its directors may face legal consequences, including disqualification of directors and potential strike-off of the company."
-                },
-                {
-                  question: "Can I file MGT-7 and AOC-4 myself?",
-                  answer: "While it's possible to file these returns yourself, it's recommended to seek professional help to ensure accuracy and compliance with all requirements, as errors can lead to rejection and penalties."
-                },
-                {
-                  question: "What documents are needed for filing annual returns?",
-                  answer: "Required documents include financial statements, board meeting minutes, shareholding details, director information, auditor's report, and various statutory registers and records."
-                },
-                {
-                  question: "Is there any exemption from filing annual returns?",
-                  answer: "No, all registered companies must file annual returns. However, certain categories like One Person Companies and Small Companies have simplified forms and requirements."
-                }
-              ].map((faq, index) => (
-                <AccordionItem
-                  key={index}
-                  value={`item-${index}`}
-                  className="bg-zinc-800/30 rounded-lg border border-green-500/10"
-                >
-                  <AccordionTrigger className="px-6 text-white hover:text-green-400">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-4 text-gray-400">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
+              {/* Add FAQ items */}
             </Accordion>
           </motion.div>
         </div>
@@ -308,14 +276,19 @@ export default function AnnualReturnsFiling() {
               variants={fadeIn("up", "tween", 0.3, 1)}
               className="text-gray-400 mb-8"
             >
-              Let us help you stay compliant with all your annual filing requirements
+              Let our experts handle your compliance requirements while you focus on growing your business
             </motion.p>
             <motion.div
               variants={fadeIn("up", "tween", 0.4, 1)}
-              className="flex justify-center gap-4"
+              className="flex flex-wrap justify-center gap-4"
             >
-              <Button size="lg" className="bg-green-500 hover:bg-green-600">
-                Get Started <ArrowRight className="ml-2" />
+              <Button size="lg" className="bg-green-500 hover:bg-green-600 flex items-center gap-2">
+                <Phone className="h-5 w-5" />
+                <a href="tel:+919876543210">Call Now</a>
+              </Button>
+              <Button size="lg" variant="outline" className="border-green-500 text-green-500 hover:bg-green-500/10 flex items-center gap-2">
+                <WhatsappIcon className="h-5 w-5" />
+                <a href="https://wa.me/919876543210" target="_blank">WhatsApp</a>
               </Button>
             </motion.div>
           </motion.div>
