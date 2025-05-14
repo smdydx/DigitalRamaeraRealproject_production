@@ -48,6 +48,7 @@ import Careers from "./pages/Careers";
 import MOAandAOAAlterations from "./pages/services/legal/MOAandAOAAlterations";
 import LLPToPrivateConversion from "./pages/services/legal/LLPToPrivateConversion";
 import CorporateGovernanceAdvisory from "./pages/services/legal/CorporateGovernanceAdvisory";
+import SecretarialAudit from "./pages/services/legal/SecretarialAudit";
 
 import AIChatBot from './components/AIChatBot';
 
