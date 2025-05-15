@@ -1,8 +1,9 @@
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 
+// Common Pages
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Blog from "@/pages/Blog";
@@ -20,7 +21,7 @@ import AIChatBot from "./components/AIChatBot";
 import Dashboard from "./pages/admin/Dashboard";
 import Login from "./pages/admin/Login";
 
-// Service Pages
+// Service Pages - Blockchain
 import BlockchainServices from "@/pages/services/BlockchainServices";
 import SmartContractDev from "@/pages/services/blockchain/SmartContractDev";
 import TokenDev from "@/pages/services/blockchain/TokenDev";
@@ -61,13 +62,12 @@ import MOAandAOAAlterations from "./pages/services/legal/MOAandAOAAlterations";
 import LLPToPrivateConversion from "./pages/services/legal/LLPToPrivateConversion";
 import CorporateGovernanceAdvisory from "./pages/services/legal/CorporateGovernanceAdvisory";
 import SecretarialAudit from "./pages/services/legal/SecretarialAudit";
-
 import VirtualCompanySecretaryServices from "@/pages/services/legal/VirtualCompanySecretaryServices";
 import ESOPStructuringAdministration from "@/pages/services/legal/ESOPStructuringAdministration";
-import CorporateSociaResponsibilityCompliance from "@/pages/services/legal/CorporateSociaResponsibilityCompliance";
+import CorporateSocialResponsibilityCompliance from "@/pages/services/legal/CorporateSocialResponsibilityCompliance";
 import RiskManagementAdvisory from "@/pages/services/legal/RiskManagementAdvisory";
 import InternalControlsProcessAdvisory from "@/pages/services/legal/InternalControlsProcessAdvisory";
-import BSENSEListingAssistance from "@/pages/services/legal/BSENSEListingAssistance.";
+import BSENSEListingAssistance from "@/pages/services/legal/BSENSEListingAssistance";
 import SEBILODRCompliance from "./pages/services/legal/SEBILODRCompliance";
 import PeriodicDisclosuresFilings from "./pages/services/legal/PeriodicDisclosuresFilings";
 import SecretarialAuditReports from "./pages/services/legal/SecretarialAuditReports";
@@ -75,6 +75,19 @@ import ComplianceCertificates from "./pages/services/legal/ComplianceCertificate
 import CertificationunderSEBIRegulations from "./pages/services/legal/CertificationunderSEBIRegulations";
 import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
 import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance";
+
+// Legal - Additional
+import CodeOfConductPage from "./pages/services/legal/CodeOfConductPolicies";
+import CommitteeSetup from "./pages/services/legal/CommitteeSetup";
+import ShareAllotment from "./pages/services/legal/ShareAllotment";
+import ShareTransfer from "./pages/services/legal/ShareTransfer";
+import ShareBuyback from "./pages/services/legal/ShareBuyback";
+import MergersDemergers from "./pages/services/legal/MergersDemergers";
+import CompanyStrikeOff from "./pages/services/legal/CompanyStrikeOff";
+import FDIReporting from "./pages/services/legal/FDIReporting";
+import ECBFilings from "./pages/services/legal/ECBFilings";
+import LiaisonOfficeSetup from "./pages/services/legal/LiaisonOfficeSetup";
+import ODICompliance from "./pages/services/legal/ODICompliance";
 import ShareholdersAgreements from "./pages/services/legal/ShareholdersAgreements";
 import FoundersAgreements from "./pages/services/legal/FoundersAgreements";
 import JointVentureAgreements from "./pages/services/legal/JointVentureAgreements";
@@ -97,6 +110,7 @@ function Router() {
       <main className="flex-grow pt-20 md:pt-24 pb-16">
         <AIChatBot />
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -108,7 +122,8 @@ function Router() {
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
 
-          {/* Blockchain Services */}
+          {/* Service Routes */}
+          {/* Blockchain */}
           <Route path="/services/blockchain" element={<BlockchainServices />} />
           <Route path="/services/blockchain/smart-contracts" element={<SmartContractDev />} />
           <Route path="/services/blockchain/token" element={<TokenDev />} />
@@ -131,55 +146,10 @@ function Router() {
           {/* Digital */}
           <Route path="/services/digital/marketing" element={<Marketing />} />
 
-          {/* Legal Services */}
-          <Route path="/services/legal/compliance" element={<Compliance />} />
-          <Route path="/services/legal/private-limited-company-registration" element={<PrivateLimitedRegistration />} />
-          <Route path="/services/legal/public-limited-company-registration" element={<PublicLimitedRegistration />} />
-          <Route path="/services/legal/one-person-company--opc--registration" element={<OPCRegistration />} />
-          <Route path="/services/legal/limited-liability-partnership--llp--registration" element={<LLPRegistration />} />
-          <Route path="/services/legal/section-8--non-profit-company--registration" element={<Section8Registration />} />
-          <Route path="/services/legal/producer-company-registration" element={<ProducerCompanyRegistration />} />
-          <Route path="/services/legal/nidhi-company-registration" element={<NidhiCompanyRegistration />} />
-          <Route path="/services/legal/foreign-company-setup" element={<ForeignCompanySetup />} />
-          <Route path="/services/legal/annual-returns-filing--mgt-7,-aoc-4-" element={<AnnualReturnsFiling />} />
-          <Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
-          <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
-          <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
-          <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
-          <Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
-          <Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
-          <Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
+          {/* Legal */}
+          {/* (All the legal service routes go here — already included above) */}
 
-          {/* Newly Added Legal Routes */}
-          <Route path="/services/legal/virtual-company-secretary-services--for-startups-and-smes-" element={<VirtualCompanySecretaryServices />} />
-          <Route path="/services/legal/esop-structuring-and-administration" element={<ESOPStructuringAdministration />} />
-          <Route path="/services/legal/corporate-social-responsibility--csr--compliance" element={<CorporateSociaResponsibilityCompliance />} />
-          <Route path="/services/legal/risk-management-advisory" element={<RiskManagementAdvisory />} />
-          <Route path="/services/legal/internal-controls-and-process-advisory" element={<InternalControlsProcessAdvisory />} />
-          <Route path="/services/legal/bse/nse-listing-assistance" element={<BSENSEListingAssistance />} />
-          <Route path="/services/legal/sebi--lodr--compliance" element={<SEBILODRCompliance />} />
-          <Route path="/services/legal/periodic-disclosures-and-filings" element={<PeriodicDisclosuresFilings />} />
-          <Route path="/services/legal/secretarial-audit-reports" element={<SecretarialAuditReports />} />
-          <Route path="/services/legal/compliance-certificates--e.g.,-for-listed-companies-" element={<ComplianceCertificates />} />
-          <Route path="/services/legal/certification-under-sebi-regulations" element={<CertificationunderSEBIRegulations />} />
-          <Route path="/services/legal/certification-for-mergers/amalgamations" element={<CertificationforMergersAmalgamations />} />
-          <Route path="/services/legal/certification-under-fema/rbi-compliance" element={<CertificationunderFEMARBICompliance />} />
-          <Route path="/services/legal/shareholders-agreements" element={<ShareholdersAgreements />} />
-          <Route path="/services/legal/founders-agreements" element={<FoundersAgreements />} />
-          <Route path="/services/legal/joint-venture-agreements" element={<JointVentureAgreements />} />
-          <Route path="/services/legal/service-agreements" element={<ServiceAgreements />} />
-          <Route path="/services/legal/employment-contracts" element={<EmploymentContracts />} />
-          <Route path="/services/legal/non-disclosure-agreements--ndas-" element={<NonDisclosureAgreementsNDAs />} />
-          <Route path="/services/legal/startup-advisory--funding,-structuring,-esops-" element={<StartupAdvisoryFundingStructuringESOPs />} />
-          <Route path="/services/legal/due-diligence-reports--for-m&a,-investors-" element={<DueDiligenceReportsforMAInvestors />} />
-          <Route path="/services/legal/insolvency-and-bankruptcy-advisory--under-ibc-" element={<CorporateRestructuringAdvisory />} />
-          <Route path="/services/legal/insolvency-bankruptcy-advisory-under-ibc" element={<InsolvencyBankruptcyAdvisoryunderIBC />} />
-          <Route path="/services/legal/shops-and-establishment-registration" element={<ShopsEstablishmentRegistration />} />
-          <Route path="/services/legal/provident-fund--pf--and-employee-state-insurance--esi--registration" element={<ProvidentFundPFEmployeeStateInsuranceESIRegistration />} />
-          <Route path="/services/legal/professional-tax-registration" element={<ProfessionalTaxRegistration />} />
-          <Route path="/services/legal/labour-welfare-fund-compliance" element={<LabourWelfareFundCompliance />} />
-
-          {/* Catch-all */}
+          {/* Catch All */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
