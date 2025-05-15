@@ -63,7 +63,8 @@ import SecretarialAuditReports from "./pages/services/legal/SecretarialAuditRepo
 import ComplianceCertificates from "./pages/services/legal/ComplianceCertificates";
 import CertificationunderSEBIRegulations from "./pages/services/legal/CertificationunderSEBIRegulations";
 import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
-import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance"
+import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance";
+import CodeOfConductPage from "./pages/services/legal/CodeOfConductPolicies";
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
