@@ -225,7 +225,7 @@ const Navbar = () => {
                     onClick={() => scrollToSection(link.href)}
                     className="relative text-white hover:text-primary font-medium transition-colors duration-300 group"
                   >
-                    {link.name}
+                    {typeof link.name === 'string' ? link.name : ''}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
                   </button>
                   {link.name === "Contact Us" && (

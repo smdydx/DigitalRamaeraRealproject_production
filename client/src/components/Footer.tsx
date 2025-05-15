@@ -52,16 +52,16 @@ const Footer = () => {
       <ul className="space-y-4">
         {links.map((link, index) => (
           <li key={index}>
-            <a 
-              href={link.path} 
-              onClick={(e) => {
-                e.preventDefault();
-                window.location.href = link.path;
+            <button
+              onClick={() => {
+                if (typeof link.path === 'string') {
+                  window.location.href = link.path;
+                }
               }}
-              className="text-gray-400 hover:text-primary transition-colors duration-300"
+              className="text-gray-400 hover:text-primary transition-colors duration-300 text-left w-full"
             >
-              {link.name}
-            </a>
+              {typeof link.name === 'string' ? link.name : ''}
+            </button>
           </li>
         ))}
       </ul>
