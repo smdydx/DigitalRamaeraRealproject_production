@@ -2,43 +2,103 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
-import { Code, Smartphone, Gamepad2, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Code, Smartphone, Cloud, ArrowRight, CheckCircle2, AppWindow, Blocks, Globe, BarChart2, Server } from "lucide-react";
 import { Link } from "react-router-dom";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const ITServices = () => {
-  const services = [
+  const categories = [
     {
-      icon: <Smartphone className="w-8 h-8 text-primary" />,
-      title: "Mobile App Development",
-      description: "Cross-platform & native mobile applications",
-      features: [
-        "iOS and Android Development",
-        "React Native & Flutter Apps",
-        "App Store Optimization",
-        "Mobile App Testing"
+      title: "SaaS & Installables",
+      icon: <AppWindow className="w-8 h-8 text-primary" />,
+      products: [
+        "CRM Software",
+        "ERP Software",
+        "HRM Software",
+        "Inventory Management & Billing",
+        "POS Software",
+        "School Management ERP",
+        "Hospital Management ERP",
+        "Hotel Booking System",
+        "Restaurant POS",
+        "Accounting Software",
+        "Salon Management",
+        "Gym Management",
+        "Law Firm Management",
+        "Real Estate CRM",
+        "Property Management"
       ]
     },
     {
-      icon: <Code className="w-8 h-8 text-primary" />,
-      title: "Custom Software Development",
-      description: "Tailored software solutions for businesses",
-      features: [
-        "Enterprise Software",
-        "Cloud Applications",
-        "API Development",
-        "Database Design"
+      title: "Web Development & CMS",
+      icon: <Globe className="w-8 h-8 text-blue-500" />,
+      products: [
+        "Website Builder Platform",
+        "eCommerce Store Platform",
+        "Blog/News CMS",
+        "Classified Ads Portal",
+        "Matrimony Portal",
+        "Job Recruitment Portal",
+        "Event Management Portal"
       ]
     },
     {
-      icon: <Gamepad2 className="w-8 h-8 text-primary" />,
-      title: "Game Development",
-      description: "Engaging gaming experiences",
-      features: [
-        "Unity & Unreal Engine",
-        "Mobile Games",
-        "3D Game Development",
-        "Game Testing & QA"
+      title: "Mobile Applications",
+      icon: <Smartphone className="w-8 h-8 text-purple-500" />,
+      products: [
+        "Grocery Delivery App",
+        "Medicine Delivery App",
+        "Taxi Booking App",
+        "Food Delivery App",
+        "Online Learning App",
+        "Dating & Social App",
+        "Fitness Tracking App",
+        "Laundry Service App",
+        "Property Rental App"
       ]
+    },
+    {
+      title: "Cloud & SaaS Services",
+      icon: <Cloud className="w-8 h-8 text-green-500" />,
+      products: [
+        "Web Hosting Services",
+        "Cloud Storage Services",
+        "VPN Services",
+        "Email Hosting",
+        "Blockchain Node Hosting",
+        "Remote Desktop Services"
+      ]
+    }
+  ];
+
+  const stats = [
+    { number: "500+", label: "Projects Delivered" },
+    { number: "98%", label: "Client Satisfaction" },
+    { number: "50+", label: "Expert Developers" },
+    { number: "24/7", label: "Support Available" }
+  ];
+
+  const faqs = [
+    {
+      question: "What types of businesses can benefit from your SaaS solutions?",
+      answer: "Our SaaS solutions are designed to cater to businesses of all sizes, from startups to enterprises, across various industries including retail, healthcare, education, and hospitality."
+    },
+    {
+      question: "Do you provide customization for your software solutions?",
+      answer: "Yes, we offer customization services for all our software solutions to meet your specific business requirements and workflows."
+    },
+    {
+      question: "What kind of support do you provide after deployment?",
+      answer: "We provide 24/7 technical support, regular maintenance updates, security patches, and training for your team to ensure smooth operations."
+    },
+    {
+      question: "How secure are your cloud services?",
+      answer: "Our cloud services implement industry-standard security protocols, regular backups, encryption, and comply with relevant data protection regulations."
     }
   ];
 
@@ -52,37 +112,94 @@ const ITServices = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="container mx-auto px-4 mt-10"
+        className="container mx-auto px-4"
       >
-        <motion.div variants={fadeIn("up", "tween", 0.2, 1)} className="text-center mb-16">
+        {/* Hero Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.2, 1)} className="text-center mb-20">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 to-purple-600 bg-clip-text text-transparent mb-6">
-            IT Services & Solutions
+            Complete IT & Software Solutions
           </h1>
-          <p className="text-gray-400 max-w-3xl mx-auto text-lg">
-            Comprehensive IT solutions tailored to your business needs with cutting-edge technology.
+          <p className="text-gray-400 max-w-3xl mx-auto text-lg mb-8">
+            Empowering businesses with cutting-edge technology solutions. From custom software development to cloud services, 
+            we deliver scalable and reliable solutions tailored to your needs.
           </p>
+          <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+            Schedule Consultation <ArrowRight className="ml-2" />
+          </Button>
         </motion.div>
 
-        <motion.div variants={fadeIn("up", "tween", 0.3, 1)} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="bg-zinc-900/50 p-6 rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all">
-              <div className="mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
-              <p className="text-gray-400 mb-4">{service.description}</p>
-              <ul className="space-y-2">
-                {service.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-gray-300">
-                    <CheckCircle2 className="w-4 h-4 text-primary mr-2" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+        {/* Stats Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.3, 1)} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
+              <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
+              <div className="text-gray-400">{stat.label}</div>
             </div>
           ))}
         </motion.div>
 
-        <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="text-center">
-          <Link to="/contact">
+        {/* Categories Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.4, 1)} className="mb-20">
+          {categories.map((category, index) => (
+            <div key={index} className="mb-12">
+              <div className="flex items-center gap-4 mb-6">
+                {category.icon}
+                <h2 className="text-2xl font-bold text-white">{category.title}</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {category.products.map((product, idx) => (
+                  <div key={idx} className="p-4 bg-zinc-900/50 rounded-lg border border-blue-500/10 flex items-start gap-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1" />
+                    <span className="text-gray-300">{product}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Why Choose Us */}
+        <motion.div variants={fadeIn("up", "tween", 0.5, 1)} className="mb-20">
+          <h2 className="text-3xl font-bold text-center mb-10">Why Choose Us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
+              <Server className="w-10 h-10 text-primary mb-4" />
+              <h3 className="text-xl font-bold mb-3">Cutting-edge Technology</h3>
+              <p className="text-gray-400">We use the latest technologies and best practices to deliver robust solutions.</p>
+            </div>
+            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
+              <Blocks className="w-10 h-10 text-blue-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3">Scalable Solutions</h3>
+              <p className="text-gray-400">Our solutions grow with your business, ensuring long-term sustainability.</p>
+            </div>
+            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
+              <BarChart2 className="w-10 h-10 text-purple-500 mb-4" />
+              <h3 className="text-xl font-bold mb-3">Proven Results</h3>
+              <p className="text-gray-400">Track record of delivering successful projects across industries.</p>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* FAQ Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.6, 1)} className="mb-20">
+          <h2 className="text-3xl font-bold text-center mb-10">Frequently Asked Questions</h2>
+          <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left">{faq.question}</AccordionTrigger>
+                <AccordionContent className="text-gray-400">{faq.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div variants={fadeIn("up", "tween", 0.7, 1)} className="text-center mb-20">
+          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Contact us today to discuss how our IT solutions can help you achieve your business goals.
+          </p>
+          <Link to="/schedule">
             <Button size="lg" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
               Get Started <ArrowRight className="ml-2" />
             </Button>
