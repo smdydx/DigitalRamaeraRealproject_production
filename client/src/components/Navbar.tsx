@@ -379,7 +379,7 @@ const Navbar = () => {
                               </div>
                             </button>
 
-                            {service.submenu && isSubmenuOpen && (
+                            {service.submenu && (
                               <motion.div
                                 initial={{ opacity: 0, scaleY: 0 }}
                                 animate={{ opacity: 1, scaleY: 1 }}
