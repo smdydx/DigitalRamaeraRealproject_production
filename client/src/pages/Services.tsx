@@ -3,87 +3,152 @@ import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-
-const servicesCategories = [
-  {
-    title: "Blockchain Development",
-    path: "/services/blockchain",
-    description: "Decentralized solutions and blockchain applications",
-    icon: "🔗"
-  },
-  {
-    title: "Software Development",
-    path: "/services/software",
-    description: "Centralized solutions and website development",
-    icon: "💻"
-  },
-  {
-    title: "App Development",
-    path: "/services/app",
-    description: "Mobile applications and fintech solutions",
-    icon: "📱"
-  },
-  {
-    title: "Secretarial Work",
-    path: "/services/secretarial",
-    description: "Company and legal related services",
-    icon: "📋"
-  }
-];
+import { ArrowRight, Code, Smartphone, Scale } from "lucide-react";
 
 const Services = () => {
-  return (
-    <main className="bg-background min-h-screen py-20">
-      <div className="container mx-auto px-4">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.h1 
-            variants={fadeIn("up", "tween", 0.2, 1)}
-            className="text-4xl md:text-5xl font-bold mb-6"
-          >
-            Our Services
-          </motion.h1>
-          <motion.p 
-            variants={fadeIn("up", "tween", 0.3, 1)}
-            className="text-muted-foreground max-w-2xl mx-auto"
-          >
-            Comprehensive solutions for your business needs
-          </motion.p>
-        </motion.div>
+  const mainServices = [
+    {
+      title: "Blockchain Development",
+      path: "/services/blockchain",
+      description: "End-to-end blockchain solutions from smart contracts to decentralized applications",
+      icon: <Code className="w-8 h-8" />,
+      color: "from-green-400 to-emerald-600",
+      features: [
+        "Smart Contract Development",
+        "Token Development",
+        "NFT Marketplace",
+        "DeFi Solutions",
+        "Crypto Exchange",
+        "Blockchain Consulting",
+        "Node Setup & Maintenance",
+        "Metaverse Development"
+      ]
+    },
+    {
+      title: "IT Services",
+      path: "/services/it-services",
+      description: "Comprehensive IT solutions for modern business needs",
+      icon: <Smartphone className="w-8 h-8" />,
+      color: "from-blue-400 to-blue-600",
+      features: [
+        "SaaS & Installable Solutions",
+        "Web Development & CMS",
+        "Mobile Applications",
+        "Cloud Services",
+        "Custom Software Development",
+        "Digital Marketing",
+        "UI/UX Design",
+        "Technical Support"
+      ]
+    },
+    {
+      title: "Legal & Compliance",
+      path: "/services/legal/compliance",
+      description: "Complete legal and compliance services for businesses",
+      icon: <Scale className="w-8 h-8" />,
+      color: "from-yellow-400 to-yellow-600",
+      features: [
+        "Company Registration",
+        "Legal Documentation",
+        "Compliance Management",
+        "Corporate Advisory",
+        "FEMA & RBI Compliance",
+        "Intellectual Property",
+        "Annual Filings",
+        "Legal Consultation"
+      ]
+    }
+  ];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {servicesCategories.map((category, index) => (
-            <motion.div
-              key={category.path}
-              variants={fadeIn("up", "tween", 0.2 * index, 1)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="group"
+  return (
+    <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black pt-24">
+      {/* Hero Section */}
+      <section className="relative h-[60vh] overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video/herosection.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/60" />
+        
+        <div className="relative container mx-auto px-4 h-full flex items-center">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="max-w-4xl"
+          >
+            <motion.h1
+              variants={fadeIn("up", "tween", 0.2, 1)}
+              className="text-4xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-6"
             >
-              <Link to={category.path}>
-                <div className="bg-zinc-900/50 backdrop-blur-lg p-8 rounded-2xl border border-zinc-800 hover:border-primary/50 transition-all duration-300">
-                  <div className="text-4xl mb-4">{category.icon}</div>
-                  <h2 className="text-2xl font-semibold mb-3 group-hover:text-primary transition-colors">
-                    {category.title}
-                  </h2>
-                  <p className="text-muted-foreground mb-6">
-                    {category.description}
-                  </p>
-                  <Button variant="outline" className="group-hover:bg-primary group-hover:text-white">
-                    Learn More
-                  </Button>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+              Comprehensive Business Solutions
+            </motion.h1>
+            <motion.p
+              variants={fadeIn("up", "tween", 0.3, 1)}
+              className="text-xl text-gray-300 mb-8"
+            >
+              From blockchain innovation to legal compliance, we provide end-to-end solutions for your business needs
+            </motion.p>
+          </motion.div>
         </div>
-      </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-20 relative">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 gap-8"
+          >
+            {mainServices.map((service, index) => (
+              <motion.div
+                key={service.title}
+                variants={fadeIn("up", "spring", index * 0.1, 0.75)}
+                className="relative group"
+              >
+                <Link to={service.path}>
+                  <div className="bg-zinc-900/50 rounded-2xl p-8 border border-green-500/10 hover:border-green-500/30 transition-all duration-300">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className={`p-3 rounded-xl bg-gradient-to-br ${service.color}`}>
+                        {service.icon}
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-bold text-white mb-2">{service.title}</h2>
+                        <p className="text-gray-400">{service.description}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {service.features.map((feature, idx) => (
+                        <div 
+                          key={idx}
+                          className="p-4 bg-black/20 rounded-lg border border-green-500/5 group-hover:border-green-500/20 transition-all duration-300"
+                        >
+                          <span className="text-gray-300">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Button 
+                      className="mt-6 bg-gradient-to-r from-green-500 to-emerald-600"
+                    >
+                      Learn More <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
     </main>
   );
 };
