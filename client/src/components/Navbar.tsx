@@ -422,18 +422,16 @@ const Navbar = () => {
     }
                 // Normal nav links
                 return (
-                  <a
+                  <button
                     key={index}
-                    href={link.href}
-                    onClick={(e) => {
-                      e.preventDefault();
+                    onClick={() => {
                       setIsMobileMenuOpen(false);
                       scrollToSection(link.href);
                     }}
                     className="block text-white hover:text-primary font-medium py-3 transition-colors duration-300 w-full text-left px-4 border-b border-green-500/10 last:border-none hover:bg-green-500/5"
                   >
                     {link.name}
-                  </a>
+                  </button>
                 );
               })}
             </div>

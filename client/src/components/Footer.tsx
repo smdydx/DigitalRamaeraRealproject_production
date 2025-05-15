@@ -50,9 +50,16 @@ const Footer = () => {
   const Navigation = ({ links }: { links: Array<{ name: string; path: string }> }) => {
     return (
       <ul className="space-y-4">
-        {links.map((link) => (
-          <li key={link.path}>
-            <a href={link.path} className="text-gray-400 hover:text-primary transition-colors duration-300">
+        {links.map((link, index) => (
+          <li key={index}>
+            <a 
+              href={link.path} 
+              onClick={(e) => {
+                e.preventDefault();
+                window.location.href = link.path;
+              }}
+              className="text-gray-400 hover:text-primary transition-colors duration-300"
+            >
               {link.name}
             </a>
           </li>
