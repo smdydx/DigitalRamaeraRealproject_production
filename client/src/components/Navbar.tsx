@@ -363,6 +363,7 @@ const Navbar = () => {
                                 }
                               }}
                               className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
+                              className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
                             >
                               <div className="text-primary mt-1">
                                 <div className="h-5 w-5">{React.createElement(service.icon)}</div>
@@ -379,12 +380,12 @@ const Navbar = () => {
                               </div>
                             </button>
 
-                            {service.submenu && (
+                            {service.submenu && isSubmenuOpen && (
                               <motion.div
-                                initial={{ opacity: 0, scaleY: 0 }}
-                                animate={{ opacity: 1, scaleY: 1 }}
-                                exit={{ opacity: 0, scaleY: 0 }}
-                                className="pl-6 mt-2 space-y-2 origin-top"
+                                initial={{ opacity: 0, height: 0 }}
+                                animate={{ opacity: 1, height: "auto" }}
+                                exit={{ opacity: 0, height: 0 }}
+                                className="pl-6 mt-2 space-y-2 origin-top bg-zinc-800/50 rounded-lg py-2"
                               >
                                 {Array.isArray(service.submenu) && service.submenu.map((subItem, subIdx) => {
                                   if (!subItem || typeof subItem !== 'object') return null;
