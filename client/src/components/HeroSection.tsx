@@ -173,14 +173,14 @@ const HeroSection = () => {
                       </div>
                     </Link>
                     <Link 
-                      to="/services/legal"
+                      to="/services/legal/compliance"
                       className="flex items-center gap-3 p-3 rounded-lg hover:bg-green-500/10 transition-all duration-300 group"
                     >
                       <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
                         <Scale className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <span className="font-semibold text-white group-hover:text-yellow-400 transition-colors">Legal Services</span>
+                        <span className="font-semibold text-white group-hover:text-yellow-400 transition-colors">Legal & Compliance Services</span>
                         <span className="block text-sm text-gray-400">Business & Compliance</span>
                       </div>
                     </Link>
