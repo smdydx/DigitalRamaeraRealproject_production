@@ -347,7 +347,7 @@ const Navbar = () => {
                       {category} Solutions
                     </h3>
                     <div className="space-y-2">
-                      {servicesData[category as keyof typeof servicesData].map((service, idx) => {
+                      {Array.isArray(servicesData[category as keyof typeof servicesData]) && servicesData[category as keyof typeof servicesData].map((service, idx) => {
                         const isSubmenuOpen = openMobileSubmenus.includes(service.title);
                         return (
                           <div key={idx} className="relative">
@@ -387,25 +387,28 @@ const Navbar = () => {
                                 exit={{ opacity: 0, scaleY: 0 }}
                                 className="pl-6 mt-2 space-y-2 origin-top"
                               >
-                                {service.submenu.map((subItem, subIdx) => (
-                                  <button
-                                    key={subIdx}
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      if (subItem.path) window.location.href = subItem.path;
-                                      setIsMobileMenuOpen(false);
-                                      setOpenMobileSubmenus([]);
-                                    }}
-                                    className="flex items-center gap-2 w-full text-left p-2 rounded-md hover:bg-zinc-700/50 transition-colors"
-                                  >
-                                    <div className="text-primary">
-                                      {React.createElement(subItem.icon, {
-                                        className: "h-4 w-4 opacity-75"
-                                      })}
-                                    </div>
-                                    <span className="text-sm text-white/90">{subItem.title}</span>
-                                  </button>
-                                ))}
+                                {Array.isArray(service.submenu) && service.submenu.map((subItem, subIdx) => {
+                                  if (!subItem || typeof subItem !== 'object') return null;
+                                  return (
+                                    <button
+                                      key={subIdx}
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        if (subItem.path) window.location.href = subItem.path;
+                                        setIsMobileMenuOpen(false);
+                                        setOpenMobileSubmenus([]);
+                                      }}
+                                      className="flex items-center gap-2 w-full text-left p-2 rounded-md hover:bg-zinc-700/50 transition-colors"
+                                    >
+                                      <div className="text-primary">
+                                        {subItem.icon && React.createElement(subItem.icon, {
+                                          className: "h-4 w-4 opacity-75"
+                                        })}
+                                      </div>
+                                      <span className="text-sm text-white/90">{subItem.title}</span>
+                                    </button>
+                                  );
+                                })}
                               </motion.div>
                             )}
                           </div>

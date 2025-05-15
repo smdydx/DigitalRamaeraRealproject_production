@@ -50,23 +50,19 @@ const Footer = () => {
   const Navigation = ({ links }: { links: Array<{ name: string; path: string }> }) => {
     return (
       <ul className="space-y-4">
-        {links.map((link: any, index) => {
-          const name = typeof link === 'object' ? link.name : link;
-          const path = typeof link === 'object' ? link.path : null;
-
-          if (!name) return null;
-
+        {Array.isArray(links) && links.map((link, index) => {
+          if (!link || typeof link !== 'object') return null;
           return (
             <li key={index}>
               <button
                 onClick={() => {
-                  if (path) {
-                    window.location.href = path;
+                  if (link.path) {
+                    window.location.href = link.path;
                   }
                 }}
                 className="text-gray-400 hover:text-primary transition-colors duration-300 text-left w-full"
               >
-                {name}
+                {typeof link.name === 'string' ? link.name : ''}
               </button>
             </li>
           );
