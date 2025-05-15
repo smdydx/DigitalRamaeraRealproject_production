@@ -1,4 +1,3 @@
-
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Send, Linkedin, Facebook, Instagram, ArrowUp } from "lucide-react";
@@ -48,6 +47,39 @@ const Footer = () => {
     }
   };
 
+  const Navigation = ({ links }: { links: Array<{ name: string; path: string }> }) => {
+    return (
+      <ul className="space-y-4">
+        {Array.isArray(links) && links.map((link, index) => {
+          if (!link || typeof link !== 'object') return null;
+          return (
+            <li key={index}>
+              <button
+                onClick={() => {
+                  if (link.path) {
+                    window.location.href = link.path;
+                  }
+                }}
+                className="text-gray-400 hover:text-primary transition-colors duration-300 text-left w-full"
+              >
+                {typeof link.name === 'string' ? link.name : ''}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
+
+  const navigationLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Blog", path: "/blog" },
+    { name: "Careers", path: "/careers" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <footer className="bg-gradient-to-b from-zinc-900 to-black pt-16 pb-8 w-full mt-auto relative z-10">
       <div className="container mx-auto px-4 md:px-6">
@@ -56,10 +88,10 @@ const Footer = () => {
           whileInView="visible"
           viewport={{ once: true }}
           variants={staggerContainer}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16"
+          className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-16"
         >
           {/* Company Info */}
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-2">
             <div onClick={() => window.location.href = '/'} className="cursor-pointer">
               <div className="flex items-center gap-4 mb-6">
                 <img src="/images/ramaera-logo.jpg" alt="Ramaera Logo" className="h-14 w-14 rounded-full border-2 border-orange-500/30" />
@@ -84,52 +116,29 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Blockchain Services */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xl font-semibold mb-6 text-white">Blockchain Services</h4>
-            <ul className="space-y-3">
+          {/* Quick Links */}
+          <div>
+            <h4 className="text-xl font-semibold mb-6 text-white">Quick Links</h4>
+            <Navigation links={navigationLinks} />
+          </div>
+
+          {/* Tech Services */}
+          <div>
+            <h4 className="text-xl font-semibold mb-6 text-white">Tech Services</h4>
+            <ul className="space-y-4">
               <li><a href="/services/blockchain/smart-contracts" className="text-gray-400 hover:text-primary transition-colors duration-300">Smart Contract Development</a></li>
               <li><a href="/services/blockchain/token" className="text-gray-400 hover:text-primary transition-colors duration-300">Token Development</a></li>
               <li><a href="/services/blockchain/nft" className="text-gray-400 hover:text-primary transition-colors duration-300">NFT Marketplace</a></li>
               <li><a href="/services/blockchain/exchange" className="text-gray-400 hover:text-primary transition-colors duration-300">Crypto Exchange</a></li>
-              <li><a href="/services/blockchain/dapp" className="text-gray-400 hover:text-primary transition-colors duration-300">DApp Development</a></li>
-              <li><a href="/services/blockchain/metaverse" className="text-gray-400 hover:text-primary transition-colors duration-300">Metaverse Development</a></li>
-            </ul>
-          </div>
-
-          {/* IT Services */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xl font-semibold mb-6 text-white">IT Services</h4>
-            <ul className="space-y-3">
               <li><a href="/services/it/web-dev" className="text-gray-400 hover:text-primary transition-colors duration-300">Web Development</a></li>
-              <li><a href="/services/it/app-dev" className="text-gray-400 hover:text-primary transition-colors duration-300">App Development</a></li>
-              <li><a href="/services/it/game-dev" className="text-gray-400 hover:text-primary transition-colors duration-300">Game Development</a></li>
-              <li><a href="/services/it/mobile" className="text-gray-400 hover:text-primary transition-colors duration-300">Mobile Development</a></li>
-              <li><a href="/services/it/cloud" className="text-gray-400 hover:text-primary transition-colors duration-300">Cloud Services</a></li>
-              <li><a href="/services/it/saas" className="text-gray-400 hover:text-primary transition-colors duration-300">SaaS Solutions</a></li>
             </ul>
           </div>
 
-          {/* Legal & Compliance */}
-          <div className="lg:col-span-3">
-            <h4 className="text-xl font-semibold mb-6 text-white">Legal & Compliance</h4>
-            <ul className="space-y-3">
-              <li><a href="/services/legal/compliance" className="text-gray-400 hover:text-primary transition-colors duration-300">Compliance Services</a></li>
-              <li><a href="/services/legal/private-limited-registration" className="text-gray-400 hover:text-primary transition-colors duration-300">Company Registration</a></li>
-              <li><a href="/services/legal/corporate-governance-advisory" className="text-gray-400 hover:text-primary transition-colors duration-300">Corporate Governance</a></li>
-              <li><a href="/services/legal/annual-returns-filing" className="text-gray-400 hover:text-primary transition-colors duration-300">Annual Returns Filing</a></li>
-              <li><a href="/services/legal/secretarial-audit" className="text-gray-400 hover:text-primary transition-colors duration-300">Secretarial Audit</a></li>
-              <li><a href="/services/legal/virtual-company-secretary-services" className="text-gray-400 hover:text-primary transition-colors duration-300">Virtual CS Services</a></li>
-            </ul>
-          </div>
-        </motion.div>
-
-        {/* Newsletter Section */}
-        <div className="border-t border-zinc-800 pt-8 pb-4">
-          <div className="max-w-xl mx-auto text-center">
-            <h4 className="text-xl font-semibold mb-4 text-white">Subscribe to Our Newsletter</h4>
+          {/* Newsletter */}
+          <div>
+            <h4 className="text-xl font-semibold mb-6 text-white">Newsletter</h4>
             <form onSubmit={handleSubscribe} className="space-y-4">
-              <div className="flex gap-4">
+              <div className="flex flex-col space-y-4">
                 <Input 
                   type="email" 
                   placeholder="Your Email" 
@@ -140,28 +149,28 @@ const Footer = () => {
                 />
                 <Button 
                   type="submit" 
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
+                  className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
                 >
                   Subscribe <Send className="h-4 w-4 ml-2" />
                 </Button>
               </div>
               <p className="text-sm text-gray-400">
-                Stay updated with our latest services and company news.
+                By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
               </p>
             </form>
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-zinc-800 mt-8 pt-8">
+        <div className="border-t border-zinc-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm text-center md:text-left">
               &copy; {new Date().getFullYear()} Ramaera Legal InfoTech Private Limited. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="/privacy-policy" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>
-              <a href="/terms" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Terms of Service</a>
-              <a href="/cookies" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Cookie Policy</a>
+              <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Privacy Policy</a>
+              <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Terms of Service</a>
+              <a href="#" className="text-gray-400 hover:text-primary text-sm transition-colors duration-300">Cookie Policy</a>
             </div>
           </div>
         </div>
@@ -173,7 +182,7 @@ const Footer = () => {
         animate={{ opacity: showBackToTop ? 1 : 0 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className={`fixed bottom-8 right-8 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg ${
+        className={`fixed bottom-8 left-8 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg ${
           showBackToTop ? "visible" : "invisible"
         }`}
         aria-label="Back to top"
