@@ -1,4 +1,3 @@
-
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { Send, Linkedin, Facebook, Instagram, ArrowUp } from "lucide-react";
@@ -48,6 +47,28 @@ const Footer = () => {
     }
   };
 
+  // Placeholder for Navigation Component
+  const Navigation = ({ links }) => {
+    return (
+      <ul>
+        {links.map((link) => (
+          <li key={link.path}>
+            <a href={link.path}>{link.name}</a>
+          </li>
+        ))}
+      </ul>
+    );
+  };
+
+  const navigationLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Blog", path: "/blog" },
+    { name: "Careers", path: "/careers" },
+    { name: "Contact", path: "/contact" },
+  ];
+
   return (
     <footer className="bg-gradient-to-b from-zinc-900 to-black pt-16 pb-8 w-full mt-auto relative z-10">
       <div className="container mx-auto px-4 md:px-6">
@@ -87,14 +108,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-xl font-semibold mb-6 text-white">Quick Links</h4>
-            <ul className="space-y-4">
-              <li><a href="/" className="text-gray-400 hover:text-primary transition-colors duration-300">Home</a></li>
-              <li><a href="/about" className="text-gray-400 hover:text-primary transition-colors duration-300">About Us</a></li>
-              <li><a href="/services" className="text-gray-400 hover:text-primary transition-colors duration-300">Services</a></li>
-              <li><a href="/blog" className="text-gray-400 hover:text-primary transition-colors duration-300">Blog</a></li>
-              <li><a href="/careers" className="text-gray-400 hover:text-primary transition-colors duration-300">Careers</a></li>
-              <li><a href="/#contact" className="text-gray-400 hover:text-primary transition-colors duration-300">Contact Us</a></li>
-            </ul>
+            <Navigation links={navigationLinks} />
           </div>
 
           {/* Tech Services */}
