@@ -141,12 +141,12 @@ function Router() {
 <Route path="/services/legal/certification-under-sebi-regulations" element={<CertificationunderSEBIRegulations />} />
 <Route path="/services/legal/certification-for-mergers/amalgamations" element={<CertificationforMergersAmalgamations />} />
 <Route path="/services/legal/certification-under-fema/rbi-compliance" element={<CertificationunderFEMARBICompliance />} />
-<Route path="/services/legal/allotment-of-shares--rights-issue,-private-placement,-bonus-issue-" element={<ShareAllotment />} />
-<Route path="/services/legal/transfer/transmission-of-shares" element={<ShareTransfer />} />
+<Route path="/services/legal/allotment-of-shares-rights-issue-private-placement-bonus-issue" element={<ShareAllotment />} />
+<Route path="/services/legal/transfer-transmission-of-shares" element={<ShareTransfer />} />
 <Route path="/services/legal/share-buy-back" element={<ShareBuyback />} />
-<Route path="/services/legal/mergers,-amalgamations,-and-demergers" element={<MergersDemergers />} />
-<Route path="/services/legal/strike-off--closure--of-companies" element={<CompanyStrikeOff />} />
-<Route path="/services/legal/fdi--foreign-direct-investment--reporting--fc-gpr,-fc-trs-" element={<FDIReporting />} />
+<Route path="/services/legal/mergers-amalgamations-and-demergers" element={<MergersDemergers />} />
+<Route path="/services/legal/strike-off-closure-of-companies" element={<CompanyStrikeOff />} />
+<Route path="/services/legal/fdi-foreign-direct-investment-reporting-fc-gpr-fc-trs" element={<FDIReporting />} />
           <Route path="/services/legal/external-commercial-borrowing--ecb--filings" element={<ECBFilings />} />
           <Route path="/services/legal/liaison/branch/project-office-setup-compliance" element={<LiaisonOfficeSetup />} />
           <Route path="/services/legal/odi--overseas-direct-investment--compliance" element={<ODICompliance />} />
