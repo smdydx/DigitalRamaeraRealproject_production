@@ -70,7 +70,7 @@ import ShareAllotment from "./pages/services/legal/ShareAllotment";
 import ShareTransfer from "./pages/services/legal/ShareTransfer";
 import ShareBuyback from "./pages/services/legal/ShareBuyback";
 import MergersDemergers from "./pages/services/legal/MergersDemergers";
-import CompanyStrikeOff from "./pages/services/legal/CompanyStrikeOff";";
+import CompanyStrikeOff from "./pages/services/legal/CompanyStrikeOff";
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
