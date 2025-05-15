@@ -71,6 +71,10 @@ import ShareTransfer from "./pages/services/legal/ShareTransfer";
 import ShareBuyback from "./pages/services/legal/ShareBuyback";
 import MergersDemergers from "./pages/services/legal/MergersDemergers";
 import CompanyStrikeOff from "./pages/services/legal/CompanyStrikeOff";
+import FDIReporting from "./pages/services/legal/FDIReporting";
+import ECBFilings from "./pages/services/legal/ECBFilings";
+import LiaisonOfficeSetup from "./pages/services/legal/LiaisonOfficeSetup";
+import ODICompliance from "./pages/services/legal/ODICompliance";
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -142,6 +146,10 @@ function Router() {
 <Route path="/services/legal/share-buy-back" element={<ShareBuyback />} />
 <Route path="/services/legal/mergers,-amalgamations,-and-demergers" element={<MergersDemergers />} />
 <Route path="/services/legal/strike-off--closure--of-companies" element={<CompanyStrikeOff />} />
+<Route path="/services/legal/fdi--foreign-direct-investment--reporting--fc-gpr,-fc-trs-" element={<FDIReporting />} />
+          <Route path="/services/legal/external-commercial-borrowing--ecb--filings" element={<ECBFilings />} />
+          <Route path="/services/legal/liaison/branch/project-office-setup-compliance" element={<LiaisonOfficeSetup />} />
+          <Route path="/services/legal/odi--overseas-direct-investment--compliance" element={<ODICompliance />} />
 
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
