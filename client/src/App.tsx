@@ -8,8 +8,6 @@ import Blog from "@/pages/Blog";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
 import BlockchainServices from "@/pages/services/BlockchainServices";
-import StartBusiness from '@/pages/services/StartBusiness';
-import RegisterBusiness from '@/pages/services/RegisterBusiness';
 import SmartContractDev from "@/pages/services/blockchain/SmartContractDev";
 import TokenDev from "@/pages/services/blockchain/TokenDev";
 import NFTMarketplace from "@/pages/services/blockchain/NFTMarketplace";
@@ -52,7 +50,20 @@ import SecretarialAudit from "./pages/services/legal/SecretarialAudit";
 
 import AIChatBot from './components/AIChatBot';
 
-
+// ✅ NEWLY ADDED IMPORT
+import VirtualCompanySecretaryServices from "@/pages/services/legal/VirtualCompanySecretaryServices";
+import ESOPStructuringAdministration from "@/pages/services/legal/ESOPStructuringAdministration";
+import CorporateSociaResponsibilityCompliance from "@/pages/services/legal/CorporateSociaResponsibilityCompliance";
+import RiskManagementAdvisory from "@/pages/services/legal/RiskManagementAdvisory";
+import InternalControlsProcessAdvisory from "@/pages/services/legal/InternalControlsProcessAdvisory";
+import BSENSEListingAssistance from "@/pages/services/legal/BSENSEListingAssistance.";
+import SEBILODRCompliance from "./pages/services/legal/SEBILODRCompliance";
+import PeriodicDisclosuresFilings from "./pages/services/legal/PeriodicDisclosuresFilings";
+import SecretarialAuditReports from "./pages/services/legal/SecretarialAuditReports";
+import ComplianceCertificates from "./pages/services/legal/ComplianceCertificates";
+import CertificationunderSEBIRegulations from "./pages/services/legal/CertificationunderSEBIRegulations";
+import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
+import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance"
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -94,13 +105,29 @@ function Router() {
           <Route path="/services/legal/nidhi-company-registration" element={<NidhiCompanyRegistration />} />
           <Route path="/services/legal/foreign-company-setup" element={<ForeignCompanySetup />} />
           <Route path="/services/legal/annual-returns-filing--mgt-7,-aoc-4-" element={<AnnualReturnsFiling />} />
-          <Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
-          <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
-          <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
-          <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
-          <Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
-          <Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
-          <Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
+<Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
+<Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
+<Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
+<Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
+<Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
+<Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
+<Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
+
+{/* ✅ Newly Added Routes */}
+<Route path="/services/legal/virtual-company-secretary-services--for-startups-and-smes-" element={<VirtualCompanySecretaryServices />} />
+<Route path="/services/legal/esop-structuring-and-administration" element={<ESOPStructuringAdministration />} />
+<Route path="/services/legal/corporate-social-responsibility--csr--compliance" element={<CorporateSociaResponsibilityCompliance />} />
+<Route path="/services/legal/risk-management-advisory" element={<RiskManagementAdvisory />} />
+<Route path="/services/legal/internal-controls-and-process-advisory" element={<InternalControlsProcessAdvisory />} />
+<Route path="/services/legal/bse/nse-listing-assistance" element={<BSENSEListingAssistance />} />
+<Route path="/services/legal/sebi--lodr--compliance" element={<SEBILODRCompliance />} />
+<Route path="/services/legal/periodic-disclosures-and-filings" element={<PeriodicDisclosuresFilings />} />
+<Route path="/services/legal/secretarial-audit-reports" element={<SecretarialAuditReports />} />
+<Route path="/services/legal/compliance-certificates--e.g.,-for-listed-companies-" element={<ComplianceCertificates />} />
+<Route path="/services/legal/certification-under-sebi-regulations" element={<CertificationunderSEBIRegulations />} />
+<Route path="/services/legal/certification-for-mergers/amalgamations" element={<CertificationforMergersAmalgamations />} />
+<Route path="/services/legal/certification-under-fema/rbi-compliance" element={<CertificationunderFEMARBICompliance />} />
+
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
@@ -109,7 +136,6 @@ function Router() {
     </div>
   );
 }
-
 
 function App() {
   return (
