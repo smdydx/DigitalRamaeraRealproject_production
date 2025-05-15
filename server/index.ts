@@ -92,7 +92,7 @@ registerRoutes(app).then((server) => {
   });
 
   server.listen(port, '0.0.0.0', () => {
-    log(`[express] serving on port ${port}`);
+    log(`[express] Server running at http://0.0.0.0:${port}`);
   });
 });
 
