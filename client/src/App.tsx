@@ -65,6 +65,7 @@ import CertificationunderSEBIRegulations from "./pages/services/legal/Certificat
 import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
 import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance";
 import CodeOfConductPage from "./pages/services/legal/CodeOfConductPolicies";
+import CommitteeSetup from "./pages/services/legal/CommitteeSetup";
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -108,6 +109,7 @@ function Router() {
           <Route path="/services/legal/annual-returns-filing--mgt-7,-aoc-4-" element={<AnnualReturnsFiling />} />
 <Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
 <Route path="/services/legal/code-of-conduct-&-policies" element={<CodeOfConductPage />} />
+<Route path="/services/legal/committee-setup" element={<CommitteeSetup />} />
 <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
 <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
 <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
