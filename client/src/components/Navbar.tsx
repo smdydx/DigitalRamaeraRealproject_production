@@ -353,13 +353,12 @@ const Navbar = () => {
                           <div key={idx} className="relative">
                             <button
                               onClick={(e) => {
+                                e.preventDefault();
                                 e.stopPropagation();
                                 if (service.submenu) {
                                   handleMobileSubmenuToggle(service.title);
-                                } else {
-                                  if (service.path) {
-                                    window.location.href = service.path;
-                                  }
+                                } else if (service.path) {
+                                  window.location.href = service.path;
                                   setIsMobileMenuOpen(false);
                                 }
                               }}
