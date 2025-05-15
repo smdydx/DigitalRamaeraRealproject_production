@@ -42,7 +42,7 @@ import Careers from "./pages/Careers";
 import AnnualReturnsFiling from "./pages/services/legal/AnnualReturnsFiling";
 import AIChatBot from './components/AIChatBot';
 
-// ✅ NEWLY ADDED IMPORT
+// ✅ NEWLY ADDED IMPORT BY WASIM
 import VirtualCompanySecretaryServices from "@/pages/services/legal/VirtualCompanySecretaryServices";
 import ESOPStructuringAdministration from "@/pages/services/legal/ESOPStructuringAdministration";
 import CorporateSociaResponsibilityCompliance from "@/pages/services/legal/CorporateSociaResponsibilityCompliance";
@@ -56,6 +56,26 @@ import ComplianceCertificates from "./pages/services/legal/ComplianceCertificate
 import CertificationunderSEBIRegulations from "./pages/services/legal/CertificationunderSEBIRegulations";
 import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
 import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance"
+import ShareholdersAgreements from "./pages/services/legal/ShareholdersAgreements";
+import FoundersAgreements from "./pages/services/legal/FoundersAgreements";
+import JointVentureAgreements from "./pages/services/legal/JointVentureAgreements";
+import ServiceAgreements from "./pages/services/legal/ServiceAgreements";
+import EmploymentContracts from "./pages/services/legal/EmploymentContracts";
+import NonDisclosureAgreementsNDAs from "./pages/services/legal/NonDisclosureAgreementsNDAs";
+import StartupAdvisoryFundingStructuringESOPs from "./pages/services/legal/StartupAdvisoryFundingStructuringESOPs";
+import DueDiligenceReportsforMAInvestors from "./pages/services/legal/DueDiligenceReportsforMAInvestors";
+import CorporateRestructuringAdvisory from "./pages/services/legal/CorporateRestructuringAdvisory";
+import InsolvencyBankruptcyAdvisoryunderIBC from "./pages/services/legal/InsolvencyBankruptcyAdvisoryunderIBC";
+import ShopsEstablishmentRegistration from "./pages/services/legal/ShopsEstablishmentRegistration";
+import ProvidentFundPFEmployeeStateInsuranceESIRegistration from "./pages/services/legal/ProvidentFundPFEmployeeStateInsuranceESIRegistration";
+import ProfessionalTaxRegistration from "./pages/services/legal/ProfessionalTaxRegistration";
+import LabourWelfareFundCompliance from "./pages/services/legal/LabourWelfareFundCompliance";
+
+
+
+
+
+
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -111,6 +131,31 @@ function Router() {
            <Route path="/services/legal/certification-for-mergers/amalgamations" element={< CertificationforMergersAmalgamations />} />
            <Route path="/services/legal/certification-under-fema/rbi-compliance" element={< CertificationunderFEMARBICompliance />} />
            
+           <Route path="/services/legal/shareholders-agreements" element={<ShareholdersAgreements />} />
+            <Route path="/services/legal/founders-agreements" element={<FoundersAgreements />} />
+            <Route path="/services/legal/joint-venture-agreements" element={<JointVentureAgreements />} />
+<Route path="/services/legal/service-agreements" element={<ServiceAgreements />} />
+<Route path="/services/legal/employment-contracts" element={<EmploymentContracts />} />
+<Route path="/services/legal/non-disclosure-agreements--ndas-" element={<NonDisclosureAgreementsNDAs />} />
+<Route path="/services/legal/startup-advisory--funding,-structuring,-esops-" element={<StartupAdvisoryFundingStructuringESOPs />} />
+<Route path="/services/legal/due-diligence-reports--for-m&a,-investors-" element={<DueDiligenceReportsforMAInvestors />} />
+<Route path="/services/legal/insolvency-and-bankruptcy-advisory--under-ibc-" element={<CorporateRestructuringAdvisory />} />
+<Route path="/services/legal/insolvency-bankruptcy-advisory-under-ibc" element={<InsolvencyBankruptcyAdvisoryunderIBC />} />
+<Route path="/services/legal/shops-and-establishment-registration" element={<ShopsEstablishmentRegistration />} />
+<Route path="/services/legal/provident-fund--pf--and-employee-state-insurance--esi--registration" element={<ProvidentFundPFEmployeeStateInsuranceESIRegistration />} />
+<Route path="/services/legal/professional-tax-registration" element={<ProfessionalTaxRegistration />} />
+<Route path="/services/legal/labour-welfare-fund-compliance" element={<LabourWelfareFundCompliance />} />
+
+
+
+
+
+
+
+
+
+
+
 
 
 
