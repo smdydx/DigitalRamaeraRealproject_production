@@ -66,6 +66,11 @@ import CertificationforMergersAmalgamations from "./pages/services/legal/Certifi
 import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance";
 import CodeOfConductPage from "./pages/services/legal/CodeOfConductPolicies";
 import CommitteeSetup from "./pages/services/legal/CommitteeSetup";
+import ShareAllotment from "./pages/services/legal/ShareAllotment";
+import ShareTransfer from "./pages/services/legal/ShareTransfer";
+import ShareBuyback from "./pages/services/legal/ShareBuyback";
+import MergersDemergers from "./pages/services/legal/MergersDemergers";
+import CompanyStrikeOff from "./pages/services/legal/CompanyStrikeOff";
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -131,6 +136,11 @@ function Router() {
 <Route path="/services/legal/certification-under-sebi-regulations" element={<CertificationunderSEBIRegulations />} />
 <Route path="/services/legal/certification-for-mergers/amalgamations" element={<CertificationforMergersAmalgamations />} />
 <Route path="/services/legal/certification-under-fema/rbi-compliance" element={<CertificationunderFEMARBICompliance />} />
+<Route path="/services/legal/share-allotment" element={<ShareAllotment />} />
+<Route path="/services/legal/share-transfer" element={<ShareTransfer />} />
+<Route path="/services/legal/share-buyback" element={<ShareBuyback />} />
+<Route path="/services/legal/mergers-demergers" element={<MergersDemergers />} />
+<Route path="/services/legal/company-strike-off" element={<CompanyStrikeOff />} />
 
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
