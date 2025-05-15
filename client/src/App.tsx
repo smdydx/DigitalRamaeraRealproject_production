@@ -67,7 +67,6 @@ import CertificationunderFEMARBICompliance from "./pages/services/legal/Certific
 import CodeOfConductPage from "./pages/services/legal/CodeOfConductPolicies";
 import CommitteeSetup from "./pages/services/legal/CommitteeSetup";
 import ShareAllotment from "./pages/services/legal/ShareAllotment";
-import ShareAllotment from "./pages/services/legal/ShareAllotment";
 import ShareTransfer from "./pages/services/legal/ShareTransfer";
 import ShareBuyback from "./pages/services/legal/ShareBuyback";
 import MergersDemergers from "./pages/services/legal/MergersDemergers";
