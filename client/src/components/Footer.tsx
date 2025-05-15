@@ -47,13 +47,14 @@ const Footer = () => {
     }
   };
 
-  // Placeholder for Navigation Component
-  const Navigation = ({ links }) => {
+  const Navigation = ({ links }: { links: Array<{ name: string; path: string }> }) => {
     return (
-      <ul>
+      <ul className="space-y-4">
         {links.map((link) => (
           <li key={link.path}>
-            <a href={link.path}>{link.name}</a>
+            <a href={link.path} className="text-gray-400 hover:text-primary transition-colors duration-300">
+              {link.name}
+            </a>
           </li>
         ))}
       </ul>
