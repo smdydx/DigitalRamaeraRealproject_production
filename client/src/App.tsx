@@ -106,6 +106,7 @@ function Router() {
           <Route path="/services/legal/foreign-company-setup" element={<ForeignCompanySetup />} />
           <Route path="/services/legal/annual-returns-filing--mgt-7,-aoc-4-" element={<AnnualReturnsFiling />} />
 <Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
+<Route path="/services/legal/code-of-conduct-&-policies" element={<CodeOfConductPage />} />
 <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
 <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
 <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
