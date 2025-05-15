@@ -317,7 +317,7 @@ const Navbar = () => {
             </div>
             {/* Mobile Nav Links */}
            <div className="flex flex-col space-y-0 px-4 py-2 pb-20 w-full">
-  {navLinks.map((link, index) => {
+              {Array.isArray(navLinks) && navLinks.map((link, index) => {
     if (link.name === "Services") {
       return (
         <div key={index} className="py-2">

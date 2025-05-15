@@ -50,20 +50,23 @@ const Footer = () => {
   const Navigation = ({ links }: { links: Array<{ name: string; path: string }> }) => {
     return (
       <ul className="space-y-4">
-        {links.map((link, index) => (
-          <li key={index}>
-            <button
-              onClick={() => {
-                if (typeof link.path === 'string') {
-                  window.location.href = link.path;
-                }
-              }}
-              className="text-gray-400 hover:text-primary transition-colors duration-300 text-left w-full"
-            >
-              {typeof link.name === 'string' ? link.name : ''}
-            </button>
-          </li>
-        ))}
+        {Array.isArray(links) && links.map((link, index) => {
+          if (!link || typeof link.name !== 'string') return null;
+          return (
+            <li key={index}>
+              <button
+                onClick={() => {
+                  if (typeof link.path === 'string') {
+                    window.location.href = link.path;
+                  }
+                }}
+                className="text-gray-400 hover:text-primary transition-colors duration-300 text-left w-full"
+              >
+                {link.name}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     );
   };
