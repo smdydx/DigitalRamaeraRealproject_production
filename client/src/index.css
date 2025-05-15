@@ -376,9 +376,11 @@ main {
 }
 
 /* Responsive spacing adjustments */
+/* Base responsive styles */
 @media screen and (max-width: 640px) {
   main {
     padding-top: 4rem !important;
+    overflow-x: hidden;
   }
 
   .section-spacing {
@@ -388,11 +390,101 @@ main {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   h1 {
-    font-size: 1.875rem !important;
-    line-height: 2.25rem !important;
+    font-size: clamp(1.5rem, 5vw, 1.875rem) !important;
+    line-height: 1.3 !important;
+  }
+
+  h2 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem) !important;
+  }
+
+  p {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 1rem !important;
+  }
+}
+
+/* Tablet styles */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 90%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 1025px) {
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+}
+
+/* Universal responsive fixes */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+  }
+}
+
+/* Fix for service cards */
+.service-card {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+
+/* Fix for any gaps in flex layouts */
+.flex-wrap {
+  margin: -0.5rem;
+}
+
+.flex-wrap > * {
+  margin: 0.5rem;
+}
+
+/* Ensure buttons are properly sized */
+button, .button {
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  white-space: nowrap;
+}
+
+/* Fix for navigation on all devices */
+.nav-container {
+  width: 100%;
+  padding: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .nav-container {
+    padding: 1rem 2rem;
   }
 }
 
