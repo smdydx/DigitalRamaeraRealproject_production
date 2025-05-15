@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Button } from "@/components/ui/button";
-import { Code, Smartphone, Cloud, ArrowRight, CheckCircle2, AppWindow, Blocks, Globe, BarChart2, Server } from "lucide-react";
+import { Code, Smartphone, Cloud, ArrowRight, CheckCircle2, AppWindow, Blocks, Globe, BarChart2, Server, Database, Shield, Zap, Monitor } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   Accordion,
@@ -15,7 +15,8 @@ const ITServices = () => {
   const categories = [
     {
       title: "SaaS & Installables",
-      icon: <AppWindow className="w-8 h-8 text-primary" />,
+      icon: <AppWindow className="w-12 h-12 text-blue-500" />,
+      image: "/images/services/business-growth.jpg",
       products: [
         "CRM Software",
         "ERP Software",
@@ -36,7 +37,8 @@ const ITServices = () => {
     },
     {
       title: "Web Development & CMS",
-      icon: <Globe className="w-8 h-8 text-blue-500" />,
+      icon: <Globe className="w-12 h-12 text-purple-500" />,
+      image: "/images/services/website-builder.jpg",
       products: [
         "Website Builder Platform",
         "eCommerce Store Platform",
@@ -49,7 +51,8 @@ const ITServices = () => {
     },
     {
       title: "Mobile Applications",
-      icon: <Smartphone className="w-8 h-8 text-purple-500" />,
+      icon: <Smartphone className="w-12 h-12 text-green-500" />,
+      image: "/images/devimage.jpg",
       products: [
         "Grocery Delivery App",
         "Medicine Delivery App",
@@ -64,7 +67,8 @@ const ITServices = () => {
     },
     {
       title: "Cloud & SaaS Services",
-      icon: <Cloud className="w-8 h-8 text-green-500" />,
+      icon: <Cloud className="w-12 h-12 text-cyan-500" />,
+      image: "/images/services/business-growth.jpg",
       products: [
         "Web Hosting Services",
         "Cloud Storage Services",
@@ -77,10 +81,10 @@ const ITServices = () => {
   ];
 
   const stats = [
-    { number: "500+", label: "Projects Delivered" },
-    { number: "98%", label: "Client Satisfaction" },
-    { number: "50+", label: "Expert Developers" },
-    { number: "24/7", label: "Support Available" }
+    { number: "500+", label: "Projects Delivered", icon: <Monitor className="w-8 h-8 text-blue-500" /> },
+    { number: "98%", label: "Client Satisfaction", icon: <BarChart2 className="w-8 h-8 text-green-500" /> },
+    { number: "50+", label: "Expert Developers", icon: <Code className="w-8 h-8 text-purple-500" /> },
+    { number: "24/7", label: "Support Available", icon: <Zap className="w-8 h-8 text-yellow-500" /> }
   ];
 
   const faqs = [
@@ -131,8 +135,9 @@ const ITServices = () => {
         {/* Stats Section */}
         <motion.div variants={fadeIn("up", "tween", 0.3, 1)} className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20">
           {stats.map((stat, index) => (
-            <div key={index} className="text-center p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
-              <div className="text-3xl font-bold text-primary mb-2">{stat.number}</div>
+            <div key={index} className="text-center p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300">
+              {stat.icon}
+              <div className="text-3xl font-bold text-primary mt-4 mb-2">{stat.number}</div>
               <div className="text-gray-400">{stat.label}</div>
             </div>
           ))}
@@ -146,9 +151,23 @@ const ITServices = () => {
                 {category.icon}
                 <h2 className="text-2xl font-bold text-white">{category.title}</h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {category.products.map((product, idx) => (
-                  <div key={idx} className="p-4 bg-zinc-900/50 rounded-lg border border-blue-500/10 flex items-start gap-3">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div className="relative h-64 rounded-xl overflow-hidden">
+                  <img src={category.image} alt={category.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {category.products.slice(0, 6).map((product, idx) => (
+                    <div key={idx} className="p-4 bg-zinc-900/50 rounded-lg border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-primary mt-1" />
+                      <span className="text-gray-300">{product}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {category.products.slice(6).map((product, idx) => (
+                  <div key={idx} className="p-4 bg-zinc-900/50 rounded-lg border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300 flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary mt-1" />
                     <span className="text-gray-300">{product}</span>
                   </div>
@@ -162,18 +181,18 @@ const ITServices = () => {
         <motion.div variants={fadeIn("up", "tween", 0.5, 1)} className="mb-20">
           <h2 className="text-3xl font-bold text-center mb-10">Why Choose Us</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
-              <Server className="w-10 h-10 text-primary mb-4" />
+            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300">
+              <Server className="w-12 h-12 text-primary mb-4" />
               <h3 className="text-xl font-bold mb-3">Cutting-edge Technology</h3>
               <p className="text-gray-400">We use the latest technologies and best practices to deliver robust solutions.</p>
             </div>
-            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
-              <Blocks className="w-10 h-10 text-blue-500 mb-4" />
+            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300">
+              <Database className="w-12 h-12 text-blue-500 mb-4" />
               <h3 className="text-xl font-bold mb-3">Scalable Solutions</h3>
               <p className="text-gray-400">Our solutions grow with your business, ensuring long-term sustainability.</p>
             </div>
-            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10">
-              <BarChart2 className="w-10 h-10 text-purple-500 mb-4" />
+            <div className="p-6 bg-zinc-900/50 rounded-xl border border-blue-500/10 hover:border-blue-500/30 transition-all duration-300">
+              <Shield className="w-12 h-12 text-purple-500 mb-4" />
               <h3 className="text-xl font-bold mb-3">Proven Results</h3>
               <p className="text-gray-400">Track record of delivering successful projects across industries.</p>
             </div>
