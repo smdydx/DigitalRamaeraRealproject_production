@@ -55,6 +55,7 @@ import SecretarialAuditReports from "./pages/services/legal/SecretarialAuditRepo
 import ComplianceCertificates from "./pages/services/legal/ComplianceCertificates";
 import CertificationunderSEBIRegulations from "./pages/services/legal/CertificationunderSEBIRegulations";
 import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
+import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance"
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -108,8 +109,8 @@ function Router() {
           <Route path="/services/legal/compliance-certificates--e.g.,-for-listed-companies-" element={< ComplianceCertificates />} />
            <Route path="/services/legal/certification-under-sebi-regulations" element={< CertificationunderSEBIRegulations />} />
            <Route path="/services/legal/certification-for-mergers/amalgamations" element={< CertificationforMergersAmalgamations />} />
-           {/* <Route path="/services/legal/certification-under-sebi-regulations" element={< CertificationunderSEBIRegulations />} /> */}
-           {/* <Route path="/services/legal/certification-under-sebi-regulations" element={< CertificationunderSEBIRegulations />} /> */}
+           <Route path="/services/legal/certification-under-fema/rbi-compliance" element={< CertificationunderFEMARBICompliance />} />
+           
 
 
 
