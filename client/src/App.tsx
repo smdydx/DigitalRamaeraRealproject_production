@@ -47,13 +47,10 @@ import MOAandAOAAlterations from "./pages/services/legal/MOAandAOAAlterations";
 import LLPToPrivateConversion from "./pages/services/legal/LLPToPrivateConversion";
 import CorporateGovernanceAdvisory from "./pages/services/legal/CorporateGovernanceAdvisory";
 import SecretarialAudit from "./pages/services/legal/SecretarialAudit";
-
 import AIChatBot from './components/AIChatBot';
-
-// ✅ NEWLY ADDED IMPORT
 import VirtualCompanySecretaryServices from "@/pages/services/legal/VirtualCompanySecretaryServices";
 import ESOPStructuringAdministration from "@/pages/services/legal/ESOPStructuringAdministration";
-import CorporateSociaResponsibilityCompliance from "@/pages/services/legal/CorporateSociaResponsibilityCompliance";
+import CorporateSocialResponsibilityCompliance from "@/pages/services/legal/CorporateSociaResponsibilityCompliance";
 import RiskManagementAdvisory from "@/pages/services/legal/RiskManagementAdvisory";
 import InternalControlsProcessAdvisory from "@/pages/services/legal/InternalControlsProcessAdvisory";
 import BSENSEListingAssistance from "@/pages/services/legal/BSENSEListingAssistance.";
@@ -75,6 +72,7 @@ import FDIReporting from "./pages/services/legal/FDIReporting";
 import ECBFilings from "./pages/services/legal/ECBFilings";
 import LiaisonOfficeSetup from "./pages/services/legal/LiaisonOfficeSetup";
 import ODICompliance from "./pages/services/legal/ODICompliance";
+
 function Router() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -101,11 +99,11 @@ function Router() {
           <Route path="/services/it-services" element={<ITServices />} />
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/schedule" element={<Schedule />} /> 
+          <Route path="/schedule" element={<Schedule />} />
           <Route path="/services/it/saas" element={<SaaS />} />
           <Route path="/services/it/web-dev" element={<WebDev />} />
           <Route path="/services/it/mobile" element={<Mobile />} />
-          <Route path="/services/it/cloud" element={<Cloud />} /> 
+          <Route path="/services/it/cloud" element={<Cloud />} />
           <Route path="/services/legal/compliance" element={<Compliance />} />
           <Route path="/services/legal/private-limited-company-registration" element={<PrivateLimitedRegistration />} />
           <Route path="/services/legal/public-limited-company-registration" element={<PublicLimitedRegistration />} />
@@ -116,41 +114,37 @@ function Router() {
           <Route path="/services/legal/nidhi-company-registration" element={<NidhiCompanyRegistration />} />
           <Route path="/services/legal/foreign-company-setup" element={<ForeignCompanySetup />} />
           <Route path="/services/legal/annual-returns-filing--mgt-7,-aoc-4-" element={<AnnualReturnsFiling />} />
-<Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
-<Route path="/services/legal/code-of-conduct-&-policies" element={<CodeOfConductPage />} />
-<Route path="/services/legal/committee-setup" element={<CommitteeSetup />} />
-<Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
-<Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
-<Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
-
-<Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
-<Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
-<Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
-
-{/* ✅ Newly Added Routes */}
-<Route path="/services/legal/virtual-company-secretary-services--for-startups-and-smes-" element={<VirtualCompanySecretaryServices />} />
-<Route path="/services/legal/esop-structuring-and-administration" element={<ESOPStructuringAdministration />} />
-<Route path="/services/legal/corporate-social-responsibility--csr--compliance" element={<CorporateSociaResponsibilityCompliance />} />
-<Route path="/services/legal/risk-management-advisory" element={<RiskManagementAdvisory />} />
-<Route path="/services/legal/internal-controls-and-process-advisory" element={<InternalControlsProcessAdvisory />} />
-<Route path="/services/legal/bse/nse-listing-assistance" element={<BSENSEListingAssistance />} />
-<Route path="/services/legal/sebi--lodr--compliance" element={<SEBILODRCompliance />} />
-<Route path="/services/legal/periodic-disclosures-and-filings" element={<PeriodicDisclosuresFilings />} />
-<Route path="/services/legal/secretarial-audit-reports" element={<SecretarialAuditReports />} />
-<Route path="/services/legal/compliance-certificates--e.g.,-for-listed-companies-" element={<ComplianceCertificates />} />
-<Route path="/services/legal/certification-under-sebi-regulations" element={<CertificationunderSEBIRegulations />} />
-<Route path="/services/legal/certification-for-mergers/amalgamations" element={<CertificationforMergersAmalgamations />} />
-<Route path="/services/legal/certification-under-fema/rbi-compliance" element={<CertificationunderFEMARBICompliance />} />
-<Route path="/services/legal/allotment-of-shares-rights-issue-private-placement-bonus-issue" element={<ShareAllotment />} />
-<Route path="/services/legal/transfer-transmission-of-shares" element={<ShareTransfer />} />
-<Route path="/services/legal/share-buy-back" element={<ShareBuyback />} />
-<Route path="/services/legal/mergers-amalgamations-and-demergers" element={<MergersDemergers />} />
-<Route path="/services/legal/strike-off-closure-of-companies" element={<CompanyStrikeOff />} />
-<Route path="/services/legal/fdi-foreign-direct-investment-reporting-fc-gpr-fc-trs" element={<FDIReporting />} />
+          <Route path="/services/legal/statutory-registers-maintenance" element={<StatutoryRegisters />} />
+          <Route path="/services/legal/code-of-conduct-&-policies" element={<CodeOfConductPage />} />
+          <Route path="/services/legal/committee-setup" element={<CommitteeSetup />} />
+          <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
+          <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
+          <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
+          <Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
+          <Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
+          <Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
+          <Route path="/services/legal/virtual-company-secretary-services--for-startups-and-smes-" element={<VirtualCompanySecretaryServices />} />
+          <Route path="/services/legal/esop-structuring-and-administration" element={<ESOPStructuringAdministration />} />
+          <Route path="/services/legal/corporate-social-responsibility--csr--compliance" element={<CorporateSocialResponsibilityCompliance />} />
+          <Route path="/services/legal/risk-management-advisory" element={<RiskManagementAdvisory />} />
+          <Route path="/services/legal/internal-controls-and-process-advisory" element={<InternalControlsProcessAdvisory />} />
+          <Route path="/services/legal/bse-nse-listing-assistance" element={<BSENSEListingAssistance />} />
+          <Route path="/services/legal/sebi--lodr--compliance" element={<SEBILODRCompliance />} />
+          <Route path="/services/legal/periodic-disclosures-and-filings" element={<PeriodicDisclosuresFilings />} />
+          <Route path="/services/legal/secretarial-audit-reports" element={<SecretarialAuditReports />} />
+          <Route path="/services/legal/compliance-certificates--e.g.,-for-listed-companies-" element={<ComplianceCertificates />} />
+          <Route path="/services/legal/certification-under-sebi-regulations" element={<CertificationunderSEBIRegulations />} />
+          <Route path="/services/legal/certification-for-mergers/amalgamations" element={<CertificationforMergersAmalgamations />} />
+          <Route path="/services/legal/certification-under-fema/rbi-compliance" element={<CertificationunderFEMARBICompliance />} />
+          <Route path="/services/legal/allotment-of-shares--rights-issue,-private-placement,-bonus-issue-" element={<ShareAllotment />} />
+          <Route path="/services/legal/transfer/transmission-of-shares" element={<ShareTransfer />} />
+          <Route path="/services/legal/share-buy-back" element={<ShareBuyback />} />
+          <Route path="/services/legal/mergers,-amalgamations,-and-demergers" element={<MergersDemergers />} />
+          <Route path="/services/legal/strike-off--closure--of-companies" element={<CompanyStrikeOff />} />
+          <Route path="/services/legal/fdi--foreign-direct-investment--reporting--fc-gpr,-fc-trs-" element={<FDIReporting />} />
           <Route path="/services/legal/external-commercial-borrowing--ecb--filings" element={<ECBFilings />} />
           <Route path="/services/legal/liaison/branch/project-office-setup-compliance" element={<LiaisonOfficeSetup />} />
           <Route path="/services/legal/odi--overseas-direct-investment--compliance" element={<ODICompliance />} />
-
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
