@@ -118,11 +118,7 @@ function Router() {
 <Route path="/services/legal/board-&-general-meetings" element={<BoardGeneralMeetings />} />
 <Route path="/services/legal/roc-compliance-filings" element={<ROCComplianceFilings />} />
 <Route path="/services/legal/moa-and-aoa-alterations" element={<MOAandAOAAlterations />} />
-<Route path="/services/legal/share-allotment" element={<ShareAllotment />} />
-<Route path="/services/legal/share-transfer" element={<ShareTransfer />} />
-<Route path="/services/legal/share-buyback" element={<ShareBuyback />} />
-<Route path="/services/legal/mergers-demergers" element={<MergersDemergers />} />
-<Route path="/services/legal/company-strike-off" element={<CompanyStrikeOff />} />
+
 <Route path="/services/legal/company-conversions" element={<LLPToPrivateConversion />} />
 <Route path="/services/legal/corporate-governance-advisory" element={<CorporateGovernanceAdvisory />} />
 <Route path="/services/legal/secretarial-audit" element={<SecretarialAudit />} />
@@ -141,11 +137,11 @@ function Router() {
 <Route path="/services/legal/certification-under-sebi-regulations" element={<CertificationunderSEBIRegulations />} />
 <Route path="/services/legal/certification-for-mergers/amalgamations" element={<CertificationforMergersAmalgamations />} />
 <Route path="/services/legal/certification-under-fema/rbi-compliance" element={<CertificationunderFEMARBICompliance />} />
-<Route path="/services/legal/share-allotment" element={<ShareAllotment />} />
-<Route path="/services/legal/share-transfer" element={<ShareTransfer />} />
-<Route path="/services/legal/share-buyback" element={<ShareBuyback />} />
-<Route path="/services/legal/mergers-demergers" element={<MergersDemergers />} />
-<Route path="/services/legal/company-strike-off" element={<CompanyStrikeOff />} />
+<Route path="/services/legal/allotment-of-shares--rights-issue,-private-placement,-bonus-issue-" element={<ShareAllotment />} />
+<Route path="/services/legal/transfer/transmission-of-shares" element={<ShareTransfer />} />
+<Route path="/services/legal/share-buy-back" element={<ShareBuyback />} />
+<Route path="/services/legal/mergers,-amalgamations,-and-demergers" element={<MergersDemergers />} />
+<Route path="/services/legal/strike-off--closure--of-companies" element={<CompanyStrikeOff />} />
 
           <Route path="/careers" element={<Careers />} />
           <Route path="*" element={<NotFound />} />
