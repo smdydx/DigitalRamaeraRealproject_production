@@ -709,40 +709,118 @@ button, .button {
 
 /* Legal pages responsive styles */
 .legal-hero {
-  min-height: 250px;
+  min-height: 200px;
   padding: 1rem;
-  margin-top: 4rem;
+  margin-top: 3.5rem;
 }
 
 .min-h-screen {
   padding-top: 0 !important;
+  min-height: 100dvh !important;
 }
 
 .pt-24 {
-  padding-top: 4rem !important;
+  padding-top: 3.5rem !important;
 }
 
-@media (min-width: 768px) {
-  .pt-24 {
-    padding-top: 5rem !important;
+/* Mobile first approach */
+@media (max-width: 640px) {
+  .legal-container {
+    padding: 0.75rem !important;
+  }
+  
+  .legal-hero h1 {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+    text-align: center;
+  }
+
+  .legal-content {
+    padding: 1rem !important;
+  }
+
+  .legal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 }
 
-@media (max-width: 640px) {
-  .legal-hero {
-    min-height: 250px;
-    padding: 1rem;
+/* Tablet */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .pt-24 {
+    padding-top: 4rem !important;
+  }
+
+  .legal-container {
+    padding: 1rem !important;
   }
 
   .legal-hero h1 {
-    font-size: 1.75rem !important;
-    line-height: 2.25rem !important;
+    font-size: 2.5rem !important;
+    line-height: 3rem !important;
   }
 
-  .legal-hero p {
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
+  .legal-content {
+    padding: 1.5rem !important;
   }
+
+  .legal-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+  .pt-24 {
+    padding-top: 5rem !important;
+  }
+
+  .legal-container {
+    padding: 2rem !important;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .legal-hero h1 {
+    font-size: 3rem !important;
+    line-height: 3.5rem !important;
+  }
+
+  .legal-content {
+    padding: 2rem !important;
+  }
+
+  .legal-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    gap: 2rem !important;
+  }
+}
+
+/* Common styles for all screens */
+.legal-card {
+  @apply bg-zinc-800/50 rounded-lg p-4 md:p-6;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legal-text {
+  @apply text-gray-300 text-sm md:text-base;
+}
+
+.legal-heading {
+  @apply text-xl md:text-2xl font-semibold mb-4;
+}
+
+/* Fix header gap */
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @media (min-width: 641px) and (max-width: 768px) {

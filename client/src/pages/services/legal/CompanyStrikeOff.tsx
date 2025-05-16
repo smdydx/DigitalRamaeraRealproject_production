@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Helmet } from "react-helmet";
@@ -92,7 +91,7 @@ export default function CompanyStrikeOff() {
                 variants={fadeIn("up", "tween", 0.3, 1)}
                 className="prose prose-invert max-w-none mb-12"
               >
-                <div className="bg-zinc-800/50 rounded-lg p-6 mb-8">
+                <div className="legal-card mb-6 md:mb-8">
                   <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
                     <BookOpen className="h-6 w-6 text-red-500" />
                     Overview
@@ -103,7 +102,7 @@ export default function CompanyStrikeOff() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-zinc-800/50 rounded-lg p-6">
+                  <div className="legal-card mb-6 md:mb-8">
                     <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                       <CheckCircle className="h-5 w-5 text-red-500" />
                       Requirements
@@ -118,7 +117,7 @@ export default function CompanyStrikeOff() {
                     </ul>
                   </div>
 
-                  <div className="bg-zinc-800/50 rounded-lg p-6">
+                  <div className="legal-card mb-6 md:mb-8">
                     <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                       <FileText className="h-5 w-5 text-red-500" />
                       Required Documents
@@ -134,7 +133,7 @@ export default function CompanyStrikeOff() {
                   </div>
                 </div>
 
-                <div className="bg-zinc-800/50 rounded-lg p-6 mb-8">
+                <div className="legal-card mb-6 md:mb-8">
                   <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                     <Clock className="h-5 w-5 text-red-500" />
                     Process Steps
@@ -151,7 +150,7 @@ export default function CompanyStrikeOff() {
                   </div>
                 </div>
 
-                <div className="bg-zinc-800/50 rounded-lg p-6 mb-8">
+                <div className="legal-card mb-6 md:mb-8">
                   <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
                     <Shield className="h-6 w-6 text-red-500" />
                     Our Expertise
@@ -165,7 +164,7 @@ export default function CompanyStrikeOff() {
                   </ul>
                 </div>
 
-                <div className="bg-zinc-800/50 rounded-lg p-6">
+                <div className="legal-card mb-6 md:mb-8">
                   <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
                     <HelpCircle className="h-6 w-6 text-red-500" />
                     Frequently Asked Questions
