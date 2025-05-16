@@ -2,40 +2,67 @@
 import { motion } from "framer-motion";
 import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Helmet } from "react-helmet";
-import { FileText, Check, HelpCircle } from "lucide-react";
+import { FileText, Check, HelpCircle, Book, Shield, AlertCircle } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export default function ShareTransfer() {
-  const features = [
-    "Comprehensive verification of share transfer documentation",
-    "Preparation of share transfer forms and agreements",
-    "Filing of necessary forms with ROC",
-    "Updating statutory registers",
-    "Issuance of share certificates",
-    "Legal compliance advisory",
-    "Due diligence support"
+  const services = [
+    {
+      title: "Documentation Assistance",
+      items: [
+        "Share transfer deed (Form SH-4) preparation",
+        "Legal documentation review and verification",
+        "Stamp duty calculation and compliance",
+        "Board resolution drafting for approval",
+        "Share certificate preparation"
+      ]
+    },
+    {
+      title: "Regulatory Compliance",
+      items: [
+        "ROC form filing assistance",
+        "Statutory register updates",
+        "Compliance with Companies Act provisions",
+        "Tax implications guidance",
+        "FEMA compliance for NRI transfers"
+      ]
+    },
+    {
+      title: "Due Diligence Support",
+      items: [
+        "Title verification of shares",
+        "Encumbrance verification",
+        "Share valuation guidance",
+        "Legal documentation review",
+        "Transfer restrictions check"
+      ]
+    }
   ];
 
   const faqs = [
     {
+      question: "What is the process of share transfer in a private limited company?",
+      answer: "The share transfer process involves: 1) Execution of share transfer deed (Form SH-4), 2) Payment of stamp duty, 3) Board approval through resolution, 4) Updating statutory registers, 5) Issuing new share certificates, and 6) Filing necessary forms with ROC within prescribed timelines."
+    },
+    {
       question: "What documents are required for share transfer?",
-      answer: "Required documents include share transfer deed (Form SH-4), share certificates, board resolution approving transfer, and PAN cards of transferor and transferee."
+      answer: "Required documents include: Share Transfer Deed (Form SH-4), Original Share Certificates, Board Resolution approving transfer, PAN cards of transferor and transferee, Address proof, Payment proof, and Stamp duty payment proof."
     },
     {
-      question: "How long does the share transfer process take?",
-      answer: "Generally, the process takes 15-30 days, depending on documentation completeness and regulatory requirements."
+      question: "What are the restrictions on share transfer in a private company?",
+      answer: "Private companies typically have restrictions on share transfers as per their Articles of Association (AOA). Common restrictions include Right of First Refusal (ROFR), board approval requirement, and restrictions on transfer to non-members."
     },
     {
-      question: "Is stamp duty applicable on share transfers?",
-      answer: "Yes, stamp duty is applicable on share transfers. The rate varies by state and share value."
+      question: "How is share valuation done for transfer purposes?",
+      answer: "Share valuation can be done through various methods including Net Asset Value (NAV), Discounted Cash Flow (DCF), or fair market value as per Rule 11UA of Income Tax Rules. For unlisted companies, valuation by a registered valuer may be required."
     },
     {
-      question: "Can shares be transferred to relatives?",
-      answer: "Yes, shares can be transferred to relatives. Special provisions exist for transfer between family members."
+      question: "What are the tax implications of share transfer?",
+      answer: "Share transfers may attract Capital Gains Tax for the transferor. The tax rate depends on the holding period (short-term or long-term). Additionally, if shares are transferred at less than fair market value, provisions of Section 56(2)(x) may apply for the transferee."
     },
     {
-      question: "What happens after share transfer is complete?",
-      answer: "New share certificates are issued, statutory registers are updated, and necessary ROC filings are completed."
+      question: "Is stamp duty applicable on share transfer?",
+      answer: "Yes, stamp duty is applicable on share transfers. The rate varies by state and is typically calculated as a percentage of the consideration amount or market value of shares, whichever is higher."
     }
   ];
 
@@ -43,6 +70,7 @@ export default function ShareTransfer() {
     <>
       <Helmet>
         <title>Share Transfer Services | Legal Services</title>
+        <meta name="description" content="Comprehensive share transfer services including documentation, compliance, and advisory support for smooth transfer of shares" />
       </Helmet>
       <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black pt-24">
         <section className="relative overflow-hidden">
@@ -66,23 +94,42 @@ export default function ShareTransfer() {
               >
                 <div className="bg-zinc-800/50 rounded-lg p-6 mb-8">
                   <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                    <FileText className="h-6 w-6 text-green-500" />
+                    <Book className="h-6 w-6 text-green-500" />
                     Overview
                   </h2>
                   <p className="text-gray-300">
-                    Our comprehensive share transfer services ensure smooth and compliant transfer of shares between parties. We handle all aspects of the process, from documentation to regulatory filings, while ensuring compliance with Companies Act, 2013 and other applicable regulations.
+                    Our comprehensive share transfer services ensure smooth and legally compliant transfer of shares between parties. We handle all aspects of the process, from documentation preparation to regulatory filings, while ensuring full compliance with the Companies Act, 2013 and other applicable regulations.
                   </p>
                 </div>
 
+                {services.map((service, idx) => (
+                  <div key={idx} className="bg-zinc-800/50 rounded-lg p-6 mb-8">
+                    <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                      <Shield className="h-6 w-6 text-green-500" />
+                      {service.title}
+                    </h2>
+                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {service.items.map((item, itemIdx) => (
+                        <li key={itemIdx} className="flex items-start gap-2">
+                          <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                          <span className="text-gray-300">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+
                 <div className="bg-zinc-800/50 rounded-lg p-6 mb-8">
-                  <h2 className="text-2xl font-semibold mb-4">Our Services Include</h2>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-2">
-                        <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                        <span className="text-gray-300">{feature}</span>
-                      </li>
-                    ))}
+                  <h2 className="text-2xl font-semibold mb-4 flex items-center gap-2">
+                    <AlertCircle className="h-6 w-6 text-green-500" />
+                    Important Considerations
+                  </h2>
+                  <ul className="space-y-3 text-gray-300">
+                    <li>• Ensure compliance with Articles of Association before initiating transfer</li>
+                    <li>• Verify share transfer restrictions and obtain necessary approvals</li>
+                    <li>• Complete all documentation and statutory filings within prescribed timelines</li>
+                    <li>• Consider tax implications and valuation requirements</li>
+                    <li>• Maintain proper records and update statutory registers</li>
                   </ul>
                 </div>
 
