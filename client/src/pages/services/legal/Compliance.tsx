@@ -172,9 +172,9 @@ export default function Compliance() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black pt-24 overflow-hidden">
+    <main className="min-h-screen bg-gradient-to-b from-zinc-900 via-zinc-900 to-black overflow-hidden">
       {/* Hero Section with Parallax Effect */}
-      <section className="relative h-[80vh] md:h-[85vh] overflow-hidden mt-16 md:mt-20">
+      <section className="relative h-[80vh] md:h-[85vh] overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -191,7 +191,7 @@ export default function Compliance() {
                 transition={{ duration: 6 }}
               >
                 <img
-                  src={`/images/services/business-growth.jpg`} // Ensure this path is correct within the public directory
+                  src={`/images/services/img1.jpg`} // Ensure this path is correct within the public directory
                   alt="Legal Services"
                   className="w-full h-full object-cover"
                   loading="eager"
@@ -216,14 +216,11 @@ export default function Compliance() {
               Start Right. Build Smart. Grow Legally.
             </motion.h1>
             <motion.p
-              variants={fadeIn("up", "tween", 0.3, 1)}
-              className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed text-center px-4 sm:px-6 md:px-8"
-            >
-              At SOFTBEEM, powered by RAMAERA Legal Infotech Pvt Ltd, we offer
-              end-to-end company incorporation services to help entrepreneurs,
-              startups, and corporates establish legally compliant entities in
-              India — quickly, seamlessly, and affordably.
-            </motion.p>
+  variants={fadeIn("up", "tween", 0.3, 1)}
+  className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 leading-relaxed text-center px-4 sm:px-6 md:px-8"
+>
+  At SOFTBEEM,powered by RAMAERA Legal Infotech Pvt Ltd,we offer end-to-end company incorporation services to help entrepreneurs,startups,and corporates establish legally compliant entities in India — quickly, seamlessly, and affordably.
+</motion.p>
             <motion.div
               variants={fadeIn("up", "tween", 0.4, 1)}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
@@ -232,14 +229,14 @@ export default function Compliance() {
                 size="lg"
                 className="bg-green-500 hover:bg-green-600 text-lg px-8"
               >
-                Get Started <ArrowRight className="ml-2" />
+                Call Us <ArrowRight className="ml-2" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
                 className="border-green-500 text-green-500 hover:bg-green-500/10 text-lg px-8"
               >
-                Learn More
+                Get in Touch
               </Button>
             </motion.div>
           </motion.div>

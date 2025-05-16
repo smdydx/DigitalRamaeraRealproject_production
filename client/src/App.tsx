@@ -77,6 +77,7 @@ import CertificationunderSEBIRegulations from "./pages/services/legal/Certificat
 import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
 import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance";
 
+
 // Legal - Additional
 import CodeOfConductPage from "./pages/services/legal/CodeOfConductPolicies";
 import CommitteeSetup from "./pages/services/legal/CommitteeSetup";
@@ -103,6 +104,11 @@ import ShopsEstablishmentRegistration from "./pages/services/legal/ShopsEstablis
 import ProvidentFundPFEmployeeStateInsuranceESIRegistration from "./pages/services/legal/ProvidentFundPFEmployeeStateInsuranceESIRegistration";
 import ProfessionalTaxRegistration from "./pages/services/legal/ProfessionalTaxRegistration";
 import LabourWelfareFundCompliance from "./pages/services/legal/LabourWelfareFundCompliance";
+
+import TrademarkRegistration from "./pages/services/legal/TrademarkRegistration";
+import CopyrightRegistration from "./pages/services/legal/CopyrightRegistration";
+import PatentApplicationAssistance from "./pages/services/legal/PatentApplicationAssistance";
+import DraftingIPAssignmentLicense from "./pages/services/legal/DraftingIPAssignmentLicenseAgreements";
 
 function App() {
   return (
@@ -203,7 +209,10 @@ function App() {
             <Route path="/services/legal/provident-fund--pf--and-employee-state-insurance--esi--registration" element={<ProvidentFundPFEmployeeStateInsuranceESIRegistration />} />
             <Route path="/services/legal/professional-tax-registration" element={<ProfessionalTaxRegistration />} />
             <Route path="/services/legal/labour-welfare-fund-compliance" element={<LabourWelfareFundCompliance />} />
-
+            <Route path="/services/legal/trademark-registration" element={<TrademarkRegistration />} />
+            <Route path="/services/legal/copyright-registration" element={<CopyrightRegistration />} />
+            <Route path="/services/legal/patent-application-assistance" element={<PatentApplicationAssistance />} />
+            <Route path="/services/legal/drafting-ip-assignment/license-agreements" element={<DraftingIPAssignmentLicense />} />
             {/* Not Found */}
             <Route path="*" element={<NotFound />} />
           </Routes>
