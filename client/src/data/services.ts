@@ -172,34 +172,9 @@ export const servicesData: ServicesData = {
     {
       icon: FileText,
       title: "Legal & Compliance Service",
-      features: ["Complete legal and compliance solutions", "Corporate governance services", "Regulatory compliance", "Legal advisory"],
+      features: ["Company Incorporation Services", "Company Law Compliance Services", "Corporate Governance Services", "Event-Based Compliance Services", "FEMA and RBI Compliance Services",],
       path: "/services/legal/compliance",
-      // submenu: [
-      //   {
-      //     icon: Building,
-      //     title: "Corporate Governance Advisory",
-      //     features: ["Corporate governance solutions"],
-      //     path: "/services/legal/corporate-governance-advisory"
-      //   },
-      //   {
-      //     icon: FileCheck,
-      //     title: "Secretarial Audit",
-      //     features: ["Comprehensive audit services"],
-      //     path: "/services/legal/secretarial-audit"
-      //   },
-      //   {
-      //     icon: Scale,
-      //     title: "Company Law Services",
-      //     features: ["Company law compliance"],
-      //     path: "/services/legal/company-law-services"
-      //   },
-      //   {
-      //     icon: Landmark,
-      //     title: "FEMA and RBI Compliance",
-      //     features: ["Regulatory compliance services"],
-      //     path: "/services/legal/fema-rbi-compliance"
-      //   }
-      // ]
+      
     }
   ],
   
