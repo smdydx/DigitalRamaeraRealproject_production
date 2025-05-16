@@ -1,97 +1,141 @@
 
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
-import { staggerContainer, fadeIn } from "@/lib/animations";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { FileText, Database, PieChart, AlertCircle, CheckCircle2, BookOpen, FileCheck, ArrowRight } from "lucide-react";
 
 const FDIReporting = () => {
+  const faqs = [
+    {
+      question: "What is Form FC-GPR?",
+      answer: "Form FC-GPR (Foreign Currency-Gross Provisional Return) is filed to report the issue of shares by an Indian company to a foreign investor under FDI scheme. It must be filed within 30 days of issue of shares."
+    },
+    {
+      question: "What is Form FC-TRS?",
+      answer: "Form FC-TRS (Foreign Currency-Transfer of Shares) is filed to report transfer of shares between resident and non-resident entities. It's required for both sale and purchase transactions."
+    },
+    {
+      question: "What are the key compliance requirements under FDI?",
+      answer: "Key requirements include timely filing of FC-GPR/FC-TRS, adherence to sectoral caps, pricing guidelines compliance, and reporting of foreign investment through Single Master Form (SMF)."
+    },
+    {
+      question: "What are the penalties for delayed FDI reporting?",
+      answer: "Late filing can attract penalties under FEMA 1999, which may be up to thrice the amount involved for each contravention. Compounding fees may also be applicable."
+    },
+    {
+      question: "How long does FDI approval take?",
+      answer: "Under automatic route, no prior approval is required. For approval route, it typically takes 8-10 weeks after filing application with relevant ministry/department."
+    }
+  ];
+
   return (
     <>
       <Helmet>
-        <title>FDI Reporting (FC-GPR, FC-TRS) | Legal Services</title>
+        <title>FDI Reporting Services (FC-GPR, FC-TRS) | Legal Services</title>
       </Helmet>
-      <main className="min-h-screen bg-gradient-to-b from-zinc-900 to-black">
-        <div className="container mx-auto px-4 py-16">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="max-w-4xl mx-auto"
-          >
-            <motion.h1 
-              variants={fadeIn("up", "tween", 0.1, 1)}
-              className="text-4xl font-bold text-white mb-8"
-            >
-              FDI Reporting (FC-GPR, FC-TRS)
-            </motion.h1>
-            
-            <motion.div 
-              variants={fadeIn("up", "tween", 0.2, 1)}
-              className="prose prose-invert max-w-none mb-12"
-            >
-              <p className="text-lg text-gray-300 mb-6">
-                Comprehensive assistance with Foreign Direct Investment (FDI) reporting requirements, including FC-GPR and FC-TRS filings with the Reserve Bank of India (RBI).
-              </p>
-
-              <h2 className="text-2xl font-semibold text-green-400 mb-4">Our Services Include:</h2>
-              <ul className="list-disc pl-6 space-y-3 text-gray-300">
-                <li>Form FC-GPR filing for reporting foreign investment in Indian companies</li>
-                <li>Form FC-TRS submission for transfer of shares between residents and non-residents</li>
-                <li>Compliance with FEMA regulations and RBI guidelines</li>
-                <li>Documentation and reporting support for foreign investment</li>
-                <li>Advisory on FDI policy and sectoral caps</li>
-              </ul>
-
-              <h2 className="text-2xl font-semibold text-green-400 mt-8 mb-4">Process Overview</h2>
-              <div className="bg-zinc-800/50 p-6 rounded-lg border border-green-500/10 mb-8">
-                <ol className="list-decimal pl-6 space-y-3 text-gray-300">
-                  <li>Initial consultation and assessment of FDI structure</li>
-                  <li>Document collection and verification</li>
-                  <li>Preparation of necessary forms and supporting documents</li>
-                  <li>Filing with RBI through authorized dealer bank</li>
-                  <li>Follow-up and compliance monitoring</li>
-                </ol>
+      <div className="container mx-auto px-4 py-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl font-bold text-white mb-8">FDI Reporting Services (FC-GPR, FC-TRS)</h1>
+          
+          <div className="prose prose-invert max-w-none">
+            <section className="mb-12">
+              <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+                <FileText className="h-6 w-6 text-green-500" />
+                Our Comprehensive FDI Services
+              </h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
+                  <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <Database className="h-5 w-5 text-blue-400" />
+                    FC-GPR Filing
+                  </h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span>Preparation and filing of Form FC-GPR</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span>Documentation for share allotment to foreign investors</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span>Valuation certificate assistance</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
+                  <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                    <PieChart className="h-5 w-5 text-purple-400" />
+                    FC-TRS Filing
+                  </h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span>Transfer of shares documentation</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span>Compliance with pricing guidelines</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <ArrowRight className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
+                      <span>Post-transaction reporting</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
-            </motion.div>
+            </section>
 
-            <motion.div
-              variants={fadeIn("up", "tween", 0.3, 1)}
-              className="mt-12"
-            >
-              <h2 className="text-2xl font-semibold text-green-400 mb-6">Frequently Asked Questions</h2>
+            <section className="mb-12">
+              <h2 className="text-2xl font-semibold mb-6 flex items-center gap-2">
+                <AlertCircle className="h-6 w-6 text-yellow-500" />
+                Key Compliance Areas
+              </h2>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
+                  <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-green-400" />
+                    Reporting Timeline
+                  </h3>
+                  <p>Strict adherence to statutory timelines for various filings and reports</p>
+                </div>
+                <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
+                  <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <BookOpen className="h-5 w-5 text-orange-400" />
+                    Documentation
+                  </h3>
+                  <p>Comprehensive documentation support for all FDI transactions</p>
+                </div>
+                <div className="bg-zinc-800/50 p-6 rounded-lg border border-zinc-700">
+                  <h3 className="text-xl font-semibold mb-3 flex items-center gap-2">
+                    <FileCheck className="h-5 w-5 text-blue-400" />
+                    Regulatory Compliance
+                  </h3>
+                  <p>Ensuring compliance with FEMA regulations and RBI guidelines</p>
+                </div>
+              </div>
+            </section>
+
+            <section className="mb-12">
+              <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
               <Accordion type="single" collapsible className="w-full">
-                <AccordionItem value="item-1">
-                  <AccordionTrigger className="text-white">What is FC-GPR reporting?</AccordionTrigger>
-                  <AccordionContent className="text-gray-300">
-                    FC-GPR (Foreign Currency-Gross Provisional Return) is a form used to report the issue of shares by an Indian company to a foreign investor under FDI scheme.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="item-2">
-                  <AccordionTrigger className="text-white">When is FC-TRS filing required?</AccordionTrigger>
-                  <AccordionContent className="text-gray-300">
-                    FC-TRS filing is required when there is a transfer of shares between a resident and a non-resident, or vice versa. It must be filed within 60 days of transfer of shares.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="item-3">
-                  <AccordionTrigger className="text-white">What are the timelines for FC-GPR filing?</AccordionTrigger>
-                  <AccordionContent className="text-gray-300">
-                    FC-GPR should be filed within 30 days from the date of issue of shares to foreign investors.
-                  </AccordionContent>
-                </AccordionItem>
-
-                <AccordionItem value="item-4">
-                  <AccordionTrigger className="text-white">What documents are required for FDI reporting?</AccordionTrigger>
-                  <AccordionContent className="text-gray-300">
-                    Key documents include board resolution, shareholders' agreement, valuation certificate, KYC documents of foreign investor, and FIRC/SWIFT copy for inward remittance.
-                  </AccordionContent>
-                </AccordionItem>
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                    <AccordionTrigger>{faq.question}</AccordionTrigger>
+                    <AccordionContent>{faq.answer}</AccordionContent>
+                  </AccordionItem>
+                ))}
               </Accordion>
-            </motion.div>
-          </motion.div>
-        </div>
-      </main>
+            </section>
+          </div>
+        </motion.div>
+      </div>
     </>
   );
 };
