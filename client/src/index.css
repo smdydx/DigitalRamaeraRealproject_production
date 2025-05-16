@@ -852,6 +852,129 @@ button, .button {
   background: rgba(24, 24, 27, 0.3);
 }
 
+/* Enhanced legal page layouts */
+.legal-page-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .legal-page-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .legal-page-container {
+    padding: 2rem;
+  }
+}
+
+.legal-content-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .legal-content-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .legal-content-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.legal-hero-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .legal-hero-section {
+    padding: 3rem 2rem;
+  }
+}
+
+.legal-hero-title {
+  font-size: clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(to right, #ff4d4d, #f9cb28);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 1.5rem;
+}
+
+.legal-hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #94a3b8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.legal-info-card {
+  background: rgba(24, 24, 27, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+@media (hover: hover) {
+  .legal-info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.legal-process-steps {
+  counter-reset: step;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.legal-process-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  background: rgba(24, 24, 27, 0.3);
+  border-radius: 0.75rem;
+  position: relative;
+}
+
+.legal-process-step::before {
+  counter-increment: step;
+  content: counter(step);
+  background: #ff4d4d;
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.legal-faq-section {
+  max-width: 800px;
+  margin: 3rem auto;
+}
+
+.legal-contact-section {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(24, 24, 27, 0.3);
+  border-radius: 1rem;
+  margin-top: 3rem;
+}
+
 @media (min-width: 768px) {
   .legal-section {
     margin-bottom: 3rem;
