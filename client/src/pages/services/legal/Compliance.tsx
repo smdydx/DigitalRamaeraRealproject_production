@@ -143,6 +143,22 @@ const services = [
       "Internal Controls and Process Advisory",
     ],
   },
+  {
+    title: "Good & Services Tax (GST)",
+    icon: "📊",
+    items: [
+          "GST Registration",
+          "GST Registration Amendment",
+          "GST Cancellation/Surrender",
+          "GST LUT Filing (Annual)",
+          "Gst Invoice & E-Way Bill",
+          "GST Nil Return Filing",
+          "GST Return Filing",
+          "GST Annual Return - GSTR - 9",
+          "Merchant Exporter GST",
+
+    ]
+  },
 ];
 
 // ContactButtons component

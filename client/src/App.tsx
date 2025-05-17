@@ -77,6 +77,8 @@ import CertificationunderSEBIRegulations from "./pages/services/legal/Certificat
 import CertificationforMergersAmalgamations from "./pages/services/legal/CertificationforMergersAmalgamations";
 import CertificationunderFEMARBICompliance from "./pages/services/legal/CertificationunderFEMARBICompliance";
 
+//GST Services
+import GSTRegistration from "./pages/services/legal/GSTRegistration";
 
 // Legal - Additional
 import CodeOfConductPage from "./pages/services/legal/CodeOfConductPolicies";
@@ -109,6 +111,14 @@ import TrademarkRegistration from "./pages/services/legal/TrademarkRegistration"
 import CopyrightRegistration from "./pages/services/legal/CopyrightRegistration";
 import PatentApplicationAssistance from "./pages/services/legal/PatentApplicationAssistance";
 import DraftingIPAssignmentLicense from "./pages/services/legal/DraftingIPAssignmentLicenseAgreements";
+import GSTRegistrationAmendment from "./pages/services/legal/GstRegistrationAmendment";
+import GSTCancellationSurrender from "./pages/services/legal/GstCancellationSurrender";
+import GSTLUTFiling from "./pages/services/legal/GstLutFilling";
+import GSTInvoiceEWayBill from "./pages/services/legal/GstInvoiceEwayBill";
+import GSTRReturnFiling from "./pages/services/legal/GstReturnFiling";
+import GSTNilReturn from "./pages/services/legal/GstNilReturnFiling";
+import GSTAnnualReturn from "./pages/services/legal/GstAnnualReturn";
+import MerchantExporterGST from "./pages/services/legal/GstMerchantExporter";
 
 function App() {
   return (
@@ -213,7 +223,16 @@ function App() {
             <Route path="/services/legal/copyright-registration" element={<CopyrightRegistration />} />
             <Route path="/services/legal/patent-application-assistance" element={<PatentApplicationAssistance />} />
             <Route path="/services/legal/drafting-ip-assignment/license-agreements" element={<DraftingIPAssignmentLicense />} />
-            {/* Not Found */}
+            <Route path="/services/legal/gst-registration" element={<GSTRegistration />} />
+            <Route path="/services/legal/gst-registration-amendment" element={<GSTRegistrationAmendment />} />
+            <Route path="/services/legal/gst-cancellation/surrender" element={<GSTCancellationSurrender /> } />
+            <Route path="/services/legal/gst-lut-filing--annual-" element={<GSTLUTFiling /> } />
+            <Route path="/services/legal/gst-invoice-&-e-way-bill" element={<GSTInvoiceEWayBill />} />
+            <Route path="/services/legal/gst-nil-return-filing" element={<GSTNilReturn />} />
+            <Route path="/services/legal/gst-return-filing" element={<GSTRReturnFiling />} />
+            <Route path="/services/legal/gst-annual-return---gstr---9" element={<GSTAnnualReturn />} />
+            <Route path="/services/legal/merchant-exporter-gst" element={<MerchantExporterGST />} />
+                       {/* Not Found */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
