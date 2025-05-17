@@ -377,6 +377,7 @@ main {
 
 /* Responsive spacing adjustments */
 /* Base responsive styles */
+/* Global responsive styles */
 @media screen and (max-width: 640px) {
   main {
     padding-top: 4rem !important;
@@ -403,14 +404,111 @@ main {
     font-size: clamp(1.25rem, 4vw, 1.5rem) !important;
   }
 
+  h3 {
+    font-size: clamp(1.125rem, 3vw, 1.375rem) !important;
+  }
+
   p {
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .grid {
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
     gap: 1rem !important;
+  }
+
+  /* Improved button responsiveness */
+  button, .button {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    white-space: normal !important;
+    height: auto !important;
+    min-height: 2.5rem;
+  }
+
+  /* Card improvements */
+  .card {
+    padding: 1rem !important;
+  }
+
+  /* Form elements */
+  input, textarea, select {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+
+  /* Navigation improvements */
+  .nav-container {
+    padding: 0.5rem !important;
+  }
+
+  /* Image responsiveness */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+/* Tablet styles */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: 90%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 1.5rem !important;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4vw, 2.5rem) !important;
+  }
+
+  button, .button {
+    padding: 0.625rem 1.25rem;
+  }
+}
+
+/* Large screen optimizations */
+@media screen and (min-width: 1025px) {
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .grid {
+    gap: 2rem !important;
+  }
+}
+
+/* Universal fixes */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+  }
+}
+
+/* Fix for service cards */
+.service-card {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+}
+
+/* Landscape mode fixes */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+  .mobile-nav-menu {
+    max-height: 80vh;
+    overflow-y: auto;
   }
 }
 
