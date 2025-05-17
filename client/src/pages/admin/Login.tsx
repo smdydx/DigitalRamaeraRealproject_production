@@ -9,11 +9,16 @@ export default function Login() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === 'admin123') { // In production, use proper authentication
+    if (username === 'smdydx' && password === 'Rama@2025') {
       localStorage.setItem('adminAuth', 'true');
       navigate('/admin/dashboard');
+    } else {
+      alert('Invalid credentials');
     }
   };
 
@@ -24,6 +29,13 @@ export default function Login() {
           Admin Login
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
+          <Input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Enter username"
+            className="bg-zinc-800/50"
+          />
           <Input
             type="password"
             value={password}
