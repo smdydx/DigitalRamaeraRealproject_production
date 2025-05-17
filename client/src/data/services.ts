@@ -172,7 +172,20 @@ export const servicesData: ServicesData = {
     {
       icon: FileText,
       title: "Legal & Compliance Service",
-      features: ["Company Incorporation Services", "Company Law Compliance Services", "Corporate Governance Services", "Event-Based Compliance Services", "FEMA and RBI Compliance Services",],
+      features: [
+  "Company Incorporation Services",
+  "Company Law Compliance Services",
+  "Corporate Governance Services",
+  "Event-Based Compliance Services",
+  "FEMA and RBI Compliance Services",
+  "Intellectual Property Rights (IPR) Support",
+  "Legal Drafting Services",
+  "Advisory Services",
+  "Labour Law Registrations and Compliance",
+  "Certification Services",
+  "Listing Compliance",
+  "Specialized Services"
+],
       path: "/services/legal/compliance",
       
     }
