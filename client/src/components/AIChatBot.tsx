@@ -44,25 +44,70 @@ ${service.features?.join('\n')}
     setIsTyping(true);
 
     try {
-      // Handle general service inquiry
+      // Initial service inquiry
       if (userMessage.includes('service') || userMessage.includes('services')) {
-        const serviceOverview = `Softbeem offers two main categories of services:
+        const serviceOptions = `What type of service are you looking for? Please select an option:
 
-1. Technology Services:
-   • Blockchain Development (Smart Contracts, NFTs, Crypto Exchange)
-   • IT Solutions (Web/Mobile Apps, Cloud Services, Game Development)
-   • Digital Marketing Services
+1️⃣ Technology Services
+2️⃣ Legal & Compliance Services
 
-2. Legal & Compliance Services:
-   • Company Registration & Setup
-   • Compliance Management
-   • Corporate Governance
-   • Legal Documentation
-   • Advisory Services
+Please type the number (1 or 2) to learn more about specific services.`;
 
-Would you like specific information about any of these services? Or would you like to speak with a specialist?`;
+        setMessages(prev => [...prev, { type: 'bot', text: serviceOptions }]);
+        setIsTyping(false);
+        setInput('');
+        return;
+      }
 
-        setMessages(prev => [...prev, { type: 'bot', text: serviceOverview }]);
+      // Handle numeric selections for service categories
+      if (userMessage === '1') {
+        const techServices = `Here are our Technology Services:
+
+🔷 Blockchain Development:
+   1. Smart Contract Development
+   2. NFT Marketplace
+   3. Crypto Exchange
+   4. DApp Development
+
+🔷 IT Solutions:
+   5. Web Development
+   6. Mobile Apps
+   7. Cloud Services
+   8. Game Development
+
+🔷 Digital Marketing:
+   9. Digital Marketing Services
+
+Please type a number (1-9) to get detailed information about any service.`;
+
+        setMessages(prev => [...prev, { type: 'bot', text: techServices }]);
+        setIsTyping(false);
+        setInput('');
+        return;
+      }
+
+      if (userMessage === '2') {
+        const legalServices = `Here are our Legal & Compliance Services:
+
+🔷 Company Setup:
+   1. Private Limited Registration
+   2. Public Limited Registration
+   3. LLP Registration
+   4. OPC Registration
+
+🔷 Compliance:
+   5. ROC Compliance
+   6. Corporate Governance
+   7. SEBI Compliance
+   8. Annual Returns Filing
+
+🔷 Advisory:
+   9. Legal Documentation
+   10. Corporate Advisory
+
+Please type a number (1-10) to get detailed information about any service.`;
+
+        setMessages(prev => [...prev, { type: 'bot', text: legalServices }]);
         setIsTyping(false);
         setInput('');
         return;
