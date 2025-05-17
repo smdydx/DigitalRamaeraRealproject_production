@@ -1,36 +1,90 @@
+
 import React, { useState, useEffect } from 'react';
-import { Bot, X, Send, Minimize2 } from 'lucide-react';
+import { Bot, X, Send, Minimize2, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { servicesData } from '@/data/services';
 
 const AIChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ type: 'user' | 'bot'; text: string }[]>([
-    { type: 'bot', text: 'Hello! How can I assist you today?' }
+    { type: 'bot', text: 'Hello! Welcome to Softbeem. How can I assist you today?' }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
+  const getServiceInfo = (query: string) => {
+    const services = [...servicesData.tech, ...servicesData.legal];
+    const relevantServices = services.filter(service => 
+      service.title.toLowerCase().includes(query.toLowerCase()) ||
+      service.features?.some(feature => 
+        feature.toLowerCase().includes(query.toLowerCase())
+      )
+    );
+
+    if (relevantServices.length > 0) {
+      return relevantServices.map(service => `
+${service.title}:
+${service.features?.join('\n')}
+      `).join('\n\n');
+    }
+    return null;
+  };
+
+  const getContactInfo = () => {
+    return "To speak with a specialist, please call: +91-XXXXXXXXXX\nOr schedule a meeting through our website.";
+  };
+
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    setMessages(prev => [...prev, { type: 'user', text: input }]);
+    const userMessage = input.trim();
+    setMessages(prev => [...prev, { type: 'user', text: userMessage }]);
     setIsTyping(true);
 
     try {
+      // Check for service-related queries
+      const serviceInfo = getServiceInfo(userMessage);
+      if (serviceInfo) {
+        setMessages(prev => [...prev, { 
+          type: 'bot', 
+          text: `Here's what I found about our services:\n\n${serviceInfo}\n\nWould you like to speak with a specialist about these services?` 
+        }]);
+        setIsTyping(false);
+        setInput('');
+        return;
+      }
+
+      // Check for contact-related queries
+      if (userMessage.toLowerCase().includes('contact') || 
+          userMessage.toLowerCase().includes('specialist') || 
+          userMessage.toLowerCase().includes('talk')) {
+        setMessages(prev => [...prev, { 
+          type: 'bot', 
+          text: getContactInfo() 
+        }]);
+        setIsTyping(false);
+        setInput('');
+        return;
+      }
+
+      // Default API call for other queries
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: input }),
+        body: JSON.stringify({ message: userMessage }),
       });
 
       const data = await response.json();
       setMessages(prev => [...prev, { type: 'bot', text: data.response }]);
     } catch (error) {
-      setMessages(prev => [...prev, { type: 'bot', text: 'Sorry, I encountered an error. Please try again.' }]);
+      setMessages(prev => [...prev, { 
+        type: 'bot', 
+        text: 'Sorry, I encountered an error. Please try again.' 
+      }]);
     }
 
     setIsTyping(false);
@@ -49,7 +103,7 @@ const AIChatBot = () => {
           <div className="p-4 bg-green-500/10 flex justify-between items-center border-b border-green-500/20">
             <div className="flex items-center gap-2">
               <Bot className="h-5 w-5 text-green-400" />
-              <h3 className="text-white font-semibold">AI Assistant</h3>
+              <h3 className="text-white font-semibold">Softbeem Assistant</h3>
             </div>
             <div className="flex gap-2">
               <button onClick={() => setIsOpen(false)} className="text-gray-400 hover:text-white">
@@ -64,7 +118,7 @@ const AIChatBot = () => {
           <div className="h-80 overflow-y-auto p-4 space-y-4">
             {messages.map((message, index) => (
               <div key={index} className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[80%] p-3 rounded-lg ${
+                <div className={`max-w-[80%] p-3 rounded-lg whitespace-pre-wrap ${
                   message.type === 'user' 
                     ? 'bg-green-500/20 text-white' 
                     : 'bg-zinc-800 text-gray-200'
