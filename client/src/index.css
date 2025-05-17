@@ -611,6 +611,7 @@ button, .button {
   padding: 0.75rem;
   display: block !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
   max-height: none;
   opacity: 1;
   visibility: visible;

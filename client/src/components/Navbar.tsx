@@ -382,13 +382,14 @@ const Navbar = () => {
                               </div>
                             </button>
 
-                            {service.submenu && isSubmenuOpen && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                className="pl-6 mt-2 space-y-2 origin-top bg-zinc-800/50 rounded-lg py-2"
-                              >
+                            <AnimatePresence>
+                              {service.submenu && openMobileSubmenus.includes(service.title) && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  className="pl-6 mt-2 space-y-2 origin-top bg-zinc-800/50 rounded-lg py-2"
+                                >
                                 {Array.isArray(service.submenu) && service.submenu.map((subItem, subIdx) => {
                                   if (!subItem || typeof subItem !== 'object') return null;
                                   return (
@@ -413,6 +414,7 @@ const Navbar = () => {
                                 })}
                               </motion.div>
                             )}
+                          </AnimatePresence>
                           </div>
                         );
                       })}
