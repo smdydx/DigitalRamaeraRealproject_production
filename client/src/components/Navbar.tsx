@@ -163,11 +163,11 @@ const Navbar = () => {
                                             onClick={() => service.path ? window.location.href = service.path : scrollToSection("/#services")}
                                             className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
                                           >
-                                            <div className="text-primary mt-1">
-                                              <div className="h-5 w-5">{React.createElement(service.icon)}</div>
+                                            <div className="text-primary flex items-center">
+                                              <div className="h-6 w-6">{React.createElement(service.icon)}</div>
                                             </div>
                                             <div className="text-left flex-1">
-                                              <h4 className="text-white group-hover:text-primary transition-colors flex items-center justify-between">
+                                              <h4 className="text-[15px] text-white group-hover:text-primary transition-colors flex items-center justify-between">
                                                 {service.title}
                                                 {service.submenu && <ChevronRight className="h-4 w-4 ml-2" />}
                                               </h4>

@@ -574,16 +574,26 @@ button, .button {
 
 .service-icon, .mobile-submenu-icon,
 .text-primary svg {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  min-width: 1.5rem !important;
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  min-width: 1.75rem !important;
 }
 
 .service-text,
 .mobile-submenu-item span,
 .text-white {
-  font-size: 0.95rem !important;
+  font-size: 1rem !important;
   line-height: 1.5rem !important;
+  font-weight: 500 !important;
+}
+
+@media (min-width: 768px) {
+  .service-icon, .mobile-submenu-icon,
+  .text-primary svg {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+    min-width: 1.5rem !important;
+  }
 }
 
 .mobile-services-item {
