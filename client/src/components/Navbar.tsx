@@ -371,7 +371,7 @@ const Navbar = () => {
                                 <h4 className="text-white group-hover:text-primary transition-colors flex items-center justify-between">
                                   {service.title}
                                   {service.submenu && (
-                                    <span className={`ml-2 bg-green-500/10 p-1 rounded transition-transform ${openMobileSubmenus.includes(service.title) ? 'rotate-180' : ''}`}>
+                                    <span className="ml-2 bg-green-500/10 p-1 rounded">
                                       <ChevronDown className="h-4 w-4" />
                                     </span>
                                   )}
@@ -383,7 +383,7 @@ const Navbar = () => {
                             </button>
 
                             <AnimatePresence>
-                              {service.submenu && openMobileSubmenus.includes(service.title) && (
+                              {service.submenu && (
                                 <motion.div
                                   initial={{ opacity: 0, height: 0 }}
                                   animate={{ opacity: 1, height: "auto" }}
