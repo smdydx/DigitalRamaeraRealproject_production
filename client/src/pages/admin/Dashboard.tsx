@@ -385,6 +385,7 @@ const Dashboard = () => {
                 </Card>
               ))}
             </div>
+            </div>
           </TabsContent>
 
           <TabsContent value="overview">
