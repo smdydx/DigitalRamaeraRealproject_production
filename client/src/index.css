@@ -629,6 +629,81 @@ button, .button {
   }
 }
 
+/* Service pages responsive styles */
+@media screen and (max-width: 768px) {
+  .service-grid {
+    grid-template-columns: 1fr !important;
+    padding: 1rem;
+  }
+  
+  .service-card {
+    padding: 1.5rem !important;
+  }
+
+  .service-title {
+    font-size: 1.75rem !important;
+  }
+
+  .service-description {
+    font-size: 1rem !important;
+  }
+
+  .feature-list {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-section {
+    padding: 2rem 1rem !important;
+  }
+
+  .hero-title {
+    font-size: 2rem !important;
+  }
+
+  .hero-description {
+    font-size: 1rem !important;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Improve button and form responsiveness */
+@media screen and (max-width: 640px) {
+  .button-group {
+    flex-direction: column !important;
+    width: 100% !important;
+  }
+
+  .button-group > * {
+    width: 100% !important;
+    margin: 0.5rem 0 !important;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Fix spacing and alignment on small screens */
+@media screen and (max-width: 480px) {
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .grid {
+    gap: 1rem !important;
+  }
+
+  .section-padding {
+    padding: 2rem 0 !important;
+  }
+}
+
 
 /* Desktop styles */
 @media screen and (min-width: 769px) {
