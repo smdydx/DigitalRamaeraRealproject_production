@@ -29,6 +29,44 @@ const Dashboard = () => {
   const [blogs, setBlogs] = useState([]);
   const [jobs, setJobs] = useState([]);
   const [activeTab, setActiveTab] = useState('overview');
+
+  const fetchJobs = async () => {
+    try {
+      const response = await fetch('/api/careers/jobs');
+      if (response.ok) {
+        const jobsData = await response.json();
+        setJobs(jobsData);
+      }
+    } catch (error) {
+      console.error('Failed to fetch jobs:', error);
+      toast({
+        title: "Error",
+        description: "Failed to fetch jobs",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handleDeleteJob = async (jobId: string) => {
+    try {
+      const response = await fetch(`/api/careers/jobs/${jobId}`, {
+        method: 'DELETE'
+      });
+      if (response.ok) {
+        toast({
+          title: "Success",
+          description: "Job deleted successfully",
+        });
+        fetchJobs();
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to delete job",
+        variant: "destructive"
+      });
+    }
+  };
   const [editBlog, setEditBlog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [meetings, setMeetings] = useState([]);
@@ -102,7 +140,7 @@ const Dashboard = () => {
           navigate('/admin/login');
           return;
         }
-        await fetchData();
+        await Promise.all([fetchData(), fetchJobs()]);
         setLoading(false);
       } catch (error) {
         console.error('Auth error:', error);
@@ -271,8 +309,36 @@ const Dashboard = () => {
           </TabsList>
 
           <TabsContent value="jobs">
-            <Card className="p-6 bg-blue-950/30 border-blue-500/20 mb-6">
-              <h2 className="text-2xl font-bold mb-6">Post New Job</h2>
+            <div className="grid gap-6">
+              <Card className="p-6 bg-blue-950/30 border-blue-500/20">
+                <div className="flex justify-between items-center mb-6">
+                  <h2 className="text-2xl font-bold">Current Job Listings</h2>
+                </div>
+                <div className="grid gap-4">
+                  {jobs.map((job: any) => (
+                    <div key={job._id} className="bg-blue-900/20 p-4 rounded-lg border border-blue-500/20">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h3 className="text-lg font-semibold text-white">{job.title}</h3>
+                          <p className="text-sm text-blue-400">{job.department}</p>
+                          <p className="text-sm text-gray-400">{job.location} • {job.type}</p>
+                        </div>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={() => handleDeleteJob(job._id)}
+                        >
+                          <TrashIcon className="h-4 w-4 mr-2" />
+                          Delete
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+              
+              <Card className="p-6 bg-blue-950/30 border-blue-500/20">
+                <h2 className="text-2xl font-bold mb-6">Post New Job</h2>
               <form onSubmit={handleJobSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input
