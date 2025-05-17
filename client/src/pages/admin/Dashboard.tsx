@@ -318,9 +318,9 @@ const Dashboard = () => {
               
               <Card className="p-6 bg-blue-950/30 border-blue-500/20">
                 <h2 className="text-2xl font-bold mb-6">Post New Job</h2>
-              <form onSubmit={handleJobSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <Input
+                <form onSubmit={handleJobSubmit} className="space-y-4">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <Input
                     name="title"
                     placeholder="Job Title"
                     className="bg-blue-900/20 border-blue-500/20"
