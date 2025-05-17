@@ -108,28 +108,7 @@ const Dashboard = () => {
     }
   };
 
-  const handleDeleteJob = async (jobId) => {
-    try {
-      const response = await fetch(`/api/careers/jobs/${jobId}`, {
-        method: 'DELETE'
-      });
-
-      if (response.ok) {
-        setJobs(jobs.filter(job => job._id !== jobId));
-        toast({
-          title: "Job Deleted",
-          description: "The job posting has been removed.",
-        });
-      }
-    } catch (error) {
-      console.error('Error deleting job:', error);
-      toast({
-        title: "Error",
-        description: "Failed to delete job. Please try again.",
-        variant: "destructive",
-      });
-    }
-  };
+  
   const { toast } = useToast();
 
   useEffect(() => {
