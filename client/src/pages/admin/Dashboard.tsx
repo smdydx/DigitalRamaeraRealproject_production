@@ -108,7 +108,7 @@ const Dashboard = () => {
     }
   };
 
-  
+
   const { toast } = useToast();
 
   useEffect(() => {
@@ -255,9 +255,9 @@ const Dashboard = () => {
     <div className="min-h-screen bg-[#000510] text-white">
       <div className="max-w-[1400px] mx-auto p-6 pt-20"> {/* Added padding to push content below header */}
         {/* Header */}
-        <div className="flex items-center justify-between mb-8 bg-blue-950/30 p-6 rounded-xl border border-blue-500/20 backdrop-blur-sm sticky top-0 z-10"> {/* Added sticky class for fixed header */}
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8 bg-blue-950/30 p-4 sm:p-6 rounded-xl border border-blue-500/20 backdrop-blur-sm sticky top-0 z-10">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
               Admin Dashboard
             </h1>
             <div className="flex items-center gap-2 text-blue-400 mt-2">
@@ -315,11 +315,11 @@ const Dashboard = () => {
                   ))}
                 </div>
               </Card>
-              
+
               <Card className="p-6 bg-blue-950/30 border-blue-500/20">
                 <h2 className="text-2xl font-bold mb-6">Post New Job</h2>
                 <form onSubmit={handleJobSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <Input
                     name="title"
                     placeholder="Job Title"
@@ -333,7 +333,7 @@ const Dashboard = () => {
                     required
                   />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <Input
                     name="location"
                     placeholder="Location"
@@ -470,7 +470,7 @@ const Dashboard = () => {
                 {editBlog ? 'Edit Blog Post' : 'Create New Blog Post'}
               </h2>
               <form onSubmit={handleBlogSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   <Input
                     name="title"
                     placeholder="Blog Title"
