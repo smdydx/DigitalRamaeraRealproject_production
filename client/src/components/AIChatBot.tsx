@@ -39,12 +39,36 @@ ${service.features?.join('\n')}
   const handleSend = async () => {
     if (!input.trim()) return;
 
-    const userMessage = input.trim();
+    const userMessage = input.trim().toLowerCase();
     setMessages(prev => [...prev, { type: 'user', text: userMessage }]);
     setIsTyping(true);
 
     try {
-      // Check for service-related queries
+      // Handle general service inquiry
+      if (userMessage.includes('service') || userMessage.includes('services')) {
+        const serviceOverview = `Softbeem offers two main categories of services:
+
+1. Technology Services:
+   • Blockchain Development (Smart Contracts, NFTs, Crypto Exchange)
+   • IT Solutions (Web/Mobile Apps, Cloud Services, Game Development)
+   • Digital Marketing Services
+
+2. Legal & Compliance Services:
+   • Company Registration & Setup
+   • Compliance Management
+   • Corporate Governance
+   • Legal Documentation
+   • Advisory Services
+
+Would you like specific information about any of these services? Or would you like to speak with a specialist?`;
+
+        setMessages(prev => [...prev, { type: 'bot', text: serviceOverview }]);
+        setIsTyping(false);
+        setInput('');
+        return;
+      }
+
+      // Check for specific service-related queries
       const serviceInfo = getServiceInfo(userMessage);
       if (serviceInfo) {
         setMessages(prev => [...prev, { 
