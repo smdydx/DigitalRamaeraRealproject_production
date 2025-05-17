@@ -363,7 +363,6 @@ const Navbar = () => {
                                 }
                               }}
                               className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
-                              className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
                             >
                               <div className="text-primary">
                                 <div className="h-6 w-6">{React.createElement(service.icon)}</div>
@@ -372,11 +371,14 @@ const Navbar = () => {
                                 <h4 className="text-white group-hover:text-primary transition-colors flex items-center justify-between">
                                   {service.title}
                                   {service.submenu && (
-                                    <span className="ml-2 bg-green-500/10 px-2 rounded">
-                                      {isSubmenuOpen ? '−' : '+'}
+                                    <span className={`ml-2 bg-green-500/10 p-1 rounded transition-transform ${openMobileSubmenus.includes(service.title) ? 'rotate-180' : ''}`}>
+                                      <ChevronDown className="h-4 w-4" />
                                     </span>
                                   )}
                                 </h4>
+                                <p className="text-xs text-muted-foreground mt-1">
+                                  {service.features[0]}
+                                </p>
                               </div>
                             </button>
 
