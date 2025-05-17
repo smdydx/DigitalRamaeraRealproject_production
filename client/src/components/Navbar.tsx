@@ -365,8 +365,8 @@ const Navbar = () => {
                               className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
                               className="flex items-start gap-3 p-2 rounded-md hover:bg-zinc-800 transition-colors group w-full"
                             >
-                              <div className="text-primary mt-1">
-                                <div className="h-5 w-5">{React.createElement(service.icon)}</div>
+                              <div className="text-primary">
+                                <div className="h-6 w-6">{React.createElement(service.icon)}</div>
                               </div>
                               <div className="text-left flex-1">
                                 <h4 className="text-white group-hover:text-primary transition-colors flex items-center justify-between">

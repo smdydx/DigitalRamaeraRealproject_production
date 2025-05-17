@@ -564,22 +564,26 @@ button, .button {
   }
 }
 
-.service-item {
+/* Service menu icons and text styles */
+.service-item, .mobile-submenu-item {
   display: flex !important;
   align-items: center !important;
   gap: 0.75rem !important;
-  padding: 0.5rem !important;
+  padding: 0.75rem !important;
 }
 
-.service-icon {
-  width: 1.25rem !important;
-  height: 1.25rem !important;
-  min-width: 1.25rem !important;
+.service-icon, .mobile-submenu-icon,
+.text-primary svg {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  min-width: 1.5rem !important;
 }
 
-.service-text {
-  font-size: 0.875rem !important;
-  line-height: 1.25rem !important;
+.service-text,
+.mobile-submenu-item span,
+.text-white {
+  font-size: 0.95rem !important;
+  line-height: 1.5rem !important;
 }
 
 .mobile-services-item {
