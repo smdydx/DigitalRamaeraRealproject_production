@@ -148,9 +148,9 @@ const services = [
 // ContactButtons component
 function ContactButtons() {
   return (
-    <div className="fixed bottom-4 left-4 flex flex-col gap-3 z-50">
+    <div className="fixed bottom-20 right-4 flex flex-col gap-3 z-50">
       <a
-        href="https://wa.me/YOUR_WHATSAPP_NUMBER"
+        href="https://wa.me/+911169310715"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
@@ -160,7 +160,7 @@ function ContactButtons() {
         </svg>
       </a>
       <a
-        href="tel:YOUR_PHONE_NUMBER"
+        href="tel:+911169310715"
         className="flex items-center justify-center w-12 h-12 bg-blue-500 hover:bg-blue-600 text-white rounded-full shadow-lg transition-all duration-300 hover:scale-110"
       >
         <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

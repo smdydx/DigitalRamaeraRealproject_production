@@ -16,7 +16,7 @@ const ITServices = () => {
     {
       title: "SaaS & Installables",
       icon: <AppWindow className="w-12 h-12 text-blue-500" />,
-      image: "/images/services/business-growth.jpg",
+      image: "/images/services/IT4.jpg",
       products: [
         "CRM Software",
         "ERP Software",
@@ -38,7 +38,7 @@ const ITServices = () => {
     {
       title: "Web Development & CMS",
       icon: <Globe className="w-12 h-12 text-purple-500" />,
-      image: "/images/services/website-builder.jpg",
+      image: "/images/services/IT3.png",
       products: [
         "Website Builder Platform",
         "eCommerce Store Platform",
@@ -52,7 +52,7 @@ const ITServices = () => {
     {
       title: "Mobile Applications",
       icon: <Smartphone className="w-12 h-12 text-green-500" />,
-      image: "/images/devimage.jpg",
+      image: "/images/services/IT2.png",
       products: [
         "Grocery Delivery App",
         "Medicine Delivery App",
@@ -68,7 +68,7 @@ const ITServices = () => {
     {
       title: "Cloud & SaaS Services",
       icon: <Cloud className="w-12 h-12 text-cyan-500" />,
-      image: "/images/services/business-growth.jpg",
+      image: "/images/services/saas.jpg",
       products: [
         "Web Hosting Services",
         "Cloud Storage Services",
@@ -213,7 +213,7 @@ const ITServices = () => {
         </motion.div>
 
         {/* CTA Section */}
-        <motion.div variants={fadeIn("up", "tween", 0.7, 1)} className="text-center mb-20">
+        <motion.div variants={fadeIn("up", "tween", 0.7, 1)} className="text-center mb-[-30px]">
           <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
           <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
             Contact us today to discuss how our IT solutions can help you achieve your business goals.

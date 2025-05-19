@@ -307,9 +307,9 @@ const Navbar = () => {
               </a>
               <button 
                 onClick={() => window.location.href = '/schedule'} 
-                className="flex items-center justify-center w-12 h-12 rounded-lg bg-green-500/10 hover:bg-green-500/20 text-green-400 transition-all border border-green-500/30"
+                className="flex items-center justify-center w-14 h-12 rounded-lg bg-green-500/10 hover:bg-green-500/20 text-green-400 transition-all border border-green-500/30"
               >
-                <Calendar className="w-6 h-6" />
+                <Calendar className="w-8 h-8" />
               </button>
             </div>
             {/* Mobile Nav Links */}

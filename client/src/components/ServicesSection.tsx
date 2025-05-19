@@ -58,7 +58,7 @@ const ServicesSection = () => {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 px-2 sm:px-0">
+          <div className="flex flex-wrap justify-center gap-2 pb-5 sm:gap-4 mb-8 px-2 sm:px-0">
             {serviceTypes.map((type) => (
               <Button
                 key={type.id}
@@ -105,7 +105,7 @@ const ServicesSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              onClick={() => window.location.href = '/services/blockchain'}
+              onClick={() => window.location.href = '/services'}
               className="flex items-center gap-2"
             >
               Explore Our Services <ArrowRight className="h-4 w-4" />

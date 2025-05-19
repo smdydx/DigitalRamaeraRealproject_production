@@ -65,7 +65,7 @@ const TechPricing = () => {
         >
           <motion.div variants={fadeIn("down", "tween", 0.2, 1)} className="text-center space-y-4">
             <h2 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
-              Blockchain & IT Services Pricing
+              Tech Services Pricing
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
               Choose the perfect blockchain solution package for your business needs
