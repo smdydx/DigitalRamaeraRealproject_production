@@ -1,221 +1,256 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { motion } from 'framer-motion';
-import { gsap } from 'gsap';
-import { SVGLoader } from 'three/examples/jsm/loaders/SVGLoader';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
-interface ServiceIcon {
-  name: string;
-  position: THREE.Vector3;
-  rotationSpeed: number;
+interface JarvisGlobeProps {
+  size?: number;
 }
 
-const JarvisGlobe = ({ size = 500 }: JarvisGlobeProps) => {
-  const [activeService, setActiveService] = useState<string | null>(null);
+const JarvisGlobe = ({ size = 300 }: JarvisGlobeProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
-  const serviceIconsRef = useRef<ServiceIcon[]>([]);
-  const markersRef = useRef<THREE.Mesh[]>([]);
-
-  // Service icons configuration
-  const services = [
-    'Smart Contracts', 'Token', 'NFT', 'Exchange',
-    'dApp', 'Blockchain', 'Metaverse', 'Game'
-  ];
+  const cameraRef = useRef<THREE.PerspectiveCamera | null>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Scene setup
+    // Initialize scene, camera, and renderer
     const scene = new THREE.Scene();
     sceneRef.current = scene;
 
-    // Camera setup
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 2000);
-    camera.position.z = 8;
+    camera.position.z = 5;
+    cameraRef.current = camera;
 
-    // Renderer setup
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(size, size);
+    const renderer = new THREE.WebGLRenderer({ 
+      antialias: true, 
+      alpha: true 
+    });
     renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x000000, 0);
+    rendererRef.current = renderer;
+    renderer.setSize(size, size);
+    
+    if (containerRef.current.firstChild) {
+      containerRef.current.removeChild(containerRef.current.firstChild);
+    }
     containerRef.current.appendChild(renderer.domElement);
 
-    // Add central chakr symbol
-    const loader = new SVGLoader();
-    loader.load('https://www.ramestta.com/_next/static/media/chakr.8ab4f202.svg', (data) => {
-      const paths = data.paths;
-      const group = new THREE.Group();
-      
-      paths.forEach((path) => {
-        const material = new THREE.MeshBasicMaterial({
-          color: new THREE.Color(0x00ff00),
-          side: THREE.DoubleSide
-        });
-
-        const shapes = SVGLoader.createShapes(path);
-        shapes.forEach((shape) => {
-          const geometry = new THREE.ShapeGeometry(shape);
-          const mesh = new THREE.Mesh(geometry, material);
-          group.add(mesh);
-        });
-      });
-
-      group.scale.set(0.02, 0.02, 0.02);
-      group.position.y = -0.5;
-      scene.add(group);
+    // Create the Earth sphere
+    const earthGeometry = new THREE.SphereGeometry(1.5, 32, 32);
+    
+    // Create a holographic material
+    const earthMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        time: { value: 0 },
+        color1: { value: new THREE.Color(0x00FF00) }, // Primary green
+        color2: { value: new THREE.Color(0x32CD32) }, // Lime green
+      },
+      vertexShader: `
+        varying vec3 vNormal;
+        varying vec2 vUv;
+        void main() {
+          vNormal = normalize(normalMatrix * normal);
+          vUv = uv;
+          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+      `,
+      fragmentShader: `
+        uniform float time;
+        uniform vec3 color1;
+        uniform vec3 color2;
+        varying vec3 vNormal;
+        varying vec2 vUv;
+        
+        void main() {
+          // Create a grid pattern
+          float gridSize = 20.0;
+          vec2 grid = fract(vUv * gridSize);
+          float gridLine = max(
+            step(0.95, grid.x) * step(grid.x, 0.98),
+            step(0.95, grid.y) * step(grid.y, 0.98)
+          );
+          
+          // Create longitude/latitude lines
+          float latLine = step(0.97, abs(sin(vUv.y * 3.14159 * 8.0)));
+          float longLine = step(0.97, abs(sin(vUv.x * 3.14159 * 16.0)));
+          
+          // Combine grid and long/lat lines
+          float lines = max(max(gridLine, latLine), longLine);
+          
+          // Edge glow effect
+          float rim = 1.0 - max(0.0, dot(vNormal, vec3(0.0, 0.0, 1.0)));
+          rim = pow(rim, 2.0);
+          
+          // Pulsating effect
+          float pulse = 0.5 + 0.5 * sin(time * 0.5);
+          
+          // Data points that move
+          float dataPoint1 = step(0.98, sin(vUv.x * 50.0 + time) * sin(vUv.y * 50.0 + time * 0.7));
+          float dataPoint2 = step(0.98, cos(vUv.x * 40.0 - time * 0.3) * sin(vUv.y * 40.0 + time * 0.5));
+          float dataPoints = max(dataPoint1, dataPoint2);
+          
+          // Scanning line effect
+          float scanLine = step(0.98, sin(vUv.y * 3.14159 * 2.0 - time));
+          
+          // Combine all effects
+          vec3 baseColor = mix(color1, color2, rim);
+          vec3 finalColor = mix(baseColor * 0.5, baseColor, lines);
+          finalColor = mix(finalColor, vec3(1.0, 1.0, 1.0), dataPoints);
+          finalColor = mix(finalColor, vec3(1.0, 1.0, 1.0), scanLine * 0.5);
+          
+          // Apply pulsating opacity
+          float alpha = 0.7 + 0.3 * pulse;
+          // Stronger at edges
+          alpha = alpha * (0.6 + rim * 0.4);
+          
+          gl_FragColor = vec4(finalColor, alpha * (0.3 + lines * 0.7));
+        }
+      `,
+      transparent: true,
+      side: THREE.DoubleSide,
     });
 
-    // Holographic Globe
-    const globeGeometry = new THREE.SphereGeometry(2, 64, 64);
-    const globeMaterial = new THREE.MeshPhongMaterial({
-      color: 0x00ff00,
+    const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+    scene.add(earth);
+
+    // Create stars
+    const starsGeometry = new THREE.BufferGeometry();
+    const starsMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.02,
+      transparent: true,
+      opacity: 0.5,
+    });
+
+    const starsVertices = [];
+    for (let i = 0; i < 1000; i++) {
+      const x = THREE.MathUtils.randFloatSpread(10);
+      const y = THREE.MathUtils.randFloatSpread(10);
+      const z = THREE.MathUtils.randFloatSpread(10);
+      starsVertices.push(x, y, z);
+    }
+
+    starsGeometry.setAttribute(
+      'position',
+      new THREE.Float32BufferAttribute(starsVertices, 3)
+    );
+
+    const stars = new THREE.Points(starsGeometry, starsMaterial);
+    scene.add(stars);
+
+    // Holographic rings
+    const ringsGeometry = new THREE.RingGeometry(2.2, 2.3, 64);
+    const ringsMaterial = new THREE.MeshBasicMaterial({
+      color: 0xFF6E00,
+      side: THREE.DoubleSide,
+      transparent: true,
+      opacity: 0.3,
+    });
+    const rings = new THREE.Mesh(ringsGeometry, ringsMaterial);
+    rings.rotation.x = Math.PI / 2;
+    scene.add(rings);
+
+    const rings2Geometry = new THREE.RingGeometry(2.5, 2.55, 64);
+    const rings2Material = new THREE.MeshBasicMaterial({
+      color: 0xFFA500,
+      side: THREE.DoubleSide,
       transparent: true,
       opacity: 0.2,
-      wireframe: true
     });
-    const globe = new THREE.Mesh(globeGeometry, globeMaterial);
-    scene.add(globe);
+    const rings2 = new THREE.Mesh(rings2Geometry, rings2Material);
+    rings2.rotation.x = Math.PI / 2;
+    scene.add(rings2);
 
-    // Service Icons
-    const iconGeometry = new THREE.CircleGeometry(0.1, 32);
-    services.forEach((service, index) => {
-      const angle = (index / services.length) * Math.PI * 2;
-      const iconMaterial = new THREE.MeshBasicMaterial({
-        color: 0x00ff00,
-        transparent: true,
-        opacity: 0.8
-      });
-
-      const icon = new THREE.Mesh(iconGeometry, iconMaterial);
-      icon.position.set(
-        Math.cos(angle) * 3.5,
-        Math.sin(angle) * 3.5,
-        0
-      );
-      
-      serviceIconsRef.current.push({
-        name: service,
-        position: icon.position,
-        rotationSpeed: Math.random() * 0.02 + 0.01
-      });
-      scene.add(icon);
-    });
-
-    // Interactive Markers
-    const markerGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-    const markerMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-    const markerPositions = [
-      new THREE.Vector3(1.5, 0.5, 0),
-      new THREE.Vector3(-1.2, 0.8, 1),
-      new THREE.Vector3(0.5, -1, -0.5)
-    ];
-
-    markerPositions.forEach(pos => {
-      const marker = new THREE.Mesh(markerGeometry, markerMaterial);
-      marker.position.copy(pos);
-      markersRef.current.push(marker);
-      scene.add(marker);
-    });
-
-    // Animated Rings
-    const createRing = (radius: number, color: number) => {
-      const ringGeometry = new THREE.RingGeometry(radius, radius + 0.1, 64);
-      const ringMaterial = new THREE.MeshBasicMaterial({
-        color,
-        side: THREE.DoubleSide,
-        transparent: true,
-        opacity: 0.3
-      });
-      const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-      ring.rotation.x = Math.PI / 2;
-      return ring;
-    };
-
-    scene.add(createRing(2.5, 0x00ff00));
-    scene.add(createRing(3, 0xffa500));
-
-    // Lighting
+    // Add ambient light
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-    const pointLight = new THREE.PointLight(0x00ff00, 1, 100);
-    pointLight.position.set(5, 5, 5);
-    scene.add(ambientLight, pointLight);
+    scene.add(ambientLight);
 
-    // Animation Loop
+    // Animation loop
+    const clock = new THREE.Clock();
+    
     const animate = () => {
+      if (!rendererRef.current || !sceneRef.current || !cameraRef.current) return;
+      
+      const elapsedTime = clock.getElapsedTime();
+      
+      // Rotate the earth
+      earth.rotation.y = elapsedTime * 0.1;
+      
+      // Pulse the rings
+      const pulse = Math.sin(elapsedTime * 0.5) * 0.1 + 0.9;
+      rings.scale.set(pulse, pulse, pulse);
+      rings2.scale.set(1.05 - pulse * 0.05, 1.05 - pulse * 0.05, 1.05 - pulse * 0.05);
+      
+      // Update shader time
+      if (earth.material instanceof THREE.ShaderMaterial) {
+        earth.material.uniforms.time.value = elapsedTime;
+      }
+      
+      // Rotate the stars slowly
+      stars.rotation.y = elapsedTime * 0.02;
+      
+      // Render
+      rendererRef.current.render(sceneRef.current, cameraRef.current);
+      
+      // Request next frame
       requestAnimationFrame(animate);
-
-      // Rotate service icons
-      serviceIconsRef.current.forEach((service, index) => {
-        const angle = Date.now() * service.rotationSpeed;
-        service.position.x = Math.cos(angle + index) * 3.5;
-        service.position.y = Math.sin(angle + index) * 3.5;
-      });
-
-      // Globe rotation
-      globe.rotation.y += 0.002;
-
-      // Marker animation
-      markersRef.current.forEach(marker => {
-        marker.scale.y = Math.abs(Math.sin(Date.now() * 0.002)) + 0.5;
-      });
-
-      renderer.render(scene, camera);
     };
+    
     animate();
 
-    // Interaction
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-
-    const handleMouseMove = (event: MouseEvent) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-      raycaster.setFromCamera(mouse, camera);
-      const intersects = raycaster.intersectObjects(markersRef.current);
-
-      if (intersects.length > 0) {
-        gsap.to(intersects[0].object.scale, {
-          x: 1.5,
-          y: 1.5,
-          z: 1.5,
-          duration: 0.3
-        });
-        setActiveService(`Location: ${intersects[0].object.position.toArray().join(', ')}`);
-      } else {
-        markersRef.current.forEach(marker => {
-          gsap.to(marker.scale, { x: 1, y: 1, z: 1, duration: 0.3 });
-        });
-        setActiveService(null);
-      }
+    // Handle resize
+    const handleResize = () => {
+      if (!rendererRef.current || !cameraRef.current || !containerRef.current) return;
+      
+      rendererRef.current.setSize(size, size);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('resize', handleResize);
 
-    // Cleanup
+    // Clean up
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      containerRef.current?.removeChild(renderer.domElement);
-      renderer.dispose();
+      window.removeEventListener('resize', handleResize);
+      if (rendererRef.current && rendererRef.current.domElement && containerRef.current) {
+        containerRef.current.removeChild(rendererRef.current.domElement);
+      }
+      
+      if (earth.geometry) earth.geometry.dispose();
+      if (earth.material) {
+        if (Array.isArray(earth.material)) {
+          earth.material.forEach((m: THREE.Material) => m.dispose());
+        } else {
+          earth.material.dispose();
+        }
+      }
+      
+      if (starsGeometry) starsGeometry.dispose();
+      if (starsMaterial) starsMaterial.dispose();
+      
+      if (ringsGeometry) ringsGeometry.dispose();
+      if (ringsMaterial) ringsMaterial.dispose();
+      
+      if (rings2Geometry) rings2Geometry.dispose();
+      if (rings2Material) rings2Material.dispose();
+      
+      if (rendererRef.current) rendererRef.current.dispose();
     };
   }, [size]);
 
   return (
     <motion.div 
       ref={containerRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="jarvis-globe"
       style={{ 
         width: size, 
-        height: size,
+        height: size, 
         position: 'relative',
-        cursor: 'pointer'
+        margin: '0 auto'
       }}
-    >
-      {activeService && (
-        <div className="info-panel">
-          {activeService}
-        </div>
-      )}
-    </motion.div>
+    />
   );
 };
