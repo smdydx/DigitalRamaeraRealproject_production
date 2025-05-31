@@ -254,3 +254,5 @@ const JarvisGlobe = ({ size = 300 }: JarvisGlobeProps) => {
     />
   );
 };
+
+export default JarvisGlobe;
